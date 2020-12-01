@@ -1,14 +1,24 @@
 {
-  "name": "server",
+  "name": "online-store",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "nodemon server.js"
+    "test": "nodemon src/index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Nazar Ashyrov <nazar.ashyrov@instinctools.com>",
   "license": "ISC",
+  "devDependencies": {
+    "eslint": "^7.13.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-html": "^6.1.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^3.1.4",
+    "prettier": "^2.1.2"
+  },
   "dependencies": {
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
