@@ -1,48 +1,49 @@
-const config = require('../config/knexfile').development;
-// eslint-disable-next-line import/order
-const knex = require('knex')(config);
+const { ProductsService } = require('../services/productsService');
+
+const productsService = new ProductsService('product');
 
 exports.getAllProducts = async (req, res) => {
-  try {
-    const results = await knex.select().from('products');
-
+  const products = await productsService.getAll();
+  if (products) {
     res.status(200).json({
       status: 'success',
-      length: results.length,
+      length: products.length,
       date: {
-        products: results,
+        products,
       },
     });
-  } catch (error) {
-    console.log(error);
+  } else {
+    res.status(400).json({
+      status: 'error',
+    });
   }
 };
 
-exports.getOneProducts = async (req, res) => {
-  try {
-    const results = await knex('products').where('id', req.params.id);
-
+exports.getByIDProduct = async (req, res) => {
+  const product = await productsService.getByID(req.params.id);
+  if (product && product.length !== 0) {
     res.status(200).json({
       status: 'success',
       date: {
-        products: results,
+        product,
       },
     });
-  } catch (error) {
-    console.log(error);
+  } else {
+    res.status(400).json({
+      status: 'error',
+    });
   }
 };
 
-exports.postOneProducts = async (req, res) => {
-  try {
-    const results = await knex('products').insert(req.body);
+exports.createProduct = async (req, res) => {
+  const product = await productsService.create(req.body);
+  if (product) {
     res.status(201).json({
       status: 'success',
-      date: {
-        restaurants: results,
-      },
     });
-  } catch (error) {
-    console.log(error);
+  } else {
+    res.status(400).json({
+      status: 'error',
+    });
   }
 };

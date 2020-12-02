@@ -1,13 +1,13 @@
-exports.up = function (knex) {
-  return knex.schema
-    .createTable('products', (table) => {
+exports.up = (knex) =>
+  knex.schema
+    .createTable('product', (table) => {
       table.increments('id').primary();
       table.string('name', 100).notNullable();
       table.string('description', 500).notNullable();
       table.string('photo_url', 500).notNullable();
     })
     .then(() =>
-      knex('products').insert([
+      knex('product').insert([
         {
           name: 'Pizza Smile',
           description: 'The Best Pizza of world!',
@@ -16,8 +16,5 @@ exports.up = function (knex) {
         },
       ])
     );
-};
 
-exports.down = function (knex) {
-  return knex.schema.dropTable('products');
-};
+exports.down = (knex) => knex.schema.dropTable('product');

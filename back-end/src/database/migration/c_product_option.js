@@ -1,6 +1,6 @@
-exports.up = function (knex) {
-  return knex.schema
-    .createTable('product_options', (table) => {
+exports.up = (knex) =>
+  knex.schema
+    .createTable('product_option', (table) => {
       table.increments('id').primary();
       table.float('price', 6, 2).notNullable();
       table.float('weight', 10, 2).notNullable();
@@ -9,12 +9,12 @@ exports.up = function (knex) {
         .notNullable()
         .unsigned()
         .references('id')
-        .inTable('products')
+        .inTable('product')
         .onDelete('CASCADE')
         .onUpdate('CASCADE');
     })
     .then(() =>
-      knex('product_options').insert([
+      knex('product_option').insert([
         {
           price: 29.99,
           weight: 560,
@@ -22,8 +22,5 @@ exports.up = function (knex) {
         },
       ])
     );
-};
 
-exports.down = function (knex) {
-  return knex.schema.dropTable('product_options');
-};
+exports.down = (knex) => knex.schema.dropTable('product_option');
