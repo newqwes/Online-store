@@ -1,13 +1,13 @@
-exports.up = function (knex) {
-  return knex.schema
-    .createTable('carts', (table) => {
+exports.up = (knex) =>
+  knex.schema
+    .createTable('cart', (table) => {
       table.increments('id').primary();
       table
         .integer('user_id')
         .notNullable()
         .unsigned()
         .references('id')
-        .inTable('users')
+        .inTable('user')
         .onDelete('CASCADE')
         .onUpdate('CASCADE');
       table
@@ -15,7 +15,7 @@ exports.up = function (knex) {
         .notNullable()
         .unsigned()
         .references('id')
-        .inTable('products')
+        .inTable('product')
         .onDelete('CASCADE')
         .onUpdate('CASCADE');
       table
@@ -23,12 +23,12 @@ exports.up = function (knex) {
         .notNullable()
         .unsigned()
         .references('id')
-        .inTable('product_options')
+        .inTable('product_option')
         .onDelete('CASCADE')
         .onUpdate('CASCADE');
     })
     .then(() =>
-      knex('carts').insert([
+      knex('cart').insert([
         {
           user_id: 1,
           product_id: 1,
@@ -36,8 +36,5 @@ exports.up = function (knex) {
         },
       ])
     );
-};
 
-exports.down = function (knex) {
-  return knex.schema.dropTable('carts');
-};
+exports.down = (knex) => knex.schema.dropTable('cart');

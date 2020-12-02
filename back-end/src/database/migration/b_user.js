@@ -1,6 +1,6 @@
-exports.up = function (knex) {
-  return knex.schema
-    .createTable('users', (table) => {
+exports.up = (knex) =>
+  knex.schema
+    .createTable('user', (table) => {
       table.increments('id').primary();
       table.string('login', 50).notNullable();
       table.string('password', 50).notNullable();
@@ -9,7 +9,7 @@ exports.up = function (knex) {
       table.integer('user_type').notNullable();
     })
     .then(() =>
-      knex('users').insert([
+      knex('user').insert([
         {
           login: 'admin',
           password: 'admin',
@@ -19,8 +19,5 @@ exports.up = function (knex) {
         },
       ])
     );
-};
 
-exports.down = function (knex) {
-  return knex.schema.dropTable('users');
-};
+exports.down = (knex) => knex.schema.dropTable('user');
