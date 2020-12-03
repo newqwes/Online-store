@@ -1,8 +1,8 @@
-const { ProductsService } = require('../services/productsService');
+import ProductsService from '../services/productsService';
 
 const productsService = new ProductsService('product');
 
-exports.getAllProducts = async (req, res) => {
+export const getAllProducts = async (req, res) => {
   const products = await productsService.getAll();
   if (products) {
     res.status(200).json({
@@ -19,7 +19,7 @@ exports.getAllProducts = async (req, res) => {
   }
 };
 
-exports.getByIDProduct = async (req, res) => {
+export const getByIDProduct = async (req, res) => {
   const product = await productsService.getByID(req.params.id);
   if (product && product.length !== 0) {
     res.status(200).json({
@@ -35,7 +35,7 @@ exports.getByIDProduct = async (req, res) => {
   }
 };
 
-exports.createProduct = async (req, res) => {
+export const createProduct = async (req, res) => {
   const product = await productsService.create(req.body);
   if (product) {
     res.status(201).json({

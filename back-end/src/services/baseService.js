@@ -1,6 +1,8 @@
-const config = require('../config/knexfile').development;
-// eslint-disable-next-line import/order
-const knex = require('knex')(config);
+import knex from 'knex';
+import config from '../config/knexfile';
+
+const dbConfig = config.development;
+const database = knex(dbConfig);
 
 class BaseService {
   constructor(tabelName) {
@@ -9,7 +11,7 @@ class BaseService {
 
   async getAll() {
     try {
-      const item = await knex.select().from(this.table);
+      const item = await database.select().from(this.table);
       return item;
     } catch (error) {
       return null;
@@ -18,7 +20,7 @@ class BaseService {
 
   async getByID(id) {
     try {
-      const item = await knex(this.table).where('id', id);
+      const item = await database(this.table).where('id', id);
       return item;
     } catch (error) {
       return null;
@@ -27,7 +29,7 @@ class BaseService {
 
   async create(body) {
     try {
-      const item = await knex(this.table).insert(body);
+      const item = await database(this.table).insert(body);
       return item;
     } catch (error) {
       return null;
@@ -35,4 +37,4 @@ class BaseService {
   }
 }
 
-exports.BaseService = BaseService;
+export default BaseService;
