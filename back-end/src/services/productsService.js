@@ -1,5 +1,5 @@
-const { BaseService } = require('./baseService');
+import BaseService from './baseService';
 
 class ProductsService extends BaseService {}
 
-exports.ProductsService = ProductsService;
+export default ProductsService;
