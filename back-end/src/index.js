@@ -1,6 +1,8 @@
 import dotenv from 'dotenv';
 import express from 'express';
 import passport from 'passport';
+import morgan from 'morgan';
+import cors from 'cors';
 import productsRoute from './routes/productsRoute';
 import authRoute from './routes/authRoute';
 import mwPassport from './middleware/passport';
@@ -8,6 +10,8 @@ import mwPassport from './middleware/passport';
 dotenv.config();
 const app = express();
 
+app.use(morgan('dev'));
+app.use(cors());
 app.use(express.json());
 
 app.use(passport.initialize());
