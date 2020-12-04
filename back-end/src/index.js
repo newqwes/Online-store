@@ -1,7 +1,6 @@
 import dotenv from 'dotenv';
 import express from 'express';
 import passport from 'passport';
-import bodyParser from 'body-parser';
 import productsRoute from './routes/productsRoute';
 import authRoute from './routes/authRoute';
 import mwPassport from './middleware/passport';
@@ -9,13 +8,13 @@ import mwPassport from './middleware/passport';
 dotenv.config();
 const app = express();
 
-app.use(bodyParser.json());
+app.use(express.json());
 
 app.use(passport.initialize());
 mwPassport(passport);
 
-app.use('/api/products', productsRoute);
 app.use('/api/auth', authRoute);
+app.use('/api/products', productsRoute);
 
 const port = process.env.SERVER_PORT;
 

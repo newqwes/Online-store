@@ -1,49 +1,31 @@
-import ProductsService from '../services/productsService';
-
-const productsService = new ProductsService('product');
+import productsService from '../services/productsService';
 
 export const getAllProducts = async (req, res) => {
-  const products = await productsService.getAll();
-  if (products) {
-    res.status(200).json({
-      status: 'success',
-      length: products.length,
-      date: {
-        products,
-      },
-    });
-  } else {
-    res.status(400).json({
-      status: 'error',
-    });
-  }
+  const result = await productsService.getAll();
+
+  res.status(result.status).json(result);
 };
 
 export const getByIDProduct = async (req, res) => {
-  const product = await productsService.getByID(req.params.id);
-  if (product && product.length !== 0) {
-    res.status(200).json({
-      status: 'success',
-      date: {
-        product,
-      },
-    });
-  } else {
-    res.status(400).json({
-      status: 'error',
-    });
-  }
+  const result = await productsService.getByID(req.params.id);
+
+  res.status(result.status).json(result);
 };
 
 export const createProduct = async (req, res) => {
-  const product = await productsService.create(req.body);
-  if (product) {
-    res.status(201).json({
-      status: 'success',
-    });
-  } else {
-    res.status(400).json({
-      status: 'error',
-    });
-  }
+  const result = await productsService.create(req.body);
+
+  res.status(result.status).json(result);
+};
+
+export const updateProduct = async (req, res) => {
+  const result = await productsService.update(req.params.id);
+
+  res.status(result.status).json(result);
+};
+
+export const deleteProduct = async (req, res) => {
+  const result = await productsService.delete(req.params.id);
+
+  res.status(result.status).json(result);
 };
