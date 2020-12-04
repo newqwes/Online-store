@@ -14,6 +14,18 @@ exports.up = (knex) =>
           photo_url:
             'https://images.dominos.by/media/dominos/osg/api/2020/04/21/tsyplenok__dominator_small-min.png',
         },
+        {
+          name: 'Humburger',
+          description: 'Humburger of world!',
+          photo_url:
+            'https://images.dominos.by/media/dominos/osg/api/2020/04/21/tsyplenok__dominator_small-min.png',
+        },
+        {
+          name: 'Pie',
+          description: 'Apple pie',
+          photo_url:
+            'https://images.dominos.by/media/dominos/osg/api/2020/04/21/tsyplenok__dominator_small-min.png',
+        },
       ])
     );
 

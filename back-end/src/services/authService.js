@@ -2,6 +2,7 @@ import knex from 'knex';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import config from '../config/knexfile';
+import errorHandler from '../utils/errorHandler';
 
 const dbConfig = config.development;
 const database = knex(dbConfig);
@@ -11,8 +12,8 @@ class AuthService {
     this.table = tabelName;
   }
 
-  // Make to private
-  static createResult(status, message, token = '') {
+  // eslint-disable-next-line class-methods-use-this
+  createResult(status, message, token = '') {
     return { status, message, token };
   }
 
@@ -22,7 +23,7 @@ class AuthService {
       const candidate = await database(this.table).where('email', email);
 
       if (candidate.length === 0) {
-        return AuthService.createResult(404, 'Not found');
+        return this.createResult(404, 'Not found');
       }
 
       const user = candidate[0];
@@ -34,15 +35,16 @@ class AuthService {
           {
             email: user.email,
             id: user.id,
+            user_type: user.user_type,
           },
           process.env.ACCESS_TOKEN_SECRET
         );
 
-        return AuthService.createResult(200, 'Token created!', `Bearer ${token}`);
+        return this.createResult(200, 'Token created!', `Bearer ${token}`);
       }
-      return AuthService.createResult(401, 'Incorrect login / password pair!');
+      return this.createResult(401, 'Incorrect login / password pair!');
     } catch (error) {
-      return AuthService.createResult(401, 'error');
+      return errorHandler(error);
     }
   }
 
@@ -53,7 +55,7 @@ class AuthService {
       const candidate = await database(this.table).where('email', email);
 
       if (candidate.length !== 0) {
-        return AuthService.createResult(409, 'This email already exists!');
+        return this.createResult(409, 'This email already exists!');
       }
 
       const salt = bcrypt.genSaltSync(10);
@@ -61,9 +63,9 @@ class AuthService {
 
       await database(this.table).insert({ ...body, password: hashPassword });
 
-      return AuthService.createResult(201, 'User created successfully!');
+      return this.createResult(201, 'User created successfully!');
     } catch (error) {
-      return AuthService.createResult(401, 'error');
+      return errorHandler(error);
     }
   }
 }
