@@ -33,13 +33,12 @@ class AuthService {
         const token = jwt.sign(
           {
             email: user.email,
-            userId: user.id,
+            id: user.id,
           },
-          process.env.ACCESS_TOKEN_SECRET,
-          { expiresIn: process.env.ACCESS_TOKEN_LIFE }
+          process.env.ACCESS_TOKEN_SECRET
         );
 
-        return AuthService.createResult(200, 'Token created!', token);
+        return AuthService.createResult(200, 'Token created!', `Bearer ${token}`);
       }
       return AuthService.createResult(401, 'Incorrect login / password pair!');
     } catch (error) {
