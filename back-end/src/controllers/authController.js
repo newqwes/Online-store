@@ -1,6 +1,6 @@
 import AuthService from '../services/authService';
 
-const authService = new AuthService('user');
+const authService = new AuthService();
 
 export const login = async (req, res) => {
   const result = await authService.login(req.body);

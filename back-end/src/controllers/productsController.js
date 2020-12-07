@@ -19,7 +19,7 @@ export const createProduct = async (req, res) => {
 };
 
 export const updateProduct = async (req, res) => {
-  const result = await productsService.update(req.params.id);
+  const result = await productsService.update(req.params.id, req.body);
 
   res.status(result.status).json(result);
 };
