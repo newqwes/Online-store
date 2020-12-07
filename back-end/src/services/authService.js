@@ -1,32 +1,23 @@
-import knex from 'knex';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import config from '../config/knexfile';
 import errorHandler from '../utils/errorHandler';
-
-const dbConfig = config.development;
-const database = knex(dbConfig);
+import User from '../models/userModel';
 
 class AuthService {
-  constructor(tabelName) {
-    this.table = tabelName;
-  }
-
   // eslint-disable-next-line class-methods-use-this
-  createResult(status, message, token = '') {
-    return { status, message, token };
-  }
+  createResult = (status, message, token = {}) => ({ status, message, token });
 
   async login(body) {
     try {
       const { email, password } = body;
-      const candidate = await database(this.table).where('email', email);
 
-      if (candidate.length === 0) {
+      const candidate = await User.where({ email }).fetch({ require: false });
+
+      if (!candidate) {
         return this.createResult(404, 'Not found');
       }
 
-      const user = candidate[0];
+      const user = candidate.toJSON();
 
       const passwordResult = bcrypt.compareSync(password, user.password);
 
@@ -52,16 +43,15 @@ class AuthService {
     try {
       const { email, password } = body;
 
-      const candidate = await database(this.table).where('email', email);
+      const candidate = await User.where({ email }).fetch({ require: false });
 
-      if (candidate.length !== 0) {
+      if (candidate) {
         return this.createResult(409, 'This email already exists!');
       }
 
       const salt = bcrypt.genSaltSync(10);
       const hashPassword = bcrypt.hashSync(password, salt);
-
-      await database(this.table).insert({ ...body, password: hashPassword });
+      await User.forge({ ...body, password: hashPassword }).save();
 
       return this.createResult(201, 'User created successfully!');
     } catch (error) {
