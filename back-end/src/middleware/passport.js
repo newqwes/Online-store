@@ -1,12 +1,9 @@
 import { Strategy, ExtractJwt } from 'passport-jwt';
-import knex from 'knex';
 import dotenv from 'dotenv';
-import config from '../config/knexfile';
+import User from '../models/userModel';
+import errorHandler from '../utils/errorHandler';
 
 dotenv.config();
-
-const dbConfig = config.development;
-const users = knex(dbConfig)('user');
 
 const options = {
   jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
@@ -17,14 +14,10 @@ const mwPassport = (passport) => {
   passport.use(
     new Strategy(options, async (payload, done) => {
       try {
-        const user = await users.where('id', payload.id);
-        if (user !== 0) {
-          done(null, user);
-        } else {
-          done(null, false);
-        }
-      } catch (e) {
-        console.log(e);
+        const user = await User.where({ id: payload.id }).fetch({ require: false });
+        user ? done(null, user) : done(null, false);
+      } catch (error) {
+        return errorHandler(error);
       }
     })
   );
