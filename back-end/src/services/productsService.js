@@ -1,5 +1,7 @@
+import Promise from 'bluebird';
 import errorHandler from '../utils/errorHandler';
 import Product from '../models/productModel';
+import Option from '../models/optionModel';
 
 class ProductsService {
   createResult = (status, data = {}) => ({ status, message: 'Success', data });
@@ -18,6 +20,9 @@ class ProductsService {
     try {
       const product = await Product.where({ id }).fetch({ withRelated: ['options'] });
 
+      // const product = await Product;
+      // console.log(`Crrr = ${product.options().create}`);
+
       return this.createResult(200, product);
     } catch (error) {
       return errorHandler(error);
@@ -26,8 +31,37 @@ class ProductsService {
 
   async update(id, body) {
     try {
-      // Only for product not option, must do!
-      const result = await Product.where({ id }).save({ ...body });
+      const { options, ...attributes } = body;
+
+      /* Not work, do to be easy with bookself.js
+
+      const result = await Product.forge(attributes)
+        .save()
+        .tap((product) =>
+          Promise.map(options, (option) => product.related('product_id').create(option))
+        );
+
+       */
+
+      let newOptions = [];
+
+      if (options.length !== 0) {
+        newOptions = options.map((option) => {
+          const newOption = option;
+          newOption.product_id = id;
+          return newOption;
+        });
+      }
+
+      await Product.where({ id }).save({ ...attributes }, { method: 'update' });
+
+      const tempq = await Option.where('product_id', id).fetchAll();
+      tempq.invokeThen('destroy');
+
+      await Option.collection(newOptions).invokeThen('save');
+
+      const result = await Product.where({ id }).fetch({ withRelated: ['options'] });
+
       return this.createResult(200, result);
     } catch (error) {
       return errorHandler(error);
