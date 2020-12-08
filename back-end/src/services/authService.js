@@ -50,7 +50,9 @@ class AuthService {
       }
 
       const salt = bcrypt.genSaltSync(10);
+
       const hashPassword = bcrypt.hashSync(password, salt);
+
       await User.forge({ ...body, password: hashPassword }).save();
 
       return this.createResult(201, 'User created successfully!');
