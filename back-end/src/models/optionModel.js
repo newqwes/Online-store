@@ -1,7 +1,9 @@
-import bookshelf from './bookshelfConfig';
+import db from './bookshelfConfig';
 
-const Option = bookshelf.Model.extend({
+export default db.model('Option', {
   tableName: 'product_option',
-});
 
-export default Option;
+  products() {
+    return this.belongsTo('Product', 'product_id', 'id');
+  },
+});

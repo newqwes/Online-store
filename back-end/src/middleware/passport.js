@@ -15,6 +15,7 @@ const mwPassport = (passport) => {
     new Strategy(options, async (payload, done) => {
       try {
         const user = await User.where({ id: payload.id }).fetch({ require: false });
+
         user ? done(null, user) : done(null, false);
       } catch (error) {
         return errorHandler(error);

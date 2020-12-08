@@ -34,14 +34,11 @@ class ProductsService {
       const { options, ...attributes } = body;
 
       /* Not work, do to be easy with bookself.js
-
       const result = await Product.forge(attributes)
         .save()
         .tap((product) =>
           Promise.map(options, (option) => product.related('product_id').create(option))
-        );
-
-       */
+        );  */
 
       let newOptions = [];
 
@@ -49,13 +46,15 @@ class ProductsService {
         newOptions = options.map((option) => {
           const newOption = option;
           newOption.product_id = id;
+
           return newOption;
         });
       }
 
-      await Product.where({ id }).save({ ...attributes }, { method: 'update' });
+      await Product.where({ id }).save(attributes, { method: 'update' });
 
       const tempq = await Option.where('product_id', id).fetchAll();
+
       tempq.invokeThen('destroy');
 
       await Option.collection(newOptions).invokeThen('save');
@@ -71,6 +70,7 @@ class ProductsService {
   async delete(id) {
     try {
       await Product.where({ id }).destroy();
+
       return this.createResult(200, id);
     } catch (error) {
       return errorHandler(error);
@@ -79,8 +79,19 @@ class ProductsService {
 
   async create(body) {
     try {
-      // Only for product not option, must do!
-      await Product.forge({ ...body }).save();
+      const { options, ...attributes } = body;
+
+      const product = await new Product().save(attributes);
+
+      const optionsWithIdProduct = options.map((oldOption) => {
+        const option = oldOption;
+        option.product_id = product.id;
+
+        return option;
+      });
+
+      await Option.collection(optionsWithIdProduct).invokeThen('save');
+
       return this.createResult(201, body);
     } catch (error) {
       return errorHandler(error);
