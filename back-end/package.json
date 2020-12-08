@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "start": "nodemon --exec babel-node src/index.js",
-    "migrate": "yarn knex migrate:latest --knexfile src/config/knexfile.js"
+    "migrate": "yarn sequelize-cli db:seed:undo:all && yarn sequelize-cli db:migrate:undo:all && yarn sequelize-cli db:migrate && yarn sequelize-cli db:seed:all"
   },
   "keywords": [],
   "author": "Nazar Ashyrov <nazar.ashyrov@instinctools.com>",
@@ -28,7 +28,6 @@
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
-    "bluebird": "^3.7.2",
     "bookshelf": "^1.2.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
@@ -39,6 +38,9 @@
     "nodemon": "^2.0.6",
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
-    "pg": "^8.5.1"
+    "pg": "^8.5.1",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^6.3.5",
+    "sequelize-cli": "^6.2.0"
   }
 }

@@ -1,7 +1,7 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import errorHandler from '../utils/errorHandler';
-import User from '../models/userModel';
+import User from '../database/models/userModel';
 
 class AuthService {
   // eslint-disable-next-line class-methods-use-this
@@ -10,7 +10,7 @@ class AuthService {
   async login(body) {
     try {
       const { email, password } = body;
-
+      // Change knex => squelize
       const candidate = await User.where({ email }).fetch({ require: false });
 
       if (!candidate) {
@@ -42,7 +42,7 @@ class AuthService {
   async create(body) {
     try {
       const { email, password } = body;
-
+      // Change knex => squelize
       const candidate = await User.where({ email }).fetch({ require: false });
 
       if (candidate) {
@@ -52,7 +52,7 @@ class AuthService {
       const salt = bcrypt.genSaltSync(10);
 
       const hashPassword = bcrypt.hashSync(password, salt);
-
+      // Change knex => squelize
       await User.forge({ ...body, password: hashPassword }).save();
 
       return this.createResult(201, 'User created successfully!');

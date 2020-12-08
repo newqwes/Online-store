@@ -6,6 +6,7 @@ import cors from 'cors';
 import productsRoute from './routes/productsRoute';
 import authRoute from './routes/authRoute';
 import mwPassport from './middleware/passport';
+import sequelize from './database';
 
 dotenv.config();
 const app = express();
@@ -22,7 +23,9 @@ app.use('/api/products', productsRoute);
 
 const port = process.env.SERVER_PORT;
 
-app.listen(port, () => {
+app.listen(port, async () => {
   // eslint-disable-next-line no-console
   console.log(`Server is listening on port ${port}...`);
+  await sequelize.authenticate();
+  console.log('Database Connected!');
 });
