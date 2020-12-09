@@ -10,6 +10,7 @@ Product.init(
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
+      autoIncrement: true,
     },
     name: {
       type: DataTypes.STRING(100),
@@ -32,6 +33,6 @@ Product.init(
 );
 
 Option.belongsTo(Product, { foreignKey: 'id' });
-Product.hasMany(Option, { foreignKey: 'product_id' });
+Product.hasMany(Option, { foreignKey: 'product_id', as: 'options' });
 
 export default Product;

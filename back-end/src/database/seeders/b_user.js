@@ -1,5 +1,5 @@
 module.exports = {
-  up: (queryInterface, Sequelize) =>
+  up: (queryInterface) =>
     queryInterface.bulkInsert('user', [
       {
         login: 'admin',
@@ -9,5 +9,5 @@ module.exports = {
         user_type: 666,
       },
     ]),
-  down: (queryInterface, Sequelize) => queryInterface.bulkDelete('user', null, {}),
+  down: (queryInterface) => queryInterface.bulkDelete('user', null, {}),
 };

@@ -7,14 +7,7 @@ class ProductsService {
 
   async getAll() {
     try {
-      const products = await Product.findAll({ include: Option });
-
-      // const test = await sequelize.query(
-      //   'SELECT * FROM product, product_option WHERE product_option.product_id = product.id',
-      //   {
-      //     type: QueryTypes.SELECT,
-      //   }
-      // );
+      const products = await Product.findAll({ include: { model: Option, as: 'options' } });
 
       return this.createResult(200, products);
     } catch (error) {
@@ -24,7 +17,10 @@ class ProductsService {
 
   async getByID(id) {
     try {
-      const product = await Product.findOne({ where: { id }, include: Option });
+      const product = await Product.findOne({
+        where: { id },
+        include: { model: Option, as: 'options' },
+      });
 
       return this.createResult(200, product);
     } catch (error) {
@@ -34,13 +30,10 @@ class ProductsService {
 
   async update(id, body) {
     try {
-      const { Options, ...attributes } = body;
-
-      const product = await Product.update(attributes, {
+      const product = await Product.update(body, {
         where: { id },
+        include: { model: Option, as: 'options' },
       });
-      await Option.destroy({ where: { product_id: id } });
-      await Option.bulkCreate(Options);
 
       return this.createResult(200, product);
     } catch (error) {
@@ -50,10 +43,9 @@ class ProductsService {
 
   async delete(id) {
     try {
-      const product = await Product.findOne({ where: { id } });
-      await product.destroy();
+      await Product.destroy({ where: { id } });
 
-      return this.createResult(200, id);
+      return this.createResult(200);
     } catch (error) {
       return errorHandler(error);
     }
@@ -61,9 +53,11 @@ class ProductsService {
 
   async create(body) {
     try {
-      const { options, ...attributes } = body;
+      const product = await Product.create(body, {
+        include: { model: Option, as: 'options' },
+      });
 
-      return this.createResult(201, body);
+      return this.createResult(201, product);
     } catch (error) {
       return errorHandler(error);
     }

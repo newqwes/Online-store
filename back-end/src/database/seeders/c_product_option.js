@@ -1,5 +1,5 @@
 module.exports = {
-  up: (queryInterface, Sequelize) =>
+  up: (queryInterface) =>
     queryInterface.bulkInsert('product_option', [
       {
         price: 29.99,
@@ -32,5 +32,5 @@ module.exports = {
         product_id: 3,
       },
     ]),
-  down: (queryInterface, Sequelize) => queryInterface.bulkDelete('product_option', null, {}),
+  down: (queryInterface) => queryInterface.bulkDelete('product_option', null, {}),
 };

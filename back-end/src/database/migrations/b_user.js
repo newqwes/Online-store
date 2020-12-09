@@ -29,7 +29,7 @@ module.exports = {
       },
     });
   },
-  down: async (queryInterface, DataTypes) => {
+  down: async (queryInterface) => {
     await queryInterface.dropTable('user');
   },
 };

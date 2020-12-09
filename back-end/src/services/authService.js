@@ -12,7 +12,7 @@ class AuthService {
       const { email, password } = body;
 
       const candidate = await User.findOne({ where: { email } });
-      console.log(candidate);
+
       if (!candidate) {
         return this.createResult(404, 'Not found');
       }
@@ -53,8 +53,7 @@ class AuthService {
 
       const hashPassword = bcrypt.hashSync(password, salt);
 
-      const user = await User.create({ ...body, password: hashPassword });
-      await user.save();
+      await User.create({ ...body, password: hashPassword });
 
       return this.createResult(201, 'User created successfully!');
     } catch (error) {
