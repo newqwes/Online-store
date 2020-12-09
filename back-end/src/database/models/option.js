@@ -1,11 +1,7 @@
 import { DataTypes, Model } from 'sequelize';
 import sequelize from '..';
 
-class Option extends Model {
-  static associate({ Product }) {
-    this.belongsTo(Product, { foreignKey: 'product_id' });
-  }
-}
+class Option extends Model {}
 
 Option.init(
   {
@@ -16,16 +12,22 @@ Option.init(
       autoIncrement: true,
     },
     price: {
-      type: DataTypes.FLOAT(6, 2),
+      type: DataTypes.DOUBLE,
       allowNull: false,
     },
     weight: {
-      type: DataTypes.FLOAT(10, 2),
+      type: DataTypes.DOUBLE,
       allowNull: false,
     },
     product_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      references: {
+        model: 'product',
+        key: 'id',
+      },
+      onUpdate: 'CASCADE',
+      onDelete: 'CASCADE',
     },
   },
   {

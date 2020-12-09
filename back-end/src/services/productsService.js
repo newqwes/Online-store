@@ -1,13 +1,20 @@
 import errorHandler from '../utils/errorHandler';
-
-import Product from '../database/models/productModel';
+import Product from '../database/models/product';
+import Option from '../database/models/option';
 
 class ProductsService {
   createResult = (status, data = {}) => ({ status, message: 'Success', data });
 
   async getAll() {
     try {
-      const products = await Product.findAll();
+      const products = await Product.findAll({ include: Option });
+
+      // const test = await sequelize.query(
+      //   'SELECT * FROM product, product_option WHERE product_option.product_id = product.id',
+      //   {
+      //     type: QueryTypes.SELECT,
+      //   }
+      // );
 
       return this.createResult(200, products);
     } catch (error) {
@@ -17,7 +24,7 @@ class ProductsService {
 
   async getByID(id) {
     try {
-      const product = id;
+      const product = await Product.findOne({ where: { id }, include: Option });
 
       return this.createResult(200, product);
     } catch (error) {
@@ -27,11 +34,15 @@ class ProductsService {
 
   async update(id, body) {
     try {
-      const { options, ...attributes } = body;
+      const { Options, ...attributes } = body;
 
-      const result = body;
+      const product = await Product.update(attributes, {
+        where: { id },
+      });
+      await Option.destroy({ where: { product_id: id } });
+      await Option.bulkCreate(Options);
 
-      return this.createResult(200, result);
+      return this.createResult(200, product);
     } catch (error) {
       return errorHandler(error);
     }
@@ -39,6 +50,9 @@ class ProductsService {
 
   async delete(id) {
     try {
+      const product = await Product.findOne({ where: { id } });
+      await product.destroy();
+
       return this.createResult(200, id);
     } catch (error) {
       return errorHandler(error);

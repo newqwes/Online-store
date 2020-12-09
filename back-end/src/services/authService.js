@@ -1,7 +1,7 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import errorHandler from '../utils/errorHandler';
-import User from '../database/models/userModel';
+import User from '../database/models/user';
 
 class AuthService {
   // eslint-disable-next-line class-methods-use-this
@@ -10,9 +10,9 @@ class AuthService {
   async login(body) {
     try {
       const { email, password } = body;
-      // Change knex => squelize
-      const candidate = await User.where({ email }).fetch({ require: false });
 
+      const candidate = await User.findOne({ where: { email } });
+      console.log(candidate);
       if (!candidate) {
         return this.createResult(404, 'Not found');
       }
@@ -42,8 +42,8 @@ class AuthService {
   async create(body) {
     try {
       const { email, password } = body;
-      // Change knex => squelize
-      const candidate = await User.where({ email }).fetch({ require: false });
+
+      const candidate = await User.findOne({ where: { email } });
 
       if (candidate) {
         return this.createResult(409, 'This email already exists!');
@@ -52,8 +52,9 @@ class AuthService {
       const salt = bcrypt.genSaltSync(10);
 
       const hashPassword = bcrypt.hashSync(password, salt);
-      // Change knex => squelize
-      await User.forge({ ...body, password: hashPassword }).save();
+
+      const user = await User.create({ ...body, password: hashPassword });
+      await user.save();
 
       return this.createResult(201, 'User created successfully!');
     } catch (error) {

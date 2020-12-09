@@ -1,11 +1,8 @@
 import { DataTypes, Model } from 'sequelize';
 import sequelize from '..';
+import Option from './option';
 
-class Product extends Model {
-  static associate({ Option }) {
-    this.hasMany(Option, { foreignKey: 'product_id' });
-  }
-}
+class Product extends Model {}
 
 Product.init(
   {
@@ -33,5 +30,8 @@ Product.init(
     timestamps: false,
   }
 );
+
+Option.belongsTo(Product, { foreignKey: 'id' });
+Product.hasMany(Option, { foreignKey: 'product_id' });
 
 export default Product;

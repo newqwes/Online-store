@@ -8,20 +8,26 @@ module.exports = {
         autoIncrement: true,
       },
       price: {
-        type: DataTypes.FLOAT(6, 2),
+        type: DataTypes.DOUBLE,
         allowNull: false,
       },
       weight: {
-        type: DataTypes.FLOAT(10, 2),
+        type: DataTypes.DOUBLE,
         allowNull: false,
       },
       product_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
+        references: {
+          model: 'product',
+          key: 'id',
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
       },
     });
   },
-  down: async (queryInterface) => {
+  down: async (queryInterface, DataTypes) => {
     await queryInterface.dropTable('product_option');
   },
 };
