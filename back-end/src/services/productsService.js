@@ -1,14 +1,20 @@
-import Promise from 'bluebird';
 import errorHandler from '../utils/errorHandler';
-import Product from '../models/productModel';
-import Option from '../models/optionModel';
+import Product from '../database/models/product';
+import Option from '../database/models/option';
 
 class ProductsService {
   createResult = (status, data = {}) => ({ status, message: 'Success', data });
 
   async getAll() {
     try {
-      const products = await Product.fetchAll({ withRelated: ['options'] });
+      const products = await Product.findAll({ include: Option });
+
+      // const test = await sequelize.query(
+      //   'SELECT * FROM product, product_option WHERE product_option.product_id = product.id',
+      //   {
+      //     type: QueryTypes.SELECT,
+      //   }
+      // );
 
       return this.createResult(200, products);
     } catch (error) {
@@ -18,10 +24,7 @@ class ProductsService {
 
   async getByID(id) {
     try {
-      const product = await Product.where({ id }).fetch({ withRelated: ['options'] });
-
-      // const product = await Product;
-      // console.log(`Crrr = ${product.options().create}`);
+      const product = await Product.findOne({ where: { id }, include: Option });
 
       return this.createResult(200, product);
     } catch (error) {
@@ -31,37 +34,15 @@ class ProductsService {
 
   async update(id, body) {
     try {
-      const { options, ...attributes } = body;
+      const { Options, ...attributes } = body;
 
-      /* Not work, do to be easy with bookself.js
-      const result = await Product.forge(attributes)
-        .save()
-        .tap((product) =>
-          Promise.map(options, (option) => product.related('product_id').create(option))
-        );  */
+      const product = await Product.update(attributes, {
+        where: { id },
+      });
+      await Option.destroy({ where: { product_id: id } });
+      await Option.bulkCreate(Options);
 
-      let newOptions = [];
-
-      if (options.length !== 0) {
-        newOptions = options.map((option) => {
-          const newOption = option;
-          newOption.product_id = id;
-
-          return newOption;
-        });
-      }
-
-      await Product.where({ id }).save(attributes, { method: 'update' });
-
-      const tempq = await Option.where('product_id', id).fetchAll();
-
-      tempq.invokeThen('destroy');
-
-      await Option.collection(newOptions).invokeThen('save');
-
-      const result = await Product.where({ id }).fetch({ withRelated: ['options'] });
-
-      return this.createResult(200, result);
+      return this.createResult(200, product);
     } catch (error) {
       return errorHandler(error);
     }
@@ -69,7 +50,8 @@ class ProductsService {
 
   async delete(id) {
     try {
-      await Product.where({ id }).destroy();
+      const product = await Product.findOne({ where: { id } });
+      await product.destroy();
 
       return this.createResult(200, id);
     } catch (error) {
@@ -80,17 +62,6 @@ class ProductsService {
   async create(body) {
     try {
       const { options, ...attributes } = body;
-
-      const product = await new Product().save(attributes);
-
-      const optionsWithIdProduct = options.map((oldOption) => {
-        const option = oldOption;
-        option.product_id = product.id;
-
-        return option;
-      });
-
-      await Option.collection(optionsWithIdProduct).invokeThen('save');
 
       return this.createResult(201, body);
     } catch (error) {
