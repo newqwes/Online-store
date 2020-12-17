@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Time = ({ iconSize }) => (
+const Time = ({ size }) => (
   <svg
     id='Capa_1'
     enableBackground='new 0 0 512 512'
-    height={iconSize}
+    height={size}
     viewBox='0 0 512 512'
-    width={iconSize}
+    width={size}
     xmlns='http://www.w3.org/2000/svg'
   >
     <g>
@@ -89,11 +89,11 @@ const Time = ({ iconSize }) => (
 );
 
 Time.propTypes = {
-  iconSize: PropTypes.number,
+  size: PropTypes.number,
 };
 
 Time.defaultProps = {
-  iconSize: 48,
+  size: 48,
 };
 
 export default Time;
