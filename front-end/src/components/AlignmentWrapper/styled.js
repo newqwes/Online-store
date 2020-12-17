@@ -4,8 +4,9 @@ const AlignmentWrapper = styled.div`
   display: flex;
   align-items: center;
   > * {
-    &:first-child {
-      padding-right: ${(props) => props.gap || 5}px;
+    padding-right: ${(props) => props.gap || 5}px;
+    &:last-child {
+      padding-right: 0;
     }
   }
 `;
