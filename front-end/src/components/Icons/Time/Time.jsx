@@ -93,7 +93,7 @@ Time.propTypes = {
 };
 
 Time.defaultProps = {
-  size: 48,
+  size: 32,
 };
 
 export default Time;

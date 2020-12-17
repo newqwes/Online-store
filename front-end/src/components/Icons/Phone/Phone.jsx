@@ -52,7 +52,7 @@ Phone.propTypes = {
 };
 
 Phone.defaultProps = {
-  size: 48,
+  size: 32,
 };
 
 export default Phone;

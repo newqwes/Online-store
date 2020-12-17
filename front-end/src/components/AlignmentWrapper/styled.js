@@ -3,10 +3,11 @@ import styled from 'styled-components';
 const AlignmentWrapper = styled.div`
   display: flex;
   align-items: center;
+  max-width: 20%;
   > * {
-    padding-right: ${(props) => props.gap || 5}px;
+    margin-right: ${(props) => props.gap || 10}px;
     &:last-child {
-      padding-right: 0;
+      margin-right: 0;
     }
   }
 `;

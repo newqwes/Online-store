@@ -5,18 +5,24 @@ import Phone from '../Icons/Phone';
 import Time from '../Icons/Time';
 import AlignmentWrapper from '../AlignmentWrapper';
 import Label from '../Label';
+import Button from '../Button';
+
+const color = { primary: 'primary', secondary: 'secondary' };
 
 const Header = () => (
   <HeaderBackground>
     <HeaderWrapper>
       <Logo href='/' />
-      <AlignmentWrapper gap={10}>
+      <AlignmentWrapper>
         <Time />
-        <Label text='Доставка в течении 30 минут' fontSize={2} />
+        <Label text='30 минут доставка' fontSize={2.2} />
       </AlignmentWrapper>
-      <AlignmentWrapper gap={10}>
+      <AlignmentWrapper>
         <Phone />
-        <Label text='+375 (33) 363-79-70' fontSize={2} />
+        <Label text='+375 (33) 363-79-70' fontSize={2.2} />
+      </AlignmentWrapper>
+      <AlignmentWrapper>
+        <Button text='Войти' color={color.primary} onClick={() => console.log('Войти')} />
       </AlignmentWrapper>
     </HeaderWrapper>
   </HeaderBackground>
