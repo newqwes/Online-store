@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Wrapper from './styled';
+import LabelStyle from './styled';
 
 const Label = ({ text, fontSize }) => (
-  <Wrapper fontSize={fontSize}>
+  <LabelStyle fontSize={fontSize}>
     {text}
-  </Wrapper>
+  </LabelStyle>
 );
 
 Label.propTypes = {

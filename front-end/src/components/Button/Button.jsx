@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Wrapper from './styled';
+import ButtonStyle from './styled';
 
 const STYLES = ['primary', 'secondary'];
 
 const Button = ({ text, color, onClick }) => (
-  <Wrapper color={color} onClick={onClick}>
+  <ButtonStyle color={color} onClick={onClick}>
     {text}
-  </Wrapper>
+  </ButtonStyle>
 );
 
 Button.propTypes = {

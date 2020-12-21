@@ -1,9 +1,8 @@
 import styled from 'styled-components';
 
-const AlignmentWrapper = styled.div`
+const Alignment = styled.div`
   display: flex;
-  align-items: center;
-  max-width: 20%;
+  align-items: ${(props) => props.position || 'center'};
   > * {
     margin-right: ${(props) => props.gap || 10}px;
     &:last-child {
@@ -12,4 +11,4 @@ const AlignmentWrapper = styled.div`
   }
 `;
 
-export default AlignmentWrapper;
+export default Alignment;

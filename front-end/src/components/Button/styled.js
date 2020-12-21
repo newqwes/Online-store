@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Wrapper = styled.button`
+const ButtonStyle = styled.button`
   background-color: ${(props) => props.theme.default.button[props.color]}ff;
   border: 2px solid ${(props) => props.theme.default.button[props.color]};
   color: ${(props) => props.theme.default.label.color}df;
@@ -21,4 +21,4 @@ const Wrapper = styled.button`
   }
 `;
 
-export default Wrapper;
+export default ButtonStyle;
