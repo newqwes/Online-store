@@ -14,7 +14,6 @@ const MenuStyle = styled.ul`
     transition: 0.2s ease;
     font-weight: ${(props) => props.fontWeight};
     position: relative;
-
     &:hover {
       color: ${(props) => props.theme.default.link.hover};
       &::after {
@@ -34,10 +33,11 @@ const MenuStyle = styled.ul`
       position: absolute;
       width: 0;
       ${(props) => props.animationSide}: 0;
-      bottom: 0;
-      height: 2px;
-      background-color: ${(props) => props.theme.default.link.focus};
-      transition: 0.5s ease;
+      bottom: -1px;
+      border-radius: 15px 15px 0 0;
+      height: 8px;
+      background-color: ${(props) => props.theme.default.background.default};
+      transition: 0.4s ease;
     }
   }
 `;
