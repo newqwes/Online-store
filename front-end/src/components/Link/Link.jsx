@@ -22,7 +22,7 @@ Link.propTypes = {
   href: PropTypes.string,
   usual: PropTypes.bool,
   fontSize: PropTypes.number,
-  children: PropTypes.elementType,
+  children: PropTypes.element,
 };
 
 export default Link;

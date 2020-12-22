@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 const sharedStyle = css`
   font-size: ${(props) => props.fontSize}rem;
-  color: ${(props) => props.theme.default.label.color};
+  color: ${(props) => props.theme.default.label.secondary};
   font-weight: bold;
   text-decoration: none;
 `;

@@ -20,7 +20,7 @@ const Header = () => {
         <Logo href='/' position={positionY.center} />
         <Alignment>
           <Icons.Time />
-          <Label text='30 минут доставка' fontSize={fontSize.medium} />
+          <Label text='30 минут доставка' fontSize={fontSize.medium} color='secondary' />
         </Alignment>
         <Alignment>
           <Icons.Phone />
@@ -31,7 +31,7 @@ const Header = () => {
             usual
           />
         </Alignment>
-        <Alignment positionX={positionX.right} gap='50'>
+        <Alignment positionX={positionX.right} gap={50}>
           <Link href='/cart'>
             <Icons.Cart size={iconSize.large} />
           </Link>

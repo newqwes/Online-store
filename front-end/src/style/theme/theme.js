@@ -1,16 +1,25 @@
 const theme = {
   default: {
     label: {
-      color: '#f5f5f5',
+      secondary: '#f4eab7',
+      primary: '#332019',
+      light: '#dad0a2',
     },
     link: {
-      primary: '#245cb1',
-      hover: '#114ba1',
-      focus: '#aa1378',
+      focus: '#8b3d0f',
+      hover: '#855749',
+      primary: '#332019',
     },
     button: {
-      primary: '#1a75ff',
+      primary: '#53453a',
       secondary: '#bdbdbd',
+      cart: '#a11b48',
+    },
+    background: {
+      default: '#f4eab7',
+      hover: '#dad0a2',
+      header: '#332019',
+      primary: '#fffdf2',
     },
   },
   dark: {
@@ -25,6 +34,11 @@ const theme = {
     button: {
       primary: '#2e1857',
       secondary: '#594677',
+    },
+    background: {
+      default: '#6b6859',
+      header: '#f15f2a',
+      primary: '#fffdf2',
     },
   },
 };
