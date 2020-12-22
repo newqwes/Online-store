@@ -2,9 +2,10 @@ import styled from 'styled-components';
 
 const Alignment = styled.div`
   display: flex;
-  align-items: ${(props) => props.position || 'center'};
+  justify-content: ${(props) => props.positionX || 'center'};
+  align-items: ${(props) => props.positionY || 'center'};
   > * {
-    margin-right: ${(props) => props.gap || 10}px;
+    margin-right: ${(props) => props.gap || 15}px;
     &:last-child {
       margin-right: 0;
     }

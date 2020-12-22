@@ -2,11 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import LabelStyle from './styled';
 
-const Label = ({ text, fontSize }) => (
-  <LabelStyle fontSize={fontSize}>
-    {text}
-  </LabelStyle>
-);
+const Label = ({ text, fontSize }) => <LabelStyle fontSize={fontSize}>{text}</LabelStyle>;
 
 Label.propTypes = {
   text: PropTypes.string,

@@ -3,10 +3,9 @@ import logo from '../../assets/images/logo.png';
 
 const LogoWrapper = styled.div`
   background-image: url(${logo});
-  width: ${(props) => props.width}px;
-  background-size: contain;
+  background-size: ${(props) => props.width}px;
   background-repeat: no-repeat;
-  margin-top: 1%;
+  background-position-y: ${(props) => props.position}%;
 `;
 
 export default LogoWrapper;

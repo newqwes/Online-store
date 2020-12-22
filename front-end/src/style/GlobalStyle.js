@@ -11,7 +11,6 @@ html {
 body {
   font-size: 1.5rem;
 }
-
 ul {
   padding: 0;
   margin: 0;
