@@ -1,9 +1,13 @@
 import React from 'react';
-import Menu from './Menu.elements';
+import { ThemeProvider } from 'styled-components';
+import theme from './style/theme';
+import Menu from './style/WrapperStyle';
 
 const App = () => (
-  <Menu>
-    <h1>Hello world</h1>
-  </Menu>
+  <ThemeProvider theme={theme}>
+    <Menu>
+      <h1>Hello world</h1>
+    </Menu>
+  </ThemeProvider>
 );
 export default App;
