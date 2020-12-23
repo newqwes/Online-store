@@ -27,6 +27,7 @@ module.exports = {
       },
     });
   },
+
   down: async (queryInterface) => {
     await queryInterface.dropTable('product_option');
   },

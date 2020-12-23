@@ -39,6 +39,7 @@ class ProductsService {
       const optionsWithId = options.map((n) => {
         const option = n;
         option.product_id = +id;
+
         return option;
       });
 

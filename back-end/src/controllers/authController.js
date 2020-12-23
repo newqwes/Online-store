@@ -7,6 +7,7 @@ export const login = async (req, res) => {
 
   res.status(result.status).json(result);
 };
+
 export const register = async (req, res) => {
   const result = await authService.create(req.body);
 

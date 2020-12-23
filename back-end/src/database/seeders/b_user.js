@@ -9,5 +9,6 @@ module.exports = {
         user_type: 666,
       },
     ]),
+
   down: (queryInterface) => queryInterface.bulkDelete('user', null, {}),
 };

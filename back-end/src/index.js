@@ -28,7 +28,6 @@ const port = process.env.SERVER_PORT;
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.listen(port, async () => {
-  // eslint-disable-next-line no-console
   console.log(`Server is listening on port ${port}...`);
   await sequelize.authenticate();
   console.log('Database Connected!');

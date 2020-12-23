@@ -33,6 +33,7 @@ Product.init(
 );
 
 Option.belongsTo(Product, { foreignKey: 'id' });
+
 Product.hasMany(Option, { foreignKey: 'product_id', as: 'options' });
 
 export default Product;

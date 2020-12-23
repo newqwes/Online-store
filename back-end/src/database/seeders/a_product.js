@@ -17,5 +17,6 @@ module.exports = {
         photo_url: 'https://sequelize.org/Chiken/manual/migrations.html#installing-the-cli',
       },
     ]),
+
   down: (queryInterface) => queryInterface.bulkDelete('product', null, {}),
 };

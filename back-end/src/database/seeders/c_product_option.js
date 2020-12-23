@@ -32,5 +32,6 @@ module.exports = {
         product_id: 3,
       },
     ]),
+
   down: (queryInterface) => queryInterface.bulkDelete('product_option', null, {}),
 };
