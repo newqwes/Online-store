@@ -1,3 +1,4 @@
-import theme from './theme';
+import light from './light';
+import dark from './dark';
 
-export default theme;
+export default { light, dark };

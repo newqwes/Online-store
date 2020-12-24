@@ -4,7 +4,7 @@ import theme from './style/theme';
 import Menu from './style/WrapperStyle';
 
 const App = () => (
-  <ThemeProvider theme={theme}>
+  <ThemeProvider theme={theme.light}>
     <Menu>
       <h1>Hello world</h1>
     </Menu>
