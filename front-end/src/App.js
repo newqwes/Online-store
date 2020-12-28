@@ -1,13 +1,14 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import theme from './style/theme';
-import Menu from './style/WrapperStyle';
+import WrapperStyle from './style/WrapperStyle';
 
 const App = () => (
   <ThemeProvider theme={theme.light}>
-    <Menu>
-      <h1>Hello world</h1>
-    </Menu>
+    <WrapperStyle>
+      <h1>Checking the connection of styles</h1>
+    </WrapperStyle>
   </ThemeProvider>
 );
+
 export default App;
