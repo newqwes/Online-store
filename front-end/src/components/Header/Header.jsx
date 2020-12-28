@@ -11,35 +11,31 @@ import fontSize from '../../constants/fontSize';
 import color from '../../constants/color';
 import iconSize from '../../constants/iconSize';
 
-const Header = () => {
-  const handleClick = () => console.log('Войти');
-
-  return (
-    <HeaderStyle>
-      <HeaderWrapper>
-        <Logo href='/' position={positionY.center} />
-        <Alignment>
-          <Icons.Time />
-          <Label text='30 минут доставка' fontSize={fontSize.medium} />
-        </Alignment>
-        <Alignment>
-          <Icons.Phone />
-          <Link
-            href='tel:+375333637970'
-            fontSize={fontSize.medium}
-            text='+375 (33) 363-79-70'
-            usual
-          />
-        </Alignment>
-        <Alignment positionX={positionX.right} gap='50'>
-          <Link href='/cart'>
-            <Icons.Cart size={iconSize.large} />
-          </Link>
-          <Button text='Войти' color={color.primary} onClick={handleClick} />
-        </Alignment>
-      </HeaderWrapper>
-    </HeaderStyle>
-  );
-};
+const Header = () => (
+  <HeaderStyle>
+    <HeaderWrapper>
+      <Logo href='/' position={positionY.center} />
+      <Alignment>
+        <Icons.Time />
+        <Label text='30 минут доставка' fontSize={fontSize.medium} />
+      </Alignment>
+      <Alignment>
+        <Icons.Phone />
+        <Link
+          href='tel:+375333637970'
+          fontSize={fontSize.medium}
+          text='+375 (33) 363-79-70'
+          usual
+        />
+      </Alignment>
+      <Alignment positionX={positionX.right} gap='50'>
+        <Link href='/cart'>
+          <Icons.Cart size={iconSize.large} />
+        </Link>
+        <Button text='Войти' color={color.primary} />
+      </Alignment>
+    </HeaderWrapper>
+  </HeaderStyle>
+);
 
 export default Header;

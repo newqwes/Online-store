@@ -11,6 +11,7 @@ export const HeaderStyle = styled.header`
 export const HeaderWrapper = styled(WrapperStyle)`
   display: flex;
   justify-content: space-between;
+
   > * {
     width: 100%;
   }

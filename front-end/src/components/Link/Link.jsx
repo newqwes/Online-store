@@ -10,6 +10,7 @@ const Link = ({ href, text, usual, fontSize, children }) => {
       </LinkStyle>
     );
   }
+
   return (
     <NavLinkStyle to={href} fontSize={fontSize}>
       {text || children}
@@ -22,7 +23,7 @@ Link.propTypes = {
   href: PropTypes.string,
   usual: PropTypes.bool,
   fontSize: PropTypes.number,
-  children: PropTypes.elementType,
+  children: PropTypes.element,
 };
 
 export default Link;
