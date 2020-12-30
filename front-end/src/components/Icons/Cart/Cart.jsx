@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Phone = ({ size }) => (
+const Cart = ({ size }) => (
   <svg
     id='Capa_1'
     enableBackground='new 0 0 512 512'
@@ -59,12 +59,12 @@ const Phone = ({ size }) => (
   </svg>
 );
 
-Phone.propTypes = {
+Cart.propTypes = {
   size: PropTypes.number,
 };
 
-Phone.defaultProps = {
+Cart.defaultProps = {
   size: 32,
 };
 
-export default Phone;
+export default Cart;

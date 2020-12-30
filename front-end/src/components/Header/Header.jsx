@@ -1,38 +1,40 @@
 import React from 'react';
 import { HeaderStyle, HeaderWrapper } from './styled';
-import Logo from '../Logo';
-import Icons from '../Icons';
+import Time from '../Icons/Time';
+import Phone from '../Icons/Phone';
+import Cart from '../Icons/Cart';
+import Logo from '../Icons/Logo';
 import Alignment from '../Alignment';
 import Label from '../Label';
 import Link from '../Link';
 import Button from '../Button';
-import { positionX, positionY } from '../../constants/position';
-import fontSize from '../../constants/fontSize';
-import color from '../../constants/color';
-import iconSize from '../../constants/iconSize';
+import { HORIZONTAL } from '../../constants/POSITION';
+import FONT_SIZE from '../../constants/FONT_SIZE';
+import ICON_SIZE from '../../constants/ICON_SIZE';
 
 const Header = () => (
   <HeaderStyle>
     <HeaderWrapper>
-      <Logo href='/' position={positionY.center} />
       <Alignment>
-        <Icons.Time />
-        <Label text='30 минут доставка' fontSize={fontSize.medium} />
-      </Alignment>
-      <Alignment>
-        <Icons.Phone />
-        <Link
-          href='tel:+375333637970'
-          fontSize={fontSize.medium}
-          text='+375 (33) 363-79-70'
-          usual
-        />
-      </Alignment>
-      <Alignment positionX={positionX.right} gap='50'>
-        <Link href='/cart'>
-          <Icons.Cart size={iconSize.large} />
+        <Link href='/' isNavLink>
+          <Logo size={ICON_SIZE.large} />
         </Link>
-        <Button text='Войти' color={color.primary} />
+      </Alignment>
+      <Alignment>
+        <Time />
+        <Label text='30 минут доставка' fontSize={FONT_SIZE.medium} />
+      </Alignment>
+      <Alignment>
+        <Phone />
+        <Link href='tel:+375333637970' fontSize={FONT_SIZE.medium}>
+          +375 (33) 363-79-70
+        </Link>
+      </Alignment>
+      <Alignment horizontal={HORIZONTAL.right} gap={50}>
+        <Link href='/cart' isNavLink>
+          <Cart size={ICON_SIZE.large} />
+        </Link>
+        <Button text='Войти' />
       </Alignment>
     </HeaderWrapper>
   </HeaderStyle>

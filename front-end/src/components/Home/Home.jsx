@@ -1,6 +1,6 @@
 import React from 'react';
-import MenuList from '../MenuList';
-import { MainStyle, MainWrapper } from './styled';
+import Menu from '../Menu';
+import { HomeStyle, HomeWrapper } from './styled';
 
 const items = [
   { id: 1, title: 'Пицца', link: '/1' },
@@ -10,12 +10,12 @@ const items = [
   { id: 5, title: 'Соусы', link: '/5' },
 ];
 
-const Main = () => (
-  <MainStyle>
-    <MainWrapper>
-      <MenuList items={items} horizontally />
-    </MainWrapper>
-  </MainStyle>
+const Home = () => (
+  <HomeStyle>
+    <HomeWrapper>
+      <Menu items={items} horizontally />
+    </HomeWrapper>
+  </HomeStyle>
 );
 
-export default Main;
+export default Home;

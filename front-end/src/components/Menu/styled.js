@@ -9,7 +9,7 @@ const MenuStyle = styled.ul`
   a {
     text-decoration: none;
     padding: ${(props) => props.height}px 16px;
-    font-size: ${(props) => props.fontSize}rem;
+    font-size: ${(props) => props.fontSize}px;
     letter-spacing: 0.1rem;
     color: ${(props) => props.theme.link.primary};
     transition: 0.2s ease;

@@ -1,9 +1,8 @@
 import styled from 'styled-components';
 import WrapperStyle from '../../style/WrapperStyle';
-import headerImg from '../../assets/images/headerImg.jpg';
 
 export const HeaderStyle = styled.header`
-  background: url(${headerImg}) no-repeat center top;
+  background: ${(props) => props.theme.background.primary};
   height: 100px;
   display: flex;
 `;

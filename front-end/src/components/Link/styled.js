@@ -2,8 +2,8 @@ import styled, { css } from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
 const sharedStyle = css`
-  font-size: ${(props) => props.fontSize}rem;
-  color: ${(props) => props.theme.label.light};
+  font-size: ${(props) => props.fontSize}px;
+  color: ${(props) => props.theme.label.primary};
   font-weight: bold;
   text-decoration: none;
 `;

@@ -1,15 +1,17 @@
 import styled from 'styled-components';
 
-const Alignment = styled.div`
+const AlignmentStyle = styled.div`
   display: flex;
-  justify-content: ${(props) => props.positionX || 'center'};
-  align-items: ${(props) => props.positionY || 'center'};
+  justify-content: ${(props) => props.horizontal};
+  align-items: ${(props) => props.vertical};
+
   > * {
-    margin-right: ${(props) => props.gap || 15}px;
+    margin-right: ${(props) => props.gap}px;
+
     &:last-child {
       margin-right: 0;
     }
   }
 `;
 
-export default Alignment;
+export default AlignmentStyle;

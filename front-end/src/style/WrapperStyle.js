@@ -1,9 +1,10 @@
 import styled from 'styled-components';
-import pageWidth from '../constants/pageWidth';
+import PAGE_WIDTH from '../constants/PAGE_WIDTH';
 
-const Wrapper = styled.div`
-  max-width: ${pageWidth.midle || 1366}px;
+const WrapperStyle = styled.div`
+  max-width: ${PAGE_WIDTH.midle}px;
   margin: 0 auto;
   width: 100%;
 `;
-export default Wrapper;
+
+export default WrapperStyle;
