@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ICON_SIZE from '../../../constants/iconSize';
 
 const Cart = ({ size }) => (
   <svg
-    id='Capa_1'
+    id='Cart_1'
     enableBackground='new 0 0 512 512'
     height={size}
     viewBox='0 0 512 512'
@@ -64,7 +65,7 @@ Cart.propTypes = {
 };
 
 Cart.defaultProps = {
-  size: 32,
+  size: ICON_SIZE.medium,
 };
 
 export default Cart;

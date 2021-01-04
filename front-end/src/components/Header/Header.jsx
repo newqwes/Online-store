@@ -6,19 +6,20 @@ import Cart from '../Icons/Cart';
 import Logo from '../Icons/Logo';
 import Alignment from '../Alignment';
 import Label from '../Label';
-import Link from '../Link';
+import MyLink from '../Link';
 import Button from '../Button';
-import { HORIZONTAL } from '../../constants/POSITION';
-import FONT_SIZE from '../../constants/FONT_SIZE';
-import ICON_SIZE from '../../constants/ICON_SIZE';
+import { HORIZONTAL } from '../../constants/position';
+import FONT_SIZE from '../../constants/fontSize';
+import ICON_SIZE from '../../constants/iconSize';
+import GAP from '../../constants/gap';
 
 const Header = () => (
   <HeaderStyle>
     <HeaderWrapper>
       <Alignment>
-        <Link href='/' isNavLink>
+        <MyLink href='/' isNavLink>
           <Logo size={ICON_SIZE.large} />
-        </Link>
+        </MyLink>
       </Alignment>
       <Alignment>
         <Time />
@@ -26,14 +27,14 @@ const Header = () => (
       </Alignment>
       <Alignment>
         <Phone />
-        <Link href='tel:+375333637970' fontSize={FONT_SIZE.medium}>
+        <MyLink href='tel:+375333637970' fontSize={FONT_SIZE.medium}>
           +375 (33) 363-79-70
-        </Link>
+        </MyLink>
       </Alignment>
-      <Alignment horizontal={HORIZONTAL.right} gap={50}>
-        <Link href='/cart' isNavLink>
+      <Alignment horizontal={HORIZONTAL.right} childrenMarginRight={GAP.large}>
+        <MyLink href='/cart' isNavLink>
           <Cart size={ICON_SIZE.large} />
-        </Link>
+        </MyLink>
         <Button text='Войти' />
       </Alignment>
     </HeaderWrapper>

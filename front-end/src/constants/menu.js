@@ -1,5 +1,4 @@
 const MENU = {
-  animationSide: 'left',
   height: 12,
 };
 

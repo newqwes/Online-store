@@ -6,7 +6,7 @@ const AlignmentStyle = styled.div`
   align-items: ${(props) => props.vertical};
 
   > * {
-    margin-right: ${(props) => props.gap}px;
+    margin-right: ${(props) => props.childrenMarginRight}px;
 
     &:last-child {
       margin-right: 0;

@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ICON_SIZE from '../../../constants/iconSize';
 
 const Phone = ({ size }) => (
   <svg
-    id='Capa_1'
+    id='Phone_1'
     enableBackground='new 0 0 512 512'
     height={size}
     viewBox='0 0 512 512'
@@ -52,7 +53,7 @@ Phone.propTypes = {
 };
 
 Phone.defaultProps = {
-  size: 32,
+  size: ICON_SIZE.medium,
 };
 
 export default Phone;

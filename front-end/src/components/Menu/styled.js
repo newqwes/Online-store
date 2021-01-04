@@ -37,7 +37,7 @@ const MenuStyle = styled.ul`
       display: block;
       position: absolute;
       width: 0;
-      ${(props) => props.animationSide}: 0;
+      left: 0;
       bottom: 0;
       height: 2px;
       background-color: ${(props) => props.theme.link.focus};

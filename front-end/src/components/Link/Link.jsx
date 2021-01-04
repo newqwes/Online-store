@@ -2,27 +2,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLinkStyle, LinkStyle } from './styled';
 
-const Link = ({ href, isNavLink, fontSize, children }) => {
-  if (isNavLink) {
-    return (
-      <NavLinkStyle to={href} fontSize={fontSize}>
-        {children}
-      </NavLinkStyle>
-    );
-  }
+const MyLink = ({ href, isNavLink, fontSize, children }) => {
+  const SharedLink = isNavLink ? NavLinkStyle : LinkStyle;
 
   return (
-    <LinkStyle href={href} fontSize={fontSize}>
+    <SharedLink to={href} href={href} fontSize={fontSize}>
       {children}
-    </LinkStyle>
+    </SharedLink>
   );
 };
 
-Link.propTypes = {
+MyLink.propTypes = {
   href: PropTypes.string,
   isNavLink: PropTypes.bool,
   fontSize: PropTypes.number,
   children: PropTypes.any,
 };
 
-export default Link;
+export default MyLink;
