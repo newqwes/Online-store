@@ -1,3 +1,3 @@
-import MyLink from './Link.jsx';
+import Link from './Link.jsx';
 
-export default MyLink;
+export default Link;

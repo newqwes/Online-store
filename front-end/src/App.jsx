@@ -1,14 +1,22 @@
 import React from 'react';
-import { ThemeProvider } from 'styled-components';
-import theme from './style/theme';
+
 import Header from './components/Header';
-import Home from './components/Home';
+import Navbar from './components/Navbar';
+
+const items = [
+  { id: 1, title: 'Пицца', link: '/1' },
+  { id: 2, title: 'Курица', link: '/2' },
+  { id: 3, title: 'Салаты', link: '/3' },
+  { id: 4, title: 'Напитки', link: '/4' },
+  { id: 5, title: 'Соусы', link: '/5' },
+  { id: 6, title: 'Контакты', link: '/contacts' },
+];
 
 const App = () => (
-  <ThemeProvider theme={theme.light}>
+  <>
     <Header />
-    <Home />
-  </ThemeProvider>
+    <Navbar items={items} />
+  </>
 );
 
 export default App;

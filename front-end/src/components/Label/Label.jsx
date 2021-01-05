@@ -1,20 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import LabelStyle from './styled';
+import LabelWrapper from './styled';
 import FONT_SIZE from '../../constants/fontSize';
-import COLOR from '../../constants/color';
+import THEME_VARIANT from '../../constants/themeVariant';
 
-const Label = ({ text, ...other }) => <LabelStyle {...other}>{text}</LabelStyle>;
+const Label = ({ text, ...other }) => <LabelWrapper {...other}>{text}</LabelWrapper>;
 
 Label.propTypes = {
   text: PropTypes.string,
   fontSize: PropTypes.number,
-  color: PropTypes.string,
+  themeVariant: PropTypes.string,
 };
 
 Label.defaultProps = {
   fontSize: FONT_SIZE.large,
-  color: COLOR.primary,
+  themeVariant: THEME_VARIANT.default,
 };
 
 export default Label;

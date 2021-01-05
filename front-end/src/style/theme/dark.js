@@ -1,24 +1,54 @@
+import COLORS from '../../constants/colors';
+
 const dark = {
   label: {
-    secondary: '#9e9879',
-    primary: '#1d1410',
-    light: '#aca480',
+    color: {
+      default: COLORS.darkDesaturatedOrange,
+      inverted: COLORS.softYellow,
+    },
   },
   link: {
-    focus: '#70310c',
-    hover: '#5f3e34',
-    primary: '#1d120f',
+    color: {
+      default: COLORS.darkDesaturatedOrange,
+      inverted: COLORS.softYellow,
+    },
+    hover: {
+      default: COLORS.brownTone,
+      inverted: COLORS.softYellow,
+    },
+    focus: {
+      default: COLORS.brownTone,
+      inverted: COLORS.softYellow,
+    },
   },
   button: {
-    primary: '#332b24',
-    secondary: '#888787',
-    cart: '#701433',
+    background: {
+      default: COLORS.softYellow,
+      disabled: COLORS.pinkishGrey,
+      info: COLORS.darkishPurple,
+      inverted: COLORS.softYellow,
+      warning: COLORS.squash,
+    },
+    color: {
+      default: COLORS.darkDesaturatedOrange,
+      disabled: COLORS.pinkishGrey,
+      info: COLORS.darkishPurple,
+      inverted: COLORS.softYellow,
+      warning: COLORS.squash,
+    },
+    border: {
+      default: COLORS.darkDesaturatedOrange,
+      disabled: COLORS.pinkishGrey,
+      info: COLORS.darkishPurple,
+      inverted: COLORS.softYellow,
+      warning: COLORS.squash,
+    },
   },
   background: {
-    default: '#b9b188',
-    hover: '#a79e7a',
-    header: '#1b110d',
-    primary: '#cac9c1',
+    color: {
+      default: COLORS.darkModerateRed,
+      inverted: COLORS.softYellow,
+    },
   },
 };
 

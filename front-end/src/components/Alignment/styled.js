@@ -4,14 +4,6 @@ const AlignmentStyle = styled.div`
   display: flex;
   justify-content: ${(props) => props.horizontal};
   align-items: ${(props) => props.vertical};
-
-  > * {
-    margin-right: ${(props) => props.childrenMarginRight}px;
-
-    &:last-child {
-      margin-right: 0;
-    }
-  }
 `;
 
 export default AlignmentStyle;

@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
-import menuItemShape from '../menuItemShape';
 
 const MenuItem = ({ item }) => (
   <li key={item.id}>
@@ -9,8 +8,14 @@ const MenuItem = ({ item }) => (
   </li>
 );
 
+const navbarItemShape = {
+  id: PropTypes.number,
+  link: PropTypes.string,
+  title: PropTypes.string,
+};
+
 MenuItem.propTypes = {
-  item: PropTypes.shape(menuItemShape).isRequired,
+  item: PropTypes.shape(navbarItemShape).isRequired,
 };
 
 export default MenuItem;

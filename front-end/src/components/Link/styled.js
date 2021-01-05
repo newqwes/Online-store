@@ -3,15 +3,15 @@ import { NavLink } from 'react-router-dom';
 
 const sharedStyle = css`
   font-size: ${(props) => props.fontSize}px;
-  color: ${(props) => props.theme.label.primary};
+  color: ${(props) => props.theme.label.color[props.themeVariant]};
   font-weight: bold;
   text-decoration: none;
 `;
 
-export const NavLinkStyle = styled(NavLink)`
+export const CustomNavLink = styled(NavLink)`
   ${sharedStyle}
 `;
 
-export const LinkStyle = styled.a`
+export const CustomLink = styled.a`
   ${sharedStyle}
 `;

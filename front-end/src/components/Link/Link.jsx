@@ -1,22 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { NavLinkStyle, LinkStyle } from './styled';
+import FONT_SIZE from '../../constants/fontSize';
+import { CustomNavLink, CustomLink } from './styled';
+import THEME_VARIANT from '../../constants/themeVariant';
 
-const MyLink = ({ href, isNavLink, fontSize, children }) => {
-  const SharedLink = isNavLink ? NavLinkStyle : LinkStyle;
+const Link = ({ href, to, fontSize, children, themeVariant }) => {
+  const Component = to ? CustomNavLink : CustomLink;
 
   return (
-    <SharedLink to={href} href={href} fontSize={fontSize}>
+    <Component to={to} href={href} fontSize={fontSize} themeVariant={themeVariant}>
       {children}
-    </SharedLink>
+    </Component>
   );
 };
 
-MyLink.propTypes = {
+Link.propTypes = {
   href: PropTypes.string,
-  isNavLink: PropTypes.bool,
+  to: PropTypes.string,
   fontSize: PropTypes.number,
-  children: PropTypes.any,
+  children: PropTypes.any.isRequired,
+  themeVariant: PropTypes.string,
 };
 
-export default MyLink;
+Link.defaultProps = {
+  fontSize: FONT_SIZE.medium,
+  themeVariant: THEME_VARIANT.default,
+};
+
+export default Link;
