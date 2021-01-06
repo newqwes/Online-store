@@ -1,20 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import stylePropType from 'react-style-proptype';
 import FONT_SIZE from '../../constants/fontSize';
 import { CustomNavLink, CustomLink } from './styled';
-import THEME_VARIANT from '../../constants/themeVariant';
+import THEME_VARIANT from '../../constants/themevariant';
 
-const Link = ({ href, to, fontSize, children, themeVariant, myStyle }) => {
+const Link = ({ href, to, fontSize, children, themevariant, otherstyles }) => {
   const Component = to ? CustomNavLink : CustomLink;
 
   return (
     <Component
-      myStyle={myStyle}
+      otherstyles={otherstyles}
       to={to}
       href={href}
       fontSize={fontSize}
-      themeVariant={themeVariant}
+      themevariant={themevariant}
     >
       {children}
     </Component>
@@ -26,13 +25,13 @@ Link.propTypes = {
   to: PropTypes.string,
   fontSize: PropTypes.number,
   children: PropTypes.any.isRequired,
-  themeVariant: PropTypes.string,
-  myStyle: stylePropType,
+  themevariant: PropTypes.string,
+  otherstyles: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
 };
 
 Link.defaultProps = {
   fontSize: FONT_SIZE.medium,
-  themeVariant: THEME_VARIANT.default,
+  themevariant: THEME_VARIANT.default,
 };
 
 export default Link;

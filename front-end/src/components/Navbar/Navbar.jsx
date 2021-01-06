@@ -6,7 +6,7 @@ import FONT_WEIGHT from '../../constants/fontWeight';
 import NavbarItem from './NavbarItem';
 import NAVBAR from '../../constants/navbar';
 import PAGE_WIDTH from '../../constants/pageWidth';
-import THEME_VARIANT from '../../constants/themeVariant';
+import THEME_VARIANT from '../../constants/themevariant';
 import navbarItemType from './propTypes/navbarItemType';
 
 const Navbar = ({ items, ...other }) => {
@@ -26,7 +26,7 @@ Navbar.propTypes = {
   fontSize: PropTypes.number,
   fontWeight: PropTypes.number,
   pageWidth: PropTypes.number,
-  themeVariant: PropTypes.string,
+  themevariant: PropTypes.string,
 };
 
 Navbar.defaultProps = {
@@ -35,7 +35,7 @@ Navbar.defaultProps = {
   fontSize: FONT_SIZE.small,
   fontWeight: FONT_WEIGHT.lightBold,
   pageWidth: PAGE_WIDTH.midle,
-  themeVariant: THEME_VARIANT.default,
+  themevariant: THEME_VARIANT.default,
 };
 
 export default Navbar;

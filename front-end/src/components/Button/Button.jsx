@@ -1,20 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import stylePropType from 'react-style-proptype';
 import ButtonStyle from './styled';
-import THEME_VARIANT from '../../constants/themeVariant';
+import THEME_VARIANT from '../../constants/themevariant';
 
 const Button = ({ text, ...other }) => <ButtonStyle {...other}>{text}</ButtonStyle>;
 
 Button.propTypes = {
   text: PropTypes.string.isRequired,
   onClick: PropTypes.func,
-  themeVariant: PropTypes.string,
-  myStyle: stylePropType,
+  themevariant: PropTypes.string,
+  otherstyles: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
 };
 
 Button.defaultProps = {
-  themeVariant: THEME_VARIANT.default,
+  themevariant: THEME_VARIANT.default,
 };
 
 export default Button;

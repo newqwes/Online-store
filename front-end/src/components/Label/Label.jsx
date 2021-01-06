@@ -1,22 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import stylePropType from 'react-style-proptype';
 import LabelWrapper from './styled';
 import FONT_SIZE from '../../constants/fontSize';
-import THEME_VARIANT from '../../constants/themeVariant';
+import THEME_VARIANT from '../../constants/themevariant';
 
 const Label = ({ text, ...other }) => <LabelWrapper {...other}>{text}</LabelWrapper>;
 
 Label.propTypes = {
   text: PropTypes.string,
   fontSize: PropTypes.number,
-  themeVariant: PropTypes.string,
-  myStyle: stylePropType,
+  themevariant: PropTypes.string,
+  otherstyles: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
 };
 
 Label.defaultProps = {
   fontSize: FONT_SIZE.large,
-  themeVariant: THEME_VARIANT.default,
+  themevariant: THEME_VARIANT.default,
 };
 
 export default Label;

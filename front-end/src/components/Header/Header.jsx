@@ -6,9 +6,9 @@ import HEADER_HEIGHT from '../../constants/header';
 import { HORIZONTAL } from '../../constants/position';
 import FONT_SIZE from '../../constants/fontSize';
 import ICON_SIZE from '../../constants/iconSize';
-import THEME_VARIANT from '../../constants/themeVariant';
+import THEME_VARIANT from '../../constants/themevariant';
 
-import { HeaderWrapper, HeaderContent, myStyle } from './styled';
+import { HeaderWrapper, HeaderContent, otherstyles } from './styled';
 
 import Time from '../Icons/Time';
 import Phone from '../Icons/Phone';
@@ -19,8 +19,8 @@ import Label from '../Label';
 import Link from '../Link';
 import Button from '../Button';
 
-const Header = ({ pageWidth, headerHeight, themeVariant }) => (
-  <HeaderWrapper headerHeight={headerHeight} themeVariant={themeVariant}>
+const Header = ({ pageWidth, headerHeight, themevariant }) => (
+  <HeaderWrapper headerHeight={headerHeight} themevariant={themevariant}>
     <HeaderContent pageWidth={pageWidth}>
       <Alignment>
         <Link to='/'>
@@ -30,8 +30,8 @@ const Header = ({ pageWidth, headerHeight, themeVariant }) => (
       <Alignment>
         <Time />
         <Label
-          myStyle={myStyle}
-          themeVariant={THEME_VARIANT.inverted}
+          otherstyles={otherstyles}
+          themevariant={THEME_VARIANT.inverted}
           text='30 минут доставка'
           fontSize={FONT_SIZE.medium}
         />
@@ -39,8 +39,8 @@ const Header = ({ pageWidth, headerHeight, themeVariant }) => (
       <Alignment>
         <Phone />
         <Link
-          myStyle={myStyle}
-          themeVariant={THEME_VARIANT.inverted}
+          otherstyles={otherstyles}
+          themevariant={THEME_VARIANT.inverted}
           href='tel:+375333637970'
           fontSize={FONT_SIZE.medium}
         >
@@ -51,7 +51,7 @@ const Header = ({ pageWidth, headerHeight, themeVariant }) => (
         <Link to='/cart'>
           <Cart size={ICON_SIZE.large} />
         </Link>
-        <Button text='Войти' myStyle={myStyle} />
+        <Button text='Войти' otherstyles={otherstyles} />
       </Alignment>
     </HeaderContent>
   </HeaderWrapper>
@@ -60,13 +60,13 @@ const Header = ({ pageWidth, headerHeight, themeVariant }) => (
 Header.propTypes = {
   pageWidth: PropTypes.number,
   headerHeight: PropTypes.number,
-  themeVariant: PropTypes.string,
+  themevariant: PropTypes.string,
 };
 
 Header.defaultProps = {
   pageWidth: PAGE_WIDTH.midle,
   headerHeight: HEADER_HEIGHT.default,
-  themeVariant: THEME_VARIANT.default,
+  themevariant: THEME_VARIANT.default,
 };
 
 export default Header;

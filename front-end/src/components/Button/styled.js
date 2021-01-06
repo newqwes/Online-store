@@ -1,11 +1,9 @@
 import styled from 'styled-components';
 
 const ButtonStyle = styled.button`
-  ${(props) => props.myStyle}
-
-  background-color: ${(props) => props.theme.button.background[props.themeVariant]};
-  border: 2px solid ${(props) => props.theme.button.border[props.themeVariant]};
-  color: ${(props) => props.theme.button.color[props.themeVariant]};
+  background-color: ${(props) => props.theme.button.background[props.themevariant]};
+  border: 2px solid ${(props) => props.theme.button.border[props.themevariant]};
+  color: ${(props) => props.theme.button.color[props.themevariant]};
   padding: 8px 25px;
   border-radius: 10px;
   letter-spacing: 1px;
@@ -20,6 +18,8 @@ const ButtonStyle = styled.button`
   &:hover {
     cursor: pointer;
   }
+
+  ${(props) => props.otherstyles}
 `;
 
 export default ButtonStyle;

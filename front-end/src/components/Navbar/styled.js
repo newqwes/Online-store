@@ -14,13 +14,13 @@ export const NavbarContent = styled.ul`
     padding: ${(props) => props.height}px 16px;
     font-size: ${(props) => props.fontSize}px;
     letter-spacing: 0.1rem;
-    color: ${(props) => props.theme.link.color[props.themeVariant]};
+    color: ${(props) => props.theme.link.color[props.themevariant]};
     transition: 0.2s ease;
     font-weight: ${(props) => props.fontWeight};
     position: relative;
 
     &:hover {
-      color: ${(props) => props.theme.link.hover[props.themeVariant]};
+      color: ${(props) => props.theme.link.hover[props.themevariant]};
 
       &::after {
         width: 100%;
@@ -28,7 +28,7 @@ export const NavbarContent = styled.ul`
     }
 
     &:focus {
-      color: ${(props) => props.theme.link.focus[props.themeVariant]};
+      color: ${(props) => props.theme.link.focus[props.themevariant]};
 
       &::after {
         width: 100%;
@@ -43,7 +43,7 @@ export const NavbarContent = styled.ul`
       left: 0;
       bottom: 0;
       height: 2px;
-      background-color: ${(props) => props.theme.background.color[props.themeVariant]};
+      background-color: ${(props) => props.theme.background.color[props.themevariant]};
       transition: 0.5s ease;
     }
   }
