@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import WrapperStyle from '../../style/WrapperStyle';
 
 export const HeaderWrapper = styled.header`
@@ -15,4 +15,8 @@ export const HeaderContent = styled(WrapperStyle)`
   > * {
     width: 100%;
   }
+`;
+
+export const myStyle = css`
+  margin-left: 20px;
 `;

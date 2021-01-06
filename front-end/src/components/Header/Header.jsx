@@ -8,7 +8,7 @@ import FONT_SIZE from '../../constants/fontSize';
 import ICON_SIZE from '../../constants/iconSize';
 import THEME_VARIANT from '../../constants/themeVariant';
 
-import { HeaderWrapper, HeaderContent } from './styled';
+import { HeaderWrapper, HeaderContent, myStyle } from './styled';
 
 import Time from '../Icons/Time';
 import Phone from '../Icons/Phone';
@@ -30,6 +30,7 @@ const Header = ({ pageWidth, headerHeight, themeVariant }) => (
       <Alignment>
         <Time />
         <Label
+          myStyle={myStyle}
           themeVariant={THEME_VARIANT.inverted}
           text='30 минут доставка'
           fontSize={FONT_SIZE.medium}
@@ -38,6 +39,7 @@ const Header = ({ pageWidth, headerHeight, themeVariant }) => (
       <Alignment>
         <Phone />
         <Link
+          myStyle={myStyle}
           themeVariant={THEME_VARIANT.inverted}
           href='tel:+375333637970'
           fontSize={FONT_SIZE.medium}
@@ -49,7 +51,7 @@ const Header = ({ pageWidth, headerHeight, themeVariant }) => (
         <Link to='/cart'>
           <Cart size={ICON_SIZE.large} />
         </Link>
-        <Button text='Войти' />
+        <Button text='Войти' myStyle={myStyle} />
       </Alignment>
     </HeaderContent>
   </HeaderWrapper>
