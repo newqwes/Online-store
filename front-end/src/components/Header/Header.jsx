@@ -28,7 +28,7 @@ const Header = ({ pageWidth, headerHeight, themeVariant }) => (
         </Link>
       </Alignment>
       <Alignment>
-        <Time marginRight={20} />
+        <Time />
         <Label
           themeVariant={THEME_VARIANT.inverted}
           text='30 минут доставка'
@@ -36,7 +36,7 @@ const Header = ({ pageWidth, headerHeight, themeVariant }) => (
         />
       </Alignment>
       <Alignment>
-        <Phone marginRight={20} />
+        <Phone />
         <Link
           themeVariant={THEME_VARIANT.inverted}
           href='tel:+375333637970'
@@ -47,7 +47,7 @@ const Header = ({ pageWidth, headerHeight, themeVariant }) => (
       </Alignment>
       <Alignment horizontal={HORIZONTAL.right}>
         <Link to='/cart'>
-          <Cart size={ICON_SIZE.large} marginRight={20} />
+          <Cart size={ICON_SIZE.large} />
         </Link>
         <Button text='Войти' />
       </Alignment>

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ICON_SIZE from '../../../constants/iconSize';
 
-const Time = ({ size, marginTop, marginRight, marginBottom, marginLeft }) => (
+const Time = ({ size }) => (
   <svg
     id='Time_1'
     enableBackground='new 0 0 512 512'
@@ -10,7 +10,6 @@ const Time = ({ size, marginTop, marginRight, marginBottom, marginLeft }) => (
     viewBox='0 0 512 512'
     width={size}
     xmlns='http://www.w3.org/2000/svg'
-    style={{ margin: `${marginTop}px ${marginRight}px ${marginBottom}px ${marginLeft}px` }}
   >
     <g>
       <circle cx='256' cy='256' fill='#eab14d' r='256' />
@@ -92,18 +91,10 @@ const Time = ({ size, marginTop, marginRight, marginBottom, marginLeft }) => (
 
 Time.propTypes = {
   size: PropTypes.number,
-  marginTop: PropTypes.number,
-  marginRight: PropTypes.number,
-  marginBottom: PropTypes.number,
-  marginLeft: PropTypes.number,
 };
 
 Time.defaultProps = {
   size: ICON_SIZE.medium,
-  marginTop: 0,
-  marginRight: 0,
-  marginBottom: 0,
-  marginLeft: 0,
 };
 
 export default Time;

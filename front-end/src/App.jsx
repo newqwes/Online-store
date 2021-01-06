@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 import Header from './components/Header';
 import Navbar from './components/Navbar';
@@ -13,10 +13,10 @@ const items = [
 ];
 
 const App = () => (
-  <>
+  <Fragment>
     <Header />
     <Navbar items={items} />
-  </>
+  </Fragment>
 );
 
 export default App;

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ICON_SIZE from '../../../constants/iconSize';
 
-const Phone = ({ size, marginTop, marginRight, marginBottom, marginLeft }) => (
+const Phone = ({ size }) => (
   <svg
     id='Phone_1'
     enableBackground='new 0 0 512 512'
@@ -10,7 +10,6 @@ const Phone = ({ size, marginTop, marginRight, marginBottom, marginLeft }) => (
     viewBox='0 0 512 512'
     width={size}
     xmlns='http://www.w3.org/2000/svg'
-    style={{ margin: `${marginTop}px ${marginRight}px ${marginBottom}px ${marginLeft}px` }}
   >
     <g>
       <path
@@ -51,18 +50,10 @@ const Phone = ({ size, marginTop, marginRight, marginBottom, marginLeft }) => (
 
 Phone.propTypes = {
   size: PropTypes.number,
-  marginTop: PropTypes.number,
-  marginRight: PropTypes.number,
-  marginBottom: PropTypes.number,
-  marginLeft: PropTypes.number,
 };
 
 Phone.defaultProps = {
   size: ICON_SIZE.medium,
-  marginTop: 0,
-  marginRight: 0,
-  marginBottom: 0,
-  marginLeft: 0,
 };
 
 export default Phone;

@@ -7,6 +7,7 @@ import NavbarItem from './NavbarItem';
 import NAVBAR from '../../constants/navbar';
 import PAGE_WIDTH from '../../constants/pageWidth';
 import THEME_VARIANT from '../../constants/themeVariant';
+import navbarItemType from './propTypes/navbarItemType';
 
 const Navbar = ({ items, ...other }) => {
   const mapItems = items.map((item) => <NavbarItem key={item.id} item={item} />);
@@ -18,14 +19,8 @@ const Navbar = ({ items, ...other }) => {
   );
 };
 
-const navbarItemShape = {
-  id: PropTypes.number,
-  link: PropTypes.string,
-  title: PropTypes.string,
-};
-
 Navbar.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.shape(navbarItemShape)).isRequired,
+  items: PropTypes.arrayOf(PropTypes.shape(navbarItemType)).isRequired,
   horizontally: PropTypes.bool,
   height: PropTypes.number,
   fontSize: PropTypes.number,

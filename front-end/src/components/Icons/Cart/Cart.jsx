@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ICON_SIZE from '../../../constants/iconSize';
 
-const Cart = ({ size, marginTop, marginRight, marginBottom, marginLeft }) => (
+const Cart = ({ size }) => (
   <svg
     id='Cart_1'
     enableBackground='0 0 512 512'
@@ -10,7 +10,6 @@ const Cart = ({ size, marginTop, marginRight, marginBottom, marginLeft }) => (
     viewBox='0 0 512 512'
     width={size}
     xmlns='http://www.w3.org/2000/svg'
-    style={{ margin: `${marginTop}px ${marginRight}px ${marginBottom}px ${marginLeft}px` }}
   >
     <g>
       <path
@@ -63,18 +62,10 @@ const Cart = ({ size, marginTop, marginRight, marginBottom, marginLeft }) => (
 
 Cart.propTypes = {
   size: PropTypes.number,
-  marginTop: PropTypes.number,
-  marginRight: PropTypes.number,
-  marginBottom: PropTypes.number,
-  marginLeft: PropTypes.number,
 };
 
 Cart.defaultProps = {
   size: ICON_SIZE.medium,
-  marginTop: 0,
-  marginRight: 0,
-  marginBottom: 0,
-  marginLeft: 0,
 };
 
 export default Cart;
