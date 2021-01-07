@@ -3,14 +3,8 @@ import { normalize } from 'styled-normalize';
 
 const GlobalStyle = createGlobalStyle`
 ${normalize}
-
 html {
   font-family: 'Ubuntu', Verdana, sans-serif;
-  font-size: 10px;
-}
-
-body {
-  font-size: 1.5rem;
 }
 
 ul {
