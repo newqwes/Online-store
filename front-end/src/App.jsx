@@ -1,22 +1,16 @@
-import React, { Fragment } from 'react';
-
+import React from 'react';
+import { ThemeProvider } from 'styled-components';
+import theme from './style/theme';
 import Header from './components/Header';
-import Navbar from './components/Navbar';
-
-const items = [
-  { id: 1, title: 'Пицца', link: '/1' },
-  { id: 2, title: 'Курица', link: '/2' },
-  { id: 3, title: 'Салаты', link: '/3' },
-  { id: 4, title: 'Напитки', link: '/4' },
-  { id: 5, title: 'Соусы', link: '/5' },
-  { id: 6, title: 'Контакты', link: '/contacts' },
-];
+import Main from './components/Main';
+import ProductSection from './components/ProductSection';
 
 const App = () => (
-  <Fragment>
+  <ThemeProvider theme={theme}>
     <Header />
-    <Navbar items={items} />
-  </Fragment>
+    <Main />
+    <ProductSection />
+  </ThemeProvider>
 );
 
 export default App;
