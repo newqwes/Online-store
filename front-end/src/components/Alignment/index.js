@@ -1,3 +1,3 @@
-import AlignmentWrapper from './styled';
+import Alignment from './Alignment.jsx';
 
-export default AlignmentWrapper;
+export default Alignment;

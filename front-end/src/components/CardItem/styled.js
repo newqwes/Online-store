@@ -1,41 +1,32 @@
-import styled from 'styled-components';
-import PropTypes from 'prop-types';
+import styled, { css } from 'styled-components';
 
 const CardStyle = styled.div`
   display: flex;
   flex-direction: column;
   align-content: space-between;
-  background: ${(props) => props.theme.default.background.primary};
+  background: ${(props) => props.theme.cardItem.background[props.themeVariant]};
   border-radius: ${(props) => props.radius}% ${(props) => props.radius}px;
-  padding: ${(props) => props.padding}px;
-  margin-top: ${(props) => props.marginTop}px;
+  padding: 25px;
+  margin-top: 40px;
 
   flex-basis: calc(
-    100% / ${(props) => props.column} - ${(props) => props.padding + props.gap} * 2px
+    100% / ${(props) => props.quantityСolumn} - ${(props) => 25 + props.indent} * 2px
   );
 
-  box-shadow: 0 0 20px 5px ${(props) => props.theme.default.background.default};
+  box-shadow: 0 0 20px 5px ${(props) => props.theme.cardItem.shadow[props.themeVariant]};
   transition: 0.5s ease-out;
 
   &:hover {
-    box-shadow: 0 0 20px 10px ${(props) => props.theme.default.background.hover};
+    box-shadow: 0 0 20px 10px ${(props) => props.theme.cardItem.hoverShadow[props.themeVariant]};
   }
 `;
 
-CardStyle.propTypes = {
-  radius: PropTypes.number,
-  padding: PropTypes.number,
-  marginTop: PropTypes.number,
-  gap: PropTypes.number,
-  column: PropTypes.number,
-};
-
-CardStyle.defaultProps = {
-  radius: 30,
-  padding: 25,
-  marginTop: 40,
-  gap: 15,
-  column: 4,
-};
+export const shareStylesButton = css`
+  padding: 5px 15px;
+  font-size: 13px;
+  background-color: #a11b48ff;
+  border: 2px solid #a11b48;
+  margin-left: 10px;
+`;
 
 export default CardStyle;

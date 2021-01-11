@@ -9,14 +9,13 @@ const Image = ({ src, alt, size }) => (
 );
 
 Image.propTypes = {
-  src: PropTypes.string,
+  src: PropTypes.string.isRequired,
   alt: PropTypes.string,
   size: PropTypes.number,
 };
 
 Image.defaultProps = {
-  src: 'https://images.dominos.by/media/dominos/osg/api/2019/10/18/fermerskaya_small.png',
-  alt: 'Фермерская',
+  alt: 'Пицца',
   size: 100,
 };
 

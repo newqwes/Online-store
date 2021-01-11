@@ -3,7 +3,11 @@ import PropTypes from 'prop-types';
 import ButtonStyle from './styled';
 import THEME_VARIANT from '../../constants/themeVariant';
 
-const Button = ({ text, ...other }) => <ButtonStyle {...other}>{text}</ButtonStyle>;
+const Button = ({ text, onClick, themeVariant, shareStyles }) => (
+  <ButtonStyle onClick={onClick} themeVariant={themeVariant} shareStyles={shareStyles}>
+    {text}
+  </ButtonStyle>
+);
 
 Button.propTypes = {
   text: PropTypes.string.isRequired,

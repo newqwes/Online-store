@@ -1,37 +1,59 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CardStyle from './styled';
+
+import CardStyle, { shareStylesButton } from './styled';
+
 import Image from '../Image';
-import CardProperties from '../CardProperties';
+import CardProperties from './CardProperties';
 import Label from '../Label';
 import Alignment from '../Alignment';
 import Button from '../Button';
 
-const CardItem = ({ product }) => (
-  <CardStyle>
+import THEME_VARIANT from '../../constants/themeVariant';
+import RADIUS from '../../constants/radius';
+import FONT_SIZE from '../../constants/fontSize';
+import FONT_WEIGHT from '../../constants/fontWeight';
+import TEXT_ALIGN from '../../constants/textAlign';
+import DIRECTION from '../../constants/direction';
+import INDENT from '../../constants/indent';
+import QUANTITY_COLUMN from '../../constants/quantityСolumn';
+import productItemType from '../ProductSection/propTypes/productItemType';
+
+const CardItem = ({ product, themeVariant, radius, indent, quantityСolumn }) => (
+  <CardStyle
+    themeVariant={themeVariant}
+    radius={radius}
+    indent={indent}
+    quantityСolumn={quantityСolumn}
+  >
     <Image src={product.image} alt={product.name} />
     <CardProperties>
-      <Label text={product.name} fontSize={2.2} weight='500' />
-      <Label text={product.description} fontSize={1.4} color='light' align='center' weight='400' />
-      <Alignment gap={0}>
-        <Alignment direction='column'>
-          <Label text={product.price} fontSize={1.2} color='primary' align='center' weight='500' />
-          <Label text={product.weight} fontSize={1.2} color='primary' align='center' weight='500' />
+      <Label text={product.name} fontSize={FONT_SIZE.medium} fontWeight={FONT_WEIGHT.lightBold} />
+      <Label
+        text={product.description}
+        fontSize={FONT_SIZE.verySmall}
+        fontWeight={FONT_WEIGHT.normal}
+        themeVariant={THEME_VARIANT.inverted}
+        textAlign={TEXT_ALIGN.center}
+      />
+      <Alignment>
+        <Alignment direction={DIRECTION.column}>
+          <Label
+            text={product.price}
+            fontSize={FONT_SIZE.least}
+            textAlign={TEXT_ALIGN.center}
+            fontWeight={FONT_WEIGHT.lightBold}
+          />
+          <Label
+            text={product.weight}
+            fontSize={FONT_SIZE.least}
+            textAlign={TEXT_ALIGN.center}
+            fontWeight={FONT_WEIGHT.lightBold}
+          />
         </Alignment>
         <Alignment>
-          <select name='dimensions'>
-            <option value='22'>22</option>
-            <option value='30'>30</option>
-            <option value='36'>36</option>
-          </select>
-          <Button
-            text='В корзину'
-            padding={0.5}
-            weight='500'
-            spacing='0.01'
-            size={1.3}
-            color='cart'
-          />
+          <select />
+          <Button text='В корзину' shareStyles={shareStylesButton} />
         </Alignment>
       </Alignment>
     </CardProperties>
@@ -39,7 +61,18 @@ const CardItem = ({ product }) => (
 );
 
 CardItem.propTypes = {
-  product: PropTypes.object,
+  product: PropTypes.shape(productItemType).isRequired,
+  themeVariant: PropTypes.string,
+  radius: PropTypes.number,
+  indent: PropTypes.number,
+  quantityСolumn: PropTypes.number,
+};
+
+CardItem.defaultProps = {
+  themeVariant: THEME_VARIANT.default,
+  radius: RADIUS.default,
+  indent: INDENT.default,
+  quantityСolumn: QUANTITY_COLUMN.default,
 };
 
 export default CardItem;

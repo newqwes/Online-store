@@ -3,8 +3,10 @@ import WrapperStyle from '../../style/WrapperStyle';
 import pizzaImage from '../../assets/images/pizza-image.png';
 import pizzaBg from '../../assets/images/pizza-bg.jpg';
 
-export const ProductSectionStyle = styled.section`
+export const ProductWrapper = styled.section`
   background: url(${pizzaImage}) right bottom no-repeat, url(${pizzaBg});
 `;
 
-export const ProductSectionWrapper = styled(WrapperStyle)``;
+export const ProductContent = styled(WrapperStyle)`
+  max-width: ${(props) => props.pageWidth}px;
+`;

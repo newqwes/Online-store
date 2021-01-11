@@ -1,5 +1,7 @@
 const FONT_SIZE = {
-  small: 16,
+  least: 12,
+  verySmall: 14,
+  small: 17,
   medium: 22,
   large: 30,
 };

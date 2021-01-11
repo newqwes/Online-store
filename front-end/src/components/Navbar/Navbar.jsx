@@ -9,18 +9,18 @@ import PAGE_WIDTH from '../../constants/pageWidth';
 import THEME_VARIANT from '../../constants/themeVariant';
 import navbarItemType from './propTypes/navbarItemType';
 
-const Navbar = ({ items, ...other }) => {
-  const mapItems = items.map((item) => <NavbarItem key={item.id} item={item} />);
+const Navbar = ({ navbarMenuItems, ...other }) => {
+  const mapItems = navbarMenuItems.map((item) => <NavbarItem key={item.id} item={item} />);
 
   return (
-    <NavbarWrapper>
+    <NavbarWrapper {...other}>
       <NavbarContent {...other}>{mapItems}</NavbarContent>
     </NavbarWrapper>
   );
 };
 
 Navbar.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.shape(navbarItemType)).isRequired,
+  navbarMenuItems: PropTypes.arrayOf(PropTypes.shape(navbarItemType)).isRequired,
   horizontally: PropTypes.bool,
   height: PropTypes.number,
   fontSize: PropTypes.number,

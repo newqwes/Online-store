@@ -10,7 +10,7 @@ const CardPropertiesStyle = styled.div`
   }
   > * {
     display: flex;
-    margin: 10px;
+    margin: 15px 5px;
   }
 `;
 

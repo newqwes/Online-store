@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import PAGE_WIDTH from '../../constants/pageWidth';
+import THEME_VARIANT from '../../constants/themeVariant';
 import HEADER_HEIGHT from '../../constants/header';
 import { HORIZONTAL } from '../../constants/position';
 import FONT_SIZE from '../../constants/fontSize';
 import ICON_SIZE from '../../constants/iconSize';
-import THEME_VARIANT from '../../constants/themeVariant';
 
 import { HeaderWrapper, HeaderContent, shareStyles } from './styled';
 

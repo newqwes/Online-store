@@ -5,7 +5,7 @@ import CardPropertiesStyle from './styled';
 const CardProperties = ({ children }) => <CardPropertiesStyle>{children}</CardPropertiesStyle>;
 
 CardProperties.propTypes = {
-  children: PropTypes.array,
+  children: PropTypes.arrayOf(PropTypes.element),
 };
 
 export default CardProperties;

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ICON_SIZE from '../../../constants/iconSize';
 
-const Time = ({ size }) => (
+const Logo = ({ size }) => (
   <svg
     id='Logo_1'
     enableBackground='new 0 0 512 512'
@@ -468,12 +468,12 @@ const Time = ({ size }) => (
   </svg>
 );
 
-Time.propTypes = {
+Logo.propTypes = {
   size: PropTypes.number,
 };
 
-Time.defaultProps = {
+Logo.defaultProps = {
   size: ICON_SIZE.medium,
 };
 
-export default Time;
+export default Logo;
