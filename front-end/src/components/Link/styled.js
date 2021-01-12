@@ -6,8 +6,7 @@ const sharedStyle = css`
   color: ${(props) => props.theme.label.color[props.variant]};
   font-weight: bold;
   text-decoration: none;
-
-  ${(props) => props.styles}
+  margin-left: 20px;
 `;
 
 export const CustomNavLink = styled(NavLink)`

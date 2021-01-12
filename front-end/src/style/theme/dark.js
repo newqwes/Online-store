@@ -1,4 +1,6 @@
 import COLORS from '../../constants/colors';
+import pizzaImage from '../../assets/images/pizza-image.png';
+import pizzaBg from '../../assets/images/pizza-bg.jpg';
 
 const dark = {
   label: {
@@ -7,6 +9,7 @@ const dark = {
       default: COLORS.verySoftYellow,
     },
   },
+
   cardItem: {
     background: {
       inverted: COLORS.mostlyWhiteYellow,
@@ -23,6 +26,7 @@ const dark = {
       default: COLORS.verySoftYellow,
     },
   },
+
   navbar: {
     background: {
       inverted: COLORS.mostlyWhiteYellow,
@@ -36,6 +40,7 @@ const dark = {
       default: COLORS.softYellow,
     },
   },
+
   link: {
     color: {
       inverted: COLORS.darkDesaturatedOrange,
@@ -50,33 +55,41 @@ const dark = {
       default: COLORS.softYellow,
     },
   },
+
   button: {
     background: {
-      default: COLORS.darkGrayishOrange,
+      inverted: COLORS.darkGrayishOrange,
       disabled: COLORS.pinkishGrey,
       info: COLORS.darkishPurple,
-      inverted: COLORS.softYellow,
+      default: COLORS.softYellow,
       warning: COLORS.squash,
     },
     color: {
-      default: COLORS.verySoftYellow,
+      inverted: COLORS.verySoftYellow,
       disabled: COLORS.pinkishGrey,
       info: COLORS.darkishPurple,
-      inverted: COLORS.softYellow,
+      default: COLORS.softYellow,
       warning: COLORS.squash,
     },
     border: {
-      default: COLORS.darkDesaturatedOrange,
+      inverted: COLORS.darkDesaturatedOrange,
       disabled: COLORS.pinkishGrey,
       info: COLORS.darkishPurple,
-      inverted: COLORS.softYellow,
+      default: COLORS.softYellow,
       warning: COLORS.squash,
     },
   },
+
   background: {
     color: {
       inverted: COLORS.darkDesaturatedOrange,
       default: COLORS.softYellow,
+    },
+    imageItem: {
+      default: pizzaImage,
+    },
+    imageBackground: {
+      default: pizzaBg,
     },
   },
 };

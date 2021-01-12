@@ -7,11 +7,11 @@ export const NavbarContent = styled.ul`
   display: flex;
   flex-direction: ${(props) => (props.horizontally ? 'row' : 'column')};
   justify-content: space-between;
-  padding: ${(props) => props.height}px 0;
+  padding: 12px 0;
 
   a {
     text-decoration: none;
-    padding: ${(props) => props.height}px 16px;
+    padding: 12px 16px;
     font-size: ${(props) => props.fontSize}px;
     letter-spacing: 0.1rem;
     color: ${(props) => props.theme.navbar.color[props.themeVariant]};

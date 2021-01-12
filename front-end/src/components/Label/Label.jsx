@@ -7,13 +7,12 @@ import FONT_WEIGHT from '../../constants/fontWeight';
 import TEXT_ALIGN from '../../constants/textAlign';
 import THEME_VARIANT from '../../constants/themeVariant';
 
-const Label = ({ text, fontSize, textAlign, fontWeight, themeVariant, shareStyles }) => (
+const Label = ({ text, fontSize, textAlign, fontWeight, themeVariant }) => (
   <LabelWrapper
     fontSize={fontSize}
     textAlign={textAlign}
     fontWeight={fontWeight}
     themeVariant={themeVariant}
-    shareStyles={shareStyles}
   >
     {text}
   </LabelWrapper>
@@ -25,11 +24,10 @@ Label.propTypes = {
   textAlign: PropTypes.string,
   fontWeight: PropTypes.number,
   themeVariant: PropTypes.string,
-  shareStyles: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
 };
 
 Label.defaultProps = {
-  fontSize: FONT_SIZE.large,
+  fontSize: FONT_SIZE.medium,
   fontWeight: FONT_WEIGHT.bold,
   textAlign: TEXT_ALIGN.left,
   themeVariant: THEME_VARIANT.default,

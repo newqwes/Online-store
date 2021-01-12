@@ -1,4 +1,6 @@
 import COLORS from '../../constants/colors';
+import pizzaImage from '../../assets/images/pizza-image.png';
+import pizzaBg from '../../assets/images/pizza-bg.jpg';
 
 const light = {
   label: {
@@ -7,6 +9,7 @@ const light = {
       inverted: COLORS.verySoftYellow,
     },
   },
+
   cardItem: {
     background: {
       default: COLORS.mostlyWhiteYellow,
@@ -23,6 +26,7 @@ const light = {
       default: COLORS.verySoftYellow,
     },
   },
+
   navbar: {
     background: {
       default: COLORS.mostlyWhiteYellow,
@@ -36,6 +40,7 @@ const light = {
       default: COLORS.softYellow,
     },
   },
+
   link: {
     color: {
       default: COLORS.darkDesaturatedOrange,
@@ -50,6 +55,7 @@ const light = {
       inverted: COLORS.softYellow,
     },
   },
+
   button: {
     background: {
       default: COLORS.darkGrayishOrange,
@@ -73,10 +79,17 @@ const light = {
       warning: COLORS.squash,
     },
   },
+
   background: {
     color: {
       default: COLORS.darkDesaturatedOrange,
       inverted: COLORS.softYellow,
+    },
+    imageItem: {
+      default: pizzaImage,
+    },
+    imageBackground: {
+      default: pizzaBg,
     },
   },
 };

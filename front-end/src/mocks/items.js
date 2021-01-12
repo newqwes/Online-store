@@ -1,4 +1,4 @@
-const navbarMenuItems = [
+const items = [
   { id: 1, title: 'Пицца', link: '/1' },
   { id: 2, title: 'Курица', link: '/2' },
   { id: 3, title: 'Салаты', link: '/3' },
@@ -7,4 +7,4 @@ const navbarMenuItems = [
   { id: 6, title: 'Контакты', link: '/contacts' },
 ];
 
-export default navbarMenuItems;
+export default items;

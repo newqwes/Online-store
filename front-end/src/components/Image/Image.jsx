@@ -1,22 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ImageStyle from './styled';
+import ImageWrapper from './styled';
+import ICON_SIZE from '../../constants/iconSize';
 
 const Image = ({ src, alt, size }) => (
-  <ImageStyle size={size}>
+  <ImageWrapper size={size}>
     <img src={src} alt={alt} />
-  </ImageStyle>
+  </ImageWrapper>
 );
 
 Image.propTypes = {
   src: PropTypes.string.isRequired,
-  alt: PropTypes.string,
+  alt: PropTypes.string.isRequired,
   size: PropTypes.number,
 };
 
 Image.defaultProps = {
-  alt: 'Пицца',
-  size: 100,
+  size: ICON_SIZE.imageMedium,
 };
 
 export default Image;

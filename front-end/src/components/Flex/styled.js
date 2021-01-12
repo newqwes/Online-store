@@ -1,12 +1,10 @@
 import styled from 'styled-components';
 
-const AlignmentStyle = styled.div`
-  display: flex;
+const FlexWrapper = styled.div`
   justify-content: ${(props) => props.horizontal};
   align-items: ${(props) => props.vertical};
   flex-direction: ${(props) => props.direction};
-
-  ${(props) => props.shareStyles}
+  display: flex;
 `;
 
-export default AlignmentStyle;
+export default FlexWrapper;

@@ -5,10 +5,8 @@ const LabelWrapper = styled.span`
   font-size: ${(props) => props.fontSize}px;
   color: ${(props) => props.theme.label.color[props.themeVariant]};
   text-align: ${(props) => props.textAlign};
-
+  margin-left: 20px;
   letter-spacing: 0.1em;
-
-  ${(props) => props.shareStyles}
 `;
 
 export default LabelWrapper;

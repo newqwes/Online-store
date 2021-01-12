@@ -4,11 +4,11 @@ import FONT_SIZE from '../../constants/fontSize';
 import { CustomNavLink, CustomLink } from './styled';
 import THEME_VARIANT from '../../constants/themeVariant';
 
-const Link = ({ href, to, fontSize, children, themeVariant, shareStyles }) => {
+const Link = ({ href, to, fontSize, children, themeVariant }) => {
   const Component = to ? CustomNavLink : CustomLink;
 
   return (
-    <Component styles={shareStyles} to={to} href={href} fontSize={fontSize} variant={themeVariant}>
+    <Component to={to} href={href} fontSize={fontSize} variant={themeVariant}>
       {children}
     </Component>
   );
@@ -21,7 +21,6 @@ Link.propTypes = {
   children: PropTypes.oneOfType([PropTypes.string, PropTypes.element, PropTypes.elementType])
     .isRequired,
   themeVariant: PropTypes.string,
-  shareStyles: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
 };
 
 Link.defaultProps = {
