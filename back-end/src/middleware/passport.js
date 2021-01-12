@@ -1,4 +1,4 @@
-import { Strategy, ExtractJwt } from 'passport-jwt';
+import { Strategy as JwtStrategy, ExtractJwt } from 'passport-jwt';
 import dotenv from 'dotenv';
 import User from '../database/models/user';
 import errorHandler from '../utils/errorHandler';
@@ -12,7 +12,7 @@ const options = {
 
 const mwPassport = (passport) => {
   passport.use(
-    new Strategy(options, async (payload, done) => {
+    new JwtStrategy(options, async (payload, done) => {
       try {
         const user = await User.findOne({ where: { id: payload.id } });
 

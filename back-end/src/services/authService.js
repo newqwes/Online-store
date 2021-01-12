@@ -39,21 +39,19 @@ class AuthService {
     }
   }
 
-  async create(body) {
+  async create({ email, password }) {
     try {
-      const { email, password } = body;
-
       const candidate = await User.findOne({ where: { email } });
 
       if (candidate) {
         return this.createResult(409, 'This email already exists!');
       }
 
-      const salt = bcrypt.genSaltSync(10);
+      const salt = bcrypt.genSaltSync();
 
       const hashPassword = bcrypt.hashSync(password, salt);
 
-      await User.create({ ...body, password: hashPassword });
+      await User.create({ email, password: hashPassword });
 
       return this.createResult(201, 'User created successfully!');
     } catch (error) {
@@ -61,4 +59,4 @@ class AuthService {
     }
   }
 }
-export default AuthService;
+export default new AuthService();
