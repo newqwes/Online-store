@@ -1,40 +1,38 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { NavbarContent, NavbarWrapper } from './styled';
-import FONT_SIZE from '../../constants/fontSize';
-import FONT_WEIGHT from '../../constants/fontWeight';
+import { NavbarItems, NavbarWrapper } from './styled';
+
 import NavbarItem from './NavbarItem';
-import NAVBAR from '../../constants/navbar';
-import PAGE_WIDTH from '../../constants/pageWidth';
+import itemsType from './propTypes';
+
+import FONT_WEIGHT from '../../constants/fontWeight';
+import SECTION_WIDTH from '../../constants/sectionWidth';
 import THEME_VARIANT from '../../constants/themeVariant';
-import navbarItemType from './propTypes/navbarItemType';
 
 const Navbar = ({ items, ...other }) => {
-  const mapItems = items.map((item) => <NavbarItem key={item.id} item={item} />);
+  const mapItems = items.map((item) => (
+    <NavbarItem key={item.id} link={item.link} title={item.title} />
+  ));
 
   return (
-    <NavbarWrapper>
-      <NavbarContent {...other}>{mapItems}</NavbarContent>
+    <NavbarWrapper {...other}>
+      <NavbarItems {...other}>{mapItems}</NavbarItems>
     </NavbarWrapper>
   );
 };
 
 Navbar.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.shape(navbarItemType)).isRequired,
+  items: itemsType.isRequired,
   horizontally: PropTypes.bool,
-  height: PropTypes.number,
-  fontSize: PropTypes.number,
   fontWeight: PropTypes.number,
-  pageWidth: PropTypes.number,
+  maxNavbarWidth: PropTypes.number,
   themeVariant: PropTypes.string,
 };
 
 Navbar.defaultProps = {
   horizontally: true,
-  height: NAVBAR.height,
-  fontSize: FONT_SIZE.small,
   fontWeight: FONT_WEIGHT.lightBold,
-  pageWidth: PAGE_WIDTH.midle,
+  maxNavbarWidth: SECTION_WIDTH.midle,
   themeVariant: THEME_VARIANT.default,
 };
 

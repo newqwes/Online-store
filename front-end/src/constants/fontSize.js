@@ -1,7 +1,8 @@
 const FONT_SIZE = {
-  small: 16,
-  medium: 22,
-  large: 30,
+  least: 12,
+  small: 15,
+  medium: 19,
+  large: 23,
 };
 
 export default FONT_SIZE;
