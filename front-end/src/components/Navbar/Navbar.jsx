@@ -6,7 +6,7 @@ import NavbarItem from './NavbarItem';
 import itemsType from './propTypes';
 
 import FONT_WEIGHT from '../../constants/fontWeight';
-import PAGE_WIDTH from '../../constants/pageWidth';
+import SECTION_WIDTH from '../../constants/sectionWidth';
 import THEME_VARIANT from '../../constants/themeVariant';
 
 const Navbar = ({ items, ...other }) => {
@@ -25,14 +25,14 @@ Navbar.propTypes = {
   items: itemsType.isRequired,
   horizontally: PropTypes.bool,
   fontWeight: PropTypes.number,
-  pageWidth: PropTypes.number,
+  maxNavbarWidth: PropTypes.number,
   themeVariant: PropTypes.string,
 };
 
 Navbar.defaultProps = {
   horizontally: true,
   fontWeight: FONT_WEIGHT.lightBold,
-  pageWidth: PAGE_WIDTH.midle,
+  maxNavbarWidth: SECTION_WIDTH.midle,
   themeVariant: THEME_VARIANT.default,
 };
 

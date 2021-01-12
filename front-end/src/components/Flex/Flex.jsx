@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { JUSTIFY_CONTENT, ALIGN_ITEMS } from '../../constants/position';
 import DIRECTION from '../../constants/direction';
 import FlexWrapper from './styled';
-import childrenType from '../../propType';
+import { childrenType } from '../../propType';
 
 const Flex = ({ children, justifyContent, alignItems, direction }) => (
   <FlexWrapper justifyContent={justifyContent} alignItems={alignItems} direction={direction}>

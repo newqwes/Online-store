@@ -5,7 +5,7 @@ export const NavbarItems = styled.ul`
   flex-direction: ${(props) => (props.horizontally ? 'row' : 'column')};
   justify-content: space-between;
   width: 100%;
-  max-width: ${(props) => props.pageWidth}px;
+  max-width: ${(props) => props.maxNavbarWidth}px;
   margin: 0 auto;
   padding: 12px 0;
 

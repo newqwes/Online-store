@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import PAGE_WIDTH from '../../constants/pageWidth';
+import SECTION_WIDTH from '../../constants/sectionWidth';
 import THEME_VARIANT from '../../constants/themeVariant';
 import { JUSTIFY_CONTENT } from '../../constants/position';
 import FONT_SIZE from '../../constants/fontSize';
@@ -18,9 +18,9 @@ import Label from '../Label';
 import Link from '../Link';
 import Button from '../Button';
 
-const Header = ({ pageWidth, themeVariant }) => (
+const Header = ({ maxHeaderWidth, themeVariant }) => (
   <HeaderWrapper themeVariant={themeVariant}>
-    <HeaderContent pageWidth={pageWidth}>
+    <HeaderContent maxHeaderWidth={maxHeaderWidth}>
       <Flex>
         <Link to='/'>
           <Logo size={ICON_SIZE.large} />
@@ -51,12 +51,12 @@ const Header = ({ pageWidth, themeVariant }) => (
 );
 
 Header.propTypes = {
-  pageWidth: PropTypes.number,
+  maxHeaderWidth: PropTypes.number,
   themeVariant: PropTypes.string,
 };
 
 Header.defaultProps = {
-  pageWidth: PAGE_WIDTH.midle,
+  maxHeaderWidth: SECTION_WIDTH.midle,
   themeVariant: THEME_VARIANT.default,
 };
 

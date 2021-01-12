@@ -9,5 +9,5 @@ export const ProductWrapper = styled.section`
 export const ProductContent = styled.div`
   margin: 0 auto;
   width: 100%;
-  max-width: ${(props) => props.pageWidth}px;
+  max-width: ${(props) => props.maxSectionWidth}px;
 `;

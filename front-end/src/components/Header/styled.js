@@ -10,6 +10,6 @@ export const HeaderContent = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
-  max-width: ${(props) => props.pageWidth}px;
+  max-width: ${(props) => props.maxHeaderWidth}px;
   margin: 0 auto;
 `;

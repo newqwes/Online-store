@@ -10,7 +10,7 @@ const light = {
     },
   },
 
-  cardItem: {
+  card: {
     background: {
       default: COLORS.mostlyWhiteYellow,
       inverted: COLORS.softYellow,

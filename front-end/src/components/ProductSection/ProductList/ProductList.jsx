@@ -1,7 +1,7 @@
 import React from 'react';
 import Card from '../../Card';
 import ProductListWrapper from './styled';
-import productListType from '../propTypes';
+import { productsType } from '../../../propType';
 
 const ProductList = ({ data }) => {
   const mapData = data.map((item) => <Card key={item.id} item={item} />);
@@ -10,7 +10,7 @@ const ProductList = ({ data }) => {
 };
 
 ProductList.propTypes = {
-  data: productListType.isRequired,
+  data: productsType.isRequired,
 };
 
 export default ProductList;

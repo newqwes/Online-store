@@ -9,11 +9,11 @@ export const CardWrapper = styled.div`
   padding: 25px;
   transition: 0.5s ease-out;
   border-radius: 20% 20px;
-  background: ${(props) => props.theme.cardItem.background[props.themeVariant]};
-  box-shadow: 0 0 20px 5px ${(props) => props.theme.cardItem.shadow[props.themeVariant]};
+  background: ${(props) => props.theme.card.background[props.themeVariant]};
+  box-shadow: 0 0 20px 5px ${(props) => props.theme.card.shadow[props.themeVariant]};
 
   &:hover {
-    box-shadow: 0 0 20px 10px ${(props) => props.theme.cardItem.hoverShadow[props.themeVariant]};
+    box-shadow: 0 0 20px 10px ${(props) => props.theme.card.hoverShadow[props.themeVariant]};
   }
 `;
 

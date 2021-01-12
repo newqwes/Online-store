@@ -1,27 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { ProductWrapper, ProductContent } from './styled';
-import List from './ProductList';
-import PAGE_WIDTH from '../../constants/pageWidth';
+import ProductList from './ProductList';
+import SECTION_WIDTH from '../../constants/sectionWidth';
 import THEME_VARIANT from '../../constants/themeVariant';
-import listType from './propTypes';
+import { productsType } from '../../propType';
 
-const ProductSection = ({ pageWidth, themeVariant, products }) => (
+const ProductSection = ({ maxSectionWidth, themeVariant, products }) => (
   <ProductWrapper themeVariant={themeVariant}>
-    <ProductContent pageWidth={pageWidth}>
-      <List data={products} />
+    <ProductContent maxSectionWidth={maxSectionWidth}>
+      <ProductList data={products} />
     </ProductContent>
   </ProductWrapper>
 );
 
 ProductSection.propTypes = {
-  products: listType.isRequired,
-  pageWidth: PropTypes.number,
+  products: productsType.isRequired,
+  maxSectionWidth: PropTypes.number,
   themeVariant: PropTypes.string,
 };
 
 ProductSection.defaultProps = {
-  pageWidth: PAGE_WIDTH.midle,
+  maxSectionWidth: SECTION_WIDTH.midle,
   themeVariant: THEME_VARIANT.default,
 };
 
