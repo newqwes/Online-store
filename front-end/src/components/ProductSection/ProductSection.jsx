@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { ProductWrapper, ProductContent } from './styled';
-import List from '../List';
+import List from './ProductList';
 import PAGE_WIDTH from '../../constants/pageWidth';
 import THEME_VARIANT from '../../constants/themeVariant';
-import listType from './propTypes/listType';
+import listType from './propTypes';
 
 const ProductSection = ({ pageWidth, themeVariant, products }) => (
   <ProductWrapper themeVariant={themeVariant}>

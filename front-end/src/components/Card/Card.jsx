@@ -13,7 +13,7 @@ import FONT_SIZE from '../../constants/fontSize';
 import FONT_WEIGHT from '../../constants/fontWeight';
 import TEXT_ALIGN from '../../constants/textAlign';
 import DIRECTION from '../../constants/direction';
-import { listItemType } from '../ProductSection/propTypes/listType';
+import { listItemType } from '../ProductSection/propTypes';
 
 const Card = ({ item, themeVariant }) => (
   <CardWrapper themeVariant={themeVariant}>

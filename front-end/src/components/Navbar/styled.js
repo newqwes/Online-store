@@ -1,18 +1,18 @@
 import styled from 'styled-components';
 
-export const NavbarContent = styled.ul`
-  max-width: ${(props) => props.pageWidth}px;
-  margin: 0 auto;
-  width: 100%;
+export const NavbarItems = styled.ul`
   display: flex;
   flex-direction: ${(props) => (props.horizontally ? 'row' : 'column')};
   justify-content: space-between;
+  width: 100%;
+  max-width: ${(props) => props.pageWidth}px;
+  margin: 0 auto;
   padding: 12px 0;
 
   a {
     text-decoration: none;
     padding: 12px 16px;
-    font-size: ${(props) => props.fontSize}px;
+    font-size: 16px;
     letter-spacing: 0.1rem;
     color: ${(props) => props.theme.navbar.color[props.themeVariant]};
     transition: 0.2s ease;

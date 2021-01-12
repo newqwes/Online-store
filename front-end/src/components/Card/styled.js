@@ -2,14 +2,13 @@ import styled from 'styled-components';
 
 export const CardWrapper = styled.div`
   display: flex;
+  flex-basis: 18%;
   flex-direction: column;
   align-content: space-between;
-  border-radius: 20% 20px;
-  padding: 25px;
   margin-top: 40px;
-  flex-basis: 18%;
+  padding: 25px;
   transition: 0.5s ease-out;
-
+  border-radius: 20% 20px;
   background: ${(props) => props.theme.cardItem.background[props.themeVariant]};
   box-shadow: 0 0 20px 5px ${(props) => props.theme.cardItem.shadow[props.themeVariant]};
 

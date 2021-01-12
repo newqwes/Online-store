@@ -1,25 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { HORIZONTAL, VERTICAL } from '../../constants/position';
+import { JUSTIFY_CONTENT, ALIGN_ITEMS } from '../../constants/position';
 import DIRECTION from '../../constants/direction';
 import FlexWrapper from './styled';
+import childrenType from '../../propType';
 
-const Flex = ({ children, horizontal, vertical, direction }) => (
-  <FlexWrapper horizontal={horizontal} vertical={vertical} direction={direction}>
+const Flex = ({ children, justifyContent, alignItems, direction }) => (
+  <FlexWrapper justifyContent={justifyContent} alignItems={alignItems} direction={direction}>
     {children}
   </FlexWrapper>
 );
 
 Flex.propTypes = {
-  children: PropTypes.any.isRequired,
-  horizontal: PropTypes.string,
-  vertical: PropTypes.string,
+  children: childrenType.isRequired,
+  justifyContent: PropTypes.string,
+  alignItems: PropTypes.string,
   direction: PropTypes.string,
 };
 
 Flex.defaultProps = {
-  horizontal: HORIZONTAL.left,
-  vertical: VERTICAL.center,
+  justifyContent: JUSTIFY_CONTENT.flexStart,
+  alignItems: ALIGN_ITEMS.center,
   direction: DIRECTION.row,
 };
 

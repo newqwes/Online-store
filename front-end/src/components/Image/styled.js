@@ -4,7 +4,7 @@ const ImageWrapper = styled.div`
   text-align: center;
 
   img {
-    width: ${(props) => props.size}%;
+    width: 100%;
     max-width: 300px;
   }
 `;

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import PAGE_WIDTH from '../../constants/pageWidth';
 import THEME_VARIANT from '../../constants/themeVariant';
-import { HORIZONTAL } from '../../constants/position';
+import { JUSTIFY_CONTENT } from '../../constants/position';
 import FONT_SIZE from '../../constants/fontSize';
 import ICON_SIZE from '../../constants/iconSize';
 
@@ -36,15 +36,11 @@ const Header = ({ pageWidth, themeVariant }) => (
       </Flex>
       <Flex>
         <Phone />
-        <Link
-          themeVariant={THEME_VARIANT.inverted}
-          href='tel:+375333637970'
-          fontSize={FONT_SIZE.large}
-        >
+        <Link themeVariant={THEME_VARIANT.inverted} href='tel:+375333637970'>
           +375 (33) 363-79-70
         </Link>
       </Flex>
-      <Flex horizontal={HORIZONTAL.right}>
+      <Flex horizontal={JUSTIFY_CONTENT.flexEnd}>
         <Link to='/cart'>
           <Cart size={ICON_SIZE.large} />
         </Link>
