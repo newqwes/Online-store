@@ -3,27 +3,20 @@
   "info": {
     "version": "1.0.0",
     "title": "Online Store",
-    "description": "My Online Store API"
+    "description": "My Online Store API. \n login: newnewqwes@gmail.com \n pass: admin \n key: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5ld25ld3F3ZXNAZ21haWwuY29tIiwiaWQiOjEsInVzZXJfdHlwZSI6NjY2LCJpYXQiOjE2MTA0NjU0MzR9.vvM3t8VJZZLq0hninakk1IiwE8bYlLZzVqMNyRN0Leg"
   },
+  "schemes": ["http"],
   "host": "localhost:3005",
   "basePath": "/api/",
-  "tags": [
-    {
-      "name": "Products",
-      "description": "API for Products in the system"
-    },
-    {
-      "name": "Edit product with auth",
-      "description": "API for who is authorized has the right to edit products"
-    },
-    {
-      "name": "Auth",
-      "description": "API for Products in the system"
-    }
-  ],
-  "schemes": ["http"],
   "consumes": ["application/json"],
   "produces": ["application/json"],
+  "securityDefinitions": {
+    "Bearer": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header"
+    }
+  },
   "paths": {
     "/auth/register": {
       "post": {
@@ -91,6 +84,11 @@
       "post": {
         "summary": "Add new product",
         "tags": ["Edit product with auth"],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
         "parameters": [
           {
             "name": "product",
@@ -136,6 +134,11 @@
       "delete": {
         "summary": "Delete product by ID",
         "tags": ["Edit product with auth"],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
         "responses": {
           "200": {
             "description": "Product was deleted",
@@ -148,6 +151,11 @@
       "patch": {
         "summary": "Update product with give ID",
         "tags": ["Edit product with auth"],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
         "parameters": [
           {
             "name": "product",

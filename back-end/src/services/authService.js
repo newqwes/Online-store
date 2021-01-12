@@ -4,13 +4,10 @@ import errorHandler from '../utils/errorHandler';
 import User from '../database/models/user';
 
 class AuthService {
-  // eslint-disable-next-line class-methods-use-this
   createResult = (status, message, token = {}) => ({ status, message, token });
 
-  async login(body) {
+  async login({ email, password }) {
     try {
-      const { email, password } = body;
-
       const candidate = await User.findOne({ where: { email } });
 
       if (!candidate) {
