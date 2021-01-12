@@ -1,20 +1,20 @@
 import styled from 'styled-components';
 
-export const NavbarContent = styled.ul`
-  max-width: ${(props) => props.pageWidth}px;
-  margin: 0 auto;
-  width: 100%;
+export const NavbarItems = styled.ul`
   display: flex;
   flex-direction: ${(props) => (props.horizontally ? 'row' : 'column')};
   justify-content: space-between;
-  padding: ${(props) => props.height}px 0;
+  width: 100%;
+  max-width: ${(props) => props.maxNavbarWidth}px;
+  margin: 0 auto;
+  padding: 12px 0;
 
   a {
     text-decoration: none;
-    padding: ${(props) => props.height}px 16px;
-    font-size: ${(props) => props.fontSize}px;
+    padding: 12px 16px;
+    font-size: 16px;
     letter-spacing: 0.1rem;
-    color: ${(props) => props.theme.link.color[props.themeVariant]};
+    color: ${(props) => props.theme.navbar.color[props.themeVariant]};
     transition: 0.2s ease;
     font-weight: ${(props) => props.fontWeight};
     position: relative;
@@ -42,11 +42,14 @@ export const NavbarContent = styled.ul`
       width: 0;
       left: 0;
       bottom: 0;
-      height: 2px;
-      background-color: ${(props) => props.theme.background.color[props.themeVariant]};
+      border-radius: 15px 15px 0 0;
+      height: 8px;
+      background-color: ${(props) => props.theme.navbar.hoverBackground[props.themeVariant]};
       transition: 0.5s ease;
     }
   }
 `;
 
-export const NavbarWrapper = styled.nav``;
+export const NavbarWrapper = styled.nav`
+  background-color: ${(props) => props.theme.navbar.background[props.themeVariant]};
+`;

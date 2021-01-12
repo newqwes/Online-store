@@ -1,71 +1,62 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import PAGE_WIDTH from '../../constants/pageWidth';
-import HEADER_HEIGHT from '../../constants/header';
-import { HORIZONTAL } from '../../constants/position';
+import SECTION_WIDTH from '../../constants/sectionWidth';
+import THEME_VARIANT from '../../constants/themeVariant';
+import { JUSTIFY_CONTENT } from '../../constants/position';
 import FONT_SIZE from '../../constants/fontSize';
 import ICON_SIZE from '../../constants/iconSize';
-import THEME_VARIANT from '../../constants/themeVariant';
 
-import { HeaderWrapper, HeaderContent, shareStyles } from './styled';
+import { HeaderWrapper, HeaderContent } from './styled';
 
 import Time from '../Icons/Time';
 import Phone from '../Icons/Phone';
 import Cart from '../Icons/Cart';
 import Logo from '../Icons/Logo';
-import Alignment from '../Alignment';
+import Flex from '../Flex';
 import Label from '../Label';
 import Link from '../Link';
 import Button from '../Button';
 
-const Header = ({ pageWidth, headerHeight, themeVariant }) => (
-  <HeaderWrapper headerHeight={headerHeight} themeVariant={themeVariant}>
-    <HeaderContent pageWidth={pageWidth}>
-      <Alignment>
+const Header = ({ maxHeaderWidth, themeVariant }) => (
+  <HeaderWrapper themeVariant={themeVariant}>
+    <HeaderContent maxHeaderWidth={maxHeaderWidth}>
+      <Flex>
         <Link to='/'>
           <Logo size={ICON_SIZE.large} />
         </Link>
-      </Alignment>
-      <Alignment>
+      </Flex>
+      <Flex>
         <Time />
         <Label
-          shareStyles={shareStyles}
           themeVariant={THEME_VARIANT.inverted}
           text='30 минут доставка'
-          fontSize={FONT_SIZE.medium}
+          fontSize={FONT_SIZE.large}
         />
-      </Alignment>
-      <Alignment>
+      </Flex>
+      <Flex>
         <Phone />
-        <Link
-          shareStyles={shareStyles}
-          themeVariant={THEME_VARIANT.inverted}
-          href='tel:+375333637970'
-          fontSize={FONT_SIZE.medium}
-        >
+        <Link themeVariant={THEME_VARIANT.inverted} href='tel:+375333637970'>
           +375 (33) 363-79-70
         </Link>
-      </Alignment>
-      <Alignment horizontal={HORIZONTAL.right}>
+      </Flex>
+      <Flex horizontal={JUSTIFY_CONTENT.flexEnd}>
         <Link to='/cart'>
           <Cart size={ICON_SIZE.large} />
         </Link>
-        <Button text='Войти' shareStyles={shareStyles} />
-      </Alignment>
+        <Button text='Войти' />
+      </Flex>
     </HeaderContent>
   </HeaderWrapper>
 );
 
 Header.propTypes = {
-  pageWidth: PropTypes.number,
-  headerHeight: PropTypes.number,
+  maxHeaderWidth: PropTypes.number,
   themeVariant: PropTypes.string,
 };
 
 Header.defaultProps = {
-  pageWidth: PAGE_WIDTH.midle,
-  headerHeight: HEADER_HEIGHT.default,
+  maxHeaderWidth: SECTION_WIDTH.midle,
   themeVariant: THEME_VARIANT.default,
 };
 

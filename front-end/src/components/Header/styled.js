@@ -1,22 +1,15 @@
-import styled, { css } from 'styled-components';
-import WrapperStyle from '../../style/WrapperStyle';
+import styled from 'styled-components';
 
 export const HeaderWrapper = styled.header`
-  background: ${(props) => props.theme.background.color[props.themeVariant]};
-  height: ${(props) => props.headerHeight}px;
   display: flex;
+  background: ${(props) => props.theme.background.color[props.themeVariant]};
+  height: 100px;
 `;
 
-export const HeaderContent = styled(WrapperStyle)`
+export const HeaderContent = styled.div`
   display: flex;
   justify-content: space-between;
-  max-width: ${(props) => props.pageWidth}px;
-
-  > * {
-    width: 100%;
-  }
-`;
-
-export const shareStyles = css`
-  margin-left: 20px;
+  width: 100%;
+  max-width: ${(props) => props.maxHeaderWidth}px;
+  margin: 0 auto;
 `;
