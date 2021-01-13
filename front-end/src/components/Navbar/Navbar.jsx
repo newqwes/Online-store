@@ -9,8 +9,8 @@ import FONT_WEIGHT from '../../constants/fontWeight';
 import SECTION_WIDTH from '../../constants/sectionWidth';
 import THEME_VARIANT from '../../constants/themeVariant';
 
-const Navbar = ({ items, ...other }) => {
-  const mapItems = items.map((item) => (
+const Navbar = ({ menuItems, ...other }) => {
+  const mapItems = menuItems.map((item) => (
     <NavbarItem key={item.id} link={item.link} title={item.title} />
   ));
 
@@ -22,7 +22,7 @@ const Navbar = ({ items, ...other }) => {
 };
 
 Navbar.propTypes = {
-  items: itemsType.isRequired,
+  menuItems: itemsType.isRequired,
   horizontally: PropTypes.bool,
   fontWeight: PropTypes.number,
   maxNavbarWidth: PropTypes.number,

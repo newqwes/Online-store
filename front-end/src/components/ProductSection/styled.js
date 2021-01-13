@@ -9,5 +9,6 @@ export const ProductWrapper = styled.section`
 export const ProductContent = styled.div`
   margin: 0 auto;
   width: 100%;
+  min-height: 90vh;
   max-width: ${(props) => props.maxSectionWidth}px;
 `;

@@ -3,14 +3,14 @@ import Card from '../../Card';
 import ProductListWrapper from './styled';
 import { productsType } from '../../../propType';
 
-const ProductList = ({ data }) => {
-  const mapData = data.map((item) => <Card key={item.id} item={item} />);
+const ProductList = ({ products }) => {
+  const mapProducts = products.map((item) => <Card key={item.id} item={item} />);
 
-  return <ProductListWrapper>{mapData}</ProductListWrapper>;
+  return <ProductListWrapper>{mapProducts}</ProductListWrapper>;
 };
 
 ProductList.propTypes = {
-  data: productsType.isRequired,
+  products: productsType.isRequired,
 };
 
 export default ProductList;
