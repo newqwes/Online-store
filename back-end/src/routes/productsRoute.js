@@ -1,7 +1,7 @@
 import express from 'express';
 import passport from 'passport';
 import {
-  getAllProducts,
+  getProducts,
   getByIDProduct,
   createProduct,
   updateProduct,
@@ -10,7 +10,7 @@ import {
 
 const productsRoute = express.Router();
 
-productsRoute.get('/', getAllProducts);
+productsRoute.get('/', getProducts);
 productsRoute.get('/:id', getByIDProduct);
 
 productsRoute.post('/', passport.authenticate('jwt', { session: false }), createProduct);

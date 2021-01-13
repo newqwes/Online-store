@@ -1,6 +1,5 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import errorHandler from '../utils/errorHandler';
 import createResponse from '../utils/createResponse';
 import User from '../database/models/user';
 
@@ -13,7 +12,7 @@ class AuthService {
 
   async login({ email, password }) {
     try {
-      const foundUser = this.findByEmail(email);
+      const foundUser = await this.findByEmail(email);
 
       if (!foundUser) {
         return createResponse(404, 'Not found');
@@ -33,20 +32,20 @@ class AuthService {
           process.env.ACCESS_TOKEN_SECRET
         );
 
-        return createResponse(200, 'Token created!', `Bearer ${token}`);
+        return createResponse(200, 'Successfully!', `Bearer ${token}`);
       }
-      return createResponse(401, 'Incorrect login / password pair!');
+      return createResponse(401, 'Incorrect login or password!');
     } catch (error) {
-      return errorHandler(500, error);
+      return createResponse(500, 'Server Error', error);
     }
   }
 
   async create({ email, password }) {
     try {
-      const foundUser = this.findByEmail(email);
+      const foundUser = await this.findByEmail(email);
 
       if (foundUser) {
-        return createResponse(409, 'This email already exists!');
+        return createResponse(409, 'Already exists!');
       }
 
       const salt = bcrypt.genSaltSync();
@@ -55,9 +54,9 @@ class AuthService {
 
       await User.create({ email, password: hashPassword });
 
-      return createResponse(201, 'User created successfully!');
+      return createResponse(201, 'Successfully!');
     } catch (error) {
-      return errorHandler(500, error);
+      return createResponse(500, 'Server Error', error);
     }
   }
 }

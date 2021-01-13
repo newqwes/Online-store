@@ -1,16 +1,18 @@
-import errorHandler from '../utils/errorHandler';
 import Product from '../database/models/product';
 import Option from '../database/models/option';
 import createResponse from '../utils/createResponse';
 
 class ProductsService {
-  async getAll() {
+  async getAll(type) {
     try {
-      const products = await Product.findAll({ include: { model: Option, as: 'options' } });
+      const products = await Product.findAll({
+        where: { type },
+        include: { model: Option, as: 'options' },
+      });
 
-      return createResponse(200, 'getAll products successfully', products);
+      return createResponse(200, 'Successfully!', products);
     } catch (error) {
-      return errorHandler(500, error);
+      return createResponse(500, 'Server Error', error);
     }
   }
 
@@ -21,11 +23,11 @@ class ProductsService {
         include: { model: Option, as: 'options' },
       });
 
-      if (product) return createResponse(200, 'getByID product successfully', product);
+      if (product) return createResponse(200, 'Successfully!', product);
 
-      return createResponse(404, 'getByID product this id not found', id);
+      return createResponse(404, 'Not found', id);
     } catch (error) {
-      return errorHandler(500, error);
+      return createResponse(500, 'Server Error', error);
     }
   }
 
@@ -44,7 +46,7 @@ class ProductsService {
         where: { id },
       });
 
-      if (!isFound) return createResponse(404, 'update product, this id not found', id);
+      if (!isFound) return createResponse(404, 'Not found', id);
 
       await Option.destroy({ where: { product_id: id } });
 
@@ -55,9 +57,9 @@ class ProductsService {
         include: { model: Option, as: 'options' },
       });
 
-      return createResponse(200, 'update product successfully', product);
+      return createResponse(200, 'Successfully!', product);
     } catch (error) {
-      return errorHandler(500, error);
+      return createResponse(500, 'Server Error', error);
     }
   }
 
@@ -65,11 +67,11 @@ class ProductsService {
     try {
       const isFound = await Product.destroy({ where: { id } });
 
-      if (isFound) return createResponse(200, 'delete product successfully');
+      if (isFound) return createResponse(200, 'Successfully!');
 
-      return createResponse(404, 'delete product, this id not found', id);
+      return createResponse(404, 'Not found', id);
     } catch (error) {
-      return errorHandler(500, error);
+      return createResponse(500, 'Server Error', error);
     }
   }
 
@@ -79,9 +81,9 @@ class ProductsService {
         include: { model: Option, as: 'options' },
       });
 
-      return createResponse(201, 'create product successfully', product);
+      return createResponse(201, 'Successfully!', product);
     } catch (error) {
-      return errorHandler(500, error);
+      return createResponse(500, 'Server Error', error);
     }
   }
 }

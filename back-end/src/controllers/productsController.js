@@ -1,7 +1,7 @@
 import productsService from '../services/productsService';
 
-export const getAllProducts = async (req, res) => {
-  const result = await productsService.getAll();
+export const getProducts = async (req, res) => {
+  const result = await productsService.getAll(req.query.type);
 
   res.status(result.status).json(result);
 };

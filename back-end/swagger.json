@@ -70,17 +70,27 @@
     },
     "/products": {
       "get": {
-        "tags": ["Products"],
-        "summary": "Get all products in system",
+        "parameters": [
+          {
+            "name": "type",
+            "in": "query",
+            "required": true,
+            "description": "TYPE of product that we want to find",
+            "type": "string"
+          }
+        ],
+        "summary": "Get ALL products by TYPE",
+        "tags": ["All products by type"],
         "responses": {
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/Products"
+              "$ref": "#/definitions/Product"
             }
           }
         }
       },
+
       "post": {
         "summary": "Add new product",
         "tags": ["Edit product with auth"],
@@ -109,6 +119,7 @@
         }
       }
     },
+
     "/products/{id}": {
       "parameters": [
         {
@@ -231,6 +242,9 @@
         "description": {
           "type": "string"
         },
+        "type": {
+          "type": "string"
+        },
         "photo_url": {
           "type": "string"
         },
@@ -255,6 +269,9 @@
     "updateProduct": {
       "properties": {
         "name": {
+          "type": "string"
+        },
+        "type": {
           "type": "string"
         },
         "description": {
@@ -300,6 +317,9 @@
                 "uniqueItems": true
               },
               "name": {
+                "type": "string"
+              },
+              "type": {
                 "type": "string"
               },
               "description": {
@@ -353,6 +373,9 @@
               "uniqueItems": true
             },
             "name": {
+              "type": "string"
+            },
+            "type": {
               "type": "string"
             },
             "description": {
