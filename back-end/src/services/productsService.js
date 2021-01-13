@@ -1,19 +1,16 @@
 import errorHandler from '../utils/errorHandler';
 import Product from '../database/models/product';
 import Option from '../database/models/option';
+import createResponse from '../utils/createResponse';
 
 class ProductsService {
-  createResult = (status, data = {}, message = 'Success') => ({ status, message, data });
-
-  createNotFound = (id) => ({ status: 404, message: 'No such item found', data: +id });
-
   async getAll() {
     try {
       const products = await Product.findAll({ include: { model: Option, as: 'options' } });
 
-      return this.createResult(200, products);
+      return createResponse(200, 'getAll products successfully', products);
     } catch (error) {
-      return errorHandler(error);
+      return errorHandler(500, error);
     }
   }
 
@@ -24,11 +21,11 @@ class ProductsService {
         include: { model: Option, as: 'options' },
       });
 
-      if (product) return this.createResult(200, product);
+      if (product) return createResponse(200, 'getByID product successfully', product);
 
-      return this.createNotFound(id);
+      return createResponse(404, 'getByID product this id not found', id);
     } catch (error) {
-      return errorHandler(error);
+      return errorHandler(500, error);
     }
   }
 
@@ -47,7 +44,7 @@ class ProductsService {
         where: { id },
       });
 
-      if (!isFound) return this.createNotFound(id);
+      if (!isFound) return createResponse(404, 'update product, this id not found', id);
 
       await Option.destroy({ where: { product_id: id } });
 
@@ -58,9 +55,9 @@ class ProductsService {
         include: { model: Option, as: 'options' },
       });
 
-      return this.createResult(200, product);
+      return createResponse(200, 'update product successfully', product);
     } catch (error) {
-      return errorHandler(error);
+      return errorHandler(500, error);
     }
   }
 
@@ -68,11 +65,11 @@ class ProductsService {
     try {
       const isFound = await Product.destroy({ where: { id } });
 
-      if (isFound) return this.createResult(200);
+      if (isFound) return createResponse(200, 'delete product successfully');
 
-      return this.createNotFound(id);
+      return createResponse(404, 'delete product, this id not found', id);
     } catch (error) {
-      return errorHandler(error);
+      return errorHandler(500, error);
     }
   }
 
@@ -82,9 +79,9 @@ class ProductsService {
         include: { model: Option, as: 'options' },
       });
 
-      return this.createResult(201, product);
+      return createResponse(201, 'create product successfully', product);
     } catch (error) {
-      return errorHandler(error);
+      return errorHandler(500, error);
     }
   }
 }

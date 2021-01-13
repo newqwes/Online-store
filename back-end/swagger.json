@@ -148,7 +148,7 @@
           }
         }
       },
-      "patch": {
+      "put": {
         "summary": "Update product with give ID",
         "tags": ["Edit product with auth"],
         "security": [

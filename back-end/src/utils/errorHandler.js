@@ -1,1 +1,1 @@
-export default (error) => ({ status: 500, message: error.message ? error.message : error });
+export default (status, error) => ({ status, message: error.message ? error.message : error });

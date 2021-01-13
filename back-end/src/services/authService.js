@@ -1,20 +1,25 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import errorHandler from '../utils/errorHandler';
+import createResponse from '../utils/createResponse';
 import User from '../database/models/user';
 
 class AuthService {
-  createResult = (status, message, token = {}) => ({ status, message, token });
+  findByEmail = async (email) => {
+    const foundUser = await User.findOne({ where: { email } });
+
+    return foundUser;
+  };
 
   async login({ email, password }) {
     try {
-      const candidate = await User.findOne({ where: { email } });
+      const foundUser = this.findByEmail(email);
 
-      if (!candidate) {
-        return this.createResult(404, 'Not found');
+      if (!foundUser) {
+        return createResponse(404, 'Not found');
       }
 
-      const user = candidate.toJSON();
+      const user = foundUser.toJSON();
 
       const passwordResult = bcrypt.compareSync(password, user.password);
 
@@ -28,20 +33,20 @@ class AuthService {
           process.env.ACCESS_TOKEN_SECRET
         );
 
-        return this.createResult(200, 'Token created!', `Bearer ${token}`);
+        return createResponse(200, 'Token created!', `Bearer ${token}`);
       }
-      return this.createResult(401, 'Incorrect login / password pair!');
+      return createResponse(401, 'Incorrect login / password pair!');
     } catch (error) {
-      return errorHandler(error);
+      return errorHandler(500, error);
     }
   }
 
   async create({ email, password }) {
     try {
-      const candidate = await User.findOne({ where: { email } });
+      const foundUser = this.findByEmail(email);
 
-      if (candidate) {
-        return this.createResult(409, 'This email already exists!');
+      if (foundUser) {
+        return createResponse(409, 'This email already exists!');
       }
 
       const salt = bcrypt.genSaltSync();
@@ -50,9 +55,9 @@ class AuthService {
 
       await User.create({ email, password: hashPassword });
 
-      return this.createResult(201, 'User created successfully!');
+      return createResponse(201, 'User created successfully!');
     } catch (error) {
-      return errorHandler(error);
+      return errorHandler(500, error);
     }
   }
 }

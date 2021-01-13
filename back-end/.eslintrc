@@ -9,6 +9,7 @@
   "rules": {
     "strict": 0,
     "no-alert": "off",
+    "class-methods-use-this": "off",
     "implicit-arrow-linebreak": 0,
     "comma-dangle": 0,
     "function-paren-newline": 0,
