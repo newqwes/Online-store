@@ -1,4 +1,5 @@
 {
+  "parser": "babel-eslint",
   "env": {
     "browser": true,
     "es6": true,
@@ -6,8 +7,9 @@
   },
   "extends": ["airbnb/base"],
   "rules": {
-    "no-console": "off",
+    "strict": 0,
     "no-alert": "off",
+    "class-methods-use-this": "off",
     "implicit-arrow-linebreak": 0,
     "comma-dangle": 0,
     "function-paren-newline": 0,
@@ -28,6 +30,7 @@
       }
     ],
     "no-duplicate-imports": "error",
-    "import/extensions": 0
+    "import/extensions": 0,
+    "no-useless-constructor": "error"
   }
 }
