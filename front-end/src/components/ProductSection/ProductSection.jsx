@@ -7,16 +7,17 @@ import { ProductWrapper, ProductContent } from './styled';
 import ProductList from './ProductList';
 import { productsType } from '../../propType';
 
-const ProductSection = ({ maxSectionWidth, themeVariant, products }) => (
+const ProductSection = ({ maxSectionWidth, themeVariant, products, type }) => (
   <ProductWrapper themeVariant={themeVariant}>
     <ProductContent maxSectionWidth={maxSectionWidth}>
-      <ProductList products={products} />
+      <ProductList products={products} type={type} />
     </ProductContent>
   </ProductWrapper>
 );
 
 ProductSection.propTypes = {
   products: productsType.isRequired,
+  type: PropTypes.string.isRequired,
   maxSectionWidth: PropTypes.number,
   themeVariant: PropTypes.string,
 };

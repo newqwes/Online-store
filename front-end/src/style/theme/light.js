@@ -65,7 +65,7 @@ const light = {
       warning: COLORS.squash,
     },
     color: {
-      default: COLORS.verySoftYellow,
+      default: COLORS.softYellow,
       disabled: COLORS.pinkishGrey,
       info: COLORS.darkishPurple,
       inverted: COLORS.softYellow,

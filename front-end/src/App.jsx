@@ -11,7 +11,7 @@ const App = () => (
   <Fragment>
     <Header />
     <Navbar menuItems={menuItems} />
-    <Route path='/pizza' component={ProductsContainer} />
+    <Route path='/products' component={ProductsContainer} />
   </Fragment>
 );
 

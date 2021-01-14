@@ -6,18 +6,43 @@ import { productsType } from '../propType/index';
 import ProductSection from '../components/ProductSection';
 
 class ProductsContainer extends React.Component {
+  state = {
+    products: [],
+    type: '',
+  };
+
+  add = (products) => {
+    this.setState({
+      products,
+    });
+  };
+
+  searchUrl = () => {
+    const { search } = this.props.location;
+    const type = new URLSearchParams(search).get('type');
+    this.setState({ type });
+    this.props.getProductsListPending(type);
+  };
+
   componentDidMount() {
-    this.props.getProductsListPending();
+    this.searchUrl();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.location !== prevProps.location) {
+      this.searchUrl();
+    }
   }
 
   render() {
-    return <ProductSection products={this.props.products} />;
+    return <ProductSection products={this.props.products} type={this.state.type} />;
   }
 }
 
 ProductsContainer.propTypes = {
   getProductsListPending: PropTypes.func.isRequired,
   products: productsType.isRequired,
+  location: PropTypes.any,
 };
 
 const mapStateToProps = (state) => ({

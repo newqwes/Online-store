@@ -1,17 +1,10 @@
-import { takeEvery, put, call, all } from 'redux-saga/effects';
+import { takeEvery, put, all } from 'redux-saga/effects';
 import { getProductsListSuccess } from '../actionCreators';
 import { GET_PRODUCTS_LIST_PENDING } from '../actions';
-import products from '../mocks/products';
+import productAPI from '../api';
 
-const delay = () =>
-  new Promise((resolve) =>
-    setTimeout(() => {
-      resolve(products);
-    }, 1000)
-  );
-
-export function* getProductsList() {
-  const data = yield call(delay);
+export function* getProductsList({ payload }) {
+  const data = yield productAPI.getProductsList(payload);
   yield put(getProductsListSuccess(data));
 }
 

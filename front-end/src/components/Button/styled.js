@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const ButtonWrapper = styled.button`
   margin-left: 20px;
-  padding: 6px 15px;
+  padding: 6px 10px;
   border-radius: 10px;
   letter-spacing: 1px;
   background-color: ${(props) => props.theme.button.background[props.themeVariant]};
@@ -11,7 +11,8 @@ const ButtonWrapper = styled.button`
   font-weight: 500;
   outline: none;
   transition: 0.1s ease;
-  font-size: 13px;
+  font-size: 12px;
+  white-space: nowrap;
 
   &:active {
     border-radius: 20px;

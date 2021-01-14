@@ -6,46 +6,36 @@ import { CardWrapper, CardContent } from './styled';
 import Image from '../Image';
 import Label from '../Label';
 import Flex from '../Flex';
+import Select from '../Select';
 import Button from '../Button';
 
 import THEME_VARIANT from '../../constants/themeVariant';
 import FONT_SIZE from '../../constants/fontSize';
 import FONT_WEIGHT from '../../constants/fontWeight';
 import TEXT_ALIGN from '../../constants/textAlign';
-import DIRECTION from '../../constants/direction';
 import { productType } from '../../propType';
 
-const Card = ({ item, themeVariant }) => (
+const Card = ({ item, themeVariant, price, handleChange, optionVariant }) => (
   <CardWrapper themeVariant={themeVariant}>
-    <Image src={item.image} alt={item.name} />
+    <Image src={item.photo_url} alt={item.name} />
     <CardContent>
       <Label text={item.name} fontSize={FONT_SIZE.medium} fontWeight={FONT_WEIGHT.lightBold} />
       <Label
         text={item.description}
-        fontSize={FONT_SIZE.small}
+        fontSize={FONT_SIZE.least}
         fontWeight={FONT_WEIGHT.normal}
         themeVariant={THEME_VARIANT.inverted}
         textAlign={TEXT_ALIGN.center}
       />
       <Flex>
-        <Flex direction={DIRECTION.column}>
-          <Label
-            text={item.price}
-            fontSize={FONT_SIZE.least}
-            textAlign={TEXT_ALIGN.center}
-            fontWeight={FONT_WEIGHT.lightBold}
-          />
-          <Label
-            text={item.weight}
-            fontSize={FONT_SIZE.least}
-            textAlign={TEXT_ALIGN.center}
-            fontWeight={FONT_WEIGHT.lightBold}
-          />
-        </Flex>
-        <Flex>
-          <select />
-          <Button text='В корзину' />
-        </Flex>
+        <Label
+          text={`${price}р.`}
+          fontSize={FONT_SIZE.least}
+          textAlign={TEXT_ALIGN.center}
+          fontWeight={FONT_WEIGHT.lightBold}
+        />
+        <Select options={item.options} onChange={handleChange} optionVariant={optionVariant} />
+        <Button text='В корзину' />
       </Flex>
     </CardContent>
   </CardWrapper>
@@ -53,6 +43,9 @@ const Card = ({ item, themeVariant }) => (
 
 Card.propTypes = {
   item: productType.isRequired,
+  price: PropTypes.number.isRequired,
+  handleChange: PropTypes.func.isRequired,
+  optionVariant: PropTypes.string.isRequired,
   themeVariant: PropTypes.string,
 };
 
