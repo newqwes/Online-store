@@ -3,12 +3,14 @@ import logger from 'redux-logger';
 import createSagaMiddleware from 'redux-saga';
 
 import products from '../reducers/products';
+import cart from '../reducers/cart';
 import rootSaga from '../sagas/rootSaga';
 
 const sagaMiddleware = createSagaMiddleware();
 
 const rootReducer = combineReducers({
   products,
+  cart,
 });
 
 // eslint-disable-next-line no-underscore-dangle

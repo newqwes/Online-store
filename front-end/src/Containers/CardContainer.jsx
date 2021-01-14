@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import Card from '../components/Card';
 import { productType } from '../propType';
+import { addToCartAC } from '../actionCreators';
 import THEME_VARIANT from '../constants/themeVariant';
 import TYPE_QUERY from '../constants/typeQuery';
 
@@ -25,6 +27,8 @@ class CardContainer extends React.Component {
     this.setState({ option });
   };
 
+  addToCart = () => this.props.addToCartAC(this.props.item);
+
   render() {
     const { themeVariant, item } = this.props;
     return (
@@ -34,6 +38,7 @@ class CardContainer extends React.Component {
         optionVariant={this.state.optionVariant}
         item={item}
         handleChange={this.handleChange}
+        addToCart={this.addToCart}
       />
     );
   }
@@ -42,7 +47,7 @@ class CardContainer extends React.Component {
 CardContainer.propTypes = {
   item: productType.isRequired,
   themeVariant: PropTypes.string,
-
+  addToCartAC: PropTypes.func.isRequired,
   type: PropTypes.string.isRequired,
 };
 
@@ -50,4 +55,8 @@ CardContainer.defaultProps = {
   themeVariant: THEME_VARIANT.default,
 };
 
-export default CardContainer;
+const mapDispatchToProps = {
+  addToCartAC,
+};
+
+export default connect(null, mapDispatchToProps)(CardContainer);

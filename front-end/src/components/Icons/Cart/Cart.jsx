@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import ICON_SIZE from '../../../constants/iconSize';
+import { productsType } from '../../../propType';
 
-const Cart = ({ size }) => (
+const Cart = ({ size, cart }) => (
   <svg
     id='Cart_1'
     enableBackground='0 0 512 512'
@@ -56,16 +58,33 @@ const Cart = ({ size }) => (
         d='m448.581 407.13c0 8.27-6.72 14.98-14.99 14.98h-115.811v-29.96h115.81c8.27 0 14.991 6.71 14.991 14.98z'
         fill='#29376d'
       />
+
+      <circle r='115' cx='400' cy='400' fill='#ffffff' />
+      <text
+        y='470'
+        x='350'
+        fontSize='170'
+        fill='#ff3053'
+        fontWeight='bold'
+        fontFamily='Avenir, Helvetica, sans-serif'
+      >
+        {cart.length}
+      </text>
     </g>
   </svg>
 );
 
 Cart.propTypes = {
   size: PropTypes.number,
+  cart: productsType.isRequired,
 };
 
 Cart.defaultProps = {
   size: ICON_SIZE.medium,
 };
 
-export default Cart;
+const mapStateToProps = (state) => ({
+  cart: state.cart,
+});
+
+export default connect(mapStateToProps, null)(Cart);

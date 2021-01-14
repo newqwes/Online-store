@@ -15,7 +15,7 @@ import FONT_WEIGHT from '../../constants/fontWeight';
 import TEXT_ALIGN from '../../constants/textAlign';
 import { productType } from '../../propType';
 
-const Card = ({ item, themeVariant, price, handleChange, optionVariant }) => (
+const Card = ({ item, themeVariant, price, handleChange, optionVariant, addToCart }) => (
   <CardWrapper themeVariant={themeVariant}>
     <Image src={item.photo_url} alt={item.name} />
     <CardContent>
@@ -35,7 +35,7 @@ const Card = ({ item, themeVariant, price, handleChange, optionVariant }) => (
           fontWeight={FONT_WEIGHT.lightBold}
         />
         <Select options={item.options} onChange={handleChange} optionVariant={optionVariant} />
-        <Button text='В корзину' />
+        <Button text='В корзину' onClick={addToCart} />
       </Flex>
     </CardContent>
   </CardWrapper>
@@ -47,6 +47,7 @@ Card.propTypes = {
   handleChange: PropTypes.func.isRequired,
   optionVariant: PropTypes.string.isRequired,
   themeVariant: PropTypes.string,
+  addToCart: PropTypes.func.isRequired,
 };
 
 Card.defaultProps = {
