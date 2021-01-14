@@ -4,15 +4,18 @@ import PropTypes from 'prop-types';
 import Card from '../components/Card';
 import { productType } from '../propType';
 import THEME_VARIANT from '../constants/themeVariant';
+import TYPE_QUERY from '../constants/typeQuery';
 
 class CardContainer extends React.Component {
   state = {
     option: this.props.item.options[0],
-    optionVariant: 'гр',
+    optionVariant: TYPE_QUERY.main.optionValue,
   };
 
   componentDidMount() {
-    if (this.props.type === 'drink') this.setState({ optionVariant: 'мл' });
+    if (this.props.type === TYPE_QUERY.drink.type) {
+      this.setState({ optionVariant: TYPE_QUERY.drink.optionValue });
+    }
   }
 
   findByWeight = (weight) => this.props.item.options.find((option) => option.weight === +weight);
