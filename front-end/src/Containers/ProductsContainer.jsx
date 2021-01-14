@@ -46,7 +46,7 @@ ProductsContainer.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  products: state.products.products,
+  products: state.products,
 });
 
 const mapDispatchToProps = {

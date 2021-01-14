@@ -5,8 +5,8 @@ import { productsType } from '../../../propType';
 import CardContainer from '../../../Containers/CardContainer.jsx';
 
 const ProductList = ({ products, type }) => {
-  const mapProducts = products.map((item) => (
-    <CardContainer key={item.id} item={item} type={type} />
+  const mapProducts = products.map((product) => (
+    <CardContainer key={product.id} item={product} type={type} />
   ));
 
   return <ProductListWrapper>{mapProducts}</ProductListWrapper>;

@@ -27,15 +27,17 @@ class CardContainer extends React.Component {
     this.setState({ option });
   };
 
-  addToCart = () => this.props.addToCartAC(this.props.item);
+  addToCart = () => this.props.addToCartAC({ ...this.props.item, options: this.state.option });
 
   render() {
     const { themeVariant, item } = this.props;
+    const { option, optionVariant } = this.state;
+
     return (
       <Card
         themeVariant={themeVariant}
-        price={this.state.option.price}
-        optionVariant={this.state.optionVariant}
+        price={option.price}
+        optionVariant={optionVariant}
         item={item}
         handleChange={this.handleChange}
         addToCart={this.addToCart}
