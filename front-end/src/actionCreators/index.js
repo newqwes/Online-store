@@ -1,4 +1,9 @@
-import { GET_PRODUCTS_LIST_PENDING, GET_PRODUCTS_LIST_SUCCESS, ADD_TO_CART } from '../actions';
+import {
+  GET_PRODUCTS_LIST_PENDING,
+  GET_PRODUCTS_LIST_SUCCESS,
+  ADD_TO_CART,
+  GET_AUTHORIZATION_SUCCESS,
+} from '../actions';
 
 export const getProductsListPending = (type) => ({
   type: GET_PRODUCTS_LIST_PENDING,
@@ -13,4 +18,14 @@ export const getProductsListSuccess = (data) => ({
 export const addToCartAC = (item) => ({
   type: ADD_TO_CART,
   payload: item,
+});
+
+export const getAuthorizationSuccess = (token) => ({
+  type: GET_AUTHORIZATION_SUCCESS,
+  payload: token,
+});
+
+export const getAuthorizationPending = (authorizationData) => ({
+  type: GET_PRODUCTS_LIST_PENDING,
+  payload: authorizationData,
 });

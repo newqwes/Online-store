@@ -4,6 +4,7 @@ import createSagaMiddleware from 'redux-saga';
 
 import products from '../reducers/products';
 import cart from '../reducers/cart';
+import authorization from '../reducers/authorization';
 import rootSaga from '../sagas/rootSaga';
 
 const sagaMiddleware = createSagaMiddleware();
@@ -11,6 +12,7 @@ const sagaMiddleware = createSagaMiddleware();
 const rootReducer = combineReducers({
   products,
   cart,
+  authorization,
 });
 
 // eslint-disable-next-line no-underscore-dangle
