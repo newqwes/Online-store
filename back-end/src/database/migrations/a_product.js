@@ -7,6 +7,10 @@ module.exports = {
         primaryKey: true,
         autoIncrement: true,
       },
+      type: {
+        type: DataTypes.STRING(100),
+        allowNull: false,
+      },
       name: {
         type: DataTypes.STRING(100),
         allowNull: false,

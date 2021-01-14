@@ -1,7 +1,7 @@
 import { Strategy as JwtStrategy, ExtractJwt } from 'passport-jwt';
 import dotenv from 'dotenv';
 import User from '../database/models/user';
-import errorHandler from '../utils/errorHandler';
+import createResponse from '../utils/createResponse';
 
 dotenv.config();
 
@@ -18,7 +18,7 @@ const mwPassport = (passport) => {
 
         user ? done(null, user) : done(null, false);
       } catch (error) {
-        return errorHandler(error);
+        return createResponse(500, 'Server Error', error);
       }
     })
   );
