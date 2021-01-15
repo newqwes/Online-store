@@ -6,10 +6,10 @@ import THEME_VARIANT from '../../constants/themeVariant';
 import { AuthorizationWrapper, AuthorizationContent } from './styled';
 import Login from './Login';
 
-const AuthorizationSection = ({ maxSectionWidth, themeVariant }) => (
+const AuthorizationSection = ({ maxSectionWidth, themeVariant, getAuthorization }) => (
   <AuthorizationWrapper themeVariant={themeVariant}>
     <AuthorizationContent maxSectionWidth={maxSectionWidth}>
-      <Login />
+      <Login onSubmit={getAuthorization} />
     </AuthorizationContent>
   </AuthorizationWrapper>
 );
@@ -17,6 +17,7 @@ const AuthorizationSection = ({ maxSectionWidth, themeVariant }) => (
 AuthorizationSection.propTypes = {
   maxSectionWidth: PropTypes.number,
   themeVariant: PropTypes.string,
+  getAuthorization: PropTypes.func.isRequired,
 };
 
 AuthorizationSection.defaultProps = {

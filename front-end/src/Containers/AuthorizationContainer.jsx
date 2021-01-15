@@ -5,9 +5,10 @@ import { getAuthorizationPending } from '../actionCreators';
 import AuthorizationSection from '../components/AuthorizationSection';
 
 class AuthorizationContainer extends React.Component {
+  getAuthorization = (values) => this.props.getAuthorizationPending(values);
+
   render() {
-    console.log(this.props.getAuthorizationPending);
-    return <AuthorizationSection />;
+    return <AuthorizationSection getAuthorization={this.getAuthorization} />;
   }
 }
 

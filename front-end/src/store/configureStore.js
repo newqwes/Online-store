@@ -1,6 +1,7 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import logger from 'redux-logger';
 import createSagaMiddleware from 'redux-saga';
+import { reducer as form } from 'redux-form';
 
 import products from '../reducers/products';
 import cart from '../reducers/cart';
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   products,
   cart,
   authorization,
+  form,
 });
 
 // eslint-disable-next-line no-underscore-dangle

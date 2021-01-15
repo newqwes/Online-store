@@ -4,9 +4,9 @@ import { GET_AUTHORIZATION_PENDING } from '../actions';
 import { authAPI } from '../api';
 
 export function* getAuthorization({ payload }) {
-  const { status, message, token } = yield authAPI.login(payload);
-  console.log(status, message);
+  const token = yield authAPI.login(payload);
   yield put(getAuthorizationSuccess(token));
+  yield localStorage.setItem('token', token);
 }
 
 export default function authorizationSaga() {

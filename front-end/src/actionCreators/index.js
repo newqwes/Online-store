@@ -3,6 +3,7 @@ import {
   GET_PRODUCTS_LIST_SUCCESS,
   ADD_TO_CART,
   GET_AUTHORIZATION_SUCCESS,
+  GET_AUTHORIZATION_PENDING,
 } from '../actions';
 
 export const getProductsListPending = (type) => ({
@@ -26,6 +27,6 @@ export const getAuthorizationSuccess = (token) => ({
 });
 
 export const getAuthorizationPending = (authorizationData) => ({
-  type: GET_PRODUCTS_LIST_PENDING,
+  type: GET_AUTHORIZATION_PENDING,
   payload: authorizationData,
 });
