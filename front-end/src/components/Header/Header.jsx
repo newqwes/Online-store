@@ -44,7 +44,9 @@ const Header = ({ maxHeaderWidth, themeVariant }) => (
         <Link to='/cart'>
           <Cart size={ICON_SIZE.large} />
         </Link>
-        <Button text='Войти' />
+        <Link to='/login'>
+          <Button text='Войти' />
+        </Link>
       </Flex>
     </HeaderContent>
   </HeaderWrapper>
