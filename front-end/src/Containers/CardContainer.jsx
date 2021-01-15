@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import Card from '../components/Card';
 import { productType } from '../propType';
-import { addToCartAC } from '../actionCreators';
+import { addToCart } from '../actionCreators';
 import THEME_VARIANT from '../constants/themeVariant';
 import TYPE_QUERY from '../constants/typeQuery';
 
@@ -27,7 +27,7 @@ class CardContainer extends React.Component {
     this.setState({ option });
   };
 
-  addToCart = () => this.props.addToCartAC({ ...this.props.item, options: this.state.option });
+  addToCart = () => this.props.addToCart({ ...this.props.item, options: this.state.option });
 
   render() {
     const { themeVariant, item } = this.props;
@@ -49,7 +49,7 @@ class CardContainer extends React.Component {
 CardContainer.propTypes = {
   item: productType.isRequired,
   themeVariant: PropTypes.string,
-  addToCartAC: PropTypes.func.isRequired,
+  addToCart: PropTypes.func.isRequired,
   type: PropTypes.string.isRequired,
 };
 
@@ -58,7 +58,7 @@ CardContainer.defaultProps = {
 };
 
 const mapDispatchToProps = {
-  addToCartAC,
+  addToCart,
 };
 
 export default connect(null, mapDispatchToProps)(CardContainer);
