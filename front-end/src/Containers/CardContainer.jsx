@@ -11,16 +11,17 @@ import TYPE_QUERY from '../constants/typeQuery';
 class CardContainer extends React.Component {
   state = {
     option: this.props.item.options[0],
-    optionVariant: TYPE_QUERY.main.optionValue,
+    units: TYPE_QUERY.main.optionValue,
   };
 
   componentDidMount() {
     if (this.props.type === TYPE_QUERY.drink.type) {
-      this.setState({ optionVariant: TYPE_QUERY.drink.optionValue });
+      this.setState({ units: TYPE_QUERY.drink.optionValue });
     }
   }
 
-  findByWeight = (weight) => this.props.item.options.find((option) => option.weight === +weight);
+  findByWeight = (weight) =>
+    this.props.item.options.find((option) => option.weight === Number.parseFloat(weight));
 
   handleChange = (e) => {
     const option = this.findByWeight(e.target.value);
@@ -31,13 +32,13 @@ class CardContainer extends React.Component {
 
   render() {
     const { themeVariant, item } = this.props;
-    const { option, optionVariant } = this.state;
+    const { option, units } = this.state;
 
     return (
       <Card
         themeVariant={themeVariant}
         price={option.price}
-        optionVariant={optionVariant}
+        units={units}
         item={item}
         handleChange={this.handleChange}
         addToCart={this.addToCart}

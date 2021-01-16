@@ -1,23 +1,23 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { getAuthorizationPending } from '../actionCreators';
+import { login } from '../actionCreators';
 import AuthorizationSection from '../components/AuthorizationSection';
 
 class AuthorizationContainer extends React.Component {
-  getAuthorization = (values) => this.props.getAuthorizationPending(values);
+  login = (values) => this.props.login(values);
 
   render() {
-    return <AuthorizationSection getAuthorization={this.getAuthorization} />;
+    return <AuthorizationSection login={this.login} />;
   }
 }
 
 AuthorizationContainer.propTypes = {
-  getAuthorizationPending: PropTypes.func.isRequired,
+  login: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = {
-  getAuthorizationPending,
+  login,
 };
 
 export default connect(null, mapDispatchToProps)(AuthorizationContainer);

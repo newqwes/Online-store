@@ -4,12 +4,12 @@ import PropTypes from 'prop-types';
 import SECTION_WIDTH from '../../constants/sectionWidth';
 import THEME_VARIANT from '../../constants/themeVariant';
 import { AuthorizationWrapper, AuthorizationContent } from './styled';
-import Login from './Login';
+import LoginForm from './LoginForm';
 
-const AuthorizationSection = ({ maxSectionWidth, themeVariant, getAuthorization }) => (
+const AuthorizationSection = ({ maxSectionWidth, themeVariant, login }) => (
   <AuthorizationWrapper themeVariant={themeVariant}>
     <AuthorizationContent maxSectionWidth={maxSectionWidth}>
-      <Login onSubmit={getAuthorization} />
+      <LoginForm onSubmit={login} />
     </AuthorizationContent>
   </AuthorizationWrapper>
 );
@@ -17,7 +17,7 @@ const AuthorizationSection = ({ maxSectionWidth, themeVariant, getAuthorization 
 AuthorizationSection.propTypes = {
   maxSectionWidth: PropTypes.number,
   themeVariant: PropTypes.string,
-  getAuthorization: PropTypes.func.isRequired,
+  login: PropTypes.func.isRequired,
 };
 
 AuthorizationSection.defaultProps = {

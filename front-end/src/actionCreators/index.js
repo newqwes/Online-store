@@ -6,7 +6,7 @@ import {
   GET_AUTHORIZATION_PENDING,
 } from '../actions';
 
-export const getProductsListPending = (type) => ({
+export const getProductsList = (type) => ({
   type: GET_PRODUCTS_LIST_PENDING,
   payload: type,
 });
@@ -21,12 +21,12 @@ export const addToCart = (item) => ({
   payload: item,
 });
 
-export const getAuthorizationSuccess = (token) => ({
+export const loginSuccess = (token) => ({
   type: GET_AUTHORIZATION_SUCCESS,
   payload: token,
 });
 
-export const getAuthorizationPending = (authorizationData) => ({
+export const login = (authorizationData) => ({
   type: GET_AUTHORIZATION_PENDING,
   payload: authorizationData,
 });

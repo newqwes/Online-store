@@ -1,27 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getProductsListPending } from '../actionCreators';
+import { getProductsList } from '../actionCreators';
 import { productsType } from '../propType/index';
 import ProductSection from '../components/ProductSection';
 
 class ProductsContainer extends React.Component {
   state = {
-    products: [],
     type: '',
-  };
-
-  add = (products) => {
-    this.setState({
-      products,
-    });
   };
 
   searchUrl = () => {
     const { search } = this.props.location;
     const type = new URLSearchParams(search).get('type');
     this.setState({ type });
-    this.props.getProductsListPending(type);
+    this.props.getProductsList(type);
   };
 
   componentDidMount() {
@@ -40,7 +33,7 @@ class ProductsContainer extends React.Component {
 }
 
 ProductsContainer.propTypes = {
-  getProductsListPending: PropTypes.func.isRequired,
+  getProductsList: PropTypes.func.isRequired,
   products: productsType.isRequired,
   location: PropTypes.any,
 };
@@ -50,7 +43,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = {
-  getProductsListPending,
+  getProductsList,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductsContainer);
