@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 
 import SECTION_WIDTH from '../../constants/sectionWidth';
 import THEME_VARIANT from '../../constants/themeVariant';
-import { JUSTIFY_CONTENT } from '../../constants/position';
 import FONT_SIZE from '../../constants/fontSize';
 import ICON_SIZE from '../../constants/iconSize';
+import { JUSTIFY_CONTENT } from '../../constants/position';
 
 import { HeaderWrapper, HeaderContent } from './styled';
 
@@ -18,7 +18,9 @@ import Label from '../Label';
 import Link from '../Link';
 import Button from '../Button';
 
-const Header = ({ maxHeaderWidth, themeVariant }) => (
+import { productsType } from '../../propType';
+
+const Header = ({ maxHeaderWidth, themeVariant, cart }) => (
   <HeaderWrapper themeVariant={themeVariant}>
     <HeaderContent maxHeaderWidth={maxHeaderWidth}>
       <Flex>
@@ -42,7 +44,7 @@ const Header = ({ maxHeaderWidth, themeVariant }) => (
       </Flex>
       <Flex horizontal={JUSTIFY_CONTENT.flexEnd}>
         <Link to='/cart'>
-          <Cart size={ICON_SIZE.large} />
+          <Cart size={ICON_SIZE.large} cart={cart} />
         </Link>
         <Link to='/login'>
           <Button text='Войти' />
@@ -55,6 +57,7 @@ const Header = ({ maxHeaderWidth, themeVariant }) => (
 Header.propTypes = {
   maxHeaderWidth: PropTypes.number,
   themeVariant: PropTypes.string,
+  cart: productsType.isRequired,
 };
 
 Header.defaultProps = {

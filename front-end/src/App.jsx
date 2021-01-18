@@ -3,15 +3,15 @@ import { Route, Redirect } from 'react-router-dom';
 
 import ROUTER_PATH from './constants/routerPath.js';
 
-import ProductsContainer from './Containers/ProductsContainer.jsx';
-import AuthorizationContainer from './Containers/AuthorizationContainer.jsx';
+import ProductsContainer from './containers/ProductsContainer';
+import AuthorizationContainer from './containers/AuthorizationContainer';
+import HeaderContainer from './containers/HeaderContainer';
 
-import Header from './components/Header';
 import Navbar from './components/Navbar';
 
 const App = () => (
   <Fragment>
-    <Header />
+    <HeaderContainer />
     <Navbar menuItems={ROUTER_PATH.navbar} />
     <Route exact path={ROUTER_PATH.main}>
       <Redirect to={ROUTER_PATH.products.pizza} />

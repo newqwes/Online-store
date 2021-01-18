@@ -20,7 +20,21 @@ export const productType = PropTypes.shape({
   type: PropTypes.string,
   description: PropTypes.string,
   photo_url: PropTypes.string,
-  options: PropTypes.arrayOf(optionsType),
+  options: PropTypes.oneOfType([PropTypes.arrayOf(optionsType), optionsType]),
 });
 
 export const productsType = PropTypes.arrayOf(productType);
+
+export const locationRouterType = PropTypes.shape({
+  hash: PropTypes.string.isRequired,
+  key: PropTypes.string,
+  pathname: PropTypes.string.isRequired,
+  search: PropTypes.string.isRequired,
+  state: PropTypes.oneOfType([
+    PropTypes.array,
+    PropTypes.bool,
+    PropTypes.number,
+    PropTypes.object,
+    PropTypes.string,
+  ]),
+});

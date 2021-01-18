@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import ICON_SIZE from '../../../constants/iconSize';
 import { productsType } from '../../../propType';
 
@@ -83,8 +82,4 @@ Cart.defaultProps = {
   size: ICON_SIZE.medium,
 };
 
-const mapStateToProps = (state) => ({
-  cart: state.cart,
-});
-
-export default connect(mapStateToProps, null)(Cart);
+export default Cart;
