@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const PriceLabelWrapper = styled.span`
+const СurrencyWrapper = styled.span`
   margin-left: 20px;
   letter-spacing: 0.1em;
   font-weight: ${(props) => props.fontWeight};
@@ -9,4 +9,4 @@ const PriceLabelWrapper = styled.span`
   text-align: ${(props) => props.textAlign};
 `;
 
-export default PriceLabelWrapper;
+export default СurrencyWrapper;

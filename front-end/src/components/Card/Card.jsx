@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { CardWrapper, CardContent } from './styled';
 
 import Image from '../Image';
-import PriceLabel from '../PriceLabel';
+import Сurrency from '../Сurrency';
 import Label from '../Label';
 import Flex from '../Flex';
 import Select from '../Select';
@@ -58,7 +58,7 @@ class Card extends React.Component {
             textAlign={TEXT_ALIGN.center}
           />
           <Flex>
-            <PriceLabel
+            <Сurrency
               price={option.price}
               fontSize={FONT_SIZE.least}
               textAlign={TEXT_ALIGN.center}
