@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { isEqual } from 'lodash/fp';
 
 import SECTION_WIDTH from '../../constants/sectionWidth';
 import THEME_VARIANT from '../../constants/themeVariant';
@@ -29,7 +30,7 @@ class ProductSection extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.location !== prevProps.location) {
+    if (!isEqual(this.props.location, prevProps.location)) {
       this.setQueryTypeToState();
     }
   }
