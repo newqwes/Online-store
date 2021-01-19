@@ -1,5 +1,6 @@
 import React from 'react';
-import { getOr, isEqual } from 'lodash/fp';
+import { getOr, isEqual, first, toNumber } from 'lodash/fp';
+import find from 'lodash/find';
 import PropTypes from 'prop-types';
 
 import { CardWrapper, CardContent } from './styled';
@@ -21,8 +22,10 @@ import SIGNS from '../../constants/signs';
 import { productType } from '../../propType';
 
 class Card extends React.Component {
+  getOptions = () => getOr([], ['item', 'options'], this.props);
+
   state = {
-    option: getOr({}, ['options', '0'], this.props.item),
+    option: first(this.getOptions()),
     units: TYPE_QUERY.main.optionValue,
   };
 
@@ -35,11 +38,8 @@ class Card extends React.Component {
   }
 
   findByWeight = (value) => {
-    const { item } = this.props;
-
-    const options = getOr([], 'options', item);
-
-    return options.find(({ weight }) => isEqual(weight, Number.parseFloat(value)));
+    const options = this.getOptions();
+    return find(options, ['weight', toNumber(value)]);
   };
 
   handleChange = ({ target }) => {
