@@ -5,9 +5,9 @@ import THEME_VARIANT from '../../constants/themeVariant';
 import { optionsType } from '../../propType';
 
 const Select = ({ options, onChange, units, themeVariant }) => {
-  const mapOptions = options.map((option) => (
-    <option key={option.weight} value={option.weight}>
-      {option.weight} {units}
+  const mapOptions = options.map(({ weight }) => (
+    <option key={weight} value={weight}>
+      {weight} {units}
     </option>
   ));
 
