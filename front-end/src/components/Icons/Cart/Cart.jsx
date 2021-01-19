@@ -61,7 +61,7 @@ const Cart = ({ size, cart }) => (
       <circle r='115' cx='400' cy='400' fill='#ffffff' />
       <text
         y='470'
-        x='350'
+        x={cart.length > 9 ? '300' : '350'}
         fontSize='170'
         fill='#ff3053'
         fontWeight='bold'
