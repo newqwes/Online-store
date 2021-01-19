@@ -6,7 +6,7 @@ import THEME_VARIANT from '../../constants/themeVariant';
 import { AuthorizationWrapper, AuthorizationContent } from './styled';
 import LoginForm from './LoginForm';
 
-const AuthorizationSection = ({ maxSectionWidth, themeVariant, login }) => (
+const AuthorizationSection = ({ login, maxSectionWidth, themeVariant }) => (
   <AuthorizationWrapper themeVariant={themeVariant}>
     <AuthorizationContent maxSectionWidth={maxSectionWidth}>
       <LoginForm onSubmit={login} />

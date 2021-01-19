@@ -18,9 +18,7 @@ import Label from '../Label';
 import Link from '../Link';
 import Button from '../Button';
 
-import { productsType } from '../../propType';
-
-const Header = ({ maxHeaderWidth, themeVariant, cart }) => (
+const Header = ({ count, maxHeaderWidth, themeVariant }) => (
   <HeaderWrapper themeVariant={themeVariant}>
     <HeaderContent maxHeaderWidth={maxHeaderWidth}>
       <Flex>
@@ -44,7 +42,7 @@ const Header = ({ maxHeaderWidth, themeVariant, cart }) => (
       </Flex>
       <Flex horizontal={JUSTIFY_CONTENT.flexEnd}>
         <Link to='/cart'>
-          <Cart size={ICON_SIZE.large} cart={cart} />
+          <Cart size={ICON_SIZE.large} count={count} />
         </Link>
         <Link to='/login'>
           <Button text='Войти' />
@@ -57,7 +55,7 @@ const Header = ({ maxHeaderWidth, themeVariant, cart }) => (
 Header.propTypes = {
   maxHeaderWidth: PropTypes.number,
   themeVariant: PropTypes.string,
-  cart: productsType.isRequired,
+  count: PropTypes.number.isRequired,
 };
 
 Header.defaultProps = {

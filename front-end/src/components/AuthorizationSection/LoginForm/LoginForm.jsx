@@ -10,7 +10,7 @@ import Flex from '../../Flex';
 import THEME_VARIANT from '../../../constants/themeVariant';
 import { JUSTIFY_CONTENT } from '../../../constants/position';
 
-const Login = ({ themeVariant, handleSubmit }) => (
+const Login = ({ handleSubmit, themeVariant }) => (
   <LoginWrapper themeVariant={themeVariant}>
     <Flex justifyContent={JUSTIFY_CONTENT.center}>
       <LoginContent themeVariant={themeVariant}>
@@ -27,8 +27,8 @@ const Login = ({ themeVariant, handleSubmit }) => (
 );
 
 Login.propTypes = {
-  themeVariant: PropTypes.string,
   handleSubmit: PropTypes.func.isRequired,
+  themeVariant: PropTypes.string,
 };
 
 Login.defaultProps = {

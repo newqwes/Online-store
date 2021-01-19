@@ -5,7 +5,7 @@ import DIRECTION from '../../constants/direction';
 import FlexWrapper from './styled';
 import { childrenType } from '../../propType';
 
-const Flex = ({ children, justifyContent, alignItems, direction }) => (
+const Flex = ({ children, direction, justifyContent, alignItems }) => (
   <FlexWrapper justifyContent={justifyContent} alignItems={alignItems} direction={direction}>
     {children}
   </FlexWrapper>

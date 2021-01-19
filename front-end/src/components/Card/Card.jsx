@@ -1,4 +1,5 @@
 import React from 'react';
+import { getOr, isEqual } from 'lodash/fp';
 import PropTypes from 'prop-types';
 
 import { CardWrapper, CardContent } from './styled';
@@ -15,31 +16,47 @@ import FONT_SIZE from '../../constants/fontSize';
 import FONT_WEIGHT from '../../constants/fontWeight';
 import TEXT_ALIGN from '../../constants/textAlign';
 import TYPE_QUERY from '../../constants/typeQuery';
-import NOMINALS from '../../constants/NOMINALS';
+import SIGNS from '../../constants/signs';
 
 import { productType } from '../../propType';
 
 class Card extends React.Component {
   state = {
-    option: this.props.item.options[0],
+    option: getOr({}, ['options', '0'], this.props.item),
     units: TYPE_QUERY.main.optionValue,
   };
 
   componentDidMount() {
-    if (this.props.type === TYPE_QUERY.drink.type) {
-      this.setState({ units: TYPE_QUERY.drink.optionValue });
+    const { type, optionValue } = TYPE_QUERY.drink;
+
+    if (isEqual(this.props.type, type)) {
+      this.setState({ units: optionValue });
     }
   }
 
-  findByWeight = (weight) =>
-    this.props.item.options.find((option) => option.weight === Number.parseFloat(weight));
+  findByWeight = (value) => {
+    const { item } = this.props;
 
-  handleChange = (e) => {
-    const option = this.findByWeight(e.target.value);
+    const options = getOr([], 'options', item);
+
+    return options.find(({ weight }) => isEqual(weight, Number.parseFloat(value)));
+  };
+
+  handleChange = ({ target }) => {
+    const option = this.findByWeight(target.value);
     this.setState({ option });
   };
 
-  addToCart = () => this.props.addToCart({ ...this.props.item, options: this.state.option });
+  addToCart = () => {
+    const { addToCart, item } = this.props;
+    const { option } = this.state;
+
+    const id = getOr(0, 'id', item);
+    const type = getOr('', 'type', item);
+    const name = getOr('', 'name', item);
+
+    return addToCart({ id, name, type, option });
+  };
 
   render() {
     const { themeVariant, item } = this.props;
@@ -59,11 +76,11 @@ class Card extends React.Component {
           />
           <Flex>
             <Сurrency
-              price={option.price}
+              value={option.price}
               fontSize={FONT_SIZE.least}
               textAlign={TEXT_ALIGN.center}
               fontWeight={FONT_WEIGHT.lightBold}
-              nominal={NOMINALS.BYN}
+              postfix={SIGNS.BYN}
             />
             <Select options={item.options} onChange={this.handleChange} units={units} />
             <Button text='В корзину' onClick={this.addToCart} />
@@ -76,9 +93,9 @@ class Card extends React.Component {
 
 Card.propTypes = {
   item: productType.isRequired,
-  themeVariant: PropTypes.string,
   addToCart: PropTypes.func.isRequired,
   type: PropTypes.string.isRequired,
+  themeVariant: PropTypes.string,
 };
 
 Card.defaultProps = {
