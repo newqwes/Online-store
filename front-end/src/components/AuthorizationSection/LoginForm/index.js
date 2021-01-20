@@ -1,3 +1,1 @@
-import LoginForm from './LoginForm.jsx';
-
-export default LoginForm;
+export { default } from './LoginForm.jsx';

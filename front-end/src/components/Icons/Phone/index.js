@@ -1,3 +1,1 @@
-import Phone from './Phone.jsx';
-
-export default Phone;
+export { default } from './Phone.jsx';

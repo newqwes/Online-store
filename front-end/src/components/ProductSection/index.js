@@ -1,3 +1,1 @@
-import ProductSection from './ProductSection.jsx';
-
-export default ProductSection;
+export { default } from './ProductSection.jsx';

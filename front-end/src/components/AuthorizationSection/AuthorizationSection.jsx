@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 
 import SECTION_WIDTH from '../../constants/sectionWidth';
 import THEME_VARIANT from '../../constants/themeVariant';
+
 import { AuthorizationWrapper, AuthorizationContent } from './styled';
+
 import LoginForm from './LoginForm';
 
 const AuthorizationSection = ({ login, maxSectionWidth, themeVariant }) => (
@@ -24,4 +26,5 @@ AuthorizationSection.defaultProps = {
   maxSectionWidth: SECTION_WIDTH.midle,
   themeVariant: THEME_VARIANT.default,
 };
+
 export default AuthorizationSection;

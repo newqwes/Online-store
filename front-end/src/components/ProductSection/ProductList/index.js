@@ -1,3 +1,1 @@
-import ProductList from './ProductList.jsx';
-
-export default ProductList;
+export { default } from './ProductList.jsx';

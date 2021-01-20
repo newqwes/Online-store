@@ -1,3 +1,1 @@
-import AuthorizationSection from './AuthorizationSection.jsx';
-
-export default AuthorizationSection;
+export { default } from './AuthorizationSection.jsx';

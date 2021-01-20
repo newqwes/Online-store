@@ -1,3 +1,1 @@
-import Select from './Select.jsx';
-
-export default Select;
+export { default } from './Select.jsx';

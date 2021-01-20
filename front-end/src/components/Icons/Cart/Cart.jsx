@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import ICON_SIZE from '../../../constants/iconSize';
 
 const Cart = ({ count, size }) => (

@@ -1,3 +1,1 @@
-import Сurrency from './Сurrency.jsx';
-
-export default Сurrency;
+export { default } from './Сurrency.jsx';
