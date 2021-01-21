@@ -10,6 +10,7 @@ const authorization = (state = initialState, action) => {
     case GET_AUTHORIZATION_SUCCESS:
       return {
         token: action.payload,
+        isSuccess: true,
       };
     default:
       return state;
