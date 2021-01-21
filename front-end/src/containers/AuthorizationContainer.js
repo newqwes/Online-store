@@ -6,6 +6,7 @@ import AuthorizationSection from '../components/AuthorizationSection';
 const mapStateToProps = (state) => ({
   isSuccess: state.authorization.isSuccess,
 });
+
 const mapDispatchToProps = {
   login,
 };
