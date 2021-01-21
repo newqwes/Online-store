@@ -20,6 +20,30 @@ const light = {
         inverted: COLORS.verySoftYellow,
       },
     },
+    input: {
+      border: {
+        default: COLORS.darkDesaturatedOrange,
+        inverted: COLORS.verySoftYellow,
+      },
+    },
+    button: {
+      color: {
+        default: COLORS.darkDesaturatedOrange,
+        inverted: COLORS.verySoftYellow,
+      },
+      border: {
+        default: COLORS.darkDesaturatedOrange,
+        inverted: COLORS.verySoftYellow,
+      },
+      background: {
+        default: COLORS.darkDesaturatedOrange,
+        inverted: COLORS.verySoftYellow,
+      },
+      shadow: {
+        default: COLORS.veryDarkGray,
+        inverted: COLORS.veryDarkGray,
+      },
+    },
     shadow: {
       main: {
         default: COLORS.veryDarkGray,

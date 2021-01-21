@@ -22,7 +22,7 @@ export const LoginContent = styled.div`
 
   input {
     padding: 0.5rem 1rem;
-    border: 1px solid ${(props) => props.theme.login.label.color[props.themeVariant]};
+    border: 1px solid ${(props) => props.theme.login.input.border[props.themeVariant]};
   }
 
   button {
@@ -32,13 +32,13 @@ export const LoginContent = styled.div`
     font-size: 16px;
     font-weight: 400;
     border-radius: 0;
-    border: 1px solid ${(props) => props.theme.login.label.color[props.themeVariant]};
-    background-color: ${(props) => props.theme.login.label.color[props.themeVariant]}10;
-    color: ${(props) => props.theme.login.label.color[props.themeVariant]};
+    border: 1px solid ${(props) => props.theme.login.button.border[props.themeVariant]};
+    background-color: ${(props) => props.theme.login.button.background[props.themeVariant]}10;
+    color: ${(props) => props.theme.login.button.color[props.themeVariant]};
 
     &:active {
       border-radius: 0;
-      box-shadow: 0px 0px 20px -5px ${(props) => props.theme.login.shadow.main[props.themeVariant]};
+      box-shadow: 0px 0px 20px -5px ${(props) => props.theme.login.button.shadow[props.themeVariant]};
     }
   }
 
