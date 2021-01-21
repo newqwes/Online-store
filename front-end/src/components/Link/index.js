@@ -1,3 +1,1 @@
-import Link from './Link.jsx';
-
-export default Link;
+export { default } from './Link.jsx';

@@ -1,11 +1,13 @@
 import styled from 'styled-components';
 
+import SECTION_WIDTH from '../../constants/sectionWidth';
+
 export const NavbarItems = styled.ul`
   display: flex;
   flex-direction: ${(props) => (props.horizontally ? 'row' : 'column')};
   justify-content: space-between;
   width: 100%;
-  max-width: ${(props) => props.maxNavbarWidth}px;
+  max-width: ${SECTION_WIDTH.midle}px;
   margin: 0 auto;
   padding: 12px 0;
 

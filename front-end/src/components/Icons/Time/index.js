@@ -1,3 +1,1 @@
-import Time from './Time.jsx';
-
-export default Time;
+export { default } from './Time.jsx';

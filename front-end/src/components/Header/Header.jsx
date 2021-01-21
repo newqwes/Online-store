@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import SECTION_WIDTH from '../../constants/sectionWidth';
 import THEME_VARIANT from '../../constants/themeVariant';
-import { JUSTIFY_CONTENT } from '../../constants/position';
 import FONT_SIZE from '../../constants/fontSize';
 import ICON_SIZE from '../../constants/iconSize';
+import { JUSTIFY_CONTENT } from '../../constants/position';
 
 import { HeaderWrapper, HeaderContent } from './styled';
 
@@ -18,9 +17,9 @@ import Label from '../Label';
 import Link from '../Link';
 import Button from '../Button';
 
-const Header = ({ maxHeaderWidth, themeVariant }) => (
+const Header = ({ cartItemsCount, themeVariant }) => (
   <HeaderWrapper themeVariant={themeVariant}>
-    <HeaderContent maxHeaderWidth={maxHeaderWidth}>
+    <HeaderContent>
       <Flex>
         <Link to='/'>
           <Logo size={ICON_SIZE.large} />
@@ -42,21 +41,22 @@ const Header = ({ maxHeaderWidth, themeVariant }) => (
       </Flex>
       <Flex horizontal={JUSTIFY_CONTENT.flexEnd}>
         <Link to='/cart'>
-          <Cart size={ICON_SIZE.large} />
+          <Cart size={ICON_SIZE.large} cartItemsCount={cartItemsCount} />
         </Link>
-        <Button text='Войти' />
+        <Link to='/login'>
+          <Button text='Войти' />
+        </Link>
       </Flex>
     </HeaderContent>
   </HeaderWrapper>
 );
 
 Header.propTypes = {
-  maxHeaderWidth: PropTypes.number,
   themeVariant: PropTypes.string,
+  cartItemsCount: PropTypes.number.isRequired,
 };
 
 Header.defaultProps = {
-  maxHeaderWidth: SECTION_WIDTH.midle,
   themeVariant: THEME_VARIANT.default,
 };
 

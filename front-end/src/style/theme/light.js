@@ -9,6 +9,32 @@ const light = {
       inverted: COLORS.verySoftYellow,
     },
   },
+  login: {
+    border: {
+      default: COLORS.verySoftYellow,
+      inverted: COLORS.softYellow,
+    },
+    background: {
+      default: COLORS.mostlyWhiteYellow,
+      inverted: COLORS.softYellow,
+    },
+    label: {
+      color: {
+        default: COLORS.darkDesaturatedOrange,
+        inverted: COLORS.verySoftYellow,
+      },
+    },
+    button: {
+      background: {
+        default: COLORS.mostlyWhiteYellow,
+        inverted: COLORS.softYellow,
+      },
+      color: {
+        default: COLORS.darkDesaturatedOrange,
+        inverted: COLORS.verySoftYellow,
+      },
+    },
+  },
 
   card: {
     background: {
@@ -65,7 +91,7 @@ const light = {
       warning: COLORS.squash,
     },
     color: {
-      default: COLORS.verySoftYellow,
+      default: COLORS.softYellow,
       disabled: COLORS.pinkishGrey,
       info: COLORS.darkishPurple,
       inverted: COLORS.softYellow,

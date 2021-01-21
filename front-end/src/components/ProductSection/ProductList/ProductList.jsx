@@ -1,16 +1,20 @@
 import React from 'react';
-import Card from '../../Card';
+import PropTypes from 'prop-types';
 import ProductListWrapper from './styled';
 import { productsType } from '../../../propType';
+import Card from '../../Card';
 
-const ProductList = ({ data }) => {
-  const mapData = data.map((item) => <Card key={item.id} item={item} />);
+const ProductList = ({ products, addToCart }) => {
+  const mapProducts = products.map((product) => (
+    <Card addToCart={addToCart} key={product.id} item={product} />
+  ));
 
-  return <ProductListWrapper>{mapData}</ProductListWrapper>;
+  return <ProductListWrapper>{mapProducts}</ProductListWrapper>;
 };
 
 ProductList.propTypes = {
-  data: productsType.isRequired,
+  products: productsType.isRequired,
+  addToCart: PropTypes.func.isRequired,
 };
 
 export default ProductList;

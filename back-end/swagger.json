@@ -234,7 +234,7 @@
       }
     },
     "createProduct": {
-      "required": ["name", "description", "photo_url"],
+      "required": ["name", "description", "photoUrl", "unitSign", "currencySign"],
       "properties": {
         "name": {
           "type": "string"
@@ -245,7 +245,13 @@
         "type": {
           "type": "string"
         },
-        "photo_url": {
+        "photoUrl": {
+          "type": "string"
+        },
+        "unitSign": {
+          "type": "string"
+        },
+        "currencySign": {
           "type": "string"
         },
         "options": {
@@ -277,7 +283,13 @@
         "description": {
           "type": "string"
         },
-        "photo_url": {
+        "photoUrl": {
+          "type": "string"
+        },
+        "unitSign": {
+          "type": "string"
+        },
+        "currencySign": {
           "type": "string"
         },
         "options": {
@@ -325,7 +337,13 @@
               "description": {
                 "type": "string"
               },
-              "photo_url": {
+              "photoUrl": {
+                "type": "string"
+              },
+              "unitSign": {
+                "type": "string"
+              },
+              "currencySign": {
                 "type": "string"
               },
               "options": {
@@ -381,7 +399,13 @@
             "description": {
               "type": "string"
             },
-            "photo_url": {
+            "photoUrl": {
+              "type": "string"
+            },
+            "unitSign": {
+              "type": "string"
+            },
+            "currencySign": {
               "type": "string"
             },
             "options": {
