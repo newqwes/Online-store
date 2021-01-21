@@ -10,10 +10,10 @@ import Flex from '../../Flex';
 import THEME_VARIANT from '../../../constants/themeVariant';
 import { JUSTIFY_CONTENT } from '../../../constants/position';
 
-const Login = ({ handleSubmit, themeVariant }) => (
+const Login = ({ themeVariant, handleSubmit, isSuccess }) => (
   <LoginWrapper themeVariant={themeVariant}>
     <Flex justifyContent={JUSTIFY_CONTENT.center}>
-      <LoginContent themeVariant={themeVariant}>
+      <LoginContent themeVariant={themeVariant} isSuccess={isSuccess}>
         <form onSubmit={handleSubmit}>
           <label htmlFor='email'>Ваша почта</label>
           <Field name='email' component='input' type='email' />
@@ -27,6 +27,7 @@ const Login = ({ handleSubmit, themeVariant }) => (
 );
 
 Login.propTypes = {
+  isSuccess: PropTypes.bool.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   themeVariant: PropTypes.string,
 };

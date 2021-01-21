@@ -8,6 +8,9 @@ const COLORS = {
   darkGrayishOrange: '#53453a',
   gray: '#bdbdbd',
   darkPink: '#a11b48',
+  veryDarkGray: '#313131',
+  softRedShadow: '#e2525280',
+  softLimeGreenShadow: '#52e27140',
 };
 
 export default COLORS;

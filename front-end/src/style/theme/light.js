@@ -34,6 +34,20 @@ const light = {
         inverted: COLORS.verySoftYellow,
       },
     },
+    shadow: {
+      main: {
+        default: COLORS.veryDarkGray,
+        inverted: COLORS.veryDarkGray,
+      },
+      error: {
+        default: COLORS.softRedShadow,
+        inverted: COLORS.softRedShadow,
+      },
+      success: {
+        default: COLORS.softLimeGreenShadow,
+        inverted: COLORS.softLimeGreenShadow,
+      },
+    },
   },
 
   card: {

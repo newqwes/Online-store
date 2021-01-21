@@ -2,6 +2,7 @@ import { GET_AUTHORIZATION_SUCCESS } from '../actions';
 
 const initialState = {
   token: '',
+  isSuccess: false,
 };
 
 const authorization = (state = initialState, action) => {
