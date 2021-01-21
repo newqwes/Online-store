@@ -1,3 +1,1 @@
-import NavbarItem from './NavbarItem.jsx';
-
-export default NavbarItem;
+export { default } from './NavbarItem.jsx';

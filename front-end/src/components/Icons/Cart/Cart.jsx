@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import ICON_SIZE from '../../../constants/iconSize';
 
-const Cart = ({ size }) => (
+const Cart = ({ cartItemsCount, size }) => (
   <svg
     id='Cart_1'
     enableBackground='0 0 512 512'
@@ -56,12 +57,26 @@ const Cart = ({ size }) => (
         d='m448.581 407.13c0 8.27-6.72 14.98-14.99 14.98h-115.811v-29.96h115.81c8.27 0 14.991 6.71 14.991 14.98z'
         fill='#29376d'
       />
+
+      <circle r='125' cx='380' cy='380' fill='#ffffff' />
+      <text
+        y='450'
+        x='300'
+        fontSize='170'
+        fill='#ff3053'
+        fontWeight='bold'
+        textAnchor='start'
+        fontFamily='Avenir, Helvetica, sans-serif'
+      >
+        {cartItemsCount}
+      </text>
     </g>
   </svg>
 );
 
 Cart.propTypes = {
   size: PropTypes.number,
+  cartItemsCount: PropTypes.number.isRequired,
 };
 
 Cart.defaultProps = {

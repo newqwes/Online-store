@@ -2,10 +2,10 @@ import styled from 'styled-components';
 
 export const CardWrapper = styled.div`
   display: flex;
-  flex-basis: 18%;
+  flex-basis: 15%;
   flex-direction: column;
   align-content: space-between;
-  margin-top: 40px;
+  margin: 28px 14px;
   padding: 25px;
   transition: 0.5s ease-out;
   border-radius: 20% 20px;
