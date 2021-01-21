@@ -6,15 +6,15 @@ export const LoginContent = styled.div`
   margin-top: 10%;
   padding: 3% 5%;
   border-radius: 5%;
-  border: 5px solid ${(props) => props.theme.card.hoverShadow[props.themeVariant]};
-  background-color: ${(props) => props.theme.navbar.background[props.themeVariant]}50;
+  border: 5px solid ${(props) => props.theme.login.border[props.themeVariant]};
+  background-color: ${(props) => props.theme.login.background[props.themeVariant]}50;
 
   label {
     display: block;
     margin: 15% 5% 4%;
     font-size: 16px;
     letter-spacing: 0.1em;
-    color: ${(props) => props.theme.label.color[props.themeVariant]};
+    color: ${(props) => props.theme.login.label.color[props.themeVariant]};
   }
 
   input {
@@ -32,8 +32,8 @@ export const LoginContent = styled.div`
     font-weight: 400;
     border: none;
 
-    background-color: ${(props) => props.theme.card.background[props.themeVariant]};
-    color: ${(props) => props.theme.label.color[props.themeVariant]};
+    background-color: ${(props) => props.theme.login.button.background[props.themeVariant]};
+    color: ${(props) => props.theme.login.button.color[props.themeVariant]};
 
     &:active {
       border-radius: 35px;

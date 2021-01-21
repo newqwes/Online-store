@@ -19,7 +19,9 @@ export const productType = PropTypes.shape({
   name: PropTypes.string,
   type: PropTypes.string,
   description: PropTypes.string,
-  photo_url: PropTypes.string,
+  photoUrl: PropTypes.string,
+  unitSign: PropTypes.string,
+  currencySign: PropTypes.string,
   options: PropTypes.oneOfType([PropTypes.arrayOf(optionsType), optionsType]),
 });
 

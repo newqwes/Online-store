@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import SECTION_WIDTH from '../../constants/sectionWidth';
 import THEME_VARIANT from '../../constants/themeVariant';
 import FONT_SIZE from '../../constants/fontSize';
 import ICON_SIZE from '../../constants/iconSize';
@@ -18,9 +17,9 @@ import Label from '../Label';
 import Link from '../Link';
 import Button from '../Button';
 
-const Header = ({ count, maxHeaderWidth, themeVariant }) => (
+const Header = ({ cartItemsCount, themeVariant }) => (
   <HeaderWrapper themeVariant={themeVariant}>
-    <HeaderContent maxHeaderWidth={maxHeaderWidth}>
+    <HeaderContent>
       <Flex>
         <Link to='/'>
           <Logo size={ICON_SIZE.large} />
@@ -42,7 +41,7 @@ const Header = ({ count, maxHeaderWidth, themeVariant }) => (
       </Flex>
       <Flex horizontal={JUSTIFY_CONTENT.flexEnd}>
         <Link to='/cart'>
-          <Cart size={ICON_SIZE.large} count={count} />
+          <Cart size={ICON_SIZE.large} cartItemsCount={cartItemsCount} />
         </Link>
         <Link to='/login'>
           <Button text='Войти' />
@@ -53,13 +52,11 @@ const Header = ({ count, maxHeaderWidth, themeVariant }) => (
 );
 
 Header.propTypes = {
-  maxHeaderWidth: PropTypes.number,
   themeVariant: PropTypes.string,
-  count: PropTypes.number.isRequired,
+  cartItemsCount: PropTypes.number.isRequired,
 };
 
 Header.defaultProps = {
-  maxHeaderWidth: SECTION_WIDTH.midle,
   themeVariant: THEME_VARIANT.default,
 };
 

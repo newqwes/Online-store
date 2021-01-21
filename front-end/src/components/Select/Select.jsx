@@ -4,10 +4,10 @@ import SelectWrapper from './styled';
 import THEME_VARIANT from '../../constants/themeVariant';
 import { optionsType } from '../../propType';
 
-const Select = ({ options, onChange, units, themeVariant }) => {
+const Select = ({ options, onChange, unitSign, themeVariant }) => {
   const mapOptions = options.map(({ weight }) => (
     <option key={weight} value={weight}>
-      {weight} {units}
+      {weight} {unitSign}
     </option>
   ));
 
@@ -19,7 +19,7 @@ const Select = ({ options, onChange, units, themeVariant }) => {
 };
 
 Select.propTypes = {
-  units: PropTypes.string.isRequired,
+  unitSign: PropTypes.string.isRequired,
   options: PropTypes.arrayOf(optionsType),
   onChange: PropTypes.func,
   themeVariant: PropTypes.string,

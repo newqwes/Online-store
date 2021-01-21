@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import ICON_SIZE from '../../../constants/iconSize';
 
-const Cart = ({ count, size }) => (
+const Cart = ({ cartItemsCount, size }) => (
   <svg
     id='Cart_1'
     enableBackground='0 0 512 512'
@@ -58,16 +58,17 @@ const Cart = ({ count, size }) => (
         fill='#29376d'
       />
 
-      <circle r='115' cx='400' cy='400' fill='#ffffff' />
+      <circle r='125' cx='380' cy='380' fill='#ffffff' />
       <text
-        y='470'
-        x={count > 9 ? '300' : '350'}
+        y='450'
+        x='300'
         fontSize='170'
         fill='#ff3053'
         fontWeight='bold'
+        textAnchor='start'
         fontFamily='Avenir, Helvetica, sans-serif'
       >
-        {count}
+        {cartItemsCount}
       </text>
     </g>
   </svg>
@@ -75,7 +76,7 @@ const Cart = ({ count, size }) => (
 
 Cart.propTypes = {
   size: PropTypes.number,
-  count: PropTypes.number.isRequired,
+  cartItemsCount: PropTypes.number.isRequired,
 };
 
 Cart.defaultProps = {

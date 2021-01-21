@@ -1,5 +1,5 @@
 import React from 'react';
-import { getOr, isEqual, first, toNumber } from 'lodash/fp';
+import { getOr, first, toNumber } from 'lodash/fp';
 import find from 'lodash/find';
 import PropTypes from 'prop-types';
 
@@ -16,8 +16,6 @@ import THEME_VARIANT from '../../constants/themeVariant';
 import FONT_SIZE from '../../constants/fontSize';
 import FONT_WEIGHT from '../../constants/fontWeight';
 import TEXT_ALIGN from '../../constants/textAlign';
-import TYPE_QUERY from '../../constants/typeQuery';
-import SIGNS from '../../constants/signs';
 
 import { productType } from '../../propType';
 
@@ -26,16 +24,7 @@ class Card extends React.Component {
 
   state = {
     option: first(this.getOptions()),
-    units: TYPE_QUERY.main.optionValue,
   };
-
-  componentDidMount() {
-    const { type, optionValue } = TYPE_QUERY.drink;
-
-    if (isEqual(this.props.type, type)) {
-      this.setState({ units: optionValue });
-    }
-  }
 
   findByWeight = (value) => {
     const options = this.getOptions();
@@ -51,24 +40,23 @@ class Card extends React.Component {
     const { addToCart, item } = this.props;
     const { option } = this.state;
 
-    const id = getOr(0, 'id', item);
-    const type = getOr('', 'type', item);
-    const name = getOr('', 'name', item);
-
-    return addToCart({ id, name, type, option });
+    return addToCart({ ...item, options: option });
   };
 
   render() {
-    const { themeVariant, item } = this.props;
-    const { option, units } = this.state;
+    const {
+      themeVariant,
+      item: { photoUrl, name, description, currencySign, options, unitSign },
+    } = this.props;
+    const { option } = this.state;
 
     return (
       <CardWrapper themeVariant={themeVariant}>
-        <Image src={item.photo_url} alt={item.name} />
+        <Image src={photoUrl} alt={name} />
         <CardContent>
-          <Label text={item.name} fontSize={FONT_SIZE.medium} fontWeight={FONT_WEIGHT.lightBold} />
+          <Label text={name} fontSize={FONT_SIZE.medium} fontWeight={FONT_WEIGHT.lightBold} />
           <Label
-            text={item.description}
+            text={description}
             fontSize={FONT_SIZE.least}
             fontWeight={FONT_WEIGHT.normal}
             themeVariant={THEME_VARIANT.inverted}
@@ -80,9 +68,9 @@ class Card extends React.Component {
               fontSize={FONT_SIZE.least}
               textAlign={TEXT_ALIGN.center}
               fontWeight={FONT_WEIGHT.lightBold}
-              postfix={SIGNS.BYN}
+              postfix={currencySign}
             />
-            <Select options={item.options} onChange={this.handleChange} units={units} />
+            <Select options={options} onChange={this.handleChange} unitSign={unitSign} />
             <Button text='В корзину' onClick={this.addToCart} />
           </Flex>
         </CardContent>
@@ -94,7 +82,6 @@ class Card extends React.Component {
 Card.propTypes = {
   item: productType.isRequired,
   addToCart: PropTypes.func.isRequired,
-  type: PropTypes.string.isRequired,
   themeVariant: PropTypes.string,
 };
 

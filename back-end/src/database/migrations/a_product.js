@@ -19,8 +19,16 @@ module.exports = {
         type: DataTypes.STRING(500),
         allowNull: false,
       },
-      photo_url: {
+      photoUrl: {
         type: DataTypes.STRING(500),
+        allowNull: false,
+      },
+      unitSign: {
+        type: DataTypes.STRING(10),
+        allowNull: false,
+      },
+      currencySign: {
+        type: DataTypes.STRING(10),
         allowNull: false,
       },
     });
