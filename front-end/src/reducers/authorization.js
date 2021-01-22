@@ -1,8 +1,9 @@
-import { GET_AUTHORIZATION_SUCCESS } from '../actions';
+import { GET_AUTHORIZATION_SUCCESS, GET_AUTHORIZATION_FAILURE } from '../actions';
 
 const initialState = {
   token: '',
   isSuccess: false,
+  error: '',
 };
 
 const authorization = (state = initialState, action) => {
@@ -11,6 +12,11 @@ const authorization = (state = initialState, action) => {
       return {
         token: action.payload,
         isSuccess: true,
+      };
+    case GET_AUTHORIZATION_FAILURE:
+      return {
+        error: action.payload,
+        isSuccess: false,
       };
     default:
       return state;
