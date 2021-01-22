@@ -11,7 +11,7 @@ export const LoginContent = styled.div`
   animation-name: ${(props) => (props.isSuccess ? 'success' : 'error')};
   animation-iteration-count: 1;
   animation-timing-function: ease-in-out;
-  animation-duration: 0.5s;
+  animation-duration: 0.7s;
 
   label {
     display: block;
@@ -44,13 +44,13 @@ export const LoginContent = styled.div`
 
   @keyframes error {
     50% {
-      box-shadow: 0px 0px 35px ${(props) => props.theme.login.shadow.error[props.themeVariant]};
+      box-shadow: 0px 0px 20px ${(props) => props.theme.login.shadow.error[props.themeVariant]};
     }
   }
 
   @keyframes success {
     50% {
-      box-shadow: 0px 0px 35px ${(props) => props.theme.login.shadow.success[props.themeVariant]};
+      box-shadow: 0px 0px 20px ${(props) => props.theme.login.shadow.success[props.themeVariant]};
     }
   }
 `;
