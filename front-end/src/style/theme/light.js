@@ -7,6 +7,7 @@ const light = {
     color: {
       default: COLORS.darkDesaturatedOrange,
       inverted: COLORS.verySoftYellow,
+      warning: COLORS.darkPink,
     },
   },
   login: {

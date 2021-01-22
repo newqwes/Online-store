@@ -8,14 +8,14 @@ export const LoginContent = styled.div`
   background-color: ${({ theme, themeVariant }) => theme.login.background[themeVariant]};
   box-shadow: 0px 0px 20px ${({ theme, themeVariant }) => theme.login.shadow.main[themeVariant]};
 
-  animation-name: ${({ isSuccess }) => (isSuccess ? 'success' : 'error')};
+  animation-name: ${({ shadowAlert }) => shadowAlert};
   animation-iteration-count: 1;
   animation-timing-function: ease-in-out;
   animation-duration: 0.7s;
 
   label {
     display: block;
-    margin: 15% 5% 4%;
+    margin: 10% 5% 4%;
     font-size: 16px;
     color: ${({ theme, themeVariant }) => theme.login.label.color[themeVariant]};
   }
@@ -23,6 +23,7 @@ export const LoginContent = styled.div`
   input {
     padding: 0.5rem 1rem;
     border: 1px solid ${({ theme, themeVariant }) => theme.login.input.border[themeVariant]};
+    margin-bottom: 10px;
   }
 
   button {
@@ -40,6 +41,10 @@ export const LoginContent = styled.div`
       border-radius: 0;
       box-shadow: 0px 0px 20px -5px ${({ theme, themeVariant }) => theme.login.button.shadow[themeVariant]};
     }
+  }
+
+  span {
+    position: absolute;
   }
 
   @keyframes error {
