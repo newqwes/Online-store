@@ -8,7 +8,7 @@ export const LoginContent = styled.div`
   background-color: ${({ theme, themeVariant }) => theme.login.background[themeVariant]};
   box-shadow: 0px 0px 20px ${({ theme, themeVariant }) => theme.login.shadow.main[themeVariant]};
 
-  animation-name: ${({ shadowAlert }) => shadowAlert};
+  animation-name: ${({ isAnimation }) => isAnimation && 'error'};
   animation-iteration-count: 1;
   animation-timing-function: ease-in-out;
   animation-duration: 0.7s;
@@ -51,13 +51,6 @@ export const LoginContent = styled.div`
     50% {
       box-shadow: 0px 0px 20px
         ${({ theme, themeVariant }) => theme.login.shadow.error[themeVariant]};
-    }
-  }
-
-  @keyframes success {
-    50% {
-      box-shadow: 0px 0px 20px
-        ${({ theme, themeVariant }) => theme.login.shadow.success[themeVariant]};
     }
   }
 `;

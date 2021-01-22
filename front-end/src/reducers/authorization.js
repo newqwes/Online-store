@@ -12,11 +12,13 @@ const authorization = (state = initialState, action) => {
       return {
         token: action.payload,
         isSuccess: true,
+        error: '',
       };
     case GET_AUTHORIZATION_FAILURE:
       return {
-        error: action.payload,
+        token: '',
         isSuccess: false,
+        error: action.payload,
       };
     default:
       return state;

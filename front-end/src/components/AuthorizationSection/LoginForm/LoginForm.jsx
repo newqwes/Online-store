@@ -17,16 +17,19 @@ const maxLength30 = maxLength(30);
 const minLength5 = minLength(5);
 
 const Login = ({ themeVariant, handleSubmit, isSuccess }) => {
-  const [shadowAlert, setShadowAlert] = useState();
-  const setShadowHandler = () => {
-    if (isSuccess) setShadowAlert('success');
-    else setShadowAlert('error');
-  };
+  const [isAnimation, setAnimation] = useState(false);
+
+  const handleClick = () => !isSuccess && setAnimation(true);
+  const onAnimationEnd = () => setAnimation(false);
 
   return (
     <LoginWrapper themeVariant={themeVariant}>
       <Flex justifyContent={JUSTIFY_CONTENT.center}>
-        <LoginContent themeVariant={themeVariant} shadowAlert={shadowAlert}>
+        <LoginContent
+          themeVariant={themeVariant}
+          isAnimation={isAnimation}
+          onAnimationEnd={onAnimationEnd}
+        >
           <form onSubmit={handleSubmit}>
             <Field
               name='email'
@@ -44,7 +47,7 @@ const Login = ({ themeVariant, handleSubmit, isSuccess }) => {
               label='Пароль'
               validate={[requiredField, maxLength30, minLength5]}
             />
-            <Button text='Войти' onClick={setShadowHandler} />
+            <Button text='Войти' onClick={handleClick} />
           </form>
         </LoginContent>
       </Flex>
