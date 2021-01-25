@@ -7,10 +7,10 @@ import { AuthorizationWrapper, AuthorizationContent } from './styled';
 
 import LoginForm from './LoginForm';
 
-const AuthorizationSection = ({ themeVariant, login, isSuccess }) => (
+const AuthorizationSection = ({ themeVariant, login, flag }) => (
   <AuthorizationWrapper themeVariant={themeVariant}>
     <AuthorizationContent>
-      <LoginForm onSubmit={login} isSuccess={isSuccess} />
+      <LoginForm onSubmit={login} flag={flag} />
     </AuthorizationContent>
   </AuthorizationWrapper>
 );
@@ -18,7 +18,7 @@ const AuthorizationSection = ({ themeVariant, login, isSuccess }) => (
 AuthorizationSection.propTypes = {
   themeVariant: PropTypes.string,
   login: PropTypes.func.isRequired,
-  isSuccess: PropTypes.bool.isRequired,
+  flag: PropTypes.bool.isRequired,
 };
 
 AuthorizationSection.defaultProps = {

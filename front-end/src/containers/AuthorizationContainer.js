@@ -5,7 +5,7 @@ import { login } from '../actionCreators';
 import AuthorizationSection from '../components/AuthorizationSection';
 
 const mapStateToProps = (state) => ({
-  isSuccess: getOr(false, ['authorization', 'isSuccess'], state),
+  flag: getOr(false, ['authorization', 'flag'], state),
 });
 
 const mapDispatchToProps = {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { reduxForm, Field } from 'redux-form';
 
@@ -11,52 +11,70 @@ import InputLabelField from '../../InputLabelField';
 import THEME_VARIANT from '../../../constants/themeVariant';
 import { JUSTIFY_CONTENT } from '../../../constants/position';
 
-import { maxLength, minLength, emailValidate, requiredField } from '../../../utils/formValidation';
+import {
+  lengthValidation,
+  emailValidation,
+  requiredValidation,
+} from '../../../utils/formValidation';
 
-const maxLength30 = maxLength(30);
-const minLength5 = minLength(5);
+const maxLength = lengthValidation({ length: 30, messege: 'Не более 30 символов', toMore: true });
+const minLength = lengthValidation({ length: 5, messege: 'Не менее 5 символов', toMore: false });
+const requiredField = requiredValidation({ messege: 'Обязателен для заполнения' });
+const emailField = emailValidation({ messege: 'Неверный формат email' });
 
-const Login = ({ themeVariant, handleSubmit, isSuccess }) => {
-  const [isAnimation, setAnimation] = useState(false);
+class Login extends React.Component {
+  state = {
+    isErrorAnimation: false,
+  };
 
-  const handleClick = () => !isSuccess && setAnimation(true);
-  const onAnimationEnd = () => setAnimation(false);
+  componentDidUpdate(prevProps) {
+    if (this.props.flag !== prevProps.flag) {
+      this.setState({ isErrorAnimation: true });
+    }
+  }
 
-  return (
-    <LoginWrapper themeVariant={themeVariant}>
-      <Flex justifyContent={JUSTIFY_CONTENT.center}>
-        <LoginContent
-          themeVariant={themeVariant}
-          isAnimation={isAnimation}
-          onAnimationEnd={onAnimationEnd}
-        >
-          <form onSubmit={handleSubmit}>
-            <Field
-              name='email'
-              type='text'
-              errorMessagePosition={JUSTIFY_CONTENT.center}
-              component={InputLabelField}
-              label='Ваша почта'
-              validate={[requiredField, maxLength30, minLength5, emailValidate]}
-            />
-            <Field
-              name='password'
-              type='password'
-              errorMessagePosition={JUSTIFY_CONTENT.center}
-              component={InputLabelField}
-              label='Пароль'
-              validate={[requiredField, maxLength30, minLength5]}
-            />
-            <Button text='Войти' onClick={handleClick} />
-          </form>
-        </LoginContent>
-      </Flex>
-    </LoginWrapper>
-  );
-};
+  onAnimationEnd = () => this.setState({ isErrorAnimation: false });
+
+  render() {
+    const { themeVariant, handleSubmit } = this.props;
+    const { isErrorAnimation } = this.state;
+
+    return (
+      <LoginWrapper themeVariant={themeVariant}>
+        <Flex justifyContent={JUSTIFY_CONTENT.center}>
+          <LoginContent
+            themeVariant={themeVariant}
+            isErrorAnimation={isErrorAnimation}
+            onAnimationEnd={this.onAnimationEnd}
+          >
+            <form onSubmit={handleSubmit}>
+              <Field
+                name='email'
+                type='text'
+                errorMessagePosition={JUSTIFY_CONTENT.center}
+                component={InputLabelField}
+                label='Ваша почта'
+                validate={[requiredField, maxLength, minLength, emailField]}
+              />
+              <Field
+                name='password'
+                type='password'
+                errorMessagePosition={JUSTIFY_CONTENT.center}
+                component={InputLabelField}
+                label='Пароль'
+                validate={[requiredField, maxLength, minLength]}
+              />
+              <Button text='Войти' />
+            </form>
+          </LoginContent>
+        </Flex>
+      </LoginWrapper>
+    );
+  }
+}
 
 Login.propTypes = {
-  isSuccess: PropTypes.bool.isRequired,
+  flag: PropTypes.bool.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   themeVariant: PropTypes.string,
 };

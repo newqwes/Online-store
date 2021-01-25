@@ -8,7 +8,7 @@ export const LoginContent = styled.div`
   background-color: ${({ theme, themeVariant }) => theme.login.background[themeVariant]};
   box-shadow: 0px 0px 20px ${({ theme, themeVariant }) => theme.login.shadow.main[themeVariant]};
 
-  animation-name: ${({ isAnimation }) => isAnimation && 'error'};
+  animation-name: ${({ isErrorAnimation }) => isErrorAnimation && 'error'};
   animation-iteration-count: 1;
   animation-timing-function: ease-in-out;
   animation-duration: 0.7s;
