@@ -21,6 +21,12 @@ const light = {
         inverted: COLORS.verySoftYellow,
       },
     },
+    link: {
+      color: {
+        default: COLORS.darkDesaturatedOrange,
+        inverted: COLORS.verySoftYellow,
+      },
+    },
     input: {
       border: {
         default: COLORS.darkDesaturatedOrange,

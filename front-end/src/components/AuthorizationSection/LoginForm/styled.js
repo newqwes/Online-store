@@ -28,7 +28,7 @@ export const LoginContent = styled.div`
 
   button {
     display: block;
-    margin: 15% auto 0;
+    margin: 10% auto 5%;
     padding: 10px 20px;
     font-size: 16px;
     font-weight: 400;
@@ -45,6 +45,10 @@ export const LoginContent = styled.div`
 
   span {
     position: absolute;
+  }
+  a {
+    font-size: 15px;
+    color: ${({ theme, themeVariant }) => theme.login.link.color[themeVariant]};
   }
 
   @keyframes error {

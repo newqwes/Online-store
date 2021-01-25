@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { reduxForm, Field } from 'redux-form';
+import { NavLink } from 'react-router-dom';
 
 import { LoginWrapper, LoginContent } from './styled';
 
@@ -53,6 +54,9 @@ class Login extends React.Component {
                 label='Пароль'
               />
               <Button text='Войти' />
+              <Flex justifyContent={JUSTIFY_CONTENT.center}>
+                <NavLink to='/registration'>Регистрация</NavLink>
+              </Flex>
             </form>
           </LoginContent>
         </Flex>
