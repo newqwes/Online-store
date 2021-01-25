@@ -1,23 +1,34 @@
-const validate = (values) => {
-  const errors = {};
-  if (!values.email) {
-    errors.email = 'Обязателен для заполнения';
-  } else if (values.email.length < 5) {
-    errors.email = 'Не менее 5 символов';
-  } else if (values.email.length > 30) {
-    errors.email = 'Не более 30 символов';
-  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-    errors.email = 'Неверный формат email';
-  }
+import VALIDATION_LENGTH from '../../../constants/validationLength';
+import { rules, validation } from '../../../utils/validation';
 
-  if (!values.password) {
-    errors.password = 'Обязателен для заполнения';
-  } else if (values.password.length < 5) {
-    errors.password = 'Не менее 5 символов';
-  } else if (values.password.length > 30) {
-    errors.password = 'Не более 30 символов';
-  }
-  return errors;
-};
+const commonRules = [
+  {
+    rule: rules.maxCharacters(VALIDATION_LENGTH.max),
+    message: `Не более ${VALIDATION_LENGTH.max} символов`,
+  },
+  {
+    rule: rules.minCharacters(VALIDATION_LENGTH.min),
+    message: `Не меньше ${VALIDATION_LENGTH.min} символов`,
+  },
+  {
+    rule: rules.required,
+    message: 'Обязателен для заполнения',
+  },
+];
+
+const passwordValidation = validation(commonRules);
+
+const emailValidation = validation([
+  {
+    rule: rules.email,
+    message: 'Неверный формат email',
+  },
+  ...commonRules,
+]);
+
+const validate = ({ email, password }) => ({
+  email: emailValidation(email),
+  password: passwordValidation(password),
+});
 
 export default validate;
