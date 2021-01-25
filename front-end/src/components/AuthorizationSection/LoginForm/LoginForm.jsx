@@ -10,17 +10,7 @@ import InputLabelField from '../../InputLabelField';
 
 import THEME_VARIANT from '../../../constants/themeVariant';
 import { JUSTIFY_CONTENT } from '../../../constants/position';
-
-import {
-  lengthValidation,
-  emailValidation,
-  requiredValidation,
-} from '../../../utils/formValidation';
-
-const maxLength = lengthValidation({ length: 30, messege: 'Не более 30 символов', toMore: true });
-const minLength = lengthValidation({ length: 5, messege: 'Не менее 5 символов', toMore: false });
-const requiredField = requiredValidation({ messege: 'Обязателен для заполнения' });
-const emailField = emailValidation({ messege: 'Неверный формат email' });
+import validate from './validate';
 
 class Login extends React.Component {
   state = {
@@ -54,7 +44,6 @@ class Login extends React.Component {
                 errorMessagePosition={JUSTIFY_CONTENT.center}
                 component={InputLabelField}
                 label='Ваша почта'
-                validate={[requiredField, maxLength, minLength, emailField]}
               />
               <Field
                 name='password'
@@ -62,7 +51,6 @@ class Login extends React.Component {
                 errorMessagePosition={JUSTIFY_CONTENT.center}
                 component={InputLabelField}
                 label='Пароль'
-                validate={[requiredField, maxLength, minLength]}
               />
               <Button text='Войти' />
             </form>
@@ -85,6 +73,7 @@ Login.defaultProps = {
 
 const LoginForm = reduxForm({
   form: 'login',
+  validate,
 })(Login);
 
 export default LoginForm;
