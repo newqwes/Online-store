@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 const LoginFormContent = styled.div`
-  margin-top: 10%;
-  padding: 2% 5%;
+  margin-top: 150px;
+  padding: 30px 60px;
   background-color: ${({ theme, themeVariant }) => theme.login.background[themeVariant]};
   box-shadow: 0px 0px 20px ${({ theme, themeVariant }) => theme.login.shadow.main[themeVariant]};
 
@@ -14,7 +14,7 @@ const LoginFormContent = styled.div`
 
   button {
     display: block;
-    margin: 10% auto 5%;
+    margin: 15px auto 10px;
     padding: 10px 20px;
     font-size: 16px;
     font-weight: 400;

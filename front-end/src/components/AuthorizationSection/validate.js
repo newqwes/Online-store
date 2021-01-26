@@ -1,18 +1,18 @@
 import { rules, validation } from '../../utils/validation';
 
 const CONSTRAINTS = {
-  min: 5,
-  max: 40,
+  minLength: 5,
+  maxLength: 40,
 };
 
 const commonRules = [
   {
-    rule: rules.maxCharacters(CONSTRAINTS.max),
-    message: `Не более ${CONSTRAINTS.max} символов`,
+    rule: rules.maxCharacters(CONSTRAINTS.maxLength),
+    message: `Не более ${CONSTRAINTS.maxLength} символов`,
   },
   {
-    rule: rules.minCharacters(CONSTRAINTS.min),
-    message: `Не меньше ${CONSTRAINTS.min} символов`,
+    rule: rules.minCharacters(CONSTRAINTS.minLength),
+    message: `Не меньше ${CONSTRAINTS.minLength} символов`,
   },
   {
     rule: rules.required,
