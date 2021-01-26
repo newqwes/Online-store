@@ -4,6 +4,7 @@ import {
   ADD_TO_CART,
   GET_AUTHORIZATION_SUCCESS,
   GET_AUTHORIZATION_PENDING,
+  GET_AUTHORIZATION_FAILURE,
 } from '../actions';
 
 export const getProductsList = (type) => ({
@@ -24,6 +25,11 @@ export const addToCart = (item) => ({
 export const loginSuccess = (token) => ({
   type: GET_AUTHORIZATION_SUCCESS,
   payload: token,
+});
+
+export const loginFailure = (error) => ({
+  type: GET_AUTHORIZATION_FAILURE,
+  payload: error,
 });
 
 export const login = (authorizationData) => ({

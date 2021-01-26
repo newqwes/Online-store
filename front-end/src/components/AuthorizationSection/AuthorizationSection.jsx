@@ -2,15 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import THEME_VARIANT from '../../constants/themeVariant';
+import { JUSTIFY_CONTENT } from '../../constants/position';
 
 import { AuthorizationWrapper, AuthorizationContent } from './styled';
+import LoginFormContainer from '../../containers/LoginFormContainer';
+import Flex from '../Flex';
 
-import LoginForm from './LoginForm';
-
-const AuthorizationSection = ({ login, themeVariant }) => (
+const AuthorizationSection = ({ themeVariant, login }) => (
   <AuthorizationWrapper themeVariant={themeVariant}>
     <AuthorizationContent>
-      <LoginForm onSubmit={login} />
+      <Flex justifyContent={JUSTIFY_CONTENT.center}>
+        <LoginFormContainer onSubmit={login} />
+      </Flex>
     </AuthorizationContent>
   </AuthorizationWrapper>
 );

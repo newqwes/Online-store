@@ -7,13 +7,10 @@ const light = {
     color: {
       default: COLORS.darkDesaturatedOrange,
       inverted: COLORS.verySoftYellow,
+      warning: COLORS.darkPink,
     },
   },
   login: {
-    border: {
-      default: COLORS.verySoftYellow,
-      inverted: COLORS.softYellow,
-    },
     background: {
       default: COLORS.mostlyWhiteYellow,
       inverted: COLORS.softYellow,
@@ -24,14 +21,48 @@ const light = {
         inverted: COLORS.verySoftYellow,
       },
     },
-    button: {
-      background: {
-        default: COLORS.mostlyWhiteYellow,
-        inverted: COLORS.softYellow,
-      },
+    link: {
       color: {
         default: COLORS.darkDesaturatedOrange,
         inverted: COLORS.verySoftYellow,
+      },
+    },
+    input: {
+      border: {
+        default: COLORS.darkDesaturatedOrange,
+        inverted: COLORS.verySoftYellow,
+      },
+    },
+    button: {
+      color: {
+        default: COLORS.darkDesaturatedOrange,
+        inverted: COLORS.verySoftYellow,
+      },
+      border: {
+        default: COLORS.darkDesaturatedOrange,
+        inverted: COLORS.verySoftYellow,
+      },
+      background: {
+        default: COLORS.darkDesaturatedOrange,
+        inverted: COLORS.verySoftYellow,
+      },
+      shadow: {
+        default: COLORS.veryDarkGray,
+        inverted: COLORS.veryDarkGray,
+      },
+    },
+    shadow: {
+      main: {
+        default: COLORS.veryDarkGray,
+        inverted: COLORS.veryDarkGray,
+      },
+      error: {
+        default: COLORS.softRedShadow,
+        inverted: COLORS.softRedShadow,
+      },
+      success: {
+        default: COLORS.softLimeGreenShadow,
+        inverted: COLORS.softLimeGreenShadow,
       },
     },
   },
