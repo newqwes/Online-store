@@ -1,83 +1,56 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { reduxForm, Field } from 'redux-form';
+import { Field } from 'redux-form';
 import { NavLink } from 'react-router-dom';
 
-import { LoginWrapper, LoginContent } from './styled';
+import LoginFormContent from './styled';
 
 import Button from '../../Button';
 import Flex from '../../Flex';
-import InputLabelField from '../../InputLabelField';
+import InputField from '../InputField';
 
 import THEME_VARIANT from '../../../constants/themeVariant';
 import { JUSTIFY_CONTENT } from '../../../constants/position';
-import validate from './validate';
 
-class Login extends React.Component {
+class LoginForm extends React.Component {
   state = {
     isErrorAnimation: false,
   };
 
-  componentDidUpdate(prevProps) {
-    if (this.props.flag !== prevProps.flag) {
-      this.setState({ isErrorAnimation: true });
-    }
-  }
-
   onAnimationEnd = () => this.setState({ isErrorAnimation: false });
+
+  handleClick = () => this.setState({ isErrorAnimation: true });
 
   render() {
     const { themeVariant, handleSubmit } = this.props;
     const { isErrorAnimation } = this.state;
 
     return (
-      <LoginWrapper themeVariant={themeVariant}>
-        <Flex justifyContent={JUSTIFY_CONTENT.center}>
-          <LoginContent
-            themeVariant={themeVariant}
-            isErrorAnimation={isErrorAnimation}
-            onAnimationEnd={this.onAnimationEnd}
-          >
-            <form onSubmit={handleSubmit}>
-              <Field
-                name='email'
-                type='text'
-                errorMessagePosition={JUSTIFY_CONTENT.center}
-                component={InputLabelField}
-                label='Ваша почта'
-              />
-              <Field
-                name='password'
-                type='password'
-                errorMessagePosition={JUSTIFY_CONTENT.center}
-                component={InputLabelField}
-                label='Пароль'
-              />
-              <Button text='Войти' />
-              <Flex justifyContent={JUSTIFY_CONTENT.center}>
-                <NavLink to='/registration'>Регистрация</NavLink>
-              </Flex>
-            </form>
-          </LoginContent>
-        </Flex>
-      </LoginWrapper>
+      <LoginFormContent
+        themeVariant={themeVariant}
+        isErrorAnimation={isErrorAnimation}
+        onAnimationEnd={this.onAnimationEnd}
+      >
+        <form onSubmit={handleSubmit}>
+          <Field name='email' type='text' component={InputField} label='Ваша почта' />
+          <Field name='password' type='password' component={InputField} label='Пароль' />
+          <Button text='Войти' onClick={this.handleClick} />
+          <Flex justifyContent={JUSTIFY_CONTENT.center}>
+            <NavLink to='/registration'>Регистрация</NavLink>
+          </Flex>
+        </form>
+      </LoginFormContent>
     );
   }
 }
 
-Login.propTypes = {
-  flag: PropTypes.bool.isRequired,
+LoginForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   themeVariant: PropTypes.string,
 };
 
-Login.defaultProps = {
+LoginForm.defaultProps = {
   themeVariant: THEME_VARIANT.default,
 };
-
-const LoginForm = reduxForm({
-  form: 'login',
-  validate,
-})(Login);
 
 export default LoginForm;

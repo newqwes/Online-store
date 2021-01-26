@@ -4,7 +4,6 @@ const initialState = {
   token: '',
   isSuccess: false,
   error: '',
-  flag: false,
 };
 
 const authorization = (state = initialState, action) => {
@@ -14,14 +13,12 @@ const authorization = (state = initialState, action) => {
         token: action.payload,
         isSuccess: true,
         error: '',
-        flag: state.flag,
       };
     case GET_AUTHORIZATION_FAILURE:
       return {
         token: '',
         isSuccess: false,
         error: action.payload,
-        flag: !state.flag,
       };
     default:
       return state;
