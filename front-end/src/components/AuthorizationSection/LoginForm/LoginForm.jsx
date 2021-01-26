@@ -1,42 +1,56 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { reduxForm, Field } from 'redux-form';
+import { Field } from 'redux-form';
+import { NavLink } from 'react-router-dom';
 
-import { LoginWrapper, LoginContent } from './styled';
+import LoginFormContent from './styled';
 
 import Button from '../../Button';
 import Flex from '../../Flex';
+import InputField from '../InputField';
 
 import THEME_VARIANT from '../../../constants/themeVariant';
 import { JUSTIFY_CONTENT } from '../../../constants/position';
 
-const Login = ({ handleSubmit, themeVariant }) => (
-  <LoginWrapper themeVariant={themeVariant}>
-    <Flex justifyContent={JUSTIFY_CONTENT.center}>
-      <LoginContent themeVariant={themeVariant}>
-        <form onSubmit={handleSubmit}>
-          <label htmlFor='email'>Ваша почта</label>
-          <Field name='email' component='input' type='email' />
-          <label htmlFor='password'>Пароль</label>
-          <Field name='password' component='input' type='password' />
-          <Button text='Войти' />
-        </form>
-      </LoginContent>
-    </Flex>
-  </LoginWrapper>
-);
+class LoginForm extends React.Component {
+  state = {
+    isErrorAnimation: false,
+  };
 
-Login.propTypes = {
+  onAnimationEnd = () => this.setState({ isErrorAnimation: false });
+
+  handleClick = () => this.setState({ isErrorAnimation: true });
+
+  render() {
+    const { themeVariant, handleSubmit } = this.props;
+    const { isErrorAnimation } = this.state;
+
+    return (
+      <LoginFormContent
+        themeVariant={themeVariant}
+        isErrorAnimation={isErrorAnimation}
+        onAnimationEnd={this.onAnimationEnd}
+      >
+        <form onSubmit={handleSubmit}>
+          <Field name='email' type='text' component={InputField} label='Ваша почта' />
+          <Field name='password' type='password' component={InputField} label='Пароль' />
+          <Button text='Войти' onClick={this.handleClick} />
+          <Flex justifyContent={JUSTIFY_CONTENT.center}>
+            <NavLink to='/registration'>Регистрация</NavLink>
+          </Flex>
+        </form>
+      </LoginFormContent>
+    );
+  }
+}
+
+LoginForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   themeVariant: PropTypes.string,
 };
 
-Login.defaultProps = {
+LoginForm.defaultProps = {
   themeVariant: THEME_VARIANT.default,
 };
-
-const LoginForm = reduxForm({
-  form: 'login',
-})(Login);
 
 export default LoginForm;

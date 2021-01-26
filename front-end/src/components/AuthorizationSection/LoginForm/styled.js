@@ -1,42 +1,44 @@
 import styled from 'styled-components';
 
-export const LoginWrapper = styled.div``;
+const LoginFormContent = styled.div`
+  margin-top: 150px;
+  padding: 30px 60px;
+  background-color: ${({ theme, themeVariant }) => theme.login.background[themeVariant]};
+  box-shadow: 0px 0px 20px ${({ theme, themeVariant }) => theme.login.shadow.main[themeVariant]};
 
-export const LoginContent = styled.div`
-  margin-top: 10%;
-  padding: 3% 5%;
-  border-radius: 5%;
-  border: 5px solid ${(props) => props.theme.login.border[props.themeVariant]};
-  background-color: ${(props) => props.theme.login.background[props.themeVariant]}50;
-
-  label {
-    display: block;
-    margin: 15% 5% 4%;
-    font-size: 16px;
-    letter-spacing: 0.1em;
-    color: ${(props) => props.theme.login.label.color[props.themeVariant]};
-  }
-
-  input {
-    padding: 0.5rem 1rem;
-    border-radius: 0.2rem;
-    border: none;
-  }
+  animation-name: ${({ isErrorAnimation }) => isErrorAnimation && 'error'};
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in-out;
+  animation-duration: 0.8s;
+  animation-delay: 0.5s;
 
   button {
     display: block;
-    margin: 15% auto 0;
-    padding: 15px 25px;
-    letter-spacing: 0.1em;
+    margin: 15px auto 10px;
+    padding: 10px 20px;
     font-size: 16px;
     font-weight: 400;
-    border: none;
-
-    background-color: ${(props) => props.theme.login.button.background[props.themeVariant]};
-    color: ${(props) => props.theme.login.button.color[props.themeVariant]};
+    border-radius: 0;
+    border: 1px solid ${({ theme, themeVariant }) => theme.login.button.border[themeVariant]};
+    background-color: ${({ theme, themeVariant }) => theme.login.button.background[themeVariant]}10;
+    color: ${({ theme, themeVariant }) => theme.login.button.color[themeVariant]};
 
     &:active {
-      border-radius: 35px;
+      border-radius: 0;
+      box-shadow: 0px 0px 20px -5px ${({ theme, themeVariant }) => theme.login.button.shadow[themeVariant]};
+    }
+  }
+  a {
+    font-size: 15px;
+    color: ${({ theme, themeVariant }) => theme.login.link.color[themeVariant]};
+  }
+
+  @keyframes error {
+    50% {
+      box-shadow: 0px 0px 20px
+        ${({ theme, themeVariant }) => theme.login.shadow.error[themeVariant]};
     }
   }
 `;
+
+export default LoginFormContent;
