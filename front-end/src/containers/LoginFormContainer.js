@@ -1,9 +1,9 @@
 import { reduxForm } from 'redux-form';
-import LoginForm from '../components/AuthorizationSection/LoginForm';
+import LoginForm from '../components/Authentication/LoginForm';
 import {
   emailValidation,
   passwordValidation,
-} from '../components/AuthorizationSection/validate';
+} from '../components/Authentication/validate';
 
 const validate = ({ email, password }) => ({
   email: emailValidation(email),

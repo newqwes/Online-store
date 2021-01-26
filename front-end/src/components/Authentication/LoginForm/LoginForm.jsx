@@ -11,6 +11,7 @@ import InputField from '../InputField';
 
 import THEME_VARIANT from '../../../constants/themeVariant';
 import { JUSTIFY_CONTENT } from '../../../constants/position';
+import ROUTER_PATH from '../../../constants/routerPath';
 
 class LoginForm extends React.Component {
   state = {
@@ -36,7 +37,7 @@ class LoginForm extends React.Component {
           <Field name='password' type='password' component={InputField} label='Пароль' />
           <Button text='Войти' onClick={this.handleClick} />
           <Flex justifyContent={JUSTIFY_CONTENT.center}>
-            <NavLink to='/registration'>Регистрация</NavLink>
+            <NavLink to={ROUTER_PATH.registration}>Регистрация</NavLink>
           </Flex>
         </form>
       </LoginFormContent>
