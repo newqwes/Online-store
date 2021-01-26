@@ -14,4 +14,6 @@ export function* login({ payload }) {
   }
 }
 
-export default () => all([takeEvery(GET_AUTHORIZATION_PENDING, login)]);
+export default function authorizationSaga() {
+  return all([takeEvery(GET_AUTHORIZATION_PENDING, login)]);
+}
