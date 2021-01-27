@@ -8,11 +8,12 @@ import RegistrationFormContent from './styled';
 import Button from '../../Button';
 import Flex from '../../Flex';
 import InputField from '../InputField';
+import Label from '../../Label';
 
 import THEME_VARIANT from '../../../constants/themeVariant';
-import { JUSTIFY_CONTENT } from '../../../constants/position';
 import ROUTER_PATH from '../../../constants/routerPath';
-import Label from '../../Label';
+import { INPUT_NAMES, INPUT_TYPES } from '../../../constants/input';
+import { JUSTIFY_CONTENT } from '../../../constants/position';
 
 class RegistrationForm extends React.Component {
   render() {
@@ -20,15 +21,35 @@ class RegistrationForm extends React.Component {
 
     return (
       <RegistrationFormContent themeVariant={themeVariant}>
-      <Label text='Регистрация'/>
+        <Label text='Регистрация' />
         <form onSubmit={handleSubmit}>
-          <Field name='login' type='text' component={InputField} label='Логин' />
-          <Field name='email' type='text' component={InputField} label='Ваша почта' />
-          <Field name='tel' type='tel' component={InputField} label='Телефон' />
-          <Field name='password' type='password' component={InputField} label='Пароль' />
           <Field
-            name='repassword'
-            type='repassword'
+            name={INPUT_NAMES.login}
+            type={INPUT_TYPES.text}
+            component={InputField}
+            label='Логин'
+          />
+          <Field
+            name={INPUT_NAMES.email}
+            type={INPUT_TYPES.text}
+            component={InputField}
+            label='Ваша почта'
+          />
+          <Field
+            name={INPUT_NAMES.tel}
+            type={INPUT_TYPES.tel}
+            component={InputField}
+            label='Телефон'
+          />
+          <Field
+            name={INPUT_NAMES.password}
+            type={INPUT_TYPES.password}
+            component={InputField}
+            label='Пароль'
+          />
+          <Field
+            name={INPUT_NAMES.repassword}
+            type={INPUT_TYPES.password}
             component={InputField}
             label='Повторите пароль'
           />

@@ -10,8 +10,9 @@ import Flex from '../../Flex';
 import InputField from '../InputField';
 
 import THEME_VARIANT from '../../../constants/themeVariant';
-import { JUSTIFY_CONTENT } from '../../../constants/position';
 import ROUTER_PATH from '../../../constants/routerPath';
+import { INPUT_NAMES, INPUT_TYPES } from '../../../constants/input';
+import { JUSTIFY_CONTENT } from '../../../constants/position';
 
 class LoginForm extends React.Component {
   state = {
@@ -33,8 +34,18 @@ class LoginForm extends React.Component {
         onAnimationEnd={this.onAnimationEnd}
       >
         <form onSubmit={handleSubmit}>
-          <Field name='email' type='text' component={InputField} label='Ваша почта' />
-          <Field name='password' type='password' component={InputField} label='Пароль' />
+          <Field
+            name={INPUT_NAMES.email}
+            type={INPUT_TYPES.text}
+            component={InputField}
+            label='Ваша почта'
+          />
+          <Field
+            name={INPUT_NAMES.password}
+            type={INPUT_TYPES.password}
+            component={InputField}
+            label='Пароль'
+          />
           <Button text='Войти' onClick={this.handleClick} />
           <Flex justifyContent={JUSTIFY_CONTENT.center}>
             <NavLink to={ROUTER_PATH.registration}>Регистрация</NavLink>
