@@ -67,7 +67,21 @@ FormSection.propTypes = {
   submit: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   themeVariant: PropTypes.string,
-  content: PropTypes.any,
+  content: PropTypes.shape({
+    label: PropTypes.string.isRequired,
+    buttonText: PropTypes.string.isRequired,
+    link: PropTypes.shape({
+      route: PropTypes.string.isRequired,
+      text: PropTypes.string.isRequired,
+    }),
+    fields: PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        type: PropTypes.string.isRequired,
+        text: PropTypes.string.isRequired,
+      })
+    ),
+  }),
 };
 
 FormSection.defaultProps = {
