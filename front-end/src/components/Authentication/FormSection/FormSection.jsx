@@ -8,14 +8,12 @@ import Label from '../../Label';
 import Button from '../../Button';
 import InputField from '../InputField';
 
-import { LoginWrapper, LoginForm } from './styled';
+import { FormWrapper, FormContent } from './styled';
 
-import ROUTER_PATH from '../../../constants/routerPath';
 import THEME_VARIANT from '../../../constants/themeVariant';
 import { JUSTIFY_CONTENT } from '../../../constants/position';
-import { INPUT_NAMES, INPUT_TYPES } from '../../../constants/input';
 
-class LoginSection extends React.Component {
+class FormSection extends React.Component {
   state = {
     isErrorAnimation: false,
   };
@@ -25,55 +23,55 @@ class LoginSection extends React.Component {
   handleClick = () => this.setState({ isErrorAnimation: true });
 
   render() {
-    const { themeVariant, login, handleSubmit } = this.props;
+    const {
+      themeVariant,
+      submit,
+      handleSubmit,
+      content: { label, buttonText, link, fields },
+    } = this.props;
+
     const { isErrorAnimation } = this.state;
 
-    const onSubmit = handleSubmit(login);
+    const mapFields = fields.map(({ text, name, type }) => (
+      <Field key={text} name={name} type={type} component={InputField} label={text} />
+    ));
+
+    const onSubmit = handleSubmit(submit);
 
     return (
-      <LoginWrapper themeVariant={themeVariant}>
+      <FormWrapper themeVariant={themeVariant}>
         <Flex justifyContent={JUSTIFY_CONTENT.center}>
-          <LoginForm
+          <FormContent
             themeVariant={themeVariant}
             isErrorAnimation={isErrorAnimation}
             onAnimationEnd={this.onAnimationEnd}
           >
             <Flex justifyContent={JUSTIFY_CONTENT.center}>
-              <Label text='Авторизация' />
+              <Label text={label} />
             </Flex>
             <form onSubmit={onSubmit}>
-              <Field
-                name={INPUT_NAMES.email}
-                type={INPUT_TYPES.text}
-                component={InputField}
-                label='Ваша почта'
-              />
-              <Field
-                name={INPUT_NAMES.password}
-                type={INPUT_TYPES.password}
-                component={InputField}
-                label='Пароль'
-              />
-              <Button text='Войти' onClick={this.handleClick} />
+              {mapFields}
+              <Button text={buttonText} onClick={this.handleClick} />
               <Flex justifyContent={JUSTIFY_CONTENT.center}>
-                <NavLink to={ROUTER_PATH.registration}>Регистрация</NavLink>
+                <NavLink to={link.route}>{link.text}</NavLink>
               </Flex>
             </form>
-          </LoginForm>
+          </FormContent>
         </Flex>
-      </LoginWrapper>
+      </FormWrapper>
     );
   }
 }
 
-LoginSection.propTypes = {
-  login: PropTypes.func.isRequired,
+FormSection.propTypes = {
+  submit: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   themeVariant: PropTypes.string,
+  content: PropTypes.any,
 };
 
-LoginSection.defaultProps = {
+FormSection.defaultProps = {
   themeVariant: THEME_VARIANT.default,
 };
 
-export default LoginSection;
+export default FormSection;

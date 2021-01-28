@@ -2,7 +2,7 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
 
-import RegistrationSection from '../components/Authentication/RegistrationSection';
+import FormSection from '../components/Authentication/FormSection';
 import { emailValidation, passwordValidation } from '../components/Authentication/validate';
 
 const validate = ({ email, password }) => ({
@@ -21,4 +21,4 @@ const mapDispatchToProps = {};
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
 
-export default compose(withReduxForm, withConnect)(RegistrationSection);
+export default compose(withReduxForm, withConnect)(FormSection);

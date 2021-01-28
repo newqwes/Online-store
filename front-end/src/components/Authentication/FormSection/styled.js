@@ -1,21 +1,27 @@
 import styled from 'styled-components';
 
-export const RegistrationWrapper = styled.section`
+export const FormWrapper = styled.section`
   background: url(${(props) => props.theme.background.imageBackground[props.themeVariant]});
   margin: 0 auto;
   width: 100%;
   min-height: 85vh;
 `;
 
-export const RegistrationForm = styled.div`
-  margin-top: 50px;
-  padding: 30px 80px;
+export const FormContent = styled.div`
+  margin-top: 100px;
+  padding: 30px 60px;
   background-color: ${({ theme, themeVariant }) => theme.login.background[themeVariant]};
   box-shadow: 0px 0px 20px ${({ theme, themeVariant }) => theme.login.shadow.main[themeVariant]};
 
+  animation-name: ${({ isErrorAnimation }) => isErrorAnimation && 'error'};
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in-out;
+  animation-duration: 0.8s;
+  animation-delay: 0.5s;
+
   button {
     display: block;
-    margin: 25px auto 10px;
+    margin: 15px auto 10px;
     padding: 10px 20px;
     font-size: 16px;
     font-weight: 400;
@@ -32,5 +38,12 @@ export const RegistrationForm = styled.div`
   a {
     font-size: 15px;
     color: ${({ theme, themeVariant }) => theme.login.link.color[themeVariant]};
+  }
+
+  @keyframes error {
+    50% {
+      box-shadow: 0px 0px 20px
+        ${({ theme, themeVariant }) => theme.login.shadow.error[themeVariant]};
+    }
   }
 `;
