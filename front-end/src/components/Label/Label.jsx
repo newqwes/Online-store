@@ -19,7 +19,7 @@ const Label = ({ text, fontSize, textAlign, fontWeight, themeVariant }) => (
 );
 
 Label.propTypes = {
-  text: PropTypes.string.isRequired,
+  text: PropTypes.string,
   fontSize: PropTypes.number,
   textAlign: PropTypes.string,
   fontWeight: PropTypes.number,

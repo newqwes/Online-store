@@ -6,12 +6,12 @@ import Flex from '../../Flex';
 import Label from '../../Label';
 import InputFieldContent from './styled';
 
-import THEME_VARIANT from '../../../constants/themeVariant';
-import FONT_WEIGHT from '../../../constants/fontWeight';
 import FONT_SIZE from '../../../constants/fontSize';
-import PHONE_FORMAT_MASK from '../../../constants/phoneFormatMask';
 import { INPUT_TYPES } from '../../../constants/input';
+import FONT_WEIGHT from '../../../constants/fontWeight';
+import THEME_VARIANT from '../../../constants/themeVariant';
 import { JUSTIFY_CONTENT } from '../../../constants/position';
+import PHONE_FORMAT_MASK from '../../../constants/phoneFormatMask';
 
 const InputField = ({ input, label, type, meta: { touched, error } }) => {
   const commonInput = <input {...input} placeholder={label} type={type} />;
@@ -26,20 +26,22 @@ const InputField = ({ input, label, type, meta: { touched, error } }) => {
     />
   );
 
+  const errorLabel = (
+    <Flex justifyContent={JUSTIFY_CONTENT.center}>
+      <Label
+        text={error}
+        fontWeight={FONT_WEIGHT.normal}
+        fontSize={FONT_SIZE.least}
+        themeVariant={THEME_VARIANT.warning}
+      />
+    </Flex>
+  );
+
   return (
     <InputFieldContent>
       <label>{label}</label>
       {type === INPUT_TYPES.tel ? phoneInput : commonInput}
-      {touched && error && (
-        <Flex justifyContent={JUSTIFY_CONTENT.center}>
-          <Label
-            text={error}
-            fontWeight={FONT_WEIGHT.normal}
-            fontSize={FONT_SIZE.least}
-            themeVariant={THEME_VARIANT.warning}
-          />
-        </Flex>
-      )}
+      {touched && error && errorLabel}
     </InputFieldContent>
   );
 };
