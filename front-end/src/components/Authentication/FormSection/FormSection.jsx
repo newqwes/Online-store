@@ -55,7 +55,6 @@ class FormSection extends React.Component {
       handleSubmit,
       content: { title, buttonText, link, fields },
     } = this.props;
-
     const { isErrorAnimation } = this.state;
 
     return (

@@ -2,7 +2,7 @@ import { rules, validation } from '../../utils/validation';
 
 const CONSTRAINTS = {
   minLength: 5,
-  maxLength: 40,
+  maxLength: 50,
 };
 
 const commonRules = [
@@ -20,12 +20,22 @@ const commonRules = [
   },
 ];
 
+export const telValidation = validation(commonRules);
+export const loginValidation = validation(commonRules);
 export const passwordValidation = validation(commonRules);
 
 export const emailValidation = validation([
   {
     rule: rules.email,
     message: 'Неверный формат email',
+  },
+  ...commonRules,
+]);
+
+export const equalValidation = validation([
+  {
+    rule: rules.equal,
+    message: 'Не совпадают',
   },
   ...commonRules,
 ]);

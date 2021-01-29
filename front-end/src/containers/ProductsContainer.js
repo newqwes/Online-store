@@ -4,8 +4,8 @@ import { getProductsList, addToCart } from '../actionCreators';
 
 import ProductSection from '../components/ProductSection';
 
-const mapStateToProps = (state) => ({
-  products: state.products,
+const mapStateToProps = ({ products }) => ({
+  products,
 });
 
 const mapDispatchToProps = {

@@ -31,6 +31,7 @@ const light = {
       border: {
         default: COLORS.darkDesaturatedOrange,
         inverted: COLORS.verySoftYellow,
+        warning: COLORS.darkPink,
       },
     },
     button: {

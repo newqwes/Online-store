@@ -1,6 +1,6 @@
+import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
-import { compose } from 'redux';
 
 import { login } from '../actionCreators';
 
@@ -17,10 +17,14 @@ const withReduxForm = reduxForm({
   validate,
 });
 
+const mapStateToProps = ({ authorization }) => ({
+  authorization,
+});
+
 const mapDispatchToProps = {
   submit: login,
 };
 
-const withConnect = connect(null, mapDispatchToProps);
+const withConnect = connect(mapStateToProps, mapDispatchToProps);
 
 export default compose(withReduxForm, withConnect)(FormSection);

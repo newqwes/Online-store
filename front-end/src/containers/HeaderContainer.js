@@ -1,10 +1,11 @@
+import { size, getOr } from 'lodash/fp';
 import { connect } from 'react-redux';
-import { getOr } from 'lodash/fp';
 
 import Header from '../components/Header';
 
-const mapStateToProps = (state) => ({
-  cartItemsCount: getOr('0', ['cart', 'length'], state),
+const mapStateToProps = ({ cart, authorization }) => ({
+  cartItemsCount: size(cart),
+  isSuccess: getOr(false, 'isSuccess', authorization),
 });
 
 export default connect(mapStateToProps)(Header);

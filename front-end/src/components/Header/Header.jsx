@@ -17,7 +17,7 @@ import Label from '../Label';
 import Link from '../Link';
 import Button from '../Button';
 
-const Header = ({ cartItemsCount, themeVariant }) => (
+const Header = ({ cartItemsCount, themeVariant, isSuccess }) => (
   <HeaderWrapper themeVariant={themeVariant}>
     <HeaderContent>
       <Flex>
@@ -43,9 +43,7 @@ const Header = ({ cartItemsCount, themeVariant }) => (
         <Link to='/cart'>
           <Cart size={ICON_SIZE.large} cartItemsCount={cartItemsCount} />
         </Link>
-        <Link to='/login'>
-          <Button text='Войти' />
-        </Link>
+        <Link to='/login'>{isSuccess ? <Button text='Выйти' /> : <Button text='Войти' />}</Link>
       </Flex>
     </HeaderContent>
   </HeaderWrapper>
@@ -53,6 +51,7 @@ const Header = ({ cartItemsCount, themeVariant }) => (
 
 Header.propTypes = {
   themeVariant: PropTypes.string,
+  isSuccess: PropTypes.bool.isRequired,
   cartItemsCount: PropTypes.number.isRequired,
 };
 

@@ -3,7 +3,7 @@
   "info": {
     "version": "1.0.0",
     "title": "Online Store",
-    "description": "My Online Store API. \n login: newnewqwes@gmail.com \n pass: admin \n key: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5ld25ld3F3ZXNAZ21haWwuY29tIiwiaWQiOjEsInVzZXJfdHlwZSI6NjY2LCJpYXQiOjE2MTA0NjU0MzR9.vvM3t8VJZZLq0hninakk1IiwE8bYlLZzVqMNyRN0Leg"
+    "description": "My Online Store API. \n login: newnewqwes@gmail.com \n pass: admin"
   },
   "schemes": ["http"],
   "host": "localhost:3005",
@@ -208,11 +208,30 @@
         "message": {
           "type": "string"
         },
-        "token": {
-          "type": "string"
+        "data": {
+          "type": "object",
+          "properties": {
+            "email": {
+              "type": "string"
+            },
+            "login": {
+              "type": "string"
+            },
+            "tel": {
+              "type": "string"
+            },
+            "token": {
+              "type": "string"
+            },
+            "userType": {
+              "type": "number",
+              "format": "float"
+            }
+          }
         }
       }
     },
+
     "User": {
       "required": ["login", "password", "email", "tel", "user_type"],
       "properties": {
