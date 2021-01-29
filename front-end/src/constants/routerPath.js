@@ -9,6 +9,7 @@ const routers = {
   },
   contacts: '/contacts',
   login: '/login',
+  registration: '/registration',
   main: '/',
 };
 

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const InputFieldContent = styled.div`
   label {
     display: block;
-    margin: 30px 15px 10px;
+    margin: 20px 15px 10px;
     font-size: 16px;
     color: ${({ theme, themeVariant }) => theme.login.label.color[themeVariant]};
   }
