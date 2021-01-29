@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 
-import ROUTER_PATH from './constants/routerPath.js';
-import AUTHENTICATION from './constants/authentication.js';
+import ROUTER_PATH from './constants/routerPath';
+import AUTHENTICATION from './constants/authentication';
 
 import ProductsContainer from './containers/ProductsContainer';
 import LoginContainer from './containers/LoginContainer';
