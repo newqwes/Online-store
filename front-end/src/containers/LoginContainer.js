@@ -1,4 +1,5 @@
 import { compose } from 'redux';
+import { getOr } from 'lodash/fp';
 import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
 
@@ -17,8 +18,8 @@ const withReduxForm = reduxForm({
   validate,
 });
 
-const mapStateToProps = ({ authorization }) => ({
-  authorization,
+const mapStateToProps = (state) => ({
+  isSuccess: getOr(false, ['authorization', 'isSuccess'], state),
 });
 
 const mapDispatchToProps = {

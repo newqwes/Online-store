@@ -1,4 +1,4 @@
-import { GET_AUTHORIZATION_SUCCESS, GET_AUTHORIZATION_FAILURE } from '../actions';
+import { GET_AUTHORIZATION_SUCCESS, GET_AUTHORIZATION_FAILURE, USER_LOGOUT } from '../actions';
 
 const initialState = {
   userData: {
@@ -25,6 +25,12 @@ const authorization = (state = initialState, action) => {
         userData: initialState.userData,
         isSuccess: false,
         error: action.payload,
+      };
+    case USER_LOGOUT:
+      return {
+        userData: initialState.userData,
+        isSuccess: false,
+        error: initialState.error,
       };
     default:
       return state;

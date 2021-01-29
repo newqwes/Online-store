@@ -6,6 +6,7 @@ import {
   GET_AUTHORIZATION_PENDING,
   GET_AUTHORIZATION_FAILURE,
   GET_REGISTRATION_PENDING,
+  USER_LOGOUT,
 } from '../actions';
 
 export const getProductsList = (type) => ({
@@ -36,6 +37,10 @@ export const loginFailure = (error) => ({
 export const login = (authorizationData) => ({
   type: GET_AUTHORIZATION_PENDING,
   payload: authorizationData,
+});
+
+export const logout = () => ({
+  type: USER_LOGOUT,
 });
 
 export const registration = (registrationData) => ({

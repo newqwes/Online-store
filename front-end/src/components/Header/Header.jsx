@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 import THEME_VARIANT from '../../constants/themeVariant';
@@ -17,7 +17,7 @@ import Label from '../Label';
 import Link from '../Link';
 import Button from '../Button';
 
-const Header = ({ cartItemsCount, themeVariant, isSuccess }) => (
+const Header = ({ cartItemsCount, themeVariant, isSuccess, login, logout }) => (
   <HeaderWrapper themeVariant={themeVariant}>
     <HeaderContent>
       <Flex>
@@ -43,7 +43,20 @@ const Header = ({ cartItemsCount, themeVariant, isSuccess }) => (
         <Link to='/cart'>
           <Cart size={ICON_SIZE.large} cartItemsCount={cartItemsCount} />
         </Link>
-        <Link to='/login'>{isSuccess ? <Button text='Выйти' /> : <Button text='Войти' />}</Link>
+
+        {/* TODO  Move to a separate function */}
+        {isSuccess ? (
+          <Fragment>
+            <Link themeVariant={THEME_VARIANT.inverted} to='/'>
+              {login}
+            </Link>
+            <Button text='Выйти' onClick={logout} />
+          </Fragment>
+        ) : (
+          <Link to='/login'>
+            <Button text='Войти' />
+          </Link>
+        )}
       </Flex>
     </HeaderContent>
   </HeaderWrapper>
@@ -53,6 +66,8 @@ Header.propTypes = {
   themeVariant: PropTypes.string,
   isSuccess: PropTypes.bool.isRequired,
   cartItemsCount: PropTypes.number.isRequired,
+  login: PropTypes.string.isRequired,
+  logout: PropTypes.func.isRequired,
 };
 
 Header.defaultProps = {

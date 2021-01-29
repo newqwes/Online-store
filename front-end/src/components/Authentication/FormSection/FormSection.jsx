@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 
 import Flex from '../../Flex';
 import Label from '../../Label';
@@ -12,6 +12,7 @@ import { FormWrapper, FormContent } from './styled';
 
 import THEME_VARIANT from '../../../constants/themeVariant';
 import { ALIGN_ITEMS, JUSTIFY_CONTENT } from '../../../constants/position';
+import ROUTER_PATH from '../../../constants/routerPath';
 
 class FormSection extends React.Component {
   state = {
@@ -25,6 +26,7 @@ class FormSection extends React.Component {
   static propTypes = {
     submit: PropTypes.func.isRequired,
     handleSubmit: PropTypes.func.isRequired,
+    isSuccess: PropTypes.bool.isRequired,
     themeVariant: PropTypes.string,
     content: PropTypes.shape({
       title: PropTypes.string.isRequired,
@@ -53,9 +55,12 @@ class FormSection extends React.Component {
       themeVariant,
       submit,
       handleSubmit,
+      isSuccess,
       content: { title, buttonText, link, fields },
     } = this.props;
     const { isErrorAnimation } = this.state;
+
+    if (isSuccess) return <Redirect to={ROUTER_PATH.products.pizza} />;
 
     return (
       <FormWrapper themeVariant={themeVariant}>
