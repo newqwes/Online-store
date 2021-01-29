@@ -17,12 +17,10 @@ const withReduxForm = reduxForm({
   validate,
 });
 
-const mapStateToProps = () => ({});
-
 const mapDispatchToProps = {
   submit: login,
 };
 
-const withConnect = connect(mapStateToProps, mapDispatchToProps);
+const withConnect = connect(null, mapDispatchToProps);
 
 export default compose(withReduxForm, withConnect)(FormSection);

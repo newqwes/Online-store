@@ -15,10 +15,7 @@ const withReduxForm = reduxForm({
   validate,
 });
 
-const mapStateToProps = () => ({});
-
-const mapDispatchToProps = {};
-
-const withConnect = connect(mapStateToProps, mapDispatchToProps);
+// TODO add in the next merge
+const withConnect = connect(null, null);
 
 export default compose(withReduxForm, withConnect)(FormSection);
