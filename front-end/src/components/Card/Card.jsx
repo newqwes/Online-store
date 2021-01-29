@@ -43,6 +43,16 @@ class Card extends React.Component {
     return addToCart({ ...item, options: option });
   };
 
+  static propTypes = {
+    item: productType.isRequired,
+    addToCart: PropTypes.func.isRequired,
+    themeVariant: PropTypes.string,
+  };
+
+  static defaultProps = {
+    themeVariant: THEME_VARIANT.default,
+  };
+
   render() {
     const {
       themeVariant,
@@ -78,15 +88,5 @@ class Card extends React.Component {
     );
   }
 }
-
-Card.propTypes = {
-  item: productType.isRequired,
-  addToCart: PropTypes.func.isRequired,
-  themeVariant: PropTypes.string,
-};
-
-Card.defaultProps = {
-  themeVariant: THEME_VARIANT.default,
-};
 
 export default Card;

@@ -6,6 +6,7 @@ import FONT_SIZE from '../../constants/fontSize';
 import FONT_WEIGHT from '../../constants/fontWeight';
 import TEXT_ALIGN from '../../constants/textAlign';
 import THEME_VARIANT from '../../constants/themeVariant';
+import TEXT from '../../constants/text';
 
 const Label = ({ text, fontSize, textAlign, fontWeight, themeVariant }) => (
   <LabelWrapper
@@ -19,7 +20,7 @@ const Label = ({ text, fontSize, textAlign, fontWeight, themeVariant }) => (
 );
 
 Label.propTypes = {
-  text: PropTypes.string.isRequired,
+  text: PropTypes.string,
   fontSize: PropTypes.number,
   textAlign: PropTypes.string,
   fontWeight: PropTypes.number,
@@ -27,6 +28,7 @@ Label.propTypes = {
 };
 
 Label.defaultProps = {
+  text: TEXT.empty,
   fontSize: FONT_SIZE.medium,
   fontWeight: FONT_WEIGHT.bold,
   textAlign: TEXT_ALIGN.left,

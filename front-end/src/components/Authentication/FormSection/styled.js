@@ -1,7 +1,16 @@
 import styled from 'styled-components';
 
-const LoginFormContent = styled.div`
-  margin-top: 150px;
+export const FormWrapper = styled.section`
+  background: url(${(props) => props.theme.background.imageBackground[props.themeVariant]});
+  width: 100%;
+  min-height: 85vh;
+  display: flex;
+  div {
+    margin: 0 auto;
+  }
+`;
+
+export const FormContent = styled.div`
   padding: 30px 60px;
   background-color: ${({ theme, themeVariant }) => theme.login.background[themeVariant]};
   box-shadow: 0px 0px 20px ${({ theme, themeVariant }) => theme.login.shadow.main[themeVariant]};
@@ -40,5 +49,3 @@ const LoginFormContent = styled.div`
     }
   }
 `;
-
-export default LoginFormContent;

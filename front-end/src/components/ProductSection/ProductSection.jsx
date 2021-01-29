@@ -28,6 +28,18 @@ class ProductSection extends React.Component {
     }
   }
 
+  static propTypes = {
+    products: productsType.isRequired,
+    themeVariant: PropTypes.string,
+    getProductsList: PropTypes.func.isRequired,
+    addToCart: PropTypes.func.isRequired,
+    location: locationRouterType.isRequired,
+  };
+
+  static defaultProps = {
+    themeVariant: THEME_VARIANT.default,
+  };
+
   render() {
     const { products, themeVariant, addToCart } = this.props;
 
@@ -40,17 +52,5 @@ class ProductSection extends React.Component {
     );
   }
 }
-
-ProductSection.propTypes = {
-  products: productsType.isRequired,
-  themeVariant: PropTypes.string,
-  getProductsList: PropTypes.func.isRequired,
-  addToCart: PropTypes.func.isRequired,
-  location: locationRouterType.isRequired,
-};
-
-ProductSection.defaultProps = {
-  themeVariant: THEME_VARIANT.default,
-};
 
 export default ProductSection;
