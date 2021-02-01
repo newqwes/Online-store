@@ -17,7 +17,7 @@ import Logo from '../Icons/Logo';
 import Phone from '../Icons/Phone';
 import UserCorner from './UserCorner';
 
-const Header = ({ cartItemsCount, themeVariant, isSuccess, login, logout }) => (
+const Header = ({ cartItemsCount, themeVariant, isSuccess, userName, logout }) => (
   <HeaderWrapper themeVariant={themeVariant}>
     <HeaderContent>
       <Flex>
@@ -43,7 +43,7 @@ const Header = ({ cartItemsCount, themeVariant, isSuccess, login, logout }) => (
         <Link to='/cart'>
           <Cart size={ICON_SIZE.large} cartItemsCount={cartItemsCount} />
         </Link>
-        <UserCorner login={login} logout={logout} isSuccess={isSuccess} />
+        <UserCorner userName={userName} logout={logout} isSuccess={isSuccess} />
       </Flex>
     </HeaderContent>
   </HeaderWrapper>
@@ -52,7 +52,7 @@ const Header = ({ cartItemsCount, themeVariant, isSuccess, login, logout }) => (
 Header.propTypes = {
   themeVariant: PropTypes.string,
   logout: PropTypes.func.isRequired,
-  login: PropTypes.string.isRequired,
+  userName: PropTypes.string.isRequired,
   isSuccess: PropTypes.bool.isRequired,
   cartItemsCount: PropTypes.number.isRequired,
 };

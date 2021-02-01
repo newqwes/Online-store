@@ -49,10 +49,10 @@ const AUTHENTICATION = {
         placeholder: INPUT_PLACEHOLDER.password,
       },
       {
-        name: INPUT_NAME.repassword,
+        name: INPUT_NAME.confirmPassword,
         type: INPUT_TYPE.password,
         label: INPUT_LABEL.password,
-        placeholder: INPUT_PLACEHOLDER.repassword,
+        placeholder: INPUT_PLACEHOLDER.confirmPassword,
       },
     ],
     buttonText: 'Регистрация',

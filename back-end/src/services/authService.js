@@ -4,6 +4,11 @@ import createResponse from '../utils/createResponse';
 import User from '../database/models/user';
 
 class AuthService {
+  USER_RULES = {
+    user: 0,
+    admin: 666,
+  };
+
   findByEmail = async (email) => {
     const foundUser = await User.findOne({ where: { email } });
 
@@ -20,9 +25,9 @@ class AuthService {
 
       const { password, email, id, tel, login, user_type: userType } = foundUser.toJSON();
 
-      const passwordResult = bcrypt.compareSync(body.password, password);
+      const isPasswordEqual = bcrypt.compareSync(body.password, password);
 
-      if (passwordResult) {
+      if (isPasswordEqual) {
         const token = jwt.sign({ email, id, user_type: userType }, process.env.ACCESS_TOKEN_SECRET);
 
         return createResponse(200, 'Successfully!', {
@@ -53,7 +58,7 @@ class AuthService {
 
       const { email, login, tel, id, user_type: userType } = await User.create({
         ...body,
-        user_type: 0,
+        user_type: this.USER_RULES.user,
         password: hashPassword,
       });
 

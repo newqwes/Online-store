@@ -6,12 +6,12 @@ import Button from '../../Button';
 
 import THEME_VARIANT from '../../../constants/themeVariant';
 
-const UserCorner = ({ logout, login, isSuccess }) => {
+const UserCorner = ({ logout, userName, isSuccess }) => {
   if (isSuccess) {
     return (
       <Fragment>
         <Link themeVariant={THEME_VARIANT.inverted} to='/'>
-          {login}
+          {userName}
         </Link>
         <Button text='Выйти' onClick={logout} />
       </Fragment>
@@ -27,7 +27,7 @@ const UserCorner = ({ logout, login, isSuccess }) => {
 UserCorner.propTypes = {
   themeVariant: PropTypes.string,
   logout: PropTypes.func.isRequired,
-  login: PropTypes.string.isRequired,
+  userName: PropTypes.string.isRequired,
   isSuccess: PropTypes.bool.isRequired,
 };
 

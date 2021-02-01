@@ -8,7 +8,7 @@ import Header from '../components/Header';
 const mapStateToProps = ({ cart, authorization }) => ({
   cartItemsCount: size(cart),
   isSuccess: getOr(false, 'isSuccess', authorization),
-  login: getOr('', ['userData', 'login'], authorization),
+  userName: getOr('', ['userData', 'login'], authorization),
 });
 
 const mapDispatchToProps = {

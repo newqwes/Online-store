@@ -14,12 +14,12 @@ import {
   passwordValidation,
 } from '../components/Authentication/validate';
 
-const validate = ({ tel, email, login, password, repassword }) => ({
+const validate = ({ tel, email, login, password, confirmPassword }) => ({
   tel: telValidation(tel),
   email: emailValidation(email),
   login: loginValidation(login),
   password: passwordValidation(password),
-  repassword: equalValidation({ value: password, other: repassword }),
+  confirmPassword: equalValidation({ value: password, other: confirmPassword }),
 });
 
 const withReduxForm = reduxForm({
