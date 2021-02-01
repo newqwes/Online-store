@@ -40,7 +40,7 @@ const Header = ({ cartItemsCount, themeVariant, isSuccess, userName, logout }) =
         </Link>
       </Flex>
       <Flex horizontal={JUSTIFY_CONTENT.flexEnd}>
-        <Link to='/cart'>
+        <Link to='/order'>
           <Cart size={ICON_SIZE.large} cartItemsCount={cartItemsCount} />
         </Link>
         <UserCorner userName={userName} logout={logout} isSuccess={isSuccess} />

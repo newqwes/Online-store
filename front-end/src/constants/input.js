@@ -1,21 +1,21 @@
 export const INPUT_NAME = {
   login: 'login',
   email: 'email',
-  tel: 'tel',
+  phone: 'phone',
   password: 'password',
   confirmPassword: 'confirmPassword',
 };
 
 export const INPUT_TYPE = {
   text: 'text',
-  tel: 'tel',
+  phone: 'phone',
   password: 'password',
 };
 
 export const INPUT_PLACEHOLDER = {
   login: 'Ivanov23',
   email: 'example@gmail.com',
-  tel: '375331234567',
+  phone: '375331234567',
   password: 'Не менее 5 символов',
   confirmPassword: 'Повторите пароль',
 };
@@ -23,7 +23,7 @@ export const INPUT_PLACEHOLDER = {
 export const INPUT_LABEL = {
   login: 'Логин',
   email: 'Почта',
-  tel: 'Телефон',
+  phone: 'Телефон',
   password: 'Пароль',
   confirmPassword: 'Повторите пароль',
 };

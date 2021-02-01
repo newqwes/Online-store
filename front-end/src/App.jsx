@@ -8,6 +8,7 @@ import LoginContainer from './containers/LoginContainer';
 import HeaderContainer from './containers/HeaderContainer';
 import ProductsContainer from './containers/ProductsContainer';
 import RegistrationContainer from './containers/RegistrationContainer';
+import OrderContainer from './containers/OrderContainer';
 
 import Navbar from './components/Navbar';
 
@@ -19,6 +20,7 @@ const App = () => (
       <Redirect to={ROUTER_PATH.products.pizza} />
     </Route>
     <Route path={ROUTER_PATH.products.main} component={ProductsContainer} />
+    <Route path={ROUTER_PATH.order} component={OrderContainer} />
     <Route path={ROUTER_PATH.login}>
       <LoginContainer content={AUTHENTICATION.login} />
     </Route>

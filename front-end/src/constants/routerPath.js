@@ -8,6 +8,7 @@ const routers = {
     sauce: '/products?type=sauce',
   },
   contacts: '/contacts',
+  order: '/order',
   login: '/login',
   registration: '/registration',
   main: '/',

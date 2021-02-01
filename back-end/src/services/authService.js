@@ -23,7 +23,7 @@ class AuthService {
         return createResponse(404, 'Not found');
       }
 
-      const { password, email, id, tel, login, user_type: userType } = foundUser.toJSON();
+      const { password, email, id, phone, login, user_type: userType } = foundUser.toJSON();
 
       const isPasswordEqual = bcrypt.compareSync(body.password, password);
 
@@ -33,7 +33,7 @@ class AuthService {
         return createResponse(200, 'Successfully!', {
           token: `Bearer ${token}`,
           email,
-          tel,
+          phone,
           login,
           userType,
         });
@@ -56,7 +56,7 @@ class AuthService {
 
       const hashPassword = bcrypt.hashSync(body.password, salt);
 
-      const { email, login, tel, id, user_type: userType } = await User.create({
+      const { email, login, phone, id, user_type: userType } = await User.create({
         ...body,
         user_type: this.USER_RULES.user,
         password: hashPassword,
@@ -67,7 +67,7 @@ class AuthService {
       return createResponse(201, 'Successfully!', {
         token: `Bearer ${token}`,
         email,
-        tel,
+        phone,
         login,
         userType,
       });
