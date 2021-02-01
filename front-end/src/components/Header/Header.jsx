@@ -1,21 +1,21 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
-import THEME_VARIANT from '../../constants/themeVariant';
-import FONT_SIZE from '../../constants/fontSize';
 import ICON_SIZE from '../../constants/iconSize';
+import FONT_SIZE from '../../constants/fontSize';
+import THEME_VARIANT from '../../constants/themeVariant';
 import { JUSTIFY_CONTENT } from '../../constants/position';
 
 import { HeaderWrapper, HeaderContent } from './styled';
 
+import Flex from '../Flex';
+import Link from '../Link';
+import Label from '../Label';
 import Time from '../Icons/Time';
-import Phone from '../Icons/Phone';
 import Cart from '../Icons/Cart';
 import Logo from '../Icons/Logo';
-import Flex from '../Flex';
-import Label from '../Label';
-import Link from '../Link';
-import Button from '../Button';
+import Phone from '../Icons/Phone';
+import UserCorner from './UserCorner';
 
 const Header = ({ cartItemsCount, themeVariant, isSuccess, login, logout }) => (
   <HeaderWrapper themeVariant={themeVariant}>
@@ -43,20 +43,7 @@ const Header = ({ cartItemsCount, themeVariant, isSuccess, login, logout }) => (
         <Link to='/cart'>
           <Cart size={ICON_SIZE.large} cartItemsCount={cartItemsCount} />
         </Link>
-
-        {/* TODO  Move to a separate function */}
-        {isSuccess ? (
-          <Fragment>
-            <Link themeVariant={THEME_VARIANT.inverted} to='/'>
-              {login}
-            </Link>
-            <Button text='Выйти' onClick={logout} />
-          </Fragment>
-        ) : (
-          <Link to='/login'>
-            <Button text='Войти' />
-          </Link>
-        )}
+        <UserCorner login={login} logout={logout} isSuccess={isSuccess} />
       </Flex>
     </HeaderContent>
   </HeaderWrapper>
@@ -64,10 +51,10 @@ const Header = ({ cartItemsCount, themeVariant, isSuccess, login, logout }) => (
 
 Header.propTypes = {
   themeVariant: PropTypes.string,
+  logout: PropTypes.func.isRequired,
+  login: PropTypes.string.isRequired,
   isSuccess: PropTypes.bool.isRequired,
   cartItemsCount: PropTypes.number.isRequired,
-  login: PropTypes.string.isRequired,
-  logout: PropTypes.func.isRequired,
 };
 
 Header.defaultProps = {
