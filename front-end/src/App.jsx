@@ -4,10 +4,10 @@ import { Route, Redirect } from 'react-router-dom';
 import ROUTER_PATH from './constants/routerPath';
 import AUTHENTICATION from './constants/authentication';
 
-import ProductsContainer from './containers/ProductsContainer';
 import LoginContainer from './containers/LoginContainer';
-import RegistrationContainer from './containers/RegistrationContainer';
 import HeaderContainer from './containers/HeaderContainer';
+import ProductsContainer from './containers/ProductsContainer';
+import RegistrationContainer from './containers/RegistrationContainer';
 
 import Navbar from './components/Navbar';
 

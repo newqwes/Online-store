@@ -1,6 +1,7 @@
+import { compose } from 'redux';
+import { getOr } from 'lodash/fp';
 import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
-import { compose } from 'redux';
 
 import { login } from '../actionCreators';
 
@@ -17,10 +18,14 @@ const withReduxForm = reduxForm({
   validate,
 });
 
+const mapStateToProps = (state) => ({
+  isSuccess: getOr(false, ['authorization', 'isSuccess'], state),
+});
+
 const mapDispatchToProps = {
   submit: login,
 };
 
-const withConnect = connect(null, mapDispatchToProps);
+const withConnect = connect(mapStateToProps, mapDispatchToProps);
 
 export default compose(withReduxForm, withConnect)(FormSection);

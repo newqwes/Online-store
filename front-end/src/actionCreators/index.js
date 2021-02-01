@@ -5,6 +5,8 @@ import {
   GET_AUTHORIZATION_SUCCESS,
   GET_AUTHORIZATION_PENDING,
   GET_AUTHORIZATION_FAILURE,
+  GET_REGISTRATION_PENDING,
+  USER_LOGOUT,
 } from '../actions';
 
 export const getProductsList = (type) => ({
@@ -22,9 +24,9 @@ export const addToCart = (item) => ({
   payload: item,
 });
 
-export const loginSuccess = (token) => ({
+export const loginSuccess = (userData) => ({
   type: GET_AUTHORIZATION_SUCCESS,
-  payload: token,
+  payload: userData,
 });
 
 export const loginFailure = (error) => ({
@@ -35,4 +37,13 @@ export const loginFailure = (error) => ({
 export const login = (authorizationData) => ({
   type: GET_AUTHORIZATION_PENDING,
   payload: authorizationData,
+});
+
+export const logout = () => ({
+  type: USER_LOGOUT,
+});
+
+export const registration = (registrationData) => ({
+  type: GET_REGISTRATION_PENDING,
+  payload: registrationData,
 });

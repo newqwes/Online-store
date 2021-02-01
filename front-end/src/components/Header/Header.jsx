@@ -1,23 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import THEME_VARIANT from '../../constants/themeVariant';
-import FONT_SIZE from '../../constants/fontSize';
 import ICON_SIZE from '../../constants/iconSize';
+import FONT_SIZE from '../../constants/fontSize';
+import THEME_VARIANT from '../../constants/themeVariant';
 import { JUSTIFY_CONTENT } from '../../constants/position';
 
 import { HeaderWrapper, HeaderContent } from './styled';
 
+import Flex from '../Flex';
+import Link from '../Link';
+import Label from '../Label';
 import Time from '../Icons/Time';
-import Phone from '../Icons/Phone';
 import Cart from '../Icons/Cart';
 import Logo from '../Icons/Logo';
-import Flex from '../Flex';
-import Label from '../Label';
-import Link from '../Link';
-import Button from '../Button';
+import Phone from '../Icons/Phone';
+import UserCorner from './UserCorner';
 
-const Header = ({ cartItemsCount, themeVariant }) => (
+const Header = ({ cartItemsCount, themeVariant, isSuccess, userName, logout }) => (
   <HeaderWrapper themeVariant={themeVariant}>
     <HeaderContent>
       <Flex>
@@ -43,9 +43,7 @@ const Header = ({ cartItemsCount, themeVariant }) => (
         <Link to='/cart'>
           <Cart size={ICON_SIZE.large} cartItemsCount={cartItemsCount} />
         </Link>
-        <Link to='/login'>
-          <Button text='Войти' />
-        </Link>
+        <UserCorner userName={userName} logout={logout} isSuccess={isSuccess} />
       </Flex>
     </HeaderContent>
   </HeaderWrapper>
@@ -53,6 +51,9 @@ const Header = ({ cartItemsCount, themeVariant }) => (
 
 Header.propTypes = {
   themeVariant: PropTypes.string,
+  logout: PropTypes.func.isRequired,
+  userName: PropTypes.string.isRequired,
+  isSuccess: PropTypes.bool.isRequired,
   cartItemsCount: PropTypes.number.isRequired,
 };
 
