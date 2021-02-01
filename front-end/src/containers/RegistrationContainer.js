@@ -1,13 +1,25 @@
 import { compose } from 'redux';
+import { getOr } from 'lodash/fp';
 import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
 
-import FormSection from '../components/Authentication/FormSection';
-import { emailValidation, passwordValidation } from '../components/Authentication/validate';
+import { registration } from '../actionCreators';
 
-const validate = ({ email, password }) => ({
+import FormSection from '../components/Authentication/FormSection';
+import {
+  telValidation,
+  emailValidation,
+  loginValidation,
+  equalValidation,
+  passwordValidation,
+} from '../components/Authentication/validate';
+
+const validate = ({ tel, email, login, password, confirmPassword }) => ({
+  tel: telValidation(tel),
   email: emailValidation(email),
+  login: loginValidation(login),
   password: passwordValidation(password),
+  confirmPassword: equalValidation({ value: password, other: confirmPassword }),
 });
 
 const withReduxForm = reduxForm({
@@ -15,7 +27,14 @@ const withReduxForm = reduxForm({
   validate,
 });
 
-// TODO add in the next merge
-const withConnect = connect(null, null);
+const mapStateToProps = (state) => ({
+  isSuccess: getOr(false, ['authorization', 'isSuccess'], state),
+});
+
+const mapDispatchToProps = {
+  submit: registration,
+};
+
+const withConnect = connect(mapStateToProps, mapDispatchToProps);
 
 export default compose(withReduxForm, withConnect)(FormSection);

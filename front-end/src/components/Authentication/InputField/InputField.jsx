@@ -23,7 +23,7 @@ const InputField = ({ input, label, type, placeholder, meta: { touched, error } 
   );
 
   return (
-    <InputFieldContent>
+    <InputFieldContent isError={touched && error}>
       <label>{label}</label>
       <input {...input} placeholder={placeholder} type={type} />
       {touched && error && errorLabel}

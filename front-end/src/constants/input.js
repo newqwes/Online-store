@@ -3,7 +3,7 @@ export const INPUT_NAME = {
   email: 'email',
   tel: 'tel',
   password: 'password',
-  repassword: 'repassword',
+  confirmPassword: 'confirmPassword',
 };
 
 export const INPUT_TYPE = {
@@ -17,7 +17,7 @@ export const INPUT_PLACEHOLDER = {
   email: 'example@gmail.com',
   tel: '375331234567',
   password: 'Не менее 5 символов',
-  repassword: 'Повторите пароль',
+  confirmPassword: 'Повторите пароль',
 };
 
 export const INPUT_LABEL = {
@@ -25,5 +25,5 @@ export const INPUT_LABEL = {
   email: 'Почта',
   tel: 'Телефон',
   password: 'Пароль',
-  repassword: 'Повторите пароль',
+  confirmPassword: 'Повторите пароль',
 };

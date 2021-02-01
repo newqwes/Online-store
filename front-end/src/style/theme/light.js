@@ -31,6 +31,7 @@ const light = {
       border: {
         default: COLORS.darkDesaturatedOrange,
         inverted: COLORS.verySoftYellow,
+        warning: COLORS.darkPink,
       },
     },
     button: {
@@ -129,6 +130,13 @@ const light = {
       warning: COLORS.squash,
     },
     border: {
+      default: COLORS.darkGrayishOrange,
+      disabled: COLORS.pinkishGrey,
+      info: COLORS.darkishPurple,
+      inverted: COLORS.softYellow,
+      warning: COLORS.squash,
+    },
+    borderActive: {
       default: COLORS.darkDesaturatedOrange,
       disabled: COLORS.pinkishGrey,
       info: COLORS.darkishPurple,

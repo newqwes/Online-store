@@ -20,4 +20,9 @@ export const authAPI = {
 
     return extractData(respons);
   },
+  registration: async (body) => {
+    const respons = await instance.post('auth/register', body);
+
+    return extractData(respons);
+  }
 };
