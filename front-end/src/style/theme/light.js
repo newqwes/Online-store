@@ -137,7 +137,7 @@ const light = {
       warning: COLORS.squash,
     },
     borderActive: {
-      default: COLORS.darkDesaturatedOrange,
+      default: COLORS.verySoftYellow,
       disabled: COLORS.pinkishGrey,
       info: COLORS.darkishPurple,
       inverted: COLORS.softYellow,

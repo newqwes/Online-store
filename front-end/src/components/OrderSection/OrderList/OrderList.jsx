@@ -1,9 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import CartItem from '../CartItem';
 
 import OrderListWrapper from './styled';
+import { productsType } from '../../../propType';
 
 const OrderList = ({ cart }) => {
   const mapCart = cart.map((item) => <CartItem key={item.id} item={item} />);
@@ -12,7 +12,7 @@ const OrderList = ({ cart }) => {
 };
 
 OrderList.propTypes = {
-  cart: PropTypes.any,
+  cart: productsType.isRequired,
 };
 
 export default OrderList;

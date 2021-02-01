@@ -2,20 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import THEME_VARIANT from '../../constants/themeVariant';
-import { OrderSectionContent, OrderSectionWrapper } from './styled';
+import OrderSectionWrapper from './styled';
 import OrderList from './OrderList';
+import { productsType } from '../../propType';
 
 const OrderSection = ({ themeVariant, cart }) => (
   <OrderSectionWrapper themeVariant={themeVariant}>
-    <OrderSectionContent themeVariant={themeVariant}>
-      <OrderList cart={cart} />
-    </OrderSectionContent>
+    <OrderList cart={cart} />
   </OrderSectionWrapper>
 );
 
 OrderSection.propTypes = {
   themeVariant: PropTypes.string,
-  cart: PropTypes.array,
+  cart: productsType.isRequired,
 };
 
 OrderSection.defaultProps = {

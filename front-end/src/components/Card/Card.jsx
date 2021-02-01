@@ -40,7 +40,7 @@ class Card extends React.Component {
     const { addToCart, item } = this.props;
     const { option } = this.state;
 
-    return addToCart({ ...item, options: option });
+    return addToCart({ ...item, options: [option] });
   };
 
   static propTypes = {
