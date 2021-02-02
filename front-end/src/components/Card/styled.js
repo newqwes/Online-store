@@ -6,7 +6,7 @@ export const CardWrapper = styled.div`
   flex-direction: column;
   align-content: space-between;
   margin: 28px 14px;
-  padding: 25px;
+  padding: 10px 25px;
   transition: 0.5s ease-out;
   border-radius: 20% 20px;
   background: ${(props) => props.theme.card.background[props.themeVariant]};
@@ -24,6 +24,10 @@ export const CardContent = styled.div`
 
   &:last-child {
     margin-top: auto;
+  }
+
+  button {
+    margin-left: 20px;
   }
 
   > * {

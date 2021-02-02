@@ -22,6 +22,12 @@ export const CartDescriptionContent = styled.div`
 
 export const CartPriceContent = styled.div`
   flex-basis: 20%;
+
+  span {
+    min-width: 30px;
+    text-align: center;
+  }
+
   div {
     margin-top: 10px;
   }
