@@ -1,42 +1,50 @@
-import { find, findIndex } from 'lodash';
+import { findIndex, cloneDeep } from 'lodash';
 import { assoc, get, equals } from 'lodash/fp';
-import { ADD_TO_CART } from '../actions';
 
-// const example = {
-//   currencySign: '',
-//   description: '',
-//   id: 0,
-//   name: '',
-//   options: [{ id: 0, price: 0, product_id: 0, weight: 0 }],
-//   photoUrl: '',
-//   type: '',
-//   unitSign: '',
-// };
+import isFound from '../utils/isFound';
+
+import { ADD_TO_CART, REMOVE_FROM_CART } from '../actions';
 
 const initialState = [];
 
+const INCREMENT = 1;
+const INITIAL_CART_COUNT = 1;
+
 const cart = (state = initialState, action) => {
+  const incomingId = get(['payload', 'options', 'id'], action);
+  const itemIndex = findIndex(state, ({ id }) => equals(id, incomingId));
+  const count = get([itemIndex, 'count'], state);
+
   switch (action.type) {
     case ADD_TO_CART: {
-      const incomingId = get(['payload', 'options', 'id'], action);
-
-      const item = find(state, ({ id }) => equals(id, incomingId));
-
-      const itemIndex = findIndex(state, ({ id }) => equals(id, incomingId));
-
-      if (item) {
-        const option = get(['payload', 'options'], action);
-
-        const oldPermissionOptions = get('options', item);
-
-        return assoc([itemIndex, 'options'], [...oldPermissionOptions, option], state);
+      if (isFound(itemIndex)) {
+        return assoc([itemIndex, 'count'], count + INCREMENT, state);
       }
 
       return [
         ...state,
-        { ...action.payload, id: incomingId, options: [get(['payload', 'options'], action)] },
+        {
+          ...action.payload,
+          id: incomingId,
+          count: INITIAL_CART_COUNT,
+        },
       ];
     }
+
+    case REMOVE_FROM_CART: {
+      if (isFound(itemIndex)) {
+        const cloneState = cloneDeep(state);
+
+        cloneState.splice(itemIndex, 1);
+
+        if (count === 1) return cloneState;
+
+        return assoc([itemIndex, 'count'], count - INCREMENT, state);
+      }
+
+      return state;
+    }
+
     default:
       return state;
   }

@@ -1,5 +1,6 @@
 import React from 'react';
-import { getOr, size } from 'lodash/fp';
+import PropTypes from 'prop-types';
+import { getOr } from 'lodash/fp';
 
 import Flex from '../../Flex';
 import Label from '../../Label';
@@ -18,10 +19,14 @@ import FONT_SIZE from '../../../constants/fontSize';
 import FONT_WEIGHT from '../../../constants/fontWeight';
 import { ALIGN_ITEMS, JUSTIFY_CONTENT } from '../../../constants/position';
 
-const CartItem = ({ item: { photoUrl, name, description, options, unitSign, currencySign } }) => {
-  const price = getOr(0, ['0', 'price'], options);
-  const weight = getOr(0, ['0', 'weight'], options);
-  const cartItemsCount = size(options);
+const CartItem = ({ item, removeFromCart, addToCart }) => {
+  const { photoUrl, name, description, options, unitSign, currencySign, count } = item;
+
+  const price = getOr(0, 'price', options);
+  const weight = getOr(0, 'weight', options);
+
+  const addOne = () => addToCart(item);
+  const removeOne = () => removeFromCart(item);
 
   return (
     <CartItemContent>
@@ -53,13 +58,9 @@ const CartItem = ({ item: { photoUrl, name, description, options, unitSign, curr
             />
           </Flex>
           <Flex justifyContent={JUSTIFY_CONTENT.flexEnd}>
-            <Button text='-' />
-            <Label
-              text={cartItemsCount}
-              fontSize={FONT_SIZE.small}
-              fontWeight={FONT_WEIGHT.normal}
-            />
-            <Button text='+' />
+            <Button text='-' onClick={removeOne} />
+            <Label text={count} fontSize={FONT_SIZE.small} fontWeight={FONT_WEIGHT.normal} />
+            <Button text='+' onClick={addOne} />
           </Flex>
         </CartPriceContent>
       </Flex>
@@ -69,6 +70,8 @@ const CartItem = ({ item: { photoUrl, name, description, options, unitSign, curr
 
 CartItem.propTypes = {
   item: productType.isRequired,
+  removeFromCart: PropTypes.func.isRequired,
+  addToCart: PropTypes.func.isRequired,
 };
 
 export default CartItem;

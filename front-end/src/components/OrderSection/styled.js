@@ -1,10 +1,16 @@
 import styled from 'styled-components';
 
-const OrderSectionWrapper = styled.section`
-  background: url(${(props) => props.theme.background.imageBackground[props.themeVariant]});
+export const OrderSectionWrapper = styled.section`
+  background: ${(props) => props.theme.cart.background[props.themeVariant]};
   width: 100%;
   min-height: 85vh;
   padding: 20px 0;
 `;
 
-export default OrderSectionWrapper;
+export const TotalPriceContent = styled.div`
+  text-align: right;
+  margin-right: 30%;
+  span {
+    margin-left: 30px;
+  }
+`;

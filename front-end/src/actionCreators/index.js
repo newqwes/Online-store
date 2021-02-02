@@ -7,6 +7,7 @@ import {
   GET_AUTHORIZATION_FAILURE,
   GET_REGISTRATION_PENDING,
   USER_LOGOUT,
+  REMOVE_FROM_CART,
 } from '../actions';
 
 export const getProductsList = (type) => ({
@@ -46,4 +47,9 @@ export const logout = () => ({
 export const registration = (registrationData) => ({
   type: GET_REGISTRATION_PENDING,
   payload: registrationData,
+});
+
+export const removeFromCart = (id) => ({
+  type: REMOVE_FROM_CART,
+  payload: id,
 });
