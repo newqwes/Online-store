@@ -15,7 +15,7 @@ import Link from '../Link';
 import Label from '../Label';
 import Button from '../Button';
 import OrderList from './OrderList';
-import SignWithNumber from '../SignWithNumber';
+import ValueFormater from '../ValueFormater';
 
 import { OrderSectionWrapper, TotalPriceContent } from './styled';
 
@@ -30,7 +30,7 @@ const OrderSection = ({ themeVariant, cart, removeFromCart, addToCart }) => {
       <TotalPriceContent>
         <Flex justifyContent={JUSTIFY_CONTENT.flexEnd}>
           <Label text='Сумма заказа:' fontSize={FONT_SIZE.large} />
-          <SignWithNumber value={totalPrice} postfix={currencySign} />
+          <ValueFormater value={totalPrice} postfix={currencySign} />
         </Flex>
         <Flex justifyContent={JUSTIFY_CONTENT.flexEnd}>
           <Link to={ROUTER_PATH.orderSubmit}>

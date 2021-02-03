@@ -15,7 +15,7 @@ import Time from '../Icons/Time';
 import Cart from '../Icons/Cart';
 import Logo from '../Icons/Logo';
 import Phone from '../Icons/Phone';
-import UserCorner from './UserCorner';
+import UserInfo from './UserInfo';
 import ROUTER_PATH from '../../constants/routerPath';
 
 const Header = ({ cartItemsCount, themeVariant, isSuccess, userName, logout }) => (
@@ -44,7 +44,7 @@ const Header = ({ cartItemsCount, themeVariant, isSuccess, userName, logout }) =
         <Link to={ROUTER_PATH.order}>
           <Cart size={ICON_SIZE.large} cartItemsCount={cartItemsCount} />
         </Link>
-        <UserCorner userName={userName} logout={logout} isSuccess={isSuccess} />
+        <UserInfo userName={userName} logout={logout} isSuccess={isSuccess} />
       </Flex>
     </HeaderContent>
   </HeaderWrapper>

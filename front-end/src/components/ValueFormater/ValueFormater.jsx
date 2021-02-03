@@ -6,9 +6,9 @@ import TEXT_ALIGN from '../../constants/textAlign';
 import FONT_WEIGHT from '../../constants/fontWeight';
 import THEME_VARIANT from '../../constants/themeVariant';
 
-import SignWithNumberWrapper from './styled';
+import ValueFormaterWrapper from './styled';
 
-const SignWithNumber = ({
+const ValueFormater = ({
   value,
   prefix,
   postfix,
@@ -17,7 +17,7 @@ const SignWithNumber = ({
   fontWeight,
   themeVariant,
 }) => (
-  <SignWithNumberWrapper
+  <ValueFormaterWrapper
     fontSize={fontSize}
     textAlign={textAlign}
     fontWeight={fontWeight}
@@ -26,10 +26,10 @@ const SignWithNumber = ({
     {prefix}
     {value}
     {postfix}
-  </SignWithNumberWrapper>
+  </ValueFormaterWrapper>
 );
 
-SignWithNumber.propTypes = {
+ValueFormater.propTypes = {
   postfix: PropTypes.string,
   prefix: PropTypes.string,
   fontSize: PropTypes.number,
@@ -39,7 +39,7 @@ SignWithNumber.propTypes = {
   value: PropTypes.number.isRequired,
 };
 
-SignWithNumber.defaultProps = {
+ValueFormater.defaultProps = {
   prefix: '',
   postfix: '',
   textAlign: TEXT_ALIGN.left,
@@ -48,4 +48,4 @@ SignWithNumber.defaultProps = {
   themeVariant: THEME_VARIANT.default,
 };
 
-export default SignWithNumber;
+export default ValueFormater;

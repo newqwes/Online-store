@@ -11,7 +11,7 @@ import { productType } from '../../../propType';
 import Flex from '../../Flex';
 import Label from '../../Label';
 import Button from '../../Button';
-import SignWithNumber from '../../SignWithNumber';
+import ValueFormater from '../../ValueFormater';
 
 import {
   CartItemContent,
@@ -43,7 +43,7 @@ const CartItem = ({ item, removeFromCart, addToCart }) => {
         </CartDescriptionContent>
         <CartPriceContent>
           <Flex justifyContent={JUSTIFY_CONTENT.flexEnd}>
-            <SignWithNumber
+            <ValueFormater
               value={weight}
               fontSize={FONT_SIZE.small}
               fontWeight={FONT_WEIGHT.normal}
@@ -51,7 +51,7 @@ const CartItem = ({ item, removeFromCart, addToCart }) => {
             />
           </Flex>
           <Flex justifyContent={JUSTIFY_CONTENT.flexEnd}>
-            <SignWithNumber
+            <ValueFormater
               value={price}
               fontSize={FONT_SIZE.small}
               fontWeight={FONT_WEIGHT.normal}

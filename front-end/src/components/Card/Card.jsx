@@ -15,7 +15,7 @@ import Label from '../Label';
 import Flex from '../Flex';
 import Select from '../Select';
 import Button from '../Button';
-import SignWithNumber from '../SignWithNumber';
+import ValueFormater from '../ValueFormater';
 
 import { CardWrapper, CardContent } from './styled';
 
@@ -73,7 +73,7 @@ class Card extends React.Component {
             textAlign={TEXT_ALIGN.center}
           />
           <Flex>
-            <SignWithNumber
+            <ValueFormater
               value={option.price}
               fontSize={FONT_SIZE.least}
               textAlign={TEXT_ALIGN.center}

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const SignWithNumberWrapper = styled.span`
+const ValueFormaterWrapper = styled.span`
   letter-spacing: 0.1em;
   font-weight: ${(props) => props.fontWeight};
   font-size: ${(props) => props.fontSize}px;
@@ -8,4 +8,4 @@ const SignWithNumberWrapper = styled.span`
   text-align: ${(props) => props.textAlign};
 `;
 
-export default SignWithNumberWrapper;
+export default ValueFormaterWrapper;
