@@ -1,14 +1,11 @@
 import { findIndex } from 'lodash';
 import { assoc, get, equals } from 'lodash/fp';
 
-import isFound from '../utils/isFound';
-import isOnlyOneItem from '../utils/isOnlyOneItem';
-import getStateWithoutItem from '../utils/getStateWithoutItem';
-
 import { ADD_TO_CART, REMOVE_FROM_CART } from '../actions';
 
-const INCREMENT = 1;
 const INITIAL_COUNT = 1;
+const INCREMENT = 1;
+const NOT_INDEX = -1;
 
 const initialState = [];
 
@@ -17,33 +14,35 @@ const cart = (state = initialState, action) => {
 
   const itemIndex = findIndex(state, ({ id }) => equals(id, incomingId));
 
-  const count = get([itemIndex, 'count'], state);
+  const prevCount = get([itemIndex, 'count'], state);
 
   switch (action.type) {
     case ADD_TO_CART: {
-      if (isFound(itemIndex)) {
-        return assoc([itemIndex, 'count'], count + INCREMENT, state);
-      }
+      const newCount = prevCount + INCREMENT;
 
-      return [
-        ...state,
-        {
+      if (itemIndex === NOT_INDEX) {
+        const newItem = {
           ...action.payload,
           id: incomingId,
           count: INITIAL_COUNT,
-        },
-      ];
+        };
+
+        return [...state, newItem];
+      }
+
+      return assoc([itemIndex, 'count'], newCount, state);
     }
 
     case REMOVE_FROM_CART: {
-      if (isOnlyOneItem(itemIndex, count)) {
-        return getStateWithoutItem(state, itemIndex);
-      }
-      if (isFound(itemIndex)) {
-        return assoc([itemIndex, 'count'], count - INCREMENT, state);
+      const newCount = prevCount - INCREMENT;
+
+      if (newCount <= 0) {
+        const newState = state.filter(({ id }) => id !== incomingId);
+
+        return newState;
       }
 
-      return state;
+      return assoc([itemIndex, 'count'], newCount, state);
     }
 
     default:

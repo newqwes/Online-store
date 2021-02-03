@@ -15,6 +15,7 @@ export const CartPhotoContent = styled.div`
 
 export const CartDescriptionContent = styled.div`
   flex-basis: 65%;
+
   span {
     display: block;
     margin-top: 10px;
@@ -23,6 +24,7 @@ export const CartDescriptionContent = styled.div`
 
 export const CartPriceContent = styled.div`
   flex-basis: 20%;
+
   span {
     min-width: 40px;
     text-align: center;
@@ -31,6 +33,7 @@ export const CartPriceContent = styled.div`
   div {
     margin-top: 10px;
   }
+
   button {
     font-size: 16px;
     width: 30px;

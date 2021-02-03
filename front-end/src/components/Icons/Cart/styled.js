@@ -15,6 +15,7 @@ const CartWrapper = styled.div`
     min-height: 20px;
     background-color: white;
     border-radius: 50%;
+
     span {
       text-align: center;
       color: ${(props) => props.theme.icon.cart.color[props.themeVariant]};
