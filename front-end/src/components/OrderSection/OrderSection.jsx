@@ -1,19 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { productsType } from '../../propType';
+import { OrderSectionWrapper, TotalPriceContent } from './styled';
+
+import Flex from '../Flex';
+import Link from '../Link';
 import Label from '../Label';
 import Button from '../Button';
 import Сurrency from '../Сurrency';
 import OrderList from './OrderList';
 
 import FONT_SIZE from '../../constants/fontSize';
+import ROUTER_PATH from '../../constants/routerPath';
 import THEME_VARIANT from '../../constants/themeVariant';
 import CURRENCY_SIGN from '../../constants/currencySign';
-
-import { OrderSectionWrapper, TotalPriceContent } from './styled';
-
-import { productsType } from '../../propType';
-import Flex from '../Flex';
 import { JUSTIFY_CONTENT } from '../../constants/position';
 
 const OrderSection = ({ themeVariant, cart, removeFromCart, addToCart, totalPrice }) => (
@@ -25,18 +26,20 @@ const OrderSection = ({ themeVariant, cart, removeFromCart, addToCart, totalPric
         <Сurrency value={totalPrice} postfix={CURRENCY_SIGN.BYN} />
       </Flex>
       <Flex justifyContent={JUSTIFY_CONTENT.flexEnd}>
-        <Button text='Оформить заказ' />
+        <Link to={ROUTER_PATH.orderSubmit}>
+          <Button text='Оформить заказ' />
+        </Link>
       </Flex>
     </TotalPriceContent>
   </OrderSectionWrapper>
 );
 
 OrderSection.propTypes = {
-  themeVariant: PropTypes.string,
   cart: productsType.isRequired,
-  removeFromCart: PropTypes.func.isRequired,
+  themeVariant: PropTypes.string,
   addToCart: PropTypes.func.isRequired,
   totalPrice: PropTypes.number.isRequired,
+  removeFromCart: PropTypes.func.isRequired,
 };
 
 OrderSection.defaultProps = {
