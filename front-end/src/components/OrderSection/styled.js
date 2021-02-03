@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import SECTION_WIDTH from '../../constants/sectionWidth';
 
 export const OrderSectionWrapper = styled.section`
   background: ${(props) => props.theme.cart.background[props.themeVariant]};
@@ -8,9 +9,21 @@ export const OrderSectionWrapper = styled.section`
 `;
 
 export const TotalPriceContent = styled.div`
-  text-align: right;
-  margin-right: 30%;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: ${SECTION_WIDTH.midle}px;
+
+  div {
+    margin: 10px 20%;
+  }
+
   span {
-    margin-left: 30px;
+    padding-left: 10px;
+  }
+
+  button {
+    font-size: 15px;
+    padding: 10px;
   }
 `;
