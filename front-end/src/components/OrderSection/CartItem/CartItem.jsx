@@ -1,11 +1,17 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { getOr } from 'lodash/fp';
+import PropTypes from 'prop-types';
+
+import FONT_SIZE from '../../../constants/fontSize';
+import FONT_WEIGHT from '../../../constants/fontWeight';
+import { ALIGN_ITEMS, JUSTIFY_CONTENT } from '../../../constants/position';
+
+import { productType } from '../../../propType';
 
 import Flex from '../../Flex';
 import Label from '../../Label';
 import Button from '../../Button';
-import Сurrency from '../../Сurrency';
+import SignWithNumber from '../../SignWithNumber';
 
 import {
   CartItemContent,
@@ -13,11 +19,6 @@ import {
   CartDescriptionContent,
   CartPriceContent,
 } from './styled';
-import { productType } from '../../../propType';
-
-import FONT_SIZE from '../../../constants/fontSize';
-import FONT_WEIGHT from '../../../constants/fontWeight';
-import { ALIGN_ITEMS, JUSTIFY_CONTENT } from '../../../constants/position';
 
 const CartItem = ({ item, removeFromCart, addToCart }) => {
   const { photoUrl, name, description, options, unitSign, currencySign, count } = item;
@@ -42,7 +43,7 @@ const CartItem = ({ item, removeFromCart, addToCart }) => {
         </CartDescriptionContent>
         <CartPriceContent>
           <Flex justifyContent={JUSTIFY_CONTENT.flexEnd}>
-            <Сurrency
+            <SignWithNumber
               value={weight}
               fontSize={FONT_SIZE.small}
               fontWeight={FONT_WEIGHT.normal}
@@ -50,7 +51,7 @@ const CartItem = ({ item, removeFromCart, addToCart }) => {
             />
           </Flex>
           <Flex justifyContent={JUSTIFY_CONTENT.flexEnd}>
-            <Сurrency
+            <SignWithNumber
               value={price}
               fontSize={FONT_SIZE.small}
               fontWeight={FONT_WEIGHT.normal}
@@ -70,8 +71,8 @@ const CartItem = ({ item, removeFromCart, addToCart }) => {
 
 CartItem.propTypes = {
   item: productType.isRequired,
-  removeFromCart: PropTypes.func.isRequired,
   addToCart: PropTypes.func.isRequired,
+  removeFromCart: PropTypes.func.isRequired,
 };
 
 export default CartItem;

@@ -1,23 +1,23 @@
 import React from 'react';
-import { getOr, first, toNumber } from 'lodash/fp';
 import find from 'lodash/find';
 import PropTypes from 'prop-types';
+import { getOr, first, toNumber } from 'lodash/fp';
 
-import { CardWrapper, CardContent } from './styled';
-
-import Image from '../Image';
-import Сurrency from '../Сurrency';
-import Label from '../Label';
-import Flex from '../Flex';
-import Select from '../Select';
-import Button from '../Button';
+import { productType } from '../../propType';
 
 import THEME_VARIANT from '../../constants/themeVariant';
 import FONT_SIZE from '../../constants/fontSize';
 import FONT_WEIGHT from '../../constants/fontWeight';
 import TEXT_ALIGN from '../../constants/textAlign';
 
-import { productType } from '../../propType';
+import Image from '../Image';
+import Label from '../Label';
+import Flex from '../Flex';
+import Select from '../Select';
+import Button from '../Button';
+import SignWithNumber from '../SignWithNumber';
+
+import { CardWrapper, CardContent } from './styled';
 
 class Card extends React.Component {
   getOptions = () => getOr([], ['item', 'options'], this.props);
@@ -73,7 +73,7 @@ class Card extends React.Component {
             textAlign={TEXT_ALIGN.center}
           />
           <Flex>
-            <Сurrency
+            <SignWithNumber
               value={option.price}
               fontSize={FONT_SIZE.least}
               textAlign={TEXT_ALIGN.center}

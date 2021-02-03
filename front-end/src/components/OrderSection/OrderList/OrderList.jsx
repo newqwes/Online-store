@@ -7,11 +7,11 @@ import OrderListWrapper from './styled';
 import { productsType } from '../../../propType';
 
 const OrderList = ({ cart, removeFromCart, addToCart }) => {
-  const mapCart = cart.map((item) => (
+  const goods = cart.map((item) => (
     <CartItem key={item.id} item={item} removeFromCart={removeFromCart} addToCart={addToCart} />
   ));
 
-  return <OrderListWrapper>{mapCart}</OrderListWrapper>;
+  return <OrderListWrapper>{goods}</OrderListWrapper>;
 };
 
 OrderList.propTypes = {
