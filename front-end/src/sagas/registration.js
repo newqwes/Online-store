@@ -5,9 +5,9 @@ import { GET_REGISTRATION_PENDING } from '../actions';
 import { authAPI } from '../api';
 import { loginSuccess, loginFailure } from '../actionCreators';
 
-export function* registration({ payload: { login, password, email, tel } }) {
+export function* registration({ payload: { login, password, email, phone } }) {
   try {
-    const userData = yield authAPI.registration({ login, password, email, tel });
+    const userData = yield authAPI.registration({ login, password, email, phone });
 
     yield put(loginSuccess(userData));
     yield localStorage.setItem('token', userData.token);

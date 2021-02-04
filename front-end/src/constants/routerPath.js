@@ -2,15 +2,17 @@ const routers = {
   products: {
     main: '/products',
     pizza: '/products?type=pizza',
-    chicken: '/products?type=chicken',
     salad: '/products?type=salad',
     drink: '/products?type=drink',
     sauce: '/products?type=sauce',
+    chicken: '/products?type=chicken',
   },
-  contacts: '/contacts',
-  login: '/login',
-  registration: '/registration',
   main: '/',
+  cart: '/cart',
+  login: '/login',
+  contacts: '/contacts',
+  cartSubmit: '/cart_submit',
+  registration: '/registration',
 };
 
 const navbar = [

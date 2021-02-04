@@ -37,10 +37,10 @@ const AUTHENTICATION = {
         placeholder: INPUT_PLACEHOLDER.email,
       },
       {
-        name: INPUT_NAME.tel,
-        type: INPUT_TYPE.tel,
-        label: INPUT_LABEL.tel,
-        placeholder: INPUT_PLACEHOLDER.tel,
+        name: INPUT_NAME.phone,
+        type: INPUT_TYPE.phone,
+        label: INPUT_LABEL.phone,
+        placeholder: INPUT_PLACEHOLDER.phone,
       },
       {
         name: INPUT_NAME.password,

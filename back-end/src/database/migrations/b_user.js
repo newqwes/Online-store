@@ -19,7 +19,7 @@ module.exports = {
         type: DataTypes.STRING(50),
         allowNull: false,
       },
-      tel: {
+      phone: {
         type: DataTypes.STRING(20),
         allowNull: false,
       },

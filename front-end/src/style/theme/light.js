@@ -85,6 +85,17 @@ const light = {
     },
   },
 
+  cart: {
+    background: {
+      default: COLORS.mostlyWhiteYellow,
+      inverted: COLORS.softYellow,
+    },
+    shadow: {
+      default: COLORS.darkDesaturatedOrange,
+      inverted: COLORS.softYellow,
+    },
+  },
+
   navbar: {
     background: {
       default: COLORS.mostlyWhiteYellow,
@@ -137,7 +148,7 @@ const light = {
       warning: COLORS.squash,
     },
     borderActive: {
-      default: COLORS.darkDesaturatedOrange,
+      default: COLORS.verySoftYellow,
       disabled: COLORS.pinkishGrey,
       info: COLORS.darkishPurple,
       inverted: COLORS.softYellow,
@@ -155,6 +166,15 @@ const light = {
     },
     imageBackground: {
       default: pizzaBg,
+    },
+  },
+
+  icon: {
+    cart: {
+      color: {
+        default: COLORS.darkPink,
+        inverted: COLORS.softYellow,
+      },
     },
   },
 };

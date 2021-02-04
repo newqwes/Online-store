@@ -14,8 +14,8 @@ import {
   passwordValidation,
 } from '../components/Authentication/validate';
 
-const validate = ({ tel, email, login, password, confirmPassword }) => ({
-  tel: telValidation(tel),
+const validate = ({ phone, email, login, password, confirmPassword }) => ({
+  phone: telValidation(phone),
   email: emailValidation(email),
   login: loginValidation(login),
   password: passwordValidation(password),

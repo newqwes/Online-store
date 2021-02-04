@@ -217,7 +217,7 @@
             "login": {
               "type": "string"
             },
-            "tel": {
+            "phone": {
               "type": "string"
             },
             "token": {
@@ -233,7 +233,7 @@
     },
 
     "User": {
-      "required": ["login", "password", "email", "tel", "user_type"],
+      "required": ["login", "password", "email", "phone", "user_type"],
       "properties": {
         "login": {
           "type": "string"
@@ -244,7 +244,7 @@
         "email": {
           "type": "string"
         },
-        "tel": {
+        "phone": {
           "type": "string"
         },
         "user_type": {
