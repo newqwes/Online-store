@@ -7,6 +7,7 @@ import AUTHENTICATION from './constants/authentication';
 import CartContainer from './containers/CartContainer';
 import LoginContainer from './containers/LoginContainer';
 import HeaderContainer from './containers/HeaderContainer';
+import OrderContainer from './containers/OrderContainer';
 import ProductsContainer from './containers/ProductsContainer';
 import RegistrationContainer from './containers/RegistrationContainer';
 
@@ -21,6 +22,7 @@ const App = () => (
     </Route>
     <Route path={ROUTER_PATH.products.main} component={ProductsContainer} />
     <Route path={ROUTER_PATH.cart} component={CartContainer} />
+    <Route path={ROUTER_PATH.order} component={OrderContainer} />
     <Route path={ROUTER_PATH.login}>
       <LoginContainer content={AUTHENTICATION.login} />
     </Route>

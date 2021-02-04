@@ -9,6 +9,7 @@ const routers = {
   },
   main: '/',
   cart: '/cart',
+  order: '/order',
   login: '/login',
   contacts: '/contacts',
   cartSubmit: '/cart_submit',
