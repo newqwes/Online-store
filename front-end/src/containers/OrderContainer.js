@@ -4,18 +4,10 @@ import { reduxForm } from 'redux-form';
 
 import { removeFromCart, addToCart, submitOrder } from '../actionCreators';
 
-import { emailValidation, passwordValidation } from '../components/Authentication/validate';
-
 import OrderSection from '../components/OrderSection';
-
-const validate = ({ email, password }) => ({
-  email: emailValidation(email),
-  password: passwordValidation(password),
-});
 
 const withReduxForm = reduxForm({
   form: 'order',
-  validate,
 });
 
 const mapStateToProps = ({ cart }) => ({

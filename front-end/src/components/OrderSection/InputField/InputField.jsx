@@ -7,11 +7,11 @@ import Flex from '../../Flex';
 
 import InputFieldContent from './styled';
 
-const InputField = ({ label, type, placeholder, meta: { touched, error } }) => (
+const InputField = ({ label, type, placeholder, input, meta: { touched, error } }) => (
   <InputFieldContent isError={touched && error}>
     <Flex direction={DIRECTION.column}>
       <label>{label}</label>
-      <input type={type} placeholder={placeholder} />
+      <input type={type} placeholder={placeholder} {...input} />
     </Flex>
   </InputFieldContent>
 );

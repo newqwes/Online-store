@@ -23,42 +23,67 @@ const OrderSection = ({
   handleSubmit,
   themeVariant,
   removeFromCart,
-}) => (
-  <OrderSectionWrapper themeVariant={themeVariant}>
-    <OrderSectionContent themeVariant={themeVariant}>
-      <Flex direction={DIRECTION.column} flexBasis='60%'>
-        <Label text='Оформление заказа' className='order-section__label' />
-        <form onSubmit={handleSubmit(submitOrder)}>
-          <Flex direction={DIRECTION.column}>
-            <Field
-              component={InputField}
-              name='city'
-              label='Город'
-              type='text'
-              placeholder='Гродно'
-            />
-            <Field
-              component={InputField}
-              name='street'
-              label='Улица'
-              type='text'
-              placeholder='Ленина'
-            />
-            <Field component={InputField} name='home' label='Дом' type='text' placeholder='19' />
-            <Button text='Отправить' />
-          </Flex>
-        </form>
-      </Flex>
-      <Flex direction={DIRECTION.column} flexBasis='40%'>
-        <Label text='Ваш заказ' className='order-section__label' />
-        <Flex direction={DIRECTION.column} className='order-section__cart'>
-          <CartItems cart={cart} removeFromCart={removeFromCart} addToCart={addToCart} />
-          <TotalPrice cart={cart} />
+}) => {
+  const submit = (customer) => submitOrder({ order: cart, customer });
+
+  return (
+    <OrderSectionWrapper themeVariant={themeVariant}>
+      <OrderSectionContent themeVariant={themeVariant}>
+        <Flex direction={DIRECTION.column} flexBasis='60%'>
+          <Label text='Оформление заказа' className='order-section__label' />
+          <form onSubmit={handleSubmit(submit)}>
+            <Flex direction={DIRECTION.column}>
+              <Field
+                component={InputField}
+                name='city'
+                label='Город'
+                type='text'
+                placeholder='Гродно'
+              />
+              <Field
+                component={InputField}
+                name='street'
+                label='Улица'
+                type='text'
+                placeholder='Ленина'
+              />
+              <Field component={InputField} name='home' label='Дом' type='text' placeholder='19' />
+              <Field
+                component={InputField}
+                name='apartment'
+                label='Квартира'
+                type='text'
+                placeholder='24'
+              />
+              <Field
+                component={InputField}
+                name='mail'
+                label='Почта'
+                type='text'
+                placeholder='test@gmail.com'
+              />
+              <Field
+                component={InputField}
+                name='phone'
+                label='Телефон'
+                type='text'
+                placeholder='+375331234567'
+              />
+              <Button text='Отправить' />
+            </Flex>
+          </form>
         </Flex>
-      </Flex>
-    </OrderSectionContent>
-  </OrderSectionWrapper>
-);
+        <Flex direction={DIRECTION.column} flexBasis='40%'>
+          <Label text='Ваш заказ' className='order-section__label' />
+          <Flex direction={DIRECTION.column} className='order-section__cart'>
+            <CartItems cart={cart} removeFromCart={removeFromCart} addToCart={addToCart} />
+            <TotalPrice cart={cart} />
+          </Flex>
+        </Flex>
+      </OrderSectionContent>
+    </OrderSectionWrapper>
+  );
+};
 
 OrderSection.propTypes = {
   cart: productsType.isRequired,

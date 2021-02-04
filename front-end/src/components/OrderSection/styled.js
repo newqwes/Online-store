@@ -31,14 +31,14 @@ export const OrderSectionContent = styled.div`
     border-radius: 10px;
     align-self: flex-start;
     box-shadow: 0 0 10px -8px ${({ theme, themeVariant }) => theme.order.hoverShadow[themeVariant]};
-  }
 
-  button {
-    width: 100%;
-    height: 40px;
-    margin-top: 10px;
-    background-color: ${({ theme, themeVariant }) => theme.order.button.background[themeVariant]};
-    border-color: ${({ theme, themeVariant }) => theme.order.button.background[themeVariant]};
-    color: ${({ theme, themeVariant }) => theme.order.button.color[themeVariant]};
+    button {
+      width: 100%;
+      height: 40px;
+      margin-top: 10px;
+      background-color: ${({ theme, themeVariant }) => theme.order.button.background[themeVariant]};
+      border-color: ${({ theme, themeVariant }) => theme.order.button.background[themeVariant]};
+      color: ${({ theme, themeVariant }) => theme.order.button.color[themeVariant]};
+    }
   }
 `;
