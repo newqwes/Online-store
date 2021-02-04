@@ -4,6 +4,7 @@ import { Route, Redirect } from 'react-router-dom';
 import ROUTER_PATH from './constants/routerPath';
 import AUTHENTICATION from './constants/authentication';
 
+import CartContainer from './containers/CartContainer';
 import LoginContainer from './containers/LoginContainer';
 import HeaderContainer from './containers/HeaderContainer';
 import ProductsContainer from './containers/ProductsContainer';
@@ -19,6 +20,7 @@ const App = () => (
       <Redirect to={ROUTER_PATH.products.pizza} />
     </Route>
     <Route path={ROUTER_PATH.products.main} component={ProductsContainer} />
+    <Route path={ROUTER_PATH.cart} component={CartContainer} />
     <Route path={ROUTER_PATH.login}>
       <LoginContainer content={AUTHENTICATION.login} />
     </Route>

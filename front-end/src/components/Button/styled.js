@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 const ButtonWrapper = styled.button`
-  margin: 0 20px;
   padding: 5px 8px;
   letter-spacing: 1px;
   background-color: ${(props) => props.theme.button.background[props.themeVariant]};

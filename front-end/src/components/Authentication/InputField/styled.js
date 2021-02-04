@@ -15,7 +15,6 @@ const InputFieldContent = styled.div.attrs(({ theme, themeVariant, isError }) =>
   input {
     padding: 0.5rem 1rem;
     border: 1px solid ${({ inputBorderColor }) => inputBorderColor};
-
     margin-bottom: 10px;
   }
 

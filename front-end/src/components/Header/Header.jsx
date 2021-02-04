@@ -3,10 +3,9 @@ import PropTypes from 'prop-types';
 
 import ICON_SIZE from '../../constants/iconSize';
 import FONT_SIZE from '../../constants/fontSize';
+import ROUTER_PATH from '../../constants/routerPath';
 import THEME_VARIANT from '../../constants/themeVariant';
 import { JUSTIFY_CONTENT } from '../../constants/position';
-
-import { HeaderWrapper, HeaderContent } from './styled';
 
 import Flex from '../Flex';
 import Link from '../Link';
@@ -14,14 +13,16 @@ import Label from '../Label';
 import Time from '../Icons/Time';
 import Cart from '../Icons/Cart';
 import Logo from '../Icons/Logo';
+import UserInfo from './UserInfo';
 import Phone from '../Icons/Phone';
-import UserCorner from './UserCorner';
+
+import { HeaderWrapper, HeaderContent } from './styled';
 
 const Header = ({ cartItemsCount, themeVariant, isSuccess, userName, logout }) => (
   <HeaderWrapper themeVariant={themeVariant}>
     <HeaderContent>
       <Flex>
-        <Link to='/'>
+        <Link to={ROUTER_PATH.main}>
           <Logo size={ICON_SIZE.large} />
         </Link>
       </Flex>
@@ -40,10 +41,10 @@ const Header = ({ cartItemsCount, themeVariant, isSuccess, userName, logout }) =
         </Link>
       </Flex>
       <Flex horizontal={JUSTIFY_CONTENT.flexEnd}>
-        <Link to='/cart'>
+        <Link to={ROUTER_PATH.cart}>
           <Cart size={ICON_SIZE.large} cartItemsCount={cartItemsCount} />
         </Link>
-        <UserCorner userName={userName} logout={logout} isSuccess={isSuccess} />
+        <UserInfo userName={userName} logout={logout} isSuccess={isSuccess} />
       </Flex>
     </HeaderContent>
   </HeaderWrapper>
@@ -52,8 +53,8 @@ const Header = ({ cartItemsCount, themeVariant, isSuccess, userName, logout }) =
 Header.propTypes = {
   themeVariant: PropTypes.string,
   logout: PropTypes.func.isRequired,
-  userName: PropTypes.string.isRequired,
   isSuccess: PropTypes.bool.isRequired,
+  userName: PropTypes.string.isRequired,
   cartItemsCount: PropTypes.number.isRequired,
 };
 

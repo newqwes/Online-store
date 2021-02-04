@@ -20,7 +20,7 @@ const Label = ({ text, fontSize, textAlign, fontWeight, themeVariant }) => (
 );
 
 Label.propTypes = {
-  text: PropTypes.string,
+  text: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   fontSize: PropTypes.number,
   textAlign: PropTypes.string,
   fontWeight: PropTypes.number,

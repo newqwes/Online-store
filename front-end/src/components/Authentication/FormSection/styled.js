@@ -5,6 +5,7 @@ export const FormWrapper = styled.section`
   width: 100%;
   min-height: 85vh;
   display: flex;
+
   div {
     margin: 0 auto;
   }
