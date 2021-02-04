@@ -1,11 +1,12 @@
 import styled from 'styled-components';
+
 import SECTION_WIDTH from '../../constants/sectionWidth';
 
-export const OrderSectionWrapper = styled.section`
-  background: ${(props) => props.theme.cart.background[props.themeVariant]};
+export const CartSectionWrapper = styled.section`
   width: 100%;
-  min-height: 85vh;
   padding: 20px 0;
+  min-height: 85vh;
+  background: ${(props) => props.theme.cart.background[props.themeVariant]};
 `;
 
 export const TotalPriceContent = styled.div`

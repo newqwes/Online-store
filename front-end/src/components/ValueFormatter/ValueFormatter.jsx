@@ -6,9 +6,9 @@ import TEXT_ALIGN from '../../constants/textAlign';
 import FONT_WEIGHT from '../../constants/fontWeight';
 import THEME_VARIANT from '../../constants/themeVariant';
 
-import ValueFormaterWrapper from './styled';
+import ValueFormatterWrapper from './styled';
 
-const ValueFormater = ({
+const ValueFormatter = ({
   value,
   prefix,
   postfix,
@@ -17,7 +17,7 @@ const ValueFormater = ({
   fontWeight,
   themeVariant,
 }) => (
-  <ValueFormaterWrapper
+  <ValueFormatterWrapper
     fontSize={fontSize}
     textAlign={textAlign}
     fontWeight={fontWeight}
@@ -26,10 +26,10 @@ const ValueFormater = ({
     {prefix}
     {value}
     {postfix}
-  </ValueFormaterWrapper>
+  </ValueFormatterWrapper>
 );
 
-ValueFormater.propTypes = {
+ValueFormatter.propTypes = {
   postfix: PropTypes.string,
   prefix: PropTypes.string,
   fontSize: PropTypes.number,
@@ -39,7 +39,7 @@ ValueFormater.propTypes = {
   value: PropTypes.number.isRequired,
 };
 
-ValueFormater.defaultProps = {
+ValueFormatter.defaultProps = {
   prefix: '',
   postfix: '',
   textAlign: TEXT_ALIGN.left,
@@ -48,4 +48,4 @@ ValueFormater.defaultProps = {
   themeVariant: THEME_VARIANT.default,
 };
 
-export default ValueFormater;
+export default ValueFormatter;

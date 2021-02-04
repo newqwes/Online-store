@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { removeFromCart, addToCart } from '../actionCreators';
 
-import OrderSection from '../components/OrderSection';
+import CartSection from '../components/CartSection';
 
 const mapStateToProps = ({ cart, authorization }) => ({
   cart,
@@ -14,4 +14,4 @@ const mapStateToProps = ({ cart, authorization }) => ({
 
 const mapDispatchToProps = { removeFromCart, addToCart };
 
-export default connect(mapStateToProps, mapDispatchToProps)(OrderSection);
+export default connect(mapStateToProps, mapDispatchToProps)(CartSection);

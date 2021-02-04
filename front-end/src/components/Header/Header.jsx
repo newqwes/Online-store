@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { HeaderWrapper, HeaderContent } from './styled';
-
 import ICON_SIZE from '../../constants/iconSize';
 import FONT_SIZE from '../../constants/fontSize';
+import ROUTER_PATH from '../../constants/routerPath';
 import THEME_VARIANT from '../../constants/themeVariant';
 import { JUSTIFY_CONTENT } from '../../constants/position';
 
@@ -14,9 +13,10 @@ import Label from '../Label';
 import Time from '../Icons/Time';
 import Cart from '../Icons/Cart';
 import Logo from '../Icons/Logo';
-import Phone from '../Icons/Phone';
 import UserInfo from './UserInfo';
-import ROUTER_PATH from '../../constants/routerPath';
+import Phone from '../Icons/Phone';
+
+import { HeaderWrapper, HeaderContent } from './styled';
 
 const Header = ({ cartItemsCount, themeVariant, isSuccess, userName, logout }) => (
   <HeaderWrapper themeVariant={themeVariant}>
@@ -41,7 +41,7 @@ const Header = ({ cartItemsCount, themeVariant, isSuccess, userName, logout }) =
         </Link>
       </Flex>
       <Flex horizontal={JUSTIFY_CONTENT.flexEnd}>
-        <Link to={ROUTER_PATH.order}>
+        <Link to={ROUTER_PATH.cart}>
           <Cart size={ICON_SIZE.large} cartItemsCount={cartItemsCount} />
         </Link>
         <UserInfo userName={userName} logout={logout} isSuccess={isSuccess} />

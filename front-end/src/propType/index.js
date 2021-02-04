@@ -27,6 +27,10 @@ export const productType = PropTypes.shape({
 
 export const productsType = PropTypes.arrayOf(productType);
 
+export const cartItemType = productType;
+
+export const cartType = PropTypes.arrayOf(productType);
+
 export const locationRouterType = PropTypes.shape({
   hash: PropTypes.string.isRequired,
   key: PropTypes.string,

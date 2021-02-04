@@ -15,7 +15,7 @@ import Label from '../Label';
 import Flex from '../Flex';
 import Select from '../Select';
 import Button from '../Button';
-import ValueFormater from '../ValueFormater';
+import ValueFormatter from '../ValueFormatter';
 
 import { CardWrapper, CardContent } from './styled';
 
@@ -45,8 +45,8 @@ class Card extends React.Component {
 
   static propTypes = {
     item: productType.isRequired,
-    addToCart: PropTypes.func.isRequired,
     themeVariant: PropTypes.string,
+    addToCart: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -73,7 +73,7 @@ class Card extends React.Component {
             textAlign={TEXT_ALIGN.center}
           />
           <Flex>
-            <ValueFormater
+            <ValueFormatter
               value={option.price}
               fontSize={FONT_SIZE.least}
               textAlign={TEXT_ALIGN.center}

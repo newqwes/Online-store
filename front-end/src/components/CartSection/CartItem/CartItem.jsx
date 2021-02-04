@@ -6,12 +6,12 @@ import FONT_SIZE from '../../../constants/fontSize';
 import FONT_WEIGHT from '../../../constants/fontWeight';
 import { ALIGN_ITEMS, JUSTIFY_CONTENT } from '../../../constants/position';
 
-import { productType } from '../../../propType';
+import { cartItemType } from '../../../propType';
 
 import Flex from '../../Flex';
 import Label from '../../Label';
 import Button from '../../Button';
-import ValueFormater from '../../ValueFormater';
+import ValueFormatter from '../../ValueFormatter';
 
 import {
   CartItemContent,
@@ -43,7 +43,7 @@ const CartItem = ({ item, removeFromCart, addToCart }) => {
         </CartDescriptionContent>
         <CartPriceContent>
           <Flex justifyContent={JUSTIFY_CONTENT.flexEnd}>
-            <ValueFormater
+            <ValueFormatter
               value={weight}
               fontSize={FONT_SIZE.small}
               fontWeight={FONT_WEIGHT.normal}
@@ -51,7 +51,7 @@ const CartItem = ({ item, removeFromCart, addToCart }) => {
             />
           </Flex>
           <Flex justifyContent={JUSTIFY_CONTENT.flexEnd}>
-            <ValueFormater
+            <ValueFormatter
               value={price}
               fontSize={FONT_SIZE.small}
               fontWeight={FONT_WEIGHT.normal}
@@ -70,7 +70,7 @@ const CartItem = ({ item, removeFromCart, addToCart }) => {
 };
 
 CartItem.propTypes = {
-  item: productType.isRequired,
+  item: cartItemType.isRequired,
   addToCart: PropTypes.func.isRequired,
   removeFromCart: PropTypes.func.isRequired,
 };

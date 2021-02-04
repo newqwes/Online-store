@@ -2,8 +2,8 @@ import React from 'react';
 import { get } from 'lodash/fp';
 import PropTypes from 'prop-types';
 
-import cartCost from '../../utils/orderUtils';
-import { productsType } from '../../propType';
+import { cartType } from '../../propType';
+import cartCost from '../../utils/cartUtils';
 
 import FONT_SIZE from '../../constants/fontSize';
 import ROUTER_PATH from '../../constants/routerPath';
@@ -14,43 +14,43 @@ import Flex from '../Flex';
 import Link from '../Link';
 import Label from '../Label';
 import Button from '../Button';
-import OrderList from './OrderList';
-import ValueFormater from '../ValueFormater';
+import CartItems from './CartItems';
+import ValueFormatter from '../ValueFormatter';
 
-import { OrderSectionWrapper, TotalPriceContent } from './styled';
+import { CartSectionWrapper, TotalPriceContent } from './styled';
 
-const OrderSection = ({ themeVariant, cart, removeFromCart, addToCart }) => {
+const CartSection = ({ themeVariant, cart, removeFromCart, addToCart }) => {
   const currencySign = get(['0', 'currencySign'], cart);
 
   const totalPrice = cartCost(cart);
 
   return (
-    <OrderSectionWrapper themeVariant={themeVariant}>
-      <OrderList cart={cart} removeFromCart={removeFromCart} addToCart={addToCart} />
+    <CartSectionWrapper themeVariant={themeVariant}>
+      <CartItems cart={cart} removeFromCart={removeFromCart} addToCart={addToCart} />
       <TotalPriceContent>
         <Flex justifyContent={JUSTIFY_CONTENT.flexEnd}>
           <Label text='Сумма заказа:' fontSize={FONT_SIZE.large} />
-          <ValueFormater value={totalPrice} postfix={currencySign} />
+          <ValueFormatter value={totalPrice} postfix={currencySign} />
         </Flex>
         <Flex justifyContent={JUSTIFY_CONTENT.flexEnd}>
-          <Link to={ROUTER_PATH.orderSubmit}>
+          <Link to={ROUTER_PATH.cartSubmit}>
             <Button text='Оформить заказ' />
           </Link>
         </Flex>
       </TotalPriceContent>
-    </OrderSectionWrapper>
+    </CartSectionWrapper>
   );
 };
 
-OrderSection.propTypes = {
-  cart: productsType.isRequired,
+CartSection.propTypes = {
+  cart: cartType.isRequired,
   themeVariant: PropTypes.string,
   addToCart: PropTypes.func.isRequired,
   removeFromCart: PropTypes.func.isRequired,
 };
 
-OrderSection.defaultProps = {
+CartSection.defaultProps = {
   themeVariant: THEME_VARIANT.default,
 };
 
-export default OrderSection;
+export default CartSection;
