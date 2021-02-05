@@ -2,9 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Field } from 'redux-form';
 
-const FieldList = ({ fields, component }) => {
+const FieldList = ({ fields, component, StyledComponent }) => {
   const mapFields = fields.map(({ name, ...other }) => (
-    <Field key={name} component={component} {...other} name={name} />
+    <Field
+      key={name}
+      component={component}
+      {...other}
+      name={name}
+      StyledComponent={StyledComponent}
+    />
   ));
 
   return mapFields;
@@ -12,6 +18,7 @@ const FieldList = ({ fields, component }) => {
 
 FieldList.propTypes = {
   component: PropTypes.elementType.isRequired,
+  StyledComponent: PropTypes.elementType.isRequired,
   fields: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,

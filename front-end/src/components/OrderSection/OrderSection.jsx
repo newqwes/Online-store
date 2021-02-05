@@ -1,20 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Field } from 'redux-form';
 
 import DIRECTION from '../../constants/direction';
 import THEME_VARIANT from '../../constants/themeVariant';
+import ORDER_FIELDS from '../../constants/orderFields';
 
 import { productsType } from '../../propType';
 
 import Flex from '../Flex';
 import Label from '../Label';
 import Button from '../Button';
-import InputField from './InputField';
+import FieldList from '../FieldList';
+import InputField from '../InputField';
 import TotalPrice from '../TotalPrice';
 import CartItems from '../CartSection/CartItems';
 
-import { OrderSectionWrapper, OrderSectionContent } from './styled';
+import { OrderSectionWrapper, OrderSectionContent, InputFieldContent } from './styled';
 
 const OrderSection = ({
   cart,
@@ -33,41 +34,10 @@ const OrderSection = ({
           <Label text='Оформление заказа' className='order-section__label' />
           <form onSubmit={handleSubmit(submit)}>
             <Flex direction={DIRECTION.column}>
-              <Field
+              <FieldList
+                fields={ORDER_FIELDS}
                 component={InputField}
-                name='city'
-                label='Город'
-                type='text'
-                placeholder='Гродно'
-              />
-              <Field
-                component={InputField}
-                name='street'
-                label='Улица'
-                type='text'
-                placeholder='Ленина'
-              />
-              <Field component={InputField} name='home' label='Дом' type='text' placeholder='19' />
-              <Field
-                component={InputField}
-                name='apartment'
-                label='Квартира'
-                type='text'
-                placeholder='24'
-              />
-              <Field
-                component={InputField}
-                name='mail'
-                label='Почта'
-                type='text'
-                placeholder='test@gmail.com'
-              />
-              <Field
-                component={InputField}
-                name='phone'
-                label='Телефон'
-                type='text'
-                placeholder='+375331234567'
+                StyledComponent={InputFieldContent}
               />
               <Button text='Отправить' />
             </Flex>

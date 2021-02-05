@@ -112,13 +112,16 @@ const light = {
       default: COLORS.verySoftYellow,
       inverted: COLORS.softYellow,
     },
-    inputBorder: {
-      default: COLORS.verySoftYellow,
-      inverted: COLORS.softYellow,
-    },
     input: {
-      default: COLORS.verySoftYellow,
-      inverted: COLORS.softYellow,
+      color: {
+        default: COLORS.mostlyWhiteYellow,
+        inverted: COLORS.softYellow,
+      },
+      border: {
+        default: COLORS.darkDesaturatedOrange,
+        inverted: COLORS.verySoftYellow,
+        warning: COLORS.darkPink,
+      },
     },
     button: {
       background: {
