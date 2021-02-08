@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Field } from 'redux-form';
 
 const FieldList = ({ fields, component, styledComponent }) => {
-  const mapFields = fields.map(({ name, ...other }) => (
+  const fieldList = fields.map(({ name, ...other }) => (
     <Field
       key={name}
       component={component}
@@ -13,7 +13,7 @@ const FieldList = ({ fields, component, styledComponent }) => {
     />
   ));
 
-  return mapFields;
+  return fieldList;
 };
 
 FieldList.propTypes = {
