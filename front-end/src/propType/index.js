@@ -44,3 +44,10 @@ export const locationRouterType = PropTypes.shape({
     PropTypes.string,
   ]),
 });
+
+export const fieldType = PropTypes.shape({
+  name: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  placeholder: PropTypes.string.isRequired,
+});

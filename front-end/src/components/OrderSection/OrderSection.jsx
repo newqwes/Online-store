@@ -43,7 +43,7 @@ const OrderSection = ({
               <FieldList
                 fields={ORDER_FIELDS}
                 component={InputField}
-                styledComponent={InputFieldContent}
+                fieldStyle={InputFieldContent}
               />
               <Button text='Отправить' />
             </Flex>

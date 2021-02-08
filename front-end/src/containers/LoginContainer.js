@@ -5,7 +5,7 @@ import { reduxForm } from 'redux-form';
 
 import { login } from '../actionCreators';
 
-import FormSection from '../components/Authentication/FormSection';
+import FormSection from '../components/Authentication';
 import { emailValidation, passwordValidation } from '../components/Authentication/validate';
 
 const validate = ({ email, password }) => ({

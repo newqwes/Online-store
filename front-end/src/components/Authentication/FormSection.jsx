@@ -61,11 +61,7 @@ class FormSection extends React.Component {
               <Label text={title} />
             </Flex>
             <form onSubmit={handleSubmit(submit)}>
-              <FieldList
-                styledComponent={InputFieldContent}
-                fields={fields}
-                component={InputField}
-              />
+              <FieldList fieldStyle={InputFieldContent} fields={fields} component={InputField} />
               <Button text={buttonText} onClick={this.handleClick} />
               <Flex justifyContent={JUSTIFY_CONTENT.center}>
                 <NavLink to={link.route}>{link.text}</NavLink>

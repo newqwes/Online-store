@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types';
 
+import { fieldType } from '../../propType';
+
 const contentType = {
   title: PropTypes.string.isRequired,
   buttonText: PropTypes.string.isRequired,
@@ -9,14 +11,7 @@ const contentType = {
     route: PropTypes.string.isRequired,
   }),
 
-  fields: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      type: PropTypes.string.isRequired,
-      label: PropTypes.string.isRequired,
-      placeholder: PropTypes.string.isRequired,
-    })
-  ),
+  fields: PropTypes.arrayOf(fieldType),
 };
 
 export default contentType;

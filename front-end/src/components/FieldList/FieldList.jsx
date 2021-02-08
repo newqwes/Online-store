@@ -2,17 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Field } from 'redux-form';
 
-import fieldsType from './propTypes';
+import { fieldType } from '../../propType';
 
-const FieldList = ({ fields, component, styledComponent }) => {
+const FieldList = ({ fields, component, fieldStyle }) => {
   const fieldList = fields.map(({ name, ...other }) => (
-    <Field
-      key={name}
-      component={component}
-      {...other}
-      name={name}
-      styledComponent={styledComponent}
-    />
+    <Field key={name} component={component} {...other} name={name} fieldStyle={fieldStyle} />
   ));
 
   return fieldList;
@@ -20,8 +14,8 @@ const FieldList = ({ fields, component, styledComponent }) => {
 
 FieldList.propTypes = {
   component: PropTypes.elementType.isRequired,
-  styledComponent: PropTypes.elementType.isRequired,
-  fields: PropTypes.arrayOf(fieldsType),
+  fieldStyle: PropTypes.elementType.isRequired,
+  fields: PropTypes.arrayOf(fieldType),
 };
 
 export default FieldList;

@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { productsType } from '../../propType';
-
 import Flex from '../Flex';
 import Label from '../Label';
 import ValueFormater from '../ValueFormatter';
@@ -11,6 +9,7 @@ import FONT_SIZE from '../../constants/fontSize';
 import { JUSTIFY_CONTENT } from '../../constants/position';
 
 import TotalPriceWrapper from './styled';
+import TEXT from '../../constants/text';
 
 const TotalPrice = ({ totalPrice, currencySign, text }) => (
   <TotalPriceWrapper>
@@ -22,10 +21,14 @@ const TotalPrice = ({ totalPrice, currencySign, text }) => (
 );
 
 TotalPrice.propTypes = {
-  cart: productsType.isRequired,
+  totalPrice: PropTypes.number,
+  currencySign: PropTypes.string,
   text: PropTypes.string.isRequired,
-  totalPrice: PropTypes.number.isRequired,
-  currencySign: PropTypes.string.isRequired,
+};
+
+TotalPrice.defaultProps = {
+  totalPrice: 0,
+  currencySign: TEXT.empty,
 };
 
 export default TotalPrice;

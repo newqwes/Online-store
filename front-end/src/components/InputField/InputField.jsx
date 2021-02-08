@@ -9,14 +9,7 @@ import { JUSTIFY_CONTENT } from '../../constants/position';
 import Flex from '../Flex';
 import Label from '../Label';
 
-const InputField = ({
-  input,
-  label,
-  type,
-  placeholder,
-  styledComponent,
-  meta: { touched, error },
-}) => {
+const InputField = ({ input, label, type, placeholder, fieldStyle, meta: { touched, error } }) => {
   const errorLabel = (
     <Flex justifyContent={JUSTIFY_CONTENT.center}>
       <Label
@@ -27,14 +20,14 @@ const InputField = ({
       />
     </Flex>
   );
-  const WrapperContent = styledComponent;
+  const FieldStyle = fieldStyle;
 
   return (
-    <WrapperContent isError={touched && error}>
+    <FieldStyle isError={touched && error}>
       <label>{label}</label>
       <input {...input} placeholder={placeholder} type={type} />
       {touched && error && errorLabel}
-    </WrapperContent>
+    </FieldStyle>
   );
 };
 
@@ -52,7 +45,7 @@ InputField.propTypes = {
   label: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
-  styledComponent: PropTypes.elementType.isRequired,
+  fieldStyle: PropTypes.elementType.isRequired,
 
   meta: PropTypes.shape({
     touched: PropTypes.bool.isRequired,
