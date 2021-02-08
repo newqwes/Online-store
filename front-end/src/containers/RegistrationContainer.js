@@ -5,7 +5,7 @@ import { reduxForm } from 'redux-form';
 
 import { registration } from '../actionCreators';
 
-import FormSection from '../components/Authentication/FormSection';
+import FormSection from '../components/Authentication';
 import {
   telValidation,
   emailValidation,

@@ -8,12 +8,13 @@ import TEXT_ALIGN from '../../constants/textAlign';
 import THEME_VARIANT from '../../constants/themeVariant';
 import TEXT from '../../constants/text';
 
-const Label = ({ text, fontSize, textAlign, fontWeight, themeVariant }) => (
+const Label = ({ text, fontSize, textAlign, fontWeight, themeVariant, className }) => (
   <LabelWrapper
     fontSize={fontSize}
     textAlign={textAlign}
     fontWeight={fontWeight}
     themeVariant={themeVariant}
+    className={className}
   >
     {text}
   </LabelWrapper>
@@ -23,12 +24,14 @@ Label.propTypes = {
   text: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   fontSize: PropTypes.number,
   textAlign: PropTypes.string,
+  className: PropTypes.string,
   fontWeight: PropTypes.number,
   themeVariant: PropTypes.string,
 };
 
 Label.defaultProps = {
   text: TEXT.empty,
+  className: TEXT.empty,
   fontSize: FONT_SIZE.medium,
   fontWeight: FONT_WEIGHT.bold,
   textAlign: TEXT_ALIGN.left,

@@ -5,6 +5,8 @@ const ButtonWrapper = styled.button`
   letter-spacing: 1px;
   background-color: ${(props) => props.theme.button.background[props.themeVariant]};
   border: 1px solid ${(props) => props.theme.button.border[props.themeVariant]};
+
+  border-radius: 5px;
   color: ${(props) => props.theme.button.color[props.themeVariant]};
   font-weight: 500;
   outline: none;

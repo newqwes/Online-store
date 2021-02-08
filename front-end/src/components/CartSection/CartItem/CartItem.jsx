@@ -34,7 +34,7 @@ const CartItem = ({ item, removeFromCart, addToCart }) => {
       <Flex justifyContent={JUSTIFY_CONTENT.spaceBetween} alignItems={ALIGN_ITEMS.stretch}>
         <CartPhotoContent backgroundImage={photoUrl} />
         <CartDescriptionContent>
-          <Label text={name} fontSize={FONT_SIZE.medium} fontWeight={FONT_WEIGHT.normal} />
+          <Label text={name} fontSize={FONT_SIZE.medium} fontWeight={FONT_WEIGHT.lightBold} />
           <Label
             text={`Описание: ${description}`}
             fontSize={FONT_SIZE.small}
