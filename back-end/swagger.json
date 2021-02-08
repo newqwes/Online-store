@@ -43,6 +43,33 @@
         }
       }
     },
+
+    "/order": {
+      "post": {
+        "tags": ["Order"],
+        "description": "Create new order in system",
+        "parameters": [
+          {
+            "name": "order",
+            "in": "body",
+            "description": "Order that we want to create",
+            "schema": {
+              "$ref": "#/definitions/Order"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "201": {
+            "description": "Order was sended",
+            "schema": {
+              "$ref": "#/definitions/orderResponse"
+            }
+          }
+        }
+      }
+    },
+
     "/auth/login": {
       "post": {
         "tags": ["Auth"],
@@ -68,6 +95,7 @@
         }
       }
     },
+
     "/products": {
       "get": {
         "parameters": [
@@ -200,6 +228,21 @@
         }
       }
     },
+
+    "orderResponse": {
+      "properties": {
+        "status": {
+          "type": "integer"
+        },
+        "message": {
+          "type": "string"
+        },
+        "data": {
+          "$ref": "#/definitions/Order"
+        }
+      }
+    },
+
     "userResponse": {
       "properties": {
         "status": {
@@ -252,6 +295,89 @@
         }
       }
     },
+
+    "Order": {
+      "required": ["cart", "customer"],
+      "properties": {
+        "cart": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "count": {
+                "type": "number",
+                "format": "float"
+              },
+              "currencySign": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "id": {
+                "type": "integer"
+              },
+              "name": {
+                "type": "string"
+              },
+              "photoUrl": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "unitSign": {
+                "type": "string"
+              },
+              "options": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer"
+                  },
+                  "price": {
+                    "type": "number",
+                    "format": "float"
+                  },
+                  "weight": {
+                    "type": "number",
+                    "format": "float"
+                  },
+                  "product_id": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        },
+
+        "customer": {
+          "type": "object",
+          "properties": {
+            "phone": {
+              "type": "string"
+            },
+            "email": {
+              "type": "string"
+            },
+            "city": {
+              "type": "string"
+            },
+            "home": {
+              "type": "string"
+            },
+            "street": {
+              "type": "string"
+            },
+            "apartment": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+
     "createProduct": {
       "required": ["name", "description", "photoUrl", "unitSign", "currencySign"],
       "properties": {
@@ -291,6 +417,7 @@
         }
       }
     },
+
     "updateProduct": {
       "properties": {
         "name": {
@@ -329,6 +456,7 @@
         }
       }
     },
+
     "Products": {
       "required": ["status", "message", "data"],
       "properties": {
@@ -393,6 +521,7 @@
         }
       }
     },
+
     "Product": {
       "required": ["status", "message", "data"],
       "properties": {
