@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { get, compose, head } from 'lodash/fp';
+import { Redirect } from 'react-router-dom';
 
 import cartCost from '../../utils/cartUtils';
 import { productsType } from '../../propType';
@@ -8,6 +9,7 @@ import { productsType } from '../../propType';
 import DIRECTION from '../../constants/direction';
 import THEME_VARIANT from '../../constants/themeVariant';
 import ORDER_FIELDS from '../../constants/orderFields';
+import ROUTER_PATH from '../../constants/routerPath';
 
 import Flex from '../Flex';
 import Label from '../Label';
@@ -26,8 +28,11 @@ const OrderSection = ({
   handleSubmit,
   themeVariant,
   removeFromCart,
+  orderSuccess,
 }) => {
-  const submit = (customer) => submitOrder({ order: cart, customer });
+  if (orderSuccess) return <Redirect to={ROUTER_PATH.orderSuccess} />;
+
+  const submit = (customer) => submitOrder({ cart, customer });
 
   const currencySign = compose(get('currencySign'), head)(cart);
 
@@ -68,6 +73,7 @@ OrderSection.propTypes = {
   submitOrder: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   removeFromCart: PropTypes.func.isRequired,
+  orderSuccess: PropTypes.bool.isRequired,
 };
 
 OrderSection.defaultProps = {

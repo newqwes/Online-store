@@ -10,6 +10,7 @@ import HeaderContainer from './containers/HeaderContainer';
 import OrderContainer from './containers/OrderContainer';
 import ProductsContainer from './containers/ProductsContainer';
 import RegistrationContainer from './containers/RegistrationContainer';
+import OrderSuccessSection from './components/OrderSuccessSection';
 
 import Navbar from './components/Navbar';
 
@@ -29,6 +30,8 @@ const App = () => (
     <Route path={ROUTER_PATH.registration}>
       <RegistrationContainer content={AUTHENTICATION.registration} />
     </Route>
+
+    <Route path={ROUTER_PATH.orderSuccess} component={OrderSuccessSection} />
   </Fragment>
 );
 

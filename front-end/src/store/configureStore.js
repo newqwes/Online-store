@@ -7,6 +7,7 @@ import cart from '../reducers/cart';
 import rootSaga from '../sagas/rootSaga';
 import products from '../reducers/products';
 import authorization from '../reducers/authorization';
+import order from '../reducers/order';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   products,
   cart,
   authorization,
+  order,
   form,
 });
 

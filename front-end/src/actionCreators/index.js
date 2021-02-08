@@ -9,6 +9,8 @@ import {
   USER_LOGOUT,
   REMOVE_FROM_CART,
   CREATE_ORDER_PENDING,
+  CREATE_ORDER_SUCCESS,
+  CREATE_ORDER_FAILURE,
 } from '../actions';
 
 export const getProductsList = (type) => ({
@@ -58,4 +60,14 @@ export const removeFromCart = (id) => ({
 export const submitOrder = (order) => ({
   type: CREATE_ORDER_PENDING,
   payload: order,
+});
+
+export const orderSuccess = (orderData) => ({
+  type: CREATE_ORDER_SUCCESS,
+  payload: orderData,
+});
+
+export const orderFailure = (error) => ({
+  type: CREATE_ORDER_FAILURE,
+  payload: error,
 });
