@@ -1,15 +1,50 @@
-const orderMessage = ({ cart, customer }) => {
-  // TODO beautiful view incomming email
+import { head, reduce, join, map } from 'lodash';
+
+const orderMessage = ({ cart, customer: { phone, email, city, home, street, apartment } }) => {
+  const items = map(
+    cart,
+    ({ count, name, description, id, currencySign, options: { price, weight } }) => `
+      <tr>
+      <td>${id}</td>
+      <td>${name}</td>
+      <td>${description}</td>
+      <td>${count}</td>
+      <td>${weight}</td>
+      <td>${price + currencySign}</td>
+    </tr>`
+  );
+
+  const { currencySign } = head(cart);
+
+  const totalCost = reduce(cart, (sum, { count, options: { price } }) => sum + count * price, 0);
+
   const html = `
-  <h2>Новый заказ</h2>
     <div>
-      <h3>1</h3>
-      Cart: ${JSON.stringify(cart)}
+      <h2>Корзина</h2>
+      <table style="border-spacing: 30px;">
+      <tr>
+        <th>ID товара</th>
+        <th>Название</th>
+        <th>Описание</th>
+        <th>Кол-во</th>
+        <th>Вес</th>
+        <th>Цена</th>
+      </tr>
+      ${join(items, '')}
+      </table>
+      <h3> Общая стоимость заказа: ${totalCost.toFixed(2) + currencySign}</h3>
     </div>
-    <div>
-      <h3>2</h3>
-      Customer: ${JSON.stringify(customer)}
+    <div style='margin-top: 30px;'>
+      <h2>Данные пользователя</h2>
+      <div>Телефон: <a href='tel:${phone}'>${phone}</a> </div>
+      <div>Почта: ${email}</div>
+      <div>Город: ${city}</div>
+      <div>Улица: ${street}</div>
+      <div>Дом: ${home}</div>
+      <div>Квартира: ${apartment}</div>
     </div>
+
+
   `;
 
   return { html };
