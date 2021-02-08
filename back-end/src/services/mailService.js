@@ -2,8 +2,8 @@ import createResponse from '../utils/createResponse';
 import mailer from '../utils/nodemailer';
 import orderMessage from '../utils/orderMessage';
 
-class OrderService {
-  async order(body) {
+class MailService {
+  async sendMail(body) {
     try {
       mailer(orderMessage(body));
 
@@ -13,4 +13,5 @@ class OrderService {
     }
   }
 }
-export default new OrderService();
+
+export default new MailService();

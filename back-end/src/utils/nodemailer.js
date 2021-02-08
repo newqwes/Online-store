@@ -2,15 +2,15 @@ import nodemailer from 'nodemailer';
 
 const transporter = nodemailer.createTransport(
   {
-    service: process.env.ORDER_SERVICE,
+    service: process.env.MAIL_SERVICE,
     auth: {
-      user: process.env.ORDER_USER,
-      pass: process.env.ORDER_PASS,
+      user: process.env.MAIL_ADMIN,
+      pass: process.env.MAIL_PASS,
     },
   },
   {
-    from: `Mailer Test ${process.env.ORDER_USER}`,
-    to: process.env.ORDER_USER,
+    from: `Pizza store${process.env.MAIL_ADMIN}`,
+    to: process.env.MAIL_ADMIN,
     subject: 'New order!',
   }
 );
