@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { get, compose, head } from 'lodash/fp';
+
+import cartCost from '../../utils/cartUtils';
+import { productsType } from '../../propType';
 
 import DIRECTION from '../../constants/direction';
 import THEME_VARIANT from '../../constants/themeVariant';
 import ORDER_FIELDS from '../../constants/orderFields';
-
-import { productsType } from '../../propType';
 
 import Flex from '../Flex';
 import Label from '../Label';
@@ -27,6 +29,10 @@ const OrderSection = ({
 }) => {
   const submit = (customer) => submitOrder({ order: cart, customer });
 
+  const currencySign = compose(get('currencySign'), head)(cart);
+
+  const totalPrice = cartCost(cart);
+
   return (
     <OrderSectionWrapper themeVariant={themeVariant}>
       <OrderSectionContent themeVariant={themeVariant}>
@@ -37,7 +43,7 @@ const OrderSection = ({
               <FieldList
                 fields={ORDER_FIELDS}
                 component={InputField}
-                StyledComponent={InputFieldContent}
+                styledComponent={InputFieldContent}
               />
               <Button text='Отправить' />
             </Flex>
@@ -47,7 +53,7 @@ const OrderSection = ({
           <Label text='Ваш заказ' className='order-section__label' />
           <Flex direction={DIRECTION.column} className='order-section__cart'>
             <CartItems cart={cart} removeFromCart={removeFromCart} addToCart={addToCart} />
-            <TotalPrice cart={cart} />
+            <TotalPrice totalPrice={totalPrice} currencySign={currencySign} text='Сумма заказа: ' />
           </Flex>
         </Flex>
       </OrderSectionContent>

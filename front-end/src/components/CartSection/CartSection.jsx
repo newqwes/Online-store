@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { get, compose, head } from 'lodash/fp';
 
 import { cartType } from '../../propType';
+import cartCost from '../../utils/cartUtils';
 
 import ROUTER_PATH from '../../constants/routerPath';
 import THEME_VARIANT from '../../constants/themeVariant';
@@ -15,21 +17,27 @@ import TotalPrice from '../TotalPrice';
 
 import { CartSectionWrapper, TotalPriceContent, CartSectionContent } from './styled';
 
-const CartSection = ({ themeVariant, cart, removeFromCart, addToCart }) => (
-  <CartSectionWrapper themeVariant={themeVariant}>
-    <CartSectionContent>
-      <CartItems cart={cart} removeFromCart={removeFromCart} addToCart={addToCart} />
-    </CartSectionContent>
-    <TotalPriceContent>
-      <TotalPrice cart={cart} />
-      <Flex justifyContent={JUSTIFY_CONTENT.flexEnd}>
-        <Link to={ROUTER_PATH.order}>
-          <Button text='Оформить заказ' />
-        </Link>
-      </Flex>
-    </TotalPriceContent>
-  </CartSectionWrapper>
-);
+const CartSection = ({ themeVariant, cart, removeFromCart, addToCart }) => {
+  const currencySign = compose(get('currencySign'), head)(cart);
+
+  const totalPrice = cartCost(cart);
+
+  return (
+    <CartSectionWrapper themeVariant={themeVariant}>
+      <CartSectionContent>
+        <CartItems cart={cart} removeFromCart={removeFromCart} addToCart={addToCart} />
+      </CartSectionContent>
+      <TotalPriceContent>
+        <TotalPrice totalPrice={totalPrice} currencySign={currencySign} text='Сумма заказа: ' />
+        <Flex justifyContent={JUSTIFY_CONTENT.flexEnd}>
+          <Link to={ROUTER_PATH.order}>
+            <Button text='Оформить заказ' />
+          </Link>
+        </Flex>
+      </TotalPriceContent>
+    </CartSectionWrapper>
+  );
+};
 
 CartSection.propTypes = {
   cart: cartType.isRequired,

@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink, Redirect } from 'react-router-dom';
 
+import contentType from './propTypes';
+
 import ROUTER_PATH from '../../constants/routerPath';
 import THEME_VARIANT from '../../constants/themeVariant';
 import { ALIGN_ITEMS, JUSTIFY_CONTENT } from '../../constants/position';
@@ -28,25 +30,7 @@ class FormSection extends React.Component {
     submit: PropTypes.func.isRequired,
     isSuccess: PropTypes.bool.isRequired,
     handleSubmit: PropTypes.func.isRequired,
-
-    content: PropTypes.shape({
-      title: PropTypes.string.isRequired,
-      buttonText: PropTypes.string.isRequired,
-
-      link: PropTypes.shape({
-        text: PropTypes.string.isRequired,
-        route: PropTypes.string.isRequired,
-      }),
-
-      fields: PropTypes.arrayOf(
-        PropTypes.shape({
-          name: PropTypes.string.isRequired,
-          type: PropTypes.string.isRequired,
-          label: PropTypes.string.isRequired,
-          placeholder: PropTypes.string.isRequired,
-        })
-      ),
-    }),
+    content: PropTypes.shape(contentType),
   };
 
   static defaultProps = {
@@ -78,7 +62,7 @@ class FormSection extends React.Component {
             </Flex>
             <form onSubmit={handleSubmit(submit)}>
               <FieldList
-                StyledComponent={InputFieldContent}
+                styledComponent={InputFieldContent}
                 fields={fields}
                 component={InputField}
               />

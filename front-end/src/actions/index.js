@@ -13,4 +13,4 @@ export const USER_LOGOUT = 'USER_LOGOUT';
 export const ADD_TO_CART = 'ADD_TO_CART';
 export const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
 
-export const ORDER_PENDING = 'ORDER_PENDING';
+export const CREATE_ORDER_PENDING = 'CREATE_ORDER_PENDING';

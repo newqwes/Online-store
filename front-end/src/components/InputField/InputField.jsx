@@ -14,7 +14,7 @@ const InputField = ({
   label,
   type,
   placeholder,
-  StyledComponent,
+  styledComponent,
   meta: { touched, error },
 }) => {
   const errorLabel = (
@@ -27,13 +27,14 @@ const InputField = ({
       />
     </Flex>
   );
+  const WrapperContent = styledComponent;
 
   return (
-    <StyledComponent isError={touched && error}>
+    <WrapperContent isError={touched && error}>
       <label>{label}</label>
       <input {...input} placeholder={placeholder} type={type} />
       {touched && error && errorLabel}
-    </StyledComponent>
+    </WrapperContent>
   );
 };
 
@@ -51,7 +52,7 @@ InputField.propTypes = {
   label: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
-  StyledComponent: PropTypes.elementType.isRequired,
+  styledComponent: PropTypes.elementType.isRequired,
 
   meta: PropTypes.shape({
     touched: PropTypes.bool.isRequired,

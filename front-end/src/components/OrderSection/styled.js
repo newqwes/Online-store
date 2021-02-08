@@ -5,8 +5,6 @@ import THEME_VARIANT from '../../constants/themeVariant';
 
 export const OrderSectionWrapper = styled.section`
   background: ${({ theme, themeVariant }) => theme.order.background[themeVariant]};
-  width: 100%;
-  min-height: 85vh;
   padding: 30px 0;
 `;
 
