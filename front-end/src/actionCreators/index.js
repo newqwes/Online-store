@@ -8,6 +8,7 @@ import {
   GET_REGISTRATION_PENDING,
   USER_LOGOUT,
   REMOVE_FROM_CART,
+  CREATE_ORDER_PENDING,
 } from '../actions';
 
 export const getProductsList = (type) => ({
@@ -52,4 +53,9 @@ export const registration = (registrationData) => ({
 export const removeFromCart = (id) => ({
   type: REMOVE_FROM_CART,
   payload: id,
+});
+
+export const submitOrder = (order) => ({
+  type: CREATE_ORDER_PENDING,
+  payload: order,
 });

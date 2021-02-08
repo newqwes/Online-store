@@ -10,3 +10,7 @@ export const ALIGN_ITEMS = {
   center: 'center',
   stretch: 'stretch',
 };
+
+export const FLEX_BASIS = {
+  fill: 'fill',
+};

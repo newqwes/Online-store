@@ -78,10 +78,10 @@ const light = {
       inverted: COLORS.softYellow,
     },
     shadow: {
-      default: COLORS.softYellow,
+      default: COLORS.darkDesaturatedOrange,
     },
     hoverShadow: {
-      default: COLORS.verySoftYellow,
+      default: COLORS.darkDesaturatedOrange,
     },
   },
 
@@ -93,6 +93,45 @@ const light = {
     shadow: {
       default: COLORS.darkDesaturatedOrange,
       inverted: COLORS.softYellow,
+    },
+  },
+
+  order: {
+    background: {
+      default: COLORS.mostlyWhiteYellow,
+      inverted: COLORS.softYellow,
+    },
+    shadow: {
+      default: COLORS.darkDesaturatedOrange,
+      inverted: COLORS.softYellow,
+    },
+    hoverShadow: {
+      default: COLORS.darkDesaturatedOrange,
+    },
+    label: {
+      default: COLORS.verySoftYellow,
+      inverted: COLORS.softYellow,
+    },
+    input: {
+      color: {
+        default: COLORS.mostlyWhiteYellow,
+        inverted: COLORS.softYellow,
+      },
+      border: {
+        default: COLORS.darkDesaturatedOrange,
+        inverted: COLORS.verySoftYellow,
+        warning: COLORS.darkPink,
+      },
+    },
+    button: {
+      background: {
+        default: COLORS.darkPink,
+        inverted: COLORS.softYellow,
+      },
+      color: {
+        default: COLORS.mostlyWhiteYellow,
+        inverted: COLORS.softYellow,
+      },
     },
   },
 
@@ -148,7 +187,7 @@ const light = {
       warning: COLORS.squash,
     },
     borderActive: {
-      default: COLORS.verySoftYellow,
+      default: COLORS.mostlyWhiteYellow,
       disabled: COLORS.pinkishGrey,
       info: COLORS.darkishPurple,
       inverted: COLORS.softYellow,
