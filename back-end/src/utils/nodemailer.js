@@ -10,7 +10,6 @@ const transporter = nodemailer.createTransport(
   },
   {
     from: `Pizza Store ${process.env.MAIL_ADMIN}`,
-    to: process.env.MAIL_ADMIN,
     subject: 'New order!',
   }
 );

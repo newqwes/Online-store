@@ -1,7 +1,7 @@
 import { head, reduce, join, map } from 'lodash';
 
 const orderMessage = ({ cart, customer: { phone, email, city, home, street, apartment } }) => {
-  const items = map(
+  const rows = map(
     cart,
     ({ count, name, description, id, currencySign, options: { price, weight } }) => `
       <tr>
@@ -30,7 +30,7 @@ const orderMessage = ({ cart, customer: { phone, email, city, home, street, apar
         <th>Вес</th>
         <th>Цена</th>
       </tr>
-      ${join(items, '')}
+      ${join(rows, '')}
       </table>
       <h3> Общая стоимость заказа: ${totalCost.toFixed(2) + currencySign}</h3>
     </div>
@@ -42,12 +42,11 @@ const orderMessage = ({ cart, customer: { phone, email, city, home, street, apar
       <div>Улица: ${street}</div>
       <div>Дом: ${home}</div>
       <div>Квартира: ${apartment}</div>
-    </div>
+    </div>`;
 
+  const to = [process.env.MAIL_ADMIN, email];
 
-  `;
-
-  return { html };
+  return { html, to };
 };
 
 export default orderMessage;
