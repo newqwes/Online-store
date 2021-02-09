@@ -5,7 +5,7 @@ import SECTION_WIDTH from '../../constants/sectionWidth';
 export const HeaderWrapper = styled.header`
   display: flex;
   background: ${(props) => props.theme.background.color[props.themeVariant]};
-  height: 100px;
+  height: 10vh;
 `;
 
 export const HeaderContent = styled.div`

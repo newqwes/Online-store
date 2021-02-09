@@ -10,7 +10,6 @@ function* authorization({ payload }) {
     const userData = yield authAPI.login(payload);
 
     yield put(loginSuccess(userData));
-    yield localStorage.setItem('token', userData.token);
   } catch ({ response }) {
     yield put(loginFailure(response.data.message));
   }

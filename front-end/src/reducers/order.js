@@ -1,4 +1,4 @@
-import { CREATE_ORDER_SUCCESS, CREATE_ORDER_FAILURE } from '../actions';
+import { CREATE_ORDER_SUCCESS, CREATE_ORDER_FAILURE, DELETE_ORDER } from '../actions';
 
 const initialState = {
   data: '',
@@ -19,6 +19,12 @@ const order = (state = initialState, action) => {
         data: initialState.data,
         isSuccess: false,
         error: action.payload,
+      };
+    case DELETE_ORDER:
+      return {
+        data: initialState.data,
+        isSuccess: false,
+        error: initialState.error,
       };
     default:
       return state;

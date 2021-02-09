@@ -11,6 +11,7 @@ import {
   CREATE_ORDER_PENDING,
   CREATE_ORDER_SUCCESS,
   CREATE_ORDER_FAILURE,
+  DELETE_ORDER,
 } from '../actions';
 
 export const getProductsList = (type) => ({
@@ -70,4 +71,8 @@ export const orderSuccess = (orderData) => ({
 export const orderFailure = (error) => ({
   type: CREATE_ORDER_FAILURE,
   payload: error,
+});
+
+export const deleteOrder = () => ({
+  type: DELETE_ORDER,
 });
