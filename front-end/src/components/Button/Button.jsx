@@ -18,6 +18,7 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
+  onClick: () => {},
   themeVariant: THEME_VARIANT.default,
 };
 
