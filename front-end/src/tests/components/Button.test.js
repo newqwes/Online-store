@@ -13,7 +13,7 @@ const setUp = (props) =>
     </ThemeProvider>
   );
 
-describe('should rende Button component', () => {
+describe('should render Button component', () => {
   let component;
 
   const text = 'Войти';
@@ -33,5 +33,11 @@ describe('should rende Button component', () => {
     const wrapper = component.length;
 
     expect(wrapper).toBe(1);
+  });
+
+  it('onClick default', () => {
+    const result = Button.defaultProps.onClick();
+
+    expect(result).toBe(undefined);
   });
 });
