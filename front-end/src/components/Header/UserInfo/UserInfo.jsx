@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { Fragment } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import Link from '../../Link';
 import Button from '../../Button';
@@ -19,11 +20,13 @@ const UserInfo = ({ logout, userName, isSuccess }) => {
     );
   }
 
-  return (
-    <Link to={ROUTER_PATH.login}>
-      <Button text='Войти' />
-    </Link>
-  );
+  const history = useHistory();
+
+  const redirectToLogin = () => {
+    history.push(ROUTER_PATH.login);
+  };
+
+  return <Button text='Войти' onClick={redirectToLogin} />;
 };
 
 UserInfo.propTypes = {

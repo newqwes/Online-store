@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { noop } from 'lodash/fp';
 
 import THEME_VARIANT from '../../constants/themeVariant';
 
@@ -14,12 +13,11 @@ const Button = ({ text, onClick, themeVariant }) => (
 
 Button.propTypes = {
   text: PropTypes.string.isRequired,
-  onClick: PropTypes.func,
+  onClick: PropTypes.func.isRequired,
   themeVariant: PropTypes.string,
 };
 
 Button.defaultProps = {
-  onClick: noop,
   themeVariant: THEME_VARIANT.default,
 };
 
