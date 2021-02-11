@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ButtonWrapper from './styled';
+
 import THEME_VARIANT from '../../constants/themeVariant';
+
+import ButtonWrapper from './styled';
 
 const Button = ({ text, onClick, themeVariant }) => (
   <ButtonWrapper onClick={onClick} themeVariant={themeVariant}>
@@ -11,7 +13,7 @@ const Button = ({ text, onClick, themeVariant }) => (
 
 Button.propTypes = {
   text: PropTypes.string.isRequired,
-  onClick: PropTypes.func,
+  onClick: PropTypes.func.isRequired,
   themeVariant: PropTypes.string,
 };
 
