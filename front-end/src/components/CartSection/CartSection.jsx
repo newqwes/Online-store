@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useHistory } from 'react-router-dom';
 import { get, compose, head } from 'lodash/fp';
 
 import { cartType } from '../../propType';
@@ -10,7 +11,6 @@ import THEME_VARIANT from '../../constants/themeVariant';
 import { JUSTIFY_CONTENT } from '../../constants/position';
 
 import Flex from '../Flex';
-import Link from '../Link';
 import Button from '../Button';
 import CartItems from './CartItems';
 import TotalPrice from '../TotalPrice';
@@ -18,6 +18,12 @@ import TotalPrice from '../TotalPrice';
 import { CartSectionWrapper, TotalPriceContent, CartSectionContent } from './styled';
 
 const CartSection = ({ themeVariant, cart, removeFromCart, addToCart }) => {
+  const history = useHistory();
+
+  const redirectToOrder = () => {
+    history.push(ROUTER_PATH.order);
+  };
+
   const currencySign = compose(get('currencySign'), head)(cart);
 
   const totalPrice = cartCost(cart);
@@ -30,9 +36,7 @@ const CartSection = ({ themeVariant, cart, removeFromCart, addToCart }) => {
       <TotalPriceContent>
         <TotalPrice totalPrice={totalPrice} currencySign={currencySign} text='Сумма заказа: ' />
         <Flex justifyContent={JUSTIFY_CONTENT.flexEnd}>
-          <Link to={ROUTER_PATH.order}>
-            <Button text='Оформить заказ' />
-          </Link>
+          <Button text='Оформить заказ' onClick={redirectToOrder} />
         </Flex>
       </TotalPriceContent>
     </CartSectionWrapper>
