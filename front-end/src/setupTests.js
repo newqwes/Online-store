@@ -1,7 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import Enzyme, { configure } from 'enzyme';
+import { configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
+import { createSerializer } from 'enzyme-to-json';
 
 configure({ adapter: new Adapter() });
-
-export default Enzyme;
+expect.addSnapshotSerializer(createSerializer({ mode: 'deep' }));

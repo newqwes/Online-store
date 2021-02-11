@@ -1,32 +1,38 @@
 import React from 'react';
-import { ThemeProvider } from 'styled-components';
-import { shallow } from 'enzyme';
-
-import theme from '../../style/theme';
 
 import Button from '../../components/Button';
+import { mountWithTheme } from '../helpers';
 
-const setUp = (props) =>
-  shallow(
-    <ThemeProvider theme={theme.light}>
-      <Button {...props} />
-    </ThemeProvider>
-  );
+const initProps = {
+  text: 'test text',
+  onClick: () => {},
+};
+
+const setUp = (props) => mountWithTheme(<Button {...props} />);
+
+describe('snapshot Button', () => {
+  let component;
+
+  beforeEach(() => {
+    component = setUp(initProps);
+  });
+
+  it('snapshot', () => {
+    expect(component).toMatchSnapshot();
+  });
+});
 
 describe('should render Button component', () => {
   let component;
 
-  const text = 'Войти';
-  const onClick = () => console.log('Hello');
-
   beforeEach(() => {
-    component = setUp({ onClick, text });
+    component = setUp(initProps);
   });
 
   it('should contain text in button', () => {
-    const button = component.find(Button).props();
+    const button = component;
 
-    expect(button.text).toEqual(text);
+    expect(button.text()).toBe(initProps.text);
   });
 
   it('should contain only one button tag', () => {
