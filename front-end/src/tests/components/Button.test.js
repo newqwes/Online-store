@@ -41,7 +41,7 @@ describe('should render Button component', () => {
     expect(wrapper).toBe(1);
   });
 
-  it('onClick default', () => {
+  it('onClick should return undefined when Button not have props onClick', () => {
     const result = Button.defaultProps.onClick();
 
     expect(result).toBe(undefined);

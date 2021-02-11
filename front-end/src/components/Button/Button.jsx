@@ -1,7 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ButtonWrapper from './styled';
+import { noop } from 'lodash/fp';
+
 import THEME_VARIANT from '../../constants/themeVariant';
+
+import ButtonWrapper from './styled';
 
 const Button = ({ text, onClick, themeVariant }) => (
   <ButtonWrapper onClick={onClick} themeVariant={themeVariant}>
@@ -16,7 +19,7 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
-  onClick: () => {},
+  onClick: noop,
   themeVariant: THEME_VARIANT.default,
 };
 
