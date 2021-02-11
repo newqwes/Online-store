@@ -2,6 +2,9 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+import Flex from '../Flex';
+import Label from '../Label';
+
 import ROUTER_PATH from '../../constants/routerPath';
 
 import OrderMessageWrapper from './styled';
@@ -12,10 +15,14 @@ class OrderMessageSection extends React.Component {
   }
 
   render() {
-    if (this.props.isSuccess) {
+    const { isSuccess } = this.props;
+
+    if (isSuccess) {
       return (
         <OrderMessageWrapper>
-          Ваш заказ подтвержден. Копия заказа отправленна Вам на почту. Ожидайте звонка.
+          <Flex>
+            <Label text='Ваш заказ подтвержден. Копия заказа отправленна Вам на почту. Ожидайте звонка.' />
+          </Flex>
         </OrderMessageWrapper>
       );
     }

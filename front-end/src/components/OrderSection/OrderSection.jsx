@@ -28,9 +28,9 @@ const OrderSection = ({
   handleSubmit,
   themeVariant,
   removeFromCart,
-  orderSuccess,
+  isOrderSuccess,
 }) => {
-  if (orderSuccess) return <Redirect to={ROUTER_PATH.orderSuccess} />;
+  if (isOrderSuccess) return <Redirect to={ROUTER_PATH.orderSuccessMessage} />;
 
   const submit = (customer) => submitOrder({ cart, customer });
 
@@ -73,7 +73,7 @@ OrderSection.propTypes = {
   submitOrder: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   removeFromCart: PropTypes.func.isRequired,
-  orderSuccess: PropTypes.bool.isRequired,
+  isOrderSuccess: PropTypes.bool.isRequired,
 };
 
 OrderSection.defaultProps = {

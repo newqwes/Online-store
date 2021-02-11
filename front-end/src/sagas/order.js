@@ -8,6 +8,7 @@ import { orderFailure, orderSuccess } from '../actionCreators';
 function* order({ payload }) {
   try {
     const orderData = yield orderAPI.order(payload);
+
     yield put(orderSuccess(orderData));
   } catch ({ response }) {
     yield put(orderFailure(response.data.message));

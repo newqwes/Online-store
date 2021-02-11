@@ -34,7 +34,7 @@ const withReduxForm = reduxForm({
 const mapStateToProps = ({ cart, authorization, order }) => ({
   cart,
   initialValues: getInitialUserValues(authorization),
-  orderSuccess: order.isSuccess,
+  isOrderSuccess: order.isSuccess,
 });
 
 const mapDispatchToProps = { removeFromCart, addToCart, submitOrder };

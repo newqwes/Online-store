@@ -29,7 +29,7 @@ const App = () => (
     <Route path={ROUTER_PATH.registration}>
       <RegistrationContainer content={AUTHENTICATION.registration} />
     </Route>
-    <Route path={ROUTER_PATH.orderSuccess} component={OrderMessageContainer} />
+    <Route path={ROUTER_PATH.orderSuccessMessage} component={OrderMessageContainer} />
   </Fragment>
 );
 
