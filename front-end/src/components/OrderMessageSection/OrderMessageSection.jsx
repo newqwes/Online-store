@@ -11,7 +11,7 @@ import OrderMessageWrapper from './styled';
 
 class OrderMessageSection extends React.Component {
   componentWillUnmount() {
-    this.props.deleteOrder();
+    this.props.resetOrder();
   }
 
   render() {
@@ -33,7 +33,7 @@ class OrderMessageSection extends React.Component {
 
 OrderMessageSection.propTypes = {
   isSuccess: PropTypes.bool.isRequired,
-  deleteOrder: PropTypes.func.isRequired,
+  resetOrder: PropTypes.func.isRequired,
 };
 
 export default OrderMessageSection;

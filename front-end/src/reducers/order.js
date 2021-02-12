@@ -1,7 +1,36 @@
-import { CREATE_ORDER_SUCCESS, CREATE_ORDER_FAILURE, DELETE_ORDER } from '../actions';
+import { CREATE_ORDER_SUCCESS, CREATE_ORDER_FAILURE, RESET_ORDER } from '../actions';
 
 const initialState = {
-  data: '',
+  data: {
+    cart: [
+      {
+        id: null,
+        type: '',
+        name: '',
+        description: '',
+        photoUrl: '',
+        unitSign: '',
+        currencySign: '',
+        options: [
+          {
+            id: null,
+            price: null,
+            weight: null,
+            product_id: null,
+          },
+        ],
+        count: null,
+      },
+    ],
+    customer: {
+      email: '',
+      photo: '',
+      city: '',
+      street: '',
+      home: '',
+      apartment: '',
+    },
+  },
   isSuccess: false,
   error: '',
 };
@@ -20,12 +49,8 @@ const order = (state = initialState, action) => {
         isSuccess: false,
         error: action.payload,
       };
-    case DELETE_ORDER:
-      return {
-        data: initialState.data,
-        isSuccess: false,
-        error: initialState.error,
-      };
+    case RESET_ORDER:
+      return initialState;
     default:
       return state;
   }

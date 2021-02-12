@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { deleteOrder } from '../actionCreators';
+import { resetOrder } from '../actionCreators';
 import OrderMessageSection from '../components/OrderMessageSection';
 
 const mapStateToProps = ({ order }) => ({
@@ -8,7 +8,7 @@ const mapStateToProps = ({ order }) => ({
 });
 
 const mapDispatchToProps = {
-  deleteOrder,
+  resetOrder,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(OrderMessageSection);

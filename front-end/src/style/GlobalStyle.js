@@ -6,7 +6,6 @@ ${normalize}
 
 html {
   font-family: 'Ubuntu', Verdana, sans-serif;
-  
 }
 
 ul {
@@ -14,7 +13,6 @@ ul {
   margin: 0;
   list-style-type: none;
 }
-
 `;
 
 export default GlobalStyle;

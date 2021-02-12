@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { get, compose, head, noop } from 'lodash/fp';
+import { get, compose, head } from 'lodash/fp';
 import { Redirect } from 'react-router-dom';
 
 import cartCost from '../../utils/cartUtils';
@@ -43,14 +43,14 @@ const OrderSection = ({
       <OrderSectionContent themeVariant={themeVariant}>
         <Flex direction={DIRECTION.column} flexBasis='60%'>
           <Label text='Оформление заказа' className='order-section__label' />
-          <form onSubmit={handleSubmit(submit)}>
+          <form>
             <Flex direction={DIRECTION.column}>
               <FieldList
                 fields={ORDER_FIELDS}
                 component={InputField}
                 fieldStyle={InputFieldContent}
               />
-              <Button text='Отправить' onClick={noop} />
+              <Button text='Отправить' onClick={handleSubmit(submit)} />
             </Flex>
           </form>
         </Flex>
