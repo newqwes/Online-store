@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import itemsType from './propTypes';
 
+import MENU_HEIGHT from '../../constants/menuHeight';
 import THEME_VARIANT from '../../constants/themeVariant';
 
 import NavbarItem from './NavbarItem';
@@ -15,10 +16,10 @@ class Navbar extends React.Component {
   handleScroll = () => {
     const offset = window.scrollY;
 
-    if (offset > 50) {
-      this.setState({ top: 50 });
+    if (offset > MENU_HEIGHT.min) {
+      this.setState({ top: MENU_HEIGHT.min });
     } else {
-      this.setState({ top: 100 - offset });
+      this.setState({ top: MENU_HEIGHT.max - offset });
     }
   };
 

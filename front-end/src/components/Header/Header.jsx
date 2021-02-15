@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import ICON_SIZE from '../../constants/iconSize';
 import FONT_SIZE from '../../constants/fontSize';
 import ROUTER_PATH from '../../constants/routerPath';
+import MENU_HEIGHT from '../../constants/menuHeight';
 import THEME_VARIANT from '../../constants/themeVariant';
 import { JUSTIFY_CONTENT } from '../../constants/position';
 
@@ -24,10 +25,10 @@ class Header extends React.Component {
   handleScroll = () => {
     const offset = window.scrollY;
 
-    if (offset > 50) {
-      this.setState({ height: 50 });
+    if (offset > MENU_HEIGHT.min) {
+      this.setState({ height: MENU_HEIGHT.min });
     } else {
-      this.setState({ height: 100 - offset });
+      this.setState({ height: MENU_HEIGHT.max - offset });
     }
   };
 
