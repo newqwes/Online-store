@@ -47,6 +47,7 @@ CartSection.propTypes = {
   cart: cartType.isRequired,
   themeVariant: PropTypes.string,
   addToCart: PropTypes.func.isRequired,
+  resetOrder: PropTypes.func.isRequired,
   removeFromCart: PropTypes.func.isRequired,
 };
 

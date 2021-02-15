@@ -1,20 +1,20 @@
 import { takeEvery, put, all } from 'redux-saga/effects';
 
-import { CREATE_ORDER_PENDING } from '../actions';
+import { SEND_ORDER_PENDING } from '../actions';
 
 import { orderAPI } from '../api';
-import { orderFailure, orderSuccess } from '../actionCreators';
+import { sendOrderFailure, sendOrderSuccess } from '../actionCreators';
 
-function* order({ payload }) {
+function* sendOrder({ payload }) {
   try {
-    const orderData = yield orderAPI.order(payload);
+    const orderData = yield orderAPI.sendOrder(payload);
 
-    yield put(orderSuccess(orderData));
+    yield put(sendOrderSuccess(orderData));
   } catch ({ response }) {
-    yield put(orderFailure(response.data.message));
+    yield put(sendOrderFailure(response.data.message));
   }
 }
 
 export default function orderSaga() {
-  return all([takeEvery(CREATE_ORDER_PENDING, order)]);
+  return all([takeEvery(SEND_ORDER_PENDING, sendOrder)]);
 }

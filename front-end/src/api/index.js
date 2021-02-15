@@ -28,7 +28,7 @@ export const authAPI = {
 };
 
 export const orderAPI = {
-  order: async (body) => {
+  sendOrder: async (body) => {
     const respons = await instance.post('order', body);
 
     return extractData(respons);

@@ -1,4 +1,4 @@
-import { CREATE_ORDER_SUCCESS, CREATE_ORDER_FAILURE, RESET_ORDER } from '../actions';
+import { SEND_ORDER_SUCCESS, SEND_ORDER_FAILURE } from '../actions';
 
 const initialState = {
   data: {
@@ -31,26 +31,21 @@ const initialState = {
       apartment: '',
     },
   },
-  isSuccess: false,
   error: '',
 };
 
 const order = (state = initialState, action) => {
   switch (action.type) {
-    case CREATE_ORDER_SUCCESS:
+    case SEND_ORDER_SUCCESS:
       return {
         data: action.payload,
-        isSuccess: true,
         error: initialState.error,
       };
-    case CREATE_ORDER_FAILURE:
+    case SEND_ORDER_FAILURE:
       return {
         data: initialState.data,
-        isSuccess: false,
         error: action.payload,
       };
-    case RESET_ORDER:
-      return initialState;
     default:
       return state;
   }

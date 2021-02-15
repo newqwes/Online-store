@@ -8,10 +8,9 @@ import {
   GET_REGISTRATION_PENDING,
   USER_LOGOUT,
   REMOVE_FROM_CART,
-  CREATE_ORDER_PENDING,
-  CREATE_ORDER_SUCCESS,
-  CREATE_ORDER_FAILURE,
-  RESET_ORDER,
+  SEND_ORDER_PENDING,
+  SEND_ORDER_SUCCESS,
+  SEND_ORDER_FAILURE,
 } from '../actions';
 
 export const getProductsList = (type) => ({
@@ -59,20 +58,16 @@ export const removeFromCart = (id) => ({
 });
 
 export const submitOrder = (order) => ({
-  type: CREATE_ORDER_PENDING,
+  type: SEND_ORDER_PENDING,
   payload: order,
 });
 
-export const orderSuccess = (orderData) => ({
-  type: CREATE_ORDER_SUCCESS,
+export const sendOrderSuccess = (orderData) => ({
+  type: SEND_ORDER_SUCCESS,
   payload: orderData,
 });
 
-export const orderFailure = (error) => ({
-  type: CREATE_ORDER_FAILURE,
+export const sendOrderFailure = (error) => ({
+  type: SEND_ORDER_FAILURE,
   payload: error,
-});
-
-export const resetOrder = () => ({
-  type: RESET_ORDER,
 });
