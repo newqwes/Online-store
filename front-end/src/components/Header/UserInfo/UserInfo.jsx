@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { Fragment } from 'react';
+import React from 'react';
 import { useHistory } from 'react-router-dom';
 
 import Link from '../../Link';
@@ -8,15 +8,17 @@ import Button from '../../Button';
 import ROUTER_PATH from '../../../constants/routerPath';
 import THEME_VARIANT from '../../../constants/themeVariant';
 
+import UserInfoContent from './styled';
+
 const UserInfo = ({ logout, userName, isSuccess }) => {
   if (isSuccess) {
     return (
-      <Fragment>
+      <UserInfoContent>
         <Link themeVariant={THEME_VARIANT.inverted} to={ROUTER_PATH.main}>
           {userName}
         </Link>
         <Button text='Выйти' onClick={logout} />
-      </Fragment>
+      </UserInfoContent>
     );
   }
 

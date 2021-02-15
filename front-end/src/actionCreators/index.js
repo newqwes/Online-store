@@ -8,7 +8,9 @@ import {
   GET_REGISTRATION_PENDING,
   USER_LOGOUT,
   REMOVE_FROM_CART,
-  CREATE_ORDER_PENDING,
+  SEND_ORDER_PENDING,
+  SEND_ORDER_SUCCESS,
+  SEND_ORDER_FAILURE,
 } from '../actions';
 
 export const getProductsList = (type) => ({
@@ -56,6 +58,16 @@ export const removeFromCart = (id) => ({
 });
 
 export const submitOrder = (order) => ({
-  type: CREATE_ORDER_PENDING,
+  type: SEND_ORDER_PENDING,
   payload: order,
+});
+
+export const sendOrderSuccess = (orderData) => ({
+  type: SEND_ORDER_SUCCESS,
+  payload: orderData,
+});
+
+export const sendOrderFailure = (error) => ({
+  type: SEND_ORDER_FAILURE,
+  payload: error,
 });

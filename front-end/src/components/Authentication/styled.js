@@ -5,7 +5,7 @@ import THEME_VARIANT from '../../constants/themeVariant';
 export const FormWrapper = styled.section`
   background: url(${(props) => props.theme.background.imageBackground[props.themeVariant]});
   width: 100%;
-  min-height: 85vh;
+  min-height: 80vh;
   display: flex;
 
   div {

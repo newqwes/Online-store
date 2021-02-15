@@ -4,14 +4,14 @@ import { Route, Redirect } from 'react-router-dom';
 import ROUTER_PATH from './constants/routerPath';
 import AUTHENTICATION from './constants/authentication';
 
+import Navbar from './components/Navbar';
+import OrderMessageSection from './components/OrderMessageSection';
 import CartContainer from './containers/CartContainer';
 import LoginContainer from './containers/LoginContainer';
 import HeaderContainer from './containers/HeaderContainer';
 import OrderContainer from './containers/OrderContainer';
 import ProductsContainer from './containers/ProductsContainer';
 import RegistrationContainer from './containers/RegistrationContainer';
-
-import Navbar from './components/Navbar';
 
 const App = () => (
   <Fragment>
@@ -29,6 +29,7 @@ const App = () => (
     <Route path={ROUTER_PATH.registration}>
       <RegistrationContainer content={AUTHENTICATION.registration} />
     </Route>
+    <Route path={ROUTER_PATH.orderSuccessMessage} component={OrderMessageSection} />
   </Fragment>
 );
 
