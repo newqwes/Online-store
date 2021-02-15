@@ -14,6 +14,7 @@ const routers = {
   contacts: '/contacts',
   cartSubmit: '/cart_submit',
   registration: '/registration',
+  orderSuccessMessage: '/order_success_message',
 };
 
 const navbar = [

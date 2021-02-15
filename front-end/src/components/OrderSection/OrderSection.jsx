@@ -1,13 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { get, compose, head } from 'lodash/fp';
+import { useHistory } from 'react-router-dom';
+import { get, compose, head, isEmpty } from 'lodash/fp';
 
 import cartCost from '../../utils/cartUtils';
 import { productsType } from '../../propType';
 
 import DIRECTION from '../../constants/direction';
-import THEME_VARIANT from '../../constants/themeVariant';
+import ROUTER_PATH from '../../constants/routerPath';
 import ORDER_FIELDS from '../../constants/orderFields';
+import THEME_VARIANT from '../../constants/themeVariant';
 
 import Flex from '../Flex';
 import Label from '../Label';
@@ -27,7 +29,14 @@ const OrderSection = ({
   themeVariant,
   removeFromCart,
 }) => {
-  const submit = (customer) => submitOrder({ order: cart, customer });
+  const history = useHistory();
+
+  const submit = (customer) => {
+    if (isEmpty(cart)) return;
+
+    submitOrder({ cart, customer });
+    history.push(ROUTER_PATH.orderSuccessMessage);
+  };
 
   const currencySign = compose(get('currencySign'), head)(cart);
 
@@ -38,14 +47,14 @@ const OrderSection = ({
       <OrderSectionContent themeVariant={themeVariant}>
         <Flex direction={DIRECTION.column} flexBasis='60%'>
           <Label text='Оформление заказа' className='order-section__label' />
-          <form onSubmit={handleSubmit(submit)}>
+          <form>
             <Flex direction={DIRECTION.column}>
               <FieldList
                 fields={ORDER_FIELDS}
                 component={InputField}
                 fieldStyle={InputFieldContent}
               />
-              <Button text='Отправить' />
+              <Button text='Отправить' onClick={handleSubmit(submit)} />
             </Flex>
           </form>
         </Flex>

@@ -24,5 +24,13 @@ export const authAPI = {
     const respons = await instance.post('auth/register', body);
 
     return extractData(respons);
-  }
+  },
+};
+
+export const orderAPI = {
+  sendOrder: async (body) => {
+    const respons = await instance.post('order', body);
+
+    return extractData(respons);
+  },
 };

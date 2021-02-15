@@ -11,6 +11,6 @@ export const ProductWrapper = styled.section`
 export const ProductContent = styled.div`
   margin: 0 auto;
   width: 100%;
-  min-height: 90vh;
+  min-height: 80vh;
   max-width: ${SECTION_WIDTH.midle}px;
 `;
