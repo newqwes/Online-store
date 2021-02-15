@@ -1,15 +1,14 @@
 import styled from 'styled-components';
 
-import SECTION_WIDTH from '../../constants/sectionWidth';
-
 export const NavbarItems = styled.ul`
   display: flex;
+  position: fixed;
   flex-direction: ${(props) => (props.horizontally ? 'row' : 'column')};
-  justify-content: space-between;
+  justify-content: space-around;
   width: 100%;
-  max-width: ${SECTION_WIDTH.midle}px;
-  margin: 0 auto;
-  padding: 12px 0;
+  padding: 10px 0;
+  top: ${({ top }) => top}px;
+  background-color: ${(props) => props.theme.navbar.background[props.themeVariant]};
 
   a {
     text-decoration: none;
@@ -18,7 +17,7 @@ export const NavbarItems = styled.ul`
     letter-spacing: 0.1rem;
     color: ${(props) => props.theme.navbar.color[props.themeVariant]};
     transition: 0.2s ease;
-    font-weight: ${(props) => props.fontWeight};
+    font-weight: bold;
     position: relative;
 
     &:hover {
@@ -53,5 +52,7 @@ export const NavbarItems = styled.ul`
 `;
 
 export const NavbarWrapper = styled.nav`
-  background-color: ${(props) => props.theme.navbar.background[props.themeVariant]};
+  display: flex;
+  height: 40px;
+  justify-content: center;
 `;

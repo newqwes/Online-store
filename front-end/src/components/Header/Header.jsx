@@ -18,48 +18,75 @@ import Phone from '../Icons/Phone';
 
 import { HeaderWrapper, HeaderContent } from './styled';
 
-const Header = ({ cartItemsCount, themeVariant, isSuccess, userName, logout }) => (
-  <HeaderWrapper themeVariant={themeVariant}>
-    <HeaderContent>
-      <Flex>
-        <Link to={ROUTER_PATH.main}>
-          <Logo size={ICON_SIZE.large} />
-        </Link>
-      </Flex>
-      <Flex>
-        <Time />
-        <Label
-          themeVariant={THEME_VARIANT.inverted}
-          text='30 минут доставка'
-          fontSize={FONT_SIZE.large}
-        />
-      </Flex>
-      <Flex>
-        <Phone />
-        <Link themeVariant={THEME_VARIANT.inverted} href='tel:+375333637970'>
-          +375 (33) 363-79-70
-        </Link>
-      </Flex>
-      <Flex horizontal={JUSTIFY_CONTENT.flexEnd}>
-        <Link to={ROUTER_PATH.cart}>
-          <Cart size={ICON_SIZE.large} cartItemsCount={cartItemsCount} />
-        </Link>
-        <UserInfo userName={userName} logout={logout} isSuccess={isSuccess} />
-      </Flex>
-    </HeaderContent>
-  </HeaderWrapper>
-);
+class Header extends React.Component {
+  state = { height: 0 };
 
-Header.propTypes = {
-  themeVariant: PropTypes.string,
-  logout: PropTypes.func.isRequired,
-  isSuccess: PropTypes.bool.isRequired,
-  userName: PropTypes.string.isRequired,
-  cartItemsCount: PropTypes.number.isRequired,
-};
+  handleScroll = () => {
+    const offset = window.scrollY;
 
-Header.defaultProps = {
-  themeVariant: THEME_VARIANT.default,
-};
+    if (offset > 50) {
+      this.setState({ height: 50 });
+    } else {
+      this.setState({ height: 100 - offset });
+    }
+  };
+
+  componentDidMount() {
+    this.handleScroll();
+  }
+
+  componentDidUpdate() {
+    window.addEventListener('scroll', this.handleScroll);
+  }
+
+  static propTypes = {
+    themeVariant: PropTypes.string,
+    logout: PropTypes.func.isRequired,
+    isSuccess: PropTypes.bool.isRequired,
+    userName: PropTypes.string.isRequired,
+    cartItemsCount: PropTypes.number.isRequired,
+  };
+
+  static defaultProps = {
+    themeVariant: THEME_VARIANT.default,
+  };
+
+  render() {
+    const { cartItemsCount, themeVariant, isSuccess, userName, logout } = this.props;
+    const { height } = this.state;
+
+    return (
+      <HeaderWrapper>
+        <HeaderContent height={height} themeVariant={themeVariant}>
+          <Flex>
+            <Link to={ROUTER_PATH.main}>
+              <Logo size={ICON_SIZE.large} />
+            </Link>
+          </Flex>
+          <Flex>
+            <Time />
+            <Label
+              themeVariant={THEME_VARIANT.inverted}
+              text='30 минут доставка'
+              fontSize={FONT_SIZE.large}
+            />
+          </Flex>
+          <Flex>
+            <Phone />
+            <Link themeVariant={THEME_VARIANT.inverted} href='tel:+375333637970'>
+              +375 (33) 363-79-70
+            </Link>
+          </Flex>
+          <Flex horizontal={JUSTIFY_CONTENT.flexEnd}>
+            <Link to={ROUTER_PATH.cart}>
+              <Cart size={ICON_SIZE.large} cartItemsCount={cartItemsCount} />
+            </Link>
+            <UserInfo userName={userName} logout={logout} isSuccess={isSuccess} />
+          </Flex>
+        </HeaderContent>
+      </HeaderWrapper>
+    );
+  }
+}
 
 export default Header;
