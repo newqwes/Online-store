@@ -64,7 +64,7 @@ class Card extends React.Component {
       <CardWrapper themeVariant={themeVariant}>
         <Image src={photoUrl} alt={name} />
         <CardContent>
-          <Label text={name} fontSize={FONT_SIZE.medium} fontWeight={FONT_WEIGHT.lightBold} />
+          <Label text={name} fontSize={FONT_SIZE.medium} fontWeight={FONT_WEIGHT.bold} />
           <Label
             text={description}
             fontSize={FONT_SIZE.least}
@@ -77,7 +77,7 @@ class Card extends React.Component {
               value={option.price}
               fontSize={FONT_SIZE.least}
               textAlign={TEXT_ALIGN.center}
-              fontWeight={FONT_WEIGHT.lightBold}
+              fontWeight={FONT_WEIGHT.bold}
               postfix={currencySign}
             />
             <Select options={options} onChange={this.handleChange} unitSign={unitSign} />
