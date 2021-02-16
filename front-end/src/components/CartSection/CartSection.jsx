@@ -4,7 +4,6 @@ import { useHistory } from 'react-router-dom';
 import { get, compose, head } from 'lodash/fp';
 
 import { cartType } from '../../propType';
-import cartCost from '../../utils/cartUtils';
 
 import ROUTER_PATH from '../../constants/routerPath';
 import THEME_VARIANT from '../../constants/themeVariant';
@@ -17,7 +16,7 @@ import TotalPrice from '../TotalPrice';
 
 import { CartSectionWrapper, TotalPriceContent, CartSectionContent } from './styled';
 
-const CartSection = ({ themeVariant, cart, removeFromCart, addToCart }) => {
+const CartSection = ({ themeVariant, cart, removeFromCart, addToCart, totalPrice }) => {
   const history = useHistory();
 
   const redirectToOrder = () => {
@@ -25,8 +24,6 @@ const CartSection = ({ themeVariant, cart, removeFromCart, addToCart }) => {
   };
 
   const currencySign = compose(get('currencySign'), head)(cart);
-
-  const totalPrice = cartCost(cart);
 
   return (
     <CartSectionWrapper themeVariant={themeVariant}>
@@ -45,6 +42,7 @@ const CartSection = ({ themeVariant, cart, removeFromCart, addToCart }) => {
 
 CartSection.propTypes = {
   cart: cartType.isRequired,
+  totalPrice: PropTypes.number.isRequired,
   themeVariant: PropTypes.string,
   addToCart: PropTypes.func.isRequired,
   removeFromCart: PropTypes.func.isRequired,

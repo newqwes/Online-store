@@ -1,11 +1,12 @@
 import { connect } from 'react-redux';
 
+import CartSection from '../components/CartSection';
+import getCart, { getTotalCartCost } from '../selectors/cart';
 import { removeFromCart, addToCart } from '../actionCreators';
 
-import CartSection from '../components/CartSection';
-
-const mapStateToProps = ({ cart }) => ({
-  cart,
+const mapStateToProps = (state) => ({
+  cart: getCart(state),
+  totalPrice: getTotalCartCost(state),
 });
 
 const mapDispatchToProps = { removeFromCart, addToCart };

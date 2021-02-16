@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import { get, compose, head, isEmpty } from 'lodash/fp';
 
-import cartCost from '../../utils/cartUtils';
 import { productsType } from '../../propType';
 
 import DIRECTION from '../../constants/direction';
@@ -22,6 +21,7 @@ import CartItems from '../CartSection/CartItems';
 import { OrderSectionWrapper, OrderSectionContent, InputFieldContent } from './styled';
 
 const OrderSection = ({
+  totalPrice,
   cart,
   addToCart,
   submitOrder,
@@ -39,8 +39,6 @@ const OrderSection = ({
   };
 
   const currencySign = compose(get('currencySign'), head)(cart);
-
-  const totalPrice = cartCost(cart);
 
   return (
     <OrderSectionWrapper themeVariant={themeVariant}>
@@ -76,6 +74,7 @@ OrderSection.propTypes = {
   addToCart: PropTypes.func.isRequired,
   submitOrder: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
+  totalPrice: PropTypes.number.isRequired,
   removeFromCart: PropTypes.func.isRequired,
 };
 
