@@ -2,12 +2,10 @@ import styled from 'styled-components';
 
 export const NavbarItems = styled.ul`
   display: flex;
-  position: fixed;
   flex-direction: ${(props) => (props.horizontally ? 'row' : 'column')};
   justify-content: space-around;
   width: 100%;
   padding: 10px 0;
-  top: ${({ top }) => top}px;
   background-color: ${(props) => props.theme.navbar.background[props.themeVariant]};
 
   a {
@@ -52,7 +50,8 @@ export const NavbarItems = styled.ul`
 `;
 
 export const NavbarWrapper = styled.nav`
+  position: sticky;
   display: flex;
-  height: 40px;
+  top: 60px;
   justify-content: center;
 `;
