@@ -1,20 +1,17 @@
 import styled from 'styled-components';
 
-export const HeaderWrapper = styled.header`
-  display: flex;
-  justify-content: center;
-  height: 100px;
+const HeaderWrapper = styled.header`
   position: sticky;
-  top: -20px;
-`;
-
-export const HeaderContent = styled.div`
   display: flex;
   justify-content: space-around;
+  top: -20px;
   width: 100%;
+  height: 100px;
   background: ${({ themeVariant, theme }) => theme.background.color[themeVariant]};
 
   svg {
     margin: 0 20px;
   }
 `;
+
+export default HeaderWrapper;
