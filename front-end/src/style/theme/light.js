@@ -147,6 +147,10 @@ const light = {
     hoverBackground: {
       default: COLORS.softYellow,
     },
+    boxShadow: {
+      default: COLORS.softYellow,
+      inverted: COLORS.softYellow,
+    },
   },
 
   link: {

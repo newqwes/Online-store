@@ -12,7 +12,7 @@ export const HeaderContent = styled.div`
   display: flex;
   justify-content: space-around;
   width: 100%;
-  background: ${(props) => props.theme.background.color[props.themeVariant]};
+  background: ${({ themeVariant, theme }) => theme.background.color[themeVariant]};
 
   svg {
     margin: 0 20px;
