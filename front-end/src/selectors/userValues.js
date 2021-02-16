@@ -1,12 +1,10 @@
-import { getOr } from 'lodash/fp';
+import { getOr, get } from 'lodash/fp';
 import { createSelector } from 'reselect';
 
-const getAuthData = (authorization) => authorization;
+const initialState = get('authorization');
 
-const getInitialUserValues = createSelector(getAuthData, (authorization) => {
-  const email = getOr('', ['userData', 'email'], authorization);
-  const phone = getOr('', ['userData', 'phone'], authorization);
-  const login = getOr('', ['userData', 'login'], authorization);
+const getInitialUserValues = createSelector(initialState, (authorization) => {
+  const { email, phone, login } = getOr('', 'userData', authorization);
 
   return { email, phone, login };
 });

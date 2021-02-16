@@ -1,8 +1,9 @@
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
+import { get } from 'lodash/fp';
 
-import getInitialUserValues from '../selectors/userValues.js';
+import getInitialUserValues from '../selectors/userValues';
 
 import { removeFromCart, addToCart, submitOrder } from '../actionCreators';
 
@@ -31,9 +32,9 @@ const withReduxForm = reduxForm({
   validate,
 });
 
-const mapStateToProps = ({ cart, authorization }) => ({
-  cart,
-  initialValues: getInitialUserValues(authorization),
+const mapStateToProps = (state) => ({
+  cart: get('cart', state),
+  initialValues: getInitialUserValues(state),
 });
 
 const mapDispatchToProps = { removeFromCart, addToCart, submitOrder };
