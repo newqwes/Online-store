@@ -147,6 +147,10 @@ const light = {
     hoverBackground: {
       default: COLORS.softYellow,
     },
+    boxShadow: {
+      default: COLORS.softDarkGray,
+      inverted: COLORS.softYellow,
+    },
   },
 
   link: {
@@ -159,6 +163,10 @@ const light = {
       inverted: COLORS.softYellow,
     },
     focus: {
+      default: COLORS.brownTone,
+      inverted: COLORS.softYellow,
+    },
+    line: {
       default: COLORS.brownTone,
       inverted: COLORS.softYellow,
     },

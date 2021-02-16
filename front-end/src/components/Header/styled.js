@@ -1,21 +1,17 @@
 import styled from 'styled-components';
 
-import SECTION_WIDTH from '../../constants/sectionWidth';
-
-export const HeaderWrapper = styled.header`
+const HeaderWrapper = styled.header`
+  position: sticky;
   display: flex;
-  background: ${(props) => props.theme.background.color[props.themeVariant]};
-  height: 100px;
-`;
-
-export const HeaderContent = styled.div`
-  display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  top: -20px;
   width: 100%;
-  max-width: ${SECTION_WIDTH.midle}px;
-  margin: 0 auto;
+  height: 100px;
+  background: ${({ themeVariant, theme }) => theme.background.color[themeVariant]};
 
   svg {
     margin: 0 20px;
   }
 `;
+
+export default HeaderWrapper;
