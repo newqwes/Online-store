@@ -13,7 +13,7 @@ const Navbar = ({ menuItems, themeVariant, horizontally }) => {
   ));
 
   return (
-    <NavbarWrapper themeVariant={themeVariant}>
+    <NavbarWrapper>
       <NavbarItems themeVariant={themeVariant} horizontally={horizontally}>
         {items}
       </NavbarItems>
