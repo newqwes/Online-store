@@ -4,6 +4,7 @@ const COLORS = {
   mostlyWhiteYellow: '#fffdf2',
   darkDesaturatedOrange: '#332019',
   brownTone: '#8b3d0f',
+  brownToneLight: '#e0641c',
   darkModerateRed: '#855749',
   darkGrayishOrange: '#53453a',
   gray: '#bdbdbd',
@@ -12,6 +13,9 @@ const COLORS = {
   softRedShadow: '#e2525280',
   softLimeGreenShadow: '#52e27140',
   softDarkGray: '#707070',
+  white: '#ffffff',
+  lightGrayishBlue: '#c9c9c9',
+  lightGrayishCyan: '#f7f8f8',
 };
 
 export default COLORS;
