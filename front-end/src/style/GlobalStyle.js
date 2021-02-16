@@ -5,6 +5,7 @@ const GlobalStyle = createGlobalStyle`
 ${normalize}
 
 html {
+  width: 100vw;
   font-family: 'Ubuntu', Verdana, sans-serif;
 }
 
