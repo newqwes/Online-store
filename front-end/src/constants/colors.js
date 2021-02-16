@@ -11,6 +11,7 @@ const COLORS = {
   veryDarkGray: '#313131',
   softRedShadow: '#e2525280',
   softLimeGreenShadow: '#52e27140',
+  softDarkGray: '#707070',
 };
 
 export default COLORS;

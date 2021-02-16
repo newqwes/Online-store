@@ -40,11 +40,10 @@ export const NavbarItems = styled.ul`
       position: absolute;
       width: 0;
       left: 0;
-      bottom: 0;
-      border-radius: 15px 15px 0 0;
-      height: 8px;
-      background-color: ${({ theme, themeVariant }) => theme.navbar.hoverBackground[themeVariant]};
-      transition: 0.5s ease;
+      bottom: 2px;
+      height: 4px;
+      background-color: ${({ theme, themeVariant }) => theme.link.line[themeVariant]};
+      transition: 0.2s ease;
     }
   }
 `;
@@ -54,5 +53,5 @@ export const NavbarWrapper = styled.nav`
   display: flex;
   top: 60px;
   justify-content: center;
-  box-shadow: 0 12px 12px ${({ themeVariant, theme }) => theme.navbar.boxShadow[themeVariant]};
+  box-shadow: 0 4px 10px ${({ theme, themeVariant }) => theme.navbar.boxShadow[themeVariant]};
 `;
