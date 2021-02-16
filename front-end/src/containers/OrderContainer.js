@@ -2,7 +2,7 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
 
-import getInitialUserValues from '../utils/orderUtils.js';
+import getInitialUserValues from '../selectors/userValues.js';
 
 import { removeFromCart, addToCart, submitOrder } from '../actionCreators';
 
@@ -15,7 +15,7 @@ import {
   emailValidation,
   streetValidation,
   apartmentValidation,
-} from '../components/OrderSection/validate';
+} from '../utils/fieldValidation';
 
 const validate = ({ phone, email, city, home, street, apartment }) => ({
   city: cityValidation(city),
