@@ -75,7 +75,7 @@ class Card extends React.Component {
           <Flex>
             <ValueFormatter
               value={option.price}
-              fontSize={FONT_SIZE.least}
+              fontSize={FONT_SIZE.small}
               textAlign={TEXT_ALIGN.center}
               fontWeight={FONT_WEIGHT.bold}
               postfix={currencySign}

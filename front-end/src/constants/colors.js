@@ -12,6 +12,7 @@ const COLORS = {
   veryDarkGray: '#313131',
   softRedShadow: '#e2525280',
   softLimeGreenShadow: '#52e27140',
+  softDarkGray: '#707070',
   white: '#ffffff',
   lightGrayishBlue: '#c9c9c9',
   lightGrayishCyan: '#f7f8f8',
