@@ -21,7 +21,7 @@ import CartItems from '../CartSection/CartItems';
 import { OrderSectionWrapper, OrderSectionContent, InputFieldContent } from './styled';
 
 const OrderSection = ({
-  totalPrice,
+  totalCartPrice,
   cart,
   addToCart,
   submitOrder,
@@ -60,7 +60,11 @@ const OrderSection = ({
           <Label text='Ваш заказ' className='order-section__label' />
           <Flex direction={DIRECTION.column} className='order-section__cart'>
             <CartItems cart={cart} removeFromCart={removeFromCart} addToCart={addToCart} />
-            <TotalPrice totalPrice={totalPrice} currencySign={currencySign} text='Сумма заказа: ' />
+            <TotalPrice
+              totalCartPrice={totalCartPrice}
+              currencySign={currencySign}
+              text='Сумма заказа: '
+            />
           </Flex>
         </Flex>
       </OrderSectionContent>
@@ -74,7 +78,7 @@ OrderSection.propTypes = {
   addToCart: PropTypes.func.isRequired,
   submitOrder: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
-  totalPrice: PropTypes.number.isRequired,
+  totalCartPrice: PropTypes.number.isRequired,
   removeFromCart: PropTypes.func.isRequired,
 };
 

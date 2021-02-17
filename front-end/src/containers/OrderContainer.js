@@ -11,7 +11,7 @@ import {
   apartmentValidation,
 } from '../utils/fieldValidation';
 
-import getCart, { getTotalCartCost } from '../selectors/cart';
+import getCart, { getTotalCartPrice } from '../selectors/cart';
 import { getEmailUser, getLoginUser, getPhoneUser } from '../selectors/authorization';
 
 import { removeFromCart, addToCart, submitOrder } from '../actionCreators';
@@ -34,7 +34,7 @@ const withReduxForm = reduxForm({
 
 const mapStateToProps = (state) => ({
   cart: getCart(state),
-  totalPrice: getTotalCartCost(state),
+  totalCartPrice: getTotalCartPrice(state),
   initialValues: {
     email: getEmailUser(state),
     phone: getPhoneUser(state),

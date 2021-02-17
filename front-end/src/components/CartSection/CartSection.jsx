@@ -16,7 +16,7 @@ import TotalPrice from '../TotalPrice';
 
 import { CartSectionWrapper, TotalPriceContent, CartSectionContent } from './styled';
 
-const CartSection = ({ themeVariant, cart, removeFromCart, addToCart, totalPrice }) => {
+const CartSection = ({ themeVariant, cart, removeFromCart, addToCart, totalCartPrice }) => {
   const history = useHistory();
 
   const redirectToOrder = () => {
@@ -31,7 +31,11 @@ const CartSection = ({ themeVariant, cart, removeFromCart, addToCart, totalPrice
         <CartItems cart={cart} removeFromCart={removeFromCart} addToCart={addToCart} />
       </CartSectionContent>
       <TotalPriceContent>
-        <TotalPrice totalPrice={totalPrice} currencySign={currencySign} text='Сумма заказа: ' />
+        <TotalPrice
+          totalCartPrice={totalCartPrice}
+          currencySign={currencySign}
+          text='Сумма заказа: '
+        />
         <Flex justifyContent={JUSTIFY_CONTENT.flexEnd}>
           <Button text='Оформить заказ' onClick={redirectToOrder} />
         </Flex>
@@ -42,7 +46,7 @@ const CartSection = ({ themeVariant, cart, removeFromCart, addToCart, totalPrice
 
 CartSection.propTypes = {
   cart: cartType.isRequired,
-  totalPrice: PropTypes.number.isRequired,
+  totalCartPrice: PropTypes.number.isRequired,
   themeVariant: PropTypes.string,
   addToCart: PropTypes.func.isRequired,
   removeFromCart: PropTypes.func.isRequired,

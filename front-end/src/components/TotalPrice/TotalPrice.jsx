@@ -11,23 +11,23 @@ import { JUSTIFY_CONTENT } from '../../constants/position';
 import TotalPriceWrapper from './styled';
 import TEXT from '../../constants/text';
 
-const TotalPrice = ({ totalPrice, currencySign, text }) => (
+const TotalPrice = ({ totalCartPrice, currencySign, text }) => (
   <TotalPriceWrapper>
     <Flex justifyContent={JUSTIFY_CONTENT.flexEnd}>
       <Label text={text} fontSize={FONT_SIZE.large} />
-      <ValueFormater value={totalPrice} postfix={currencySign} />
+      <ValueFormater value={totalCartPrice} postfix={currencySign} />
     </Flex>
   </TotalPriceWrapper>
 );
 
 TotalPrice.propTypes = {
-  totalPrice: PropTypes.number,
+  totalCartPrice: PropTypes.number,
   currencySign: PropTypes.string,
   text: PropTypes.string.isRequired,
 };
 
 TotalPrice.defaultProps = {
-  totalPrice: 0,
+  totalCartPrice: 0,
   currencySign: TEXT.empty,
 };
 
