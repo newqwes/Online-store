@@ -61,9 +61,9 @@ const OrderSection = ({
           <Flex direction={DIRECTION.column} className='order-section__cart'>
             <CartItems cart={cart} removeFromCart={removeFromCart} addToCart={addToCart} />
             <TotalPrice
-              totalCartPrice={totalCartPrice}
+              value={totalCartPrice}
               currencySign={currencySign}
-              text='Сумма заказа: '
+              labelText='Сумма заказа: '
             />
           </Flex>
         </Flex>
