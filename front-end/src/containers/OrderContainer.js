@@ -10,11 +10,13 @@ import {
   streetValidation,
   apartmentValidation,
 } from '../utils/fieldValidation';
+
 import getCart, { getTotalCartCost } from '../selectors/cart';
 import { getEmailUser, getLoginUser, getPhoneUser } from '../selectors/authorization';
 
-import OrderSection from '../components/OrderSection';
 import { removeFromCart, addToCart, submitOrder } from '../actionCreators';
+
+import OrderSection from '../components/OrderSection';
 
 const validate = ({ phone, email, city, home, street, apartment }) => ({
   city: cityValidation(city),
@@ -32,12 +34,12 @@ const withReduxForm = reduxForm({
 
 const mapStateToProps = (state) => ({
   cart: getCart(state),
+  totalPrice: getTotalCartCost(state),
   initialValues: {
     email: getEmailUser(state),
     phone: getPhoneUser(state),
     login: getLoginUser(state),
   },
-  totalPrice: getTotalCartCost(state),
 });
 
 const mapDispatchToProps = { removeFromCart, addToCart, submitOrder };
