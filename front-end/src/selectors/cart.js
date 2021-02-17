@@ -6,8 +6,6 @@ const localState = get('cart');
 
 export const getTotalCartCost = createSelector(
   localState,
-
-  // TODO rework it
   reduce((sum, { count, options: { price } }) => floor(sum + count * price, 2), 0)
 );
 
