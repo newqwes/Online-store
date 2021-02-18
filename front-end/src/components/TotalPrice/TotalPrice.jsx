@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { stubString } from 'lodash';
 
 import Flex from '../Flex';
 import Label from '../Label';
 import ValueFormater from '../ValueFormatter';
 
-import TEXT from '../../constants/text';
 import FONT_SIZE from '../../constants/fontSize';
 import { JUSTIFY_CONTENT } from '../../constants/position';
 
@@ -28,8 +28,8 @@ TotalPrice.propTypes = {
 
 TotalPrice.defaultProps = {
   value: 0,
-  labelText: TEXT.empty,
-  currencySign: TEXT.empty,
+  labelText: stubString(),
+  currencySign: stubString(),
 };
 
 export default TotalPrice;

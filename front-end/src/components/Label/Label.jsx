@@ -1,12 +1,14 @@
 import React from 'react';
+import { stubString } from 'lodash';
+
 import PropTypes from 'prop-types';
-import LabelWrapper from './styled';
 
 import FONT_SIZE from '../../constants/fontSize';
 import FONT_WEIGHT from '../../constants/fontWeight';
 import TEXT_ALIGN from '../../constants/textAlign';
 import THEME_VARIANT from '../../constants/themeVariant';
-import TEXT from '../../constants/text';
+
+import LabelWrapper from './styled';
 
 const Label = ({ text, fontSize, textAlign, fontWeight, themeVariant, className }) => (
   <LabelWrapper
@@ -30,8 +32,8 @@ Label.propTypes = {
 };
 
 Label.defaultProps = {
-  text: TEXT.empty,
-  className: TEXT.empty,
+  text: stubString(),
+  className: stubString(),
   fontSize: FONT_SIZE.medium,
   fontWeight: FONT_WEIGHT.bold,
   textAlign: TEXT_ALIGN.left,
