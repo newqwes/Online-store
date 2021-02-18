@@ -4,7 +4,7 @@ import { createSelector } from 'reselect';
 
 const localState = get('cart');
 
-export const getCart = createSelector(localState);
+export const getCart = createSelector(localState, cart => cart);
 
 export const getTotalCartPrice = createSelector(
   localState,
