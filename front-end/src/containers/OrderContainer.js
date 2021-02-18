@@ -12,7 +12,7 @@ import {
 } from '../utils/fieldValidation';
 
 import { getUserData } from '../selectors/userInfo';
-import getCart, { getTotalCartPrice } from '../selectors/cart';
+import { getCart, getTotalCartPrice } from '../selectors/cart';
 
 import { removeFromCart, addToCart, submitOrder } from '../actionCreators';
 
@@ -32,7 +32,7 @@ const withReduxForm = reduxForm({
   validate,
 });
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   cart: getCart(state),
   initialValues: getUserData(state),
   totalCartPrice: getTotalCartPrice(state),

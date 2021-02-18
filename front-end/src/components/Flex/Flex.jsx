@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { stubString } from 'lodash';
 
 import { childrenType } from '../../propType';
 
@@ -15,8 +14,7 @@ const Flex = ({ children, direction, justifyContent, alignItems, flexBasis, clas
     alignItems={alignItems}
     direction={direction}
     flexBasis={flexBasis}
-    className={className}
-  >
+    className={className}>
     {children}
   </FlexWrapper>
 );
@@ -31,7 +29,7 @@ Flex.propTypes = {
 };
 
 Flex.defaultProps = {
-  className: stubString(),
+  className: '',
   direction: DIRECTION.row,
   flexBasis: FLEX_BASIS.fill,
   alignItems: ALIGN_ITEMS.center,

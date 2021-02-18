@@ -4,9 +4,9 @@ import { createSelector } from 'reselect';
 
 const localState = get('cart');
 
+export const getCart = createSelector(localState);
+
 export const getTotalCartPrice = createSelector(
   localState,
-  reduce((sum, { count, options: { price } }) => floor(sum + count * price, 2), 0)
+  reduce((sum, { count, options: { price } }) => floor(sum + count * price, 2), 0),
 );
-
-export default localState;

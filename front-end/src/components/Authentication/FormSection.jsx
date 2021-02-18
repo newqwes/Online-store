@@ -55,8 +55,7 @@ class FormSection extends React.Component {
           <FormContent
             themeVariant={themeVariant}
             isErrorAnimation={isErrorAnimation}
-            onAnimationEnd={this.onAnimationEnd}
-          >
+            onAnimationEnd={this.onAnimationEnd}>
             <Flex justifyContent={JUSTIFY_CONTENT.center}>
               <Label text={title} />
             </Flex>

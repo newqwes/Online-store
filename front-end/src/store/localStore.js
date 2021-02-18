@@ -1,4 +1,4 @@
-export const saveToLocalStorage = (state) => {
+export const saveToLocalStorage = state => {
   try {
     const serialisedState = JSON.stringify(state);
     localStorage.setItem('state', serialisedState);

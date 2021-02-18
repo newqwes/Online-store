@@ -1,5 +1,4 @@
 import React from 'react';
-import { stubString } from 'lodash';
 
 import PropTypes from 'prop-types';
 
@@ -16,8 +15,7 @@ const Label = ({ text, fontSize, textAlign, fontWeight, themeVariant, className 
     textAlign={textAlign}
     fontWeight={fontWeight}
     themeVariant={themeVariant}
-    className={className}
-  >
+    className={className}>
     {text}
   </LabelWrapper>
 );
@@ -32,8 +30,8 @@ Label.propTypes = {
 };
 
 Label.defaultProps = {
-  text: stubString(),
-  className: stubString(),
+  text: '',
+  className: '',
   fontSize: FONT_SIZE.medium,
   fontWeight: FONT_WEIGHT.bold,
   textAlign: TEXT_ALIGN.left,
