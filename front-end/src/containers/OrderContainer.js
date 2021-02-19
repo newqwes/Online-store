@@ -2,12 +2,6 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
 
-import getInitialUserValues from '../utils/orderUtils.js';
-
-import { removeFromCart, addToCart, submitOrder } from '../actionCreators';
-
-import OrderSection from '../components/OrderSection';
-
 import {
   telValidation,
   cityValidation,
@@ -15,7 +9,14 @@ import {
   emailValidation,
   streetValidation,
   apartmentValidation,
-} from '../components/OrderSection/validate';
+} from '../utils/fieldValidation';
+
+import { getUserData } from '../selectors/userInfo';
+import { getCart, getTotalCartPrice } from '../selectors/cart';
+
+import { removeFromCart, addToCart, submitOrder } from '../actionCreators';
+
+import OrderSection from '../components/OrderSection';
 
 const validate = ({ phone, email, city, home, street, apartment }) => ({
   city: cityValidation(city),
@@ -31,9 +32,10 @@ const withReduxForm = reduxForm({
   validate,
 });
 
-const mapStateToProps = ({ cart, authorization }) => ({
-  cart,
-  initialValues: getInitialUserValues(authorization),
+const mapStateToProps = state => ({
+  cart: getCart(state),
+  initialValues: getUserData(state),
+  totalCartPrice: getTotalCartPrice(state),
 });
 
 const mapDispatchToProps = { removeFromCart, addToCart, submitOrder };

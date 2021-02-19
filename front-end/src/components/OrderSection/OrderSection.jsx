@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import { get, compose, head, isEmpty } from 'lodash/fp';
 
-import cartCost from '../../utils/cartUtils';
 import { productsType } from '../../propType';
 
 import DIRECTION from '../../constants/direction';
@@ -22,6 +21,7 @@ import CartItems from '../CartSection/CartItems';
 import { OrderSectionWrapper, OrderSectionContent, InputFieldContent } from './styled';
 
 const OrderSection = ({
+  totalCartPrice,
   cart,
   addToCart,
   submitOrder,
@@ -31,7 +31,7 @@ const OrderSection = ({
 }) => {
   const history = useHistory();
 
-  const submit = (customer) => {
+  const submit = customer => {
     if (isEmpty(cart)) return;
 
     submitOrder({ cart, customer });
@@ -39,8 +39,6 @@ const OrderSection = ({
   };
 
   const currencySign = compose(get('currencySign'), head)(cart);
-
-  const totalPrice = cartCost(cart);
 
   return (
     <OrderSectionWrapper themeVariant={themeVariant}>
@@ -62,7 +60,7 @@ const OrderSection = ({
           <Label text='Ваш заказ' className='order-section__label' />
           <Flex direction={DIRECTION.column} className='order-section__cart'>
             <CartItems cart={cart} removeFromCart={removeFromCart} addToCart={addToCart} />
-            <TotalPrice totalPrice={totalPrice} currencySign={currencySign} text='Сумма заказа: ' />
+            <TotalPrice value={totalCartPrice} currencySign={currencySign} label='Сумма заказа: ' />
           </Flex>
         </Flex>
       </OrderSectionContent>
@@ -76,6 +74,7 @@ OrderSection.propTypes = {
   addToCart: PropTypes.func.isRequired,
   submitOrder: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
+  totalCartPrice: PropTypes.number.isRequired,
   removeFromCart: PropTypes.func.isRequired,
 };
 

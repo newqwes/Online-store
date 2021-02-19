@@ -5,7 +5,7 @@ const itemsType = PropTypes.arrayOf(
     id: PropTypes.number,
     link: PropTypes.string,
     title: PropTypes.string,
-  })
+  }),
 );
 
 export default itemsType;

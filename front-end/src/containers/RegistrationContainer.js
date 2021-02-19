@@ -12,7 +12,7 @@ import {
   loginValidation,
   equalValidation,
   passwordValidation,
-} from '../components/Authentication/validate';
+} from '../utils/fieldValidation';
 
 const validate = ({ phone, email, login, password, confirmPassword }) => ({
   phone: telValidation(phone),

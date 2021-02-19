@@ -9,26 +9,26 @@ import FONT_SIZE from '../../constants/fontSize';
 import { JUSTIFY_CONTENT } from '../../constants/position';
 
 import TotalPriceWrapper from './styled';
-import TEXT from '../../constants/text';
 
-const TotalPrice = ({ totalPrice, currencySign, text }) => (
+const TotalPrice = ({ value, currencySign, label }) => (
   <TotalPriceWrapper>
     <Flex justifyContent={JUSTIFY_CONTENT.flexEnd}>
-      <Label text={text} fontSize={FONT_SIZE.large} />
-      <ValueFormater value={totalPrice} postfix={currencySign} />
+      <Label text={label} fontSize={FONT_SIZE.large} />
+      <ValueFormater value={value} postfix={currencySign} />
     </Flex>
   </TotalPriceWrapper>
 );
 
 TotalPrice.propTypes = {
-  totalPrice: PropTypes.number,
+  value: PropTypes.number,
+  label: PropTypes.string,
   currencySign: PropTypes.string,
-  text: PropTypes.string.isRequired,
 };
 
 TotalPrice.defaultProps = {
-  totalPrice: 0,
-  currencySign: TEXT.empty,
+  value: 0,
+  label: '',
+  currencySign: '',
 };
 
 export default TotalPrice;
