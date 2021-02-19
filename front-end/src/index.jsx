@@ -3,10 +3,11 @@ import { Provider } from 'react-redux';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
+
 import store from './store/configureStore';
 
 import App from './App.jsx';
-import GlobalStyle from './style/GlobalStyle.js';
+import GlobalStyle from './style/GlobalStyle';
 import theme from './style/theme';
 
 ReactDOM.render(
@@ -20,5 +21,5 @@ ReactDOM.render(
       </ThemeProvider>
     </Provider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById('root'),
 );
