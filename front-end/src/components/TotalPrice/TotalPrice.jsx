@@ -10,10 +10,10 @@ import { JUSTIFY_CONTENT } from '../../constants/position';
 
 import TotalPriceWrapper from './styled';
 
-const TotalPrice = ({ value, currencySign, labelText }) => (
+const TotalPrice = ({ value, currencySign, label }) => (
   <TotalPriceWrapper>
     <Flex justifyContent={JUSTIFY_CONTENT.flexEnd}>
-      <Label text={labelText} fontSize={FONT_SIZE.large} />
+      <Label text={label} fontSize={FONT_SIZE.large} />
       <ValueFormater value={value} postfix={currencySign} />
     </Flex>
   </TotalPriceWrapper>
@@ -21,13 +21,13 @@ const TotalPrice = ({ value, currencySign, labelText }) => (
 
 TotalPrice.propTypes = {
   value: PropTypes.number,
-  labelText: PropTypes.string,
+  label: PropTypes.string,
   currencySign: PropTypes.string,
 };
 
 TotalPrice.defaultProps = {
   value: 0,
-  labelText: '',
+  label: '',
   currencySign: '',
 };
 

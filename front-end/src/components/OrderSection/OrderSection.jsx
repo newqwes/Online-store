@@ -31,7 +31,7 @@ const OrderSection = ({
 }) => {
   const history = useHistory();
 
-  const submit = (customer) => {
+  const submit = customer => {
     if (isEmpty(cart)) return;
 
     submitOrder({ cart, customer });
@@ -60,11 +60,7 @@ const OrderSection = ({
           <Label text='Ваш заказ' className='order-section__label' />
           <Flex direction={DIRECTION.column} className='order-section__cart'>
             <CartItems cart={cart} removeFromCart={removeFromCart} addToCart={addToCart} />
-            <TotalPrice
-              value={totalCartPrice}
-              currencySign={currencySign}
-              labelText='Сумма заказа: '
-            />
+            <TotalPrice value={totalCartPrice} currencySign={currencySign} label='Сумма заказа: ' />
           </Flex>
         </Flex>
       </OrderSectionContent>

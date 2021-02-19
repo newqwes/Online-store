@@ -31,7 +31,7 @@ const CartSection = ({ themeVariant, cart, removeFromCart, addToCart, totalCartP
         <CartItems cart={cart} removeFromCart={removeFromCart} addToCart={addToCart} />
       </CartSectionContent>
       <TotalPriceContent>
-        <TotalPrice value={totalCartPrice} currencySign={currencySign} labelText='Сумма заказа: ' />
+        <TotalPrice value={totalCartPrice} currencySign={currencySign} label='Сумма заказа: ' />
         <Flex justifyContent={JUSTIFY_CONTENT.flexEnd}>
           <Button text='Оформить заказ' onClick={redirectToOrder} />
         </Flex>
