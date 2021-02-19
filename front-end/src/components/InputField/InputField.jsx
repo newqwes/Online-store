@@ -1,56 +1,90 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { getOr, noop } from 'lodash/fp';
 
-import FONT_SIZE from '../../constants/fontSize';
-import FONT_WEIGHT from '../../constants/fontWeight';
+import fieldInputType from './propTypes';
+
 import THEME_VARIANT from '../../constants/themeVariant';
-import { JUSTIFY_CONTENT } from '../../constants/position';
 
-import Flex from '../Flex';
-import Label from '../Label';
+import ErrorLabel from './ErrorLabel.jsx';
+import InputControl from './InputControl.jsx';
 
-const InputField = ({ input, label, type, placeholder, fieldStyle, meta: { touched, error } }) => {
-  const errorLabel = (
-    <Flex justifyContent={JUSTIFY_CONTENT.center}>
-      <Label
-        text={error}
-        fontWeight={FONT_WEIGHT.normal}
-        fontSize={FONT_SIZE.least}
-        themeVariant={THEME_VARIANT.warning}
-      />
-    </Flex>
-  );
-  const FieldStyle = fieldStyle;
+class InputField extends React.Component {
+  state = {
+    disabled: true,
+  };
 
-  return (
-    <FieldStyle isError={touched && error}>
-      <label>{label}</label>
-      <input {...input} placeholder={placeholder} type={type} />
-      {touched && error && errorLabel}
-    </FieldStyle>
-  );
-};
+  setEdit = () => this.setState({ disabled: false });
 
-InputField.propTypes = {
-  input: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    onBlur: PropTypes.func.isRequired,
-    onChange: PropTypes.func.isRequired,
-    onDragStart: PropTypes.func.isRequired,
-    onDrop: PropTypes.func.isRequired,
-    onFocus: PropTypes.func.isRequired,
-    value: PropTypes.string.isRequired,
-  }),
+  setSave = () => {
+    const pristine = getOr(null, ['meta', 'pristine'], this.props);
 
-  label: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
-  placeholder: PropTypes.string.isRequired,
-  fieldStyle: PropTypes.elementType.isRequired,
+    if (pristine) return;
 
-  meta: PropTypes.shape({
-    touched: PropTypes.bool.isRequired,
-    error: PropTypes.string,
-  }),
-};
+    this.props.submit();
+    this.setState({ disabled: true });
+  };
+
+  setCancel = () => {
+    this.props.reset();
+    this.setState({ disabled: true });
+  };
+
+  static propTypes = fieldInputType;
+
+  static defaultProps = {
+    control: false,
+    reset: noop(),
+    submit: noop(),
+    placeholder: '',
+    themeVariant: THEME_VARIANT.default,
+  };
+
+  render() {
+    const {
+      type,
+      label,
+      control,
+      placeholder,
+      themeVariant,
+      fieldStyle: FieldStyle,
+      meta: { touched, error, pristine },
+      input: { name, value, onChange, onBlur, onDragStart, onDrop },
+    } = this.props;
+
+    const { disabled } = this.state;
+
+    return (
+      <FieldStyle
+        isError={touched && error}
+        themeVariant={themeVariant}
+        disabled={disabled}
+        pristine={pristine}>
+        <label>{label}</label>
+        <div className='input-wrapper'>
+          <input
+            name={name}
+            type={type}
+            value={value}
+            onDrop={onDrop}
+            onBlur={onBlur}
+            onChange={onChange}
+            placeholder={placeholder}
+            onDragStart={onDragStart}
+            disabled={control && disabled}
+          />
+          {control && (
+            <InputControl
+              disabled={disabled}
+              setEdit={this.setEdit}
+              setSave={this.setSave}
+              setCancel={this.setCancel}
+            />
+          )}
+        </div>
+        {touched && error && <ErrorLabel text={error} />}
+      </FieldStyle>
+    );
+  }
+}
 
 export default InputField;
