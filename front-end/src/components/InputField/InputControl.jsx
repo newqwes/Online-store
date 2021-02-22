@@ -1,10 +1,10 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
-const InputControl = ({ disabled, setEdit, setCancel, setSave }) => {
+const InputControl = ({ disabled, onEdit, onCancel, onSave }) => {
   if (disabled) {
     return (
-      <span onClick={setEdit} className='field-button-edit'>
+      <span onClick={onEdit} className='field-button-edit'>
         Изменить
       </span>
     );
@@ -12,10 +12,10 @@ const InputControl = ({ disabled, setEdit, setCancel, setSave }) => {
 
   return (
     <Fragment>
-      <span onClick={setSave} className='field-button-save'>
+      <span onClick={onSave} className='field-button-save'>
         Сохранить
       </span>
-      <span onClick={setCancel} className='field-button-cancel'>
+      <span onClick={onCancel} className='field-button-cancel'>
         Отмена
       </span>
     </Fragment>
@@ -23,10 +23,10 @@ const InputControl = ({ disabled, setEdit, setCancel, setSave }) => {
 };
 
 InputControl.propTypes = {
-  setEdit: PropTypes.func.isRequired,
-  setSave: PropTypes.func.isRequired,
+  onEdit: PropTypes.func.isRequired,
+  onSave: PropTypes.func.isRequired,
+  onCancel: PropTypes.func.isRequired,
   disabled: PropTypes.bool.isRequired,
-  setCancel: PropTypes.func.isRequired,
 };
 
 export default InputControl;

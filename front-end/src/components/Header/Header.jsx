@@ -22,7 +22,7 @@ const Header = ({ cartItemsCount, themeVariant, isSuccess, userName, logout }) =
   <HeaderWrapper themeVariant={themeVariant}>
     <Flex>
       <Link to={ROUTER_PATH.main}>
-        <Logo size={ICON_SIZE.large} />
+        <Logo width={ICON_SIZE.large} height={ICON_SIZE.large} />
       </Link>
     </Flex>
     <Flex>

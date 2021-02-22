@@ -13,9 +13,9 @@ class InputField extends React.Component {
     disabled: true,
   };
 
-  setEdit = () => this.setState({ disabled: false });
+  handleEdit = () => this.setState({ disabled: false });
 
-  setSave = () => {
+  handleSave = () => {
     const pristine = getOr(null, ['meta', 'pristine'], this.props);
 
     if (pristine) return;
@@ -24,7 +24,7 @@ class InputField extends React.Component {
     this.setState({ disabled: true });
   };
 
-  setCancel = () => {
+  handleCancel = () => {
     this.props.reset();
     this.setState({ disabled: true });
   };
@@ -75,9 +75,9 @@ class InputField extends React.Component {
           {control && (
             <InputControl
               disabled={disabled}
-              setEdit={this.setEdit}
-              setSave={this.setSave}
-              setCancel={this.setCancel}
+              onEdit={this.handleEdit}
+              onSave={this.handleSave}
+              onCancel={this.handleCancel}
             />
           )}
         </div>
