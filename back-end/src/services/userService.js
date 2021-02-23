@@ -26,8 +26,10 @@ class UserService {
     }
   }
 
-  async update(req, body) {
+  async update(req) {
     try {
+      const { body } = req;
+
       const id = getUserId(req);
 
       const userParameters = getProtectedUserParameters(body);

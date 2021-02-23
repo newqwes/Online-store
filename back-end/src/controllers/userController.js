@@ -7,7 +7,7 @@ export const getUserInfo = async (req, res) => {
 };
 
 export const updateUserInfo = async (req, res) => {
-  const result = await userService.update(req, req.body);
+  const result = await userService.update(req);
 
   res.status(result.status).json(result);
 };
