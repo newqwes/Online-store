@@ -1,14 +1,22 @@
+const dotenv = require('dotenv');
+
+dotenv.config();
+
 module.exports = {
-  up: (queryInterface) =>
+  up: queryInterface =>
     queryInterface.bulkInsert('user', [
       {
         login: 'admin',
         password: '$2a$10$cmehrpM2Kbm8dmyqwDdw7eKS4oO.pLX3muI1ToLJSs97lu93l6x5C',
         email: 'newnewqwes@gmail.com',
         phone: '375333637970',
-        user_type: 666,
+        city: 'Гродно',
+        street: 'Лермонтова',
+        home: '29',
+        apartment: '1',
+        user_type: process.env.ADMIN_RULE,
       },
     ]),
 
-  down: (queryInterface) => queryInterface.bulkDelete('user', null, {}),
+  down: queryInterface => queryInterface.bulkDelete('user', null, {}),
 };

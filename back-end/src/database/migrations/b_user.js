@@ -1,11 +1,14 @@
+const { v4: uuidv4 } = require('uuid');
+
 module.exports = {
   up: async (queryInterface, DataTypes) => {
     await queryInterface.createTable('user', {
       id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
+        type: DataTypes.UUID,
+        unique: true,
         primaryKey: true,
-        autoIncrement: true,
+        isUUID: 4,
+        defaultValue: uuidv4(),
       },
       login: {
         type: DataTypes.STRING(50),
@@ -23,14 +26,26 @@ module.exports = {
         type: DataTypes.STRING(20),
         allowNull: false,
       },
+      city: {
+        type: DataTypes.STRING(50),
+      },
+      street: {
+        type: DataTypes.STRING(50),
+      },
+      home: {
+        type: DataTypes.STRING(50),
+      },
+      apartment: {
+        type: DataTypes.STRING(50),
+      },
       user_type: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING(50),
         allowNull: false,
       },
     });
   },
 
-  down: async (queryInterface) => {
+  down: async queryInterface => {
     await queryInterface.dropTable('user');
   },
 };

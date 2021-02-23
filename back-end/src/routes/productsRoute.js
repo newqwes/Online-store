@@ -1,5 +1,7 @@
 import express from 'express';
-import passport from 'passport';
+
+import checkRole from '../middleware/checkRole';
+
 import {
   getProducts,
   getByIDProduct,
@@ -8,13 +10,18 @@ import {
   deleteProduct,
 } from '../controllers/productsController';
 
+const { GUEST_RULE, USER_RULE, ADMIN_RULE } = process.env;
+
 const productsRoute = express.Router();
 
-productsRoute.get('/', getProducts);
-productsRoute.get('/:id', getByIDProduct);
+productsRoute.get('/', checkRole([USER_RULE, ADMIN_RULE, GUEST_RULE]), getProducts);
 
-productsRoute.post('/', passport.authenticate('jwt', { session: false }), createProduct);
-productsRoute.put('/:id', passport.authenticate('jwt', { session: false }), updateProduct);
-productsRoute.delete('/:id', passport.authenticate('jwt', { session: false }), deleteProduct);
+productsRoute.get('/:id', checkRole([USER_RULE, ADMIN_RULE, GUEST_RULE]), getByIDProduct);
+
+productsRoute.post('/', checkRole([ADMIN_RULE]), createProduct);
+
+productsRoute.put('/:id', checkRole([ADMIN_RULE]), updateProduct);
+
+productsRoute.delete('/:id', checkRole([ADMIN_RULE]), deleteProduct);
 
 export default productsRoute;

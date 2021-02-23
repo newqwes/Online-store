@@ -10,8 +10,10 @@ import swaggerDocument from '../swagger.json';
 import mwPassport from './middleware/passport';
 
 import authRoute from './routes/authRoute';
-import mailRoute from './routes/mailRoute';
+import orderRoute from './routes/orderRoute';
 import productsRoute from './routes/productsRoute';
+import historyRoute from './routes/historyRoute';
+import userRoute from './routes/userRoute';
 
 dotenv.config();
 const app = express();
@@ -25,7 +27,9 @@ mwPassport(passport);
 
 app.use('/api/auth', authRoute);
 app.use('/api/products', productsRoute);
-app.use('/api/order', mailRoute);
+app.use('/api/order', orderRoute);
+app.use('/api/history', historyRoute);
+app.use('/api/user', userRoute);
 
 const port = process.env.SERVER_PORT;
 

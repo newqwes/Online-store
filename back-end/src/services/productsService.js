@@ -35,9 +35,9 @@ class ProductsService {
     try {
       const { options, ...param } = body;
 
-      const optionsWithId = options.map((n) => {
-        const option = n;
-        option.product_id = +id;
+      const optionsWithId = options.map(prevOption => {
+        const option = prevOption;
+        option.product_id = Number(id);
 
         return option;
       });
