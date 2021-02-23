@@ -2,20 +2,15 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
 import getData from '../utils/getData';
+import findByEmail from '../utils/findByEmail';
 import createResponse from '../utils/createResponse';
 
 import User from '../database/models/user';
 
 class AuthService {
-  findByEmail = async email => {
-    const foundUser = await User.findOne({ where: { email } });
-
-    return foundUser;
-  };
-
   async login({ email, password: passwordBody }) {
     try {
-      const foundUser = await this.findByEmail(email);
+      const foundUser = await findByEmail(email);
 
       if (!foundUser) {
         return createResponse(401, 'Incorrect email or password!');
@@ -43,7 +38,7 @@ class AuthService {
 
   async create(body) {
     try {
-      const foundUser = await this.findByEmail(body.email);
+      const foundUser = await findByEmail(body.email);
 
       if (foundUser) {
         return createResponse(409, 'email already exists!');

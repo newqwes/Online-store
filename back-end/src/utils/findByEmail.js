@@ -1,0 +1,9 @@
+import User from '../database/models/user';
+
+const findByEmail = async email => {
+  const foundUser = await User.findOne({ where: { email } });
+
+  return foundUser;
+};
+
+export default findByEmail;

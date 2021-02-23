@@ -3,6 +3,7 @@ import getData from '../utils/getData';
 import getUserId from '../utils/getUserId';
 
 import User from '../database/models/user';
+import findByEmail from '../utils/findByEmail';
 
 const getProtectedUserParameters = body => {
   // eslint-disable-next-line camelcase
@@ -20,7 +21,9 @@ class UserService {
         where: { id },
       });
 
-      return createResponse(200, 'Successfully!', { ...user, password: null });
+      const userData = getData(user);
+
+      return createResponse(200, 'Successfully!', { ...userData, password: null });
     } catch (error) {
       return createResponse(500, 'Server Error', error);
     }
@@ -36,10 +39,12 @@ class UserService {
 
       const { email } = userParameters;
 
-      const foundUser = await User.findOne({ where: { email } });
+      if (email) {
+        const foundUser = await findByEmail(email);
 
-      if (foundUser) {
-        return createResponse(409, 'email already exists!');
+        if (foundUser) {
+          return createResponse(409, 'email already exists!');
+        }
       }
 
       const user = await User.update(userParameters, {
