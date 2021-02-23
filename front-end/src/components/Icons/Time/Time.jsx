@@ -2,15 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ICON_SIZE from '../../../constants/iconSize';
 
-const Time = ({ size }) => (
+const Time = ({ width, height }) => (
   <svg
     id='Time_1'
     enableBackground='new 0 0 512 512'
-    height={size}
+    height={height}
     viewBox='0 0 512 512'
-    width={size}
-    xmlns='http://www.w3.org/2000/svg'
-  >
+    width={width}
+    xmlns='http://www.w3.org/2000/svg'>
     <g>
       <circle cx='256' cy='256' fill='#eab14d' r='256' />
       <path
@@ -90,11 +89,13 @@ const Time = ({ size }) => (
 );
 
 Time.propTypes = {
-  size: PropTypes.number,
+  height: PropTypes.number,
+  width: PropTypes.number,
 };
 
 Time.defaultProps = {
-  size: ICON_SIZE.medium,
+  height: ICON_SIZE.medium,
+  width: ICON_SIZE.medium,
 };
 
 export default Time;

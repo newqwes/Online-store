@@ -3,15 +3,14 @@ import PropTypes from 'prop-types';
 
 import ICON_SIZE from '../../../constants/iconSize';
 
-const Logo = ({ size }) => (
+const Logo = ({ height, width }) => (
   <svg
     id='Logo_1'
     enableBackground='new 0 0 512 512'
-    height={size}
+    height={height}
     viewBox='0 0 512 512'
-    width={size}
-    xmlns='http://www.w3.org/2000/svg'
-  >
+    width={width}
+    xmlns='http://www.w3.org/2000/svg'>
     <g>
       <g>
         <g>
@@ -470,11 +469,13 @@ const Logo = ({ size }) => (
 );
 
 Logo.propTypes = {
-  size: PropTypes.number,
+  height: PropTypes.number,
+  width: PropTypes.number,
 };
 
 Logo.defaultProps = {
-  size: ICON_SIZE.medium,
+  height: ICON_SIZE.medium,
+  width: ICON_SIZE.medium,
 };
 
 export default Logo;

@@ -2,15 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ICON_SIZE from '../../../constants/iconSize';
 
-const Phone = ({ size }) => (
+const Phone = ({ width, height }) => (
   <svg
     id='Phone_1'
     enableBackground='new 0 0 512 512'
-    height={size}
+    height={height}
     viewBox='0 0 512 512'
-    width={size}
-    xmlns='http://www.w3.org/2000/svg'
-  >
+    width={width}
+    xmlns='http://www.w3.org/2000/svg'>
     <g>
       <path
         d='m418.694 243.685c-1.433-1.517 3.308 3.25-79.232-79.291-4.289-4.291-10.743-5.572-16.347-3.252-5.605 2.322-9.26 7.792-9.26 13.858v322c0 8.284 6.716 15 15 15h80c7.153 0 13.312-5.051 14.71-12.066l27.95-140.15c8.475-42.197-3.81-85.615-32.821-116.099z'
@@ -49,11 +48,13 @@ const Phone = ({ size }) => (
 );
 
 Phone.propTypes = {
-  size: PropTypes.number,
+  height: PropTypes.number,
+  width: PropTypes.number,
 };
 
 Phone.defaultProps = {
-  size: ICON_SIZE.medium,
+  height: ICON_SIZE.medium,
+  width: ICON_SIZE.medium,
 };
 
 export default Phone;
