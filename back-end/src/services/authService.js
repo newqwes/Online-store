@@ -16,7 +16,7 @@ class AuthService {
         return createResponse(401, 'Incorrect email or password!');
       }
 
-      const { password: passwordDB, id, ...other } = getData(foundUser);
+      const { password: passwordDB, id, ...other } = foundUser;
 
       const isPasswordEqual = bcrypt.compareSync(passwordBody, passwordDB);
 
@@ -38,7 +38,9 @@ class AuthService {
 
   async create(body) {
     try {
-      const foundUser = await findByEmail(body.email);
+      const { email, password } = body;
+
+      const foundUser = await findByEmail(email);
 
       if (foundUser) {
         return createResponse(409, 'email already exists!');
@@ -46,7 +48,7 @@ class AuthService {
 
       const salt = bcrypt.genSaltSync();
 
-      const hashPassword = bcrypt.hashSync(body.password, salt);
+      const hashPassword = bcrypt.hashSync(password, salt);
 
       const user = await User.create({
         ...body,
