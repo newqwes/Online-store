@@ -12,7 +12,6 @@ import mwPassport from './middleware/passport';
 import authRoute from './routes/authRoute';
 import orderRoute from './routes/orderRoute';
 import productsRoute from './routes/productsRoute';
-import userRoute from './routes/userRoute';
 
 dotenv.config();
 const app = express();
@@ -27,7 +26,6 @@ mwPassport(passport);
 app.use('/api/auth', authRoute);
 app.use('/api/products', productsRoute);
 app.use('/api/order', orderRoute);
-app.use('/api/user', userRoute);
 
 const port = process.env.SERVER_PORT;
 
