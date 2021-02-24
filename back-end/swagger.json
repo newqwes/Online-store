@@ -3,7 +3,7 @@
   "info": {
     "version": "1.0.0",
     "title": "Online Store",
-    "description": "My Online Store API. \n There are 3 roles admin, user and guest; \n *Token does not contain anything;"
+    "description": "My Online Store API. \n There are 3 roles admin, user and guest. \n Token contains user id."
   },
   "schemes": ["http"],
   "host": "localhost:3005",
