@@ -289,13 +289,10 @@
             }
           }
         }
-      }
-    },
-
-    "/history": {
+      },
       "get": {
-        "summary": "Get ID of user that we want to find his all history",
-        "tags": ["History"],
+        "summary": "Get ID of user that we want to find his all Order",
+        "tags": ["Order"],
         "security": [
           {
             "Bearer": []
@@ -312,10 +309,10 @@
       }
     },
 
-    "/history/delete/{orderId}": {
+    "/order/delete/{orderId}": {
       "delete": {
-        "summary": "Delete one history of user",
-        "tags": ["History"],
+        "summary": "Delete one order of user",
+        "tags": ["Order"],
         "security": [
           {
             "Bearer": []
@@ -332,7 +329,7 @@
         ],
         "responses": {
           "200": {
-            "description": "History is deleted",
+            "description": "Order is deleted",
             "schema": {
               "$ref": "#/definitions/emptySchema"
             }
