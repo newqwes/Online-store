@@ -1,22 +1,38 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
-import extractDataFrom from '../utils/extractDataFrom';
-import { findByEmail } from '../utils/user';
+import extractData from '../utils/extractData';
 import createResponse from '../utils/createResponse';
 
 import User from '../database/models/user';
 
+const findByEmail = async email => {
+  const foundUser = await User.findOne({ where: { email } });
+
+  if (foundUser) return foundUser.toJSON();
+};
+
 class AuthService {
-  async login({ email, password: passwordBody }) {
+  async login({ email: emailBody, password: passwordBody }) {
     try {
-      const foundUser = await findByEmail(email);
+      const foundUser = await findByEmail(emailBody);
 
       if (!foundUser) {
         return createResponse(401, 'Incorrect email or password!');
       }
 
-      const { password: passwordDB, id, ...other } = foundUser;
+      const {
+        password: passwordDB,
+        id,
+        email,
+        login,
+        phone,
+        user_type: userType,
+        city,
+        street,
+        home,
+        apartment,
+      } = foundUser;
 
       const isPasswordEqual = bcrypt.compareSync(passwordBody, passwordDB);
 
@@ -24,9 +40,16 @@ class AuthService {
         const token = jwt.sign({ id }, process.env.ACCESS_TOKEN_SECRET);
 
         return createResponse(200, 'Successfully!', {
-          token: `Bearer ${token}`,
           id,
-          ...other,
+          email,
+          login,
+          phone,
+          userType,
+          city,
+          street,
+          home,
+          apartment,
+          token: `Bearer ${token}`,
         });
       }
 
@@ -38,9 +61,9 @@ class AuthService {
 
   async create(body) {
     try {
-      const { email, password } = body;
+      const { email: emailBody, password: passwordBody } = body;
 
-      const foundUser = await findByEmail(email);
+      const foundUser = await findByEmail(emailBody);
 
       if (foundUser) {
         return createResponse(409, 'email already exists!');
@@ -48,22 +71,40 @@ class AuthService {
 
       const salt = bcrypt.genSaltSync();
 
-      const hashPassword = bcrypt.hashSync(password, salt);
+      const hashPassword = bcrypt.hashSync(passwordBody, salt);
 
       const user = await User.create({
         ...body,
-        user_type: process.env.USER_ROLE,
+        email: emailBody,
         password: hashPassword,
+        user_type: process.env.USER_ROLE,
       });
 
-      const { id, ...userData } = extractDataFrom(user);
+      const {
+        id,
+        password,
+        email,
+        login,
+        phone,
+        user_type: userType,
+        city,
+        street,
+        home,
+        apartment,
+      } = extractData(user);
 
       const token = jwt.sign({ id }, process.env.ACCESS_TOKEN_SECRET);
 
       return createResponse(201, 'Successfully!', {
-        ...userData,
         id,
-        password: null,
+        email,
+        login,
+        phone,
+        userType,
+        city,
+        street,
+        home,
+        apartment,
         token: `Bearer ${token}`,
       });
     } catch (error) {
