@@ -67,7 +67,7 @@ class ProductsService {
     try {
       const isFound = await Product.destroy({ where: { id } });
 
-      if (isFound) return createResponse(200, 'Successfully!');
+      if (isFound) return createResponse(200, 'Successfully!', id);
 
       return createResponse(404, 'Not found', id);
     } catch (error) {

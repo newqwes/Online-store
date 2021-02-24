@@ -88,7 +88,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/userResponse"
+              "$ref": "#/definitions/userInfoResponse"
             }
           }
         }
@@ -115,7 +115,7 @@
           "200": {
             "description": "User is updated",
             "schema": {
-              "$ref": "#/definitions/userResponse"
+              "$ref": "#/definitions/userInfoResponse"
             }
           }
         }
@@ -159,7 +159,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/Product"
+              "$ref": "#/definitions/Products"
             }
           }
         }
@@ -282,7 +282,7 @@
           }
         ],
         "responses": {
-          "200": {
+          "201": {
             "description": "Order is sended",
             "schema": {
               "$ref": "#/definitions/orderResponse"
@@ -302,7 +302,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/History"
+              "$ref": "#/definitions/orderHistoryResponse"
             }
           }
         }
@@ -408,16 +408,59 @@
             "email": {
               "type": "string"
             },
-            "user_type": {
+            "login": {
+              "type": "string"
+            },
+            "phone": {
+              "type": "string"
+            },
+            "userType": {
+              "type": "string"
+            },
+            "city": {
+              "type": "string"
+            },
+            "street": {
+              "type": "string"
+            },
+            "home": {
+              "type": "string"
+            },
+            "apartment": {
               "type": "string"
             },
             "token": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+
+    "userInfoResponse": {
+      "properties": {
+        "status": {
+          "type": "integer"
+        },
+        "message": {
+          "type": "string"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "email": {
               "type": "string"
             },
             "login": {
               "type": "string"
             },
             "phone": {
+              "type": "string"
+            },
+            "userType": {
               "type": "string"
             },
             "city": {
@@ -844,7 +887,7 @@
       }
     },
 
-    "History": {
+    "orderHistoryResponse": {
       "required": ["status", "message", "data"],
       "properties": {
         "message": {
@@ -854,48 +897,56 @@
           "type": "integer"
         },
         "data": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "integer",
-                "uniqueItems": true
-              },
-              "user_id": {
-                "type": "string"
-              },
-              "order_id": {
-                "type": "string"
-              },
-              "name": {
-                "type": "string"
-              },
-              "description": {
-                "type": "string"
-              },
-              "photoUrl": {
-                "type": "string"
-              },
-              "unitSign": {
-                "type": "string"
-              },
-              "currencySign": {
-                "type": "string"
-              },
-              "price": {
-                "type": "number",
-                "format": "float"
-              },
-              "weight": {
-                "type": "number",
-                "format": "float"
-              },
-              "count": {
-                "type": "integer"
-              },
-              "date": {
-                "type": "string"
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "user_id": {
+              "type": "string"
+            },
+            "date": {
+              "type": "string"
+            },
+            "cart": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "uniqueItems": true
+                  },
+                  "order_id": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "photoUrl": {
+                    "type": "string"
+                  },
+                  "unitSign": {
+                    "type": "string"
+                  },
+                  "currencySign": {
+                    "type": "string"
+                  },
+                  "price": {
+                    "type": "number",
+                    "format": "float"
+                  },
+                  "weight": {
+                    "type": "number",
+                    "format": "float"
+                  },
+                  "count": {
+                    "type": "integer"
+                  }
+                }
               }
             }
           }
