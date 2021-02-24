@@ -1,9 +1,9 @@
 import orderService from '../services/orderService';
 
-const setOrder = async (req, res) => {
-  const result = await orderService.setOrder(req);
+const createOrder = async (req, res) => {
+  const result = await orderService.createOrder(req);
 
   res.status(result.status).json(result);
 };
 
-export default setOrder;
+export default createOrder;

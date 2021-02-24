@@ -3,7 +3,7 @@ import orderMessage from '../utils/orderMessage';
 import createResponse from '../utils/createResponse';
 
 class OrderService {
-  async setOrder({ body }) {
+  async createOrder({ body }) {
     try {
       mailer(orderMessage(body));
 
