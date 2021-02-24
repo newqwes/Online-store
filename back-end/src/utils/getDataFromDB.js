@@ -4,7 +4,7 @@ import { isArray } from 'lodash';
  * @param {object} data received data from the table using Sequelize
  * @returns {object} comfortable object data.toJSON()
  */
-const getDataFromDB = data => {
+const extractDataFrom = data => {
   if (isArray(data)) {
     const [, dataValues] = data;
 
@@ -14,4 +14,4 @@ const getDataFromDB = data => {
   return data.toJSON();
 };
 
-export default getDataFromDB;
+export default extractDataFrom;

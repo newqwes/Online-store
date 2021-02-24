@@ -1,7 +1,7 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
-import getDataFromDB from '../utils/getDataFromDB';
+import extractDataFrom from '../utils/extractDataFrom';
 import { findByEmail } from '../utils/user';
 import createResponse from '../utils/createResponse';
 
@@ -56,7 +56,7 @@ class AuthService {
         password: hashPassword,
       });
 
-      const { id, ...userData } = getDataFromDB(user);
+      const { id, ...userData } = extractDataFrom(user);
 
       const token = jwt.sign({ id }, process.env.ACCESS_TOKEN_SECRET);
 
