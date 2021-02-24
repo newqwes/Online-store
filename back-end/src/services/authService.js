@@ -75,7 +75,6 @@ class AuthService {
 
       const user = await User.create({
         ...body,
-        email: emailBody,
         password: hashPassword,
         user_type: process.env.USER_ROLE,
       });
