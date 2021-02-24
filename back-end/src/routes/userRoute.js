@@ -6,12 +6,12 @@ import { getUserInfo, updateUserInfo, deleteUser } from '../controllers/userCont
 
 const userRoute = express.Router();
 
-const { USER_RULE, ADMIN_RULE } = process.env;
+const { USER_ROLE, ADMIN_ROLE } = process.env;
 
-userRoute.get('/', checkRole([USER_RULE, ADMIN_RULE]), getUserInfo);
+userRoute.get('/', checkRole([USER_ROLE, ADMIN_ROLE]), getUserInfo);
 
-userRoute.put('/', checkRole([USER_RULE, ADMIN_RULE]), updateUserInfo);
+userRoute.put('/', checkRole([USER_ROLE, ADMIN_ROLE]), updateUserInfo);
 
-userRoute.delete('/delete/', checkRole([USER_RULE, ADMIN_RULE]), deleteUser);
+userRoute.delete('/delete/', checkRole([USER_ROLE, ADMIN_ROLE]), deleteUser);
 
 export default userRoute;

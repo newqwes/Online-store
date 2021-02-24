@@ -6,10 +6,10 @@ import { login, register } from '../controllers/authController';
 
 const authRoute = express.Router();
 
-const { GUEST_RULE, USER_RULE, ADMIN_RULE } = process.env;
+const { GUEST_ROLE, USER_ROLE, ADMIN_ROLE } = process.env;
 
-authRoute.post('/login', checkRole([USER_RULE, ADMIN_RULE, GUEST_RULE]), login);
+authRoute.post('/login', checkRole([USER_ROLE, ADMIN_ROLE, GUEST_ROLE]), login);
 
-authRoute.post('/register', checkRole([USER_RULE, ADMIN_RULE, GUEST_RULE]), register);
+authRoute.post('/register', checkRole([USER_ROLE, ADMIN_ROLE, GUEST_ROLE]), register);
 
 export default authRoute;

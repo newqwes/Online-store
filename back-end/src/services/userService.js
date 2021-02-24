@@ -1,9 +1,8 @@
 import createResponse from '../utils/createResponse';
-import getData from '../utils/getData';
-import getUserId from '../utils/getUserId';
+import getDataFromDB from '../utils/getDataFromDB';
+import { getUserId, findByEmail } from '../utils/user';
 
 import User from '../database/models/user';
-import findByEmail from '../utils/findByEmail';
 
 const getProtectedUserParameters = body => {
   // eslint-disable-next-line camelcase
@@ -21,7 +20,7 @@ class UserService {
         where: { id },
       });
 
-      const userData = getData(user);
+      const userData = getDataFromDB(user);
 
       return createResponse(200, 'Successfully!', { ...userData, password: null });
     } catch (error) {
@@ -53,7 +52,7 @@ class UserService {
         plain: true,
       });
 
-      const userData = getData(user);
+      const userData = getDataFromDB(user);
 
       return createResponse(200, 'Successfully!', { ...userData, password: null });
     } catch (error) {

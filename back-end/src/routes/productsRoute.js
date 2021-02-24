@@ -10,18 +10,18 @@ import {
   deleteProduct,
 } from '../controllers/productsController';
 
-const { GUEST_RULE, USER_RULE, ADMIN_RULE } = process.env;
+const { GUEST_ROLE, USER_ROLE, ADMIN_ROLE } = process.env;
 
 const productsRoute = express.Router();
 
-productsRoute.get('/', checkRole([USER_RULE, ADMIN_RULE, GUEST_RULE]), getProducts);
+productsRoute.get('/', checkRole([USER_ROLE, ADMIN_ROLE, GUEST_ROLE]), getProducts);
 
-productsRoute.get('/:id', checkRole([USER_RULE, ADMIN_RULE, GUEST_RULE]), getByIDProduct);
+productsRoute.get('/:id', checkRole([USER_ROLE, ADMIN_ROLE, GUEST_ROLE]), getByIDProduct);
 
-productsRoute.post('/', checkRole([ADMIN_RULE]), createProduct);
+productsRoute.post('/', checkRole([ADMIN_ROLE]), createProduct);
 
-productsRoute.put('/:id', checkRole([ADMIN_RULE]), updateProduct);
+productsRoute.put('/:id', checkRole([ADMIN_ROLE]), updateProduct);
 
-productsRoute.delete('/:id', checkRole([ADMIN_RULE]), deleteProduct);
+productsRoute.delete('/:id', checkRole([ADMIN_ROLE]), deleteProduct);
 
 export default productsRoute;

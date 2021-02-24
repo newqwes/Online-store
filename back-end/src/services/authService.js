@@ -1,8 +1,8 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
-import getData from '../utils/getData';
-import findByEmail from '../utils/findByEmail';
+import getDataFromDB from '../utils/getDataFromDB';
+import { findByEmail } from '../utils/user';
 import createResponse from '../utils/createResponse';
 
 import User from '../database/models/user';
@@ -52,11 +52,11 @@ class AuthService {
 
       const user = await User.create({
         ...body,
-        user_type: process.env.USER_RULE,
+        user_type: process.env.USER_ROLE,
         password: hashPassword,
       });
 
-      const { id, ...userData } = getData(user);
+      const { id, ...userData } = getDataFromDB(user);
 
       const token = jwt.sign({ id }, process.env.ACCESS_TOKEN_SECRET);
 

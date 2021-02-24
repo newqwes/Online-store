@@ -14,7 +14,7 @@ module.exports = {
         street: 'Лермонтова',
         home: '29',
         apartment: '1',
-        user_type: process.env.ADMIN_RULE,
+        user_type: process.env.ADMIN_ROLE,
       },
     ]),
 

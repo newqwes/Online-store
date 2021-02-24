@@ -1,6 +1,6 @@
 import passport from 'passport';
 
-const { GUEST_RULE } = process.env;
+const { GUEST_ROLE } = process.env;
 
 const checkRole = roles => (req, res, next) => {
   passport.authenticate('jwt', { session: false }, (err, user) => {
@@ -10,7 +10,7 @@ const checkRole = roles => (req, res, next) => {
       return;
     }
 
-    if (roles.includes(GUEST_RULE) && !user) {
+    if (roles.includes(GUEST_ROLE) && !user) {
       next();
 
       return;
