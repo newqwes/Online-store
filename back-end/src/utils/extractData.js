@@ -1,8 +1,9 @@
 import { isArray } from 'lodash';
 
 /**
+ * Returns the extracted object
  * @param {Object} data - received data from the table using Sequelize
- * @returns {Object} - comfortable object data.toJSON()
+ * @returns {Object}
  */
 const extractData = data => {
   if (isArray(data)) {

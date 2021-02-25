@@ -6,51 +6,59 @@ import createResponse from '../utils/createResponse';
 
 import User from '../database/models/user';
 
-export const findByEmail = async email => {
-  const foundUser = await User.findOne({ where: { email } });
-
-  if (foundUser) return foundUser.toJSON();
-};
-
 class AuthService {
-  async login({ email: emailBody, password: passwordBody }) {
+  createUserData = body => {
+    const { password } = body;
+
+    const salt = bcrypt.genSaltSync();
+
+    const hashPassword = bcrypt.hashSync(password, salt);
+
+    const userData = {
+      ...body,
+      password: hashPassword,
+      user_type: process.env.USER_ROLE,
+    };
+
+    return userData;
+  };
+
+  createResponseUserData = userData => {
+    const { id, user_type: userType, password, ...other } = extractData(userData);
+
+    const token = jwt.sign({ id }, process.env.ACCESS_TOKEN_SECRET);
+
+    const responseUserData = {
+      ...other,
+      userType,
+      token: `Bearer ${token}`,
+    };
+
+    return responseUserData;
+  };
+
+  async findByEmail(email) {
+    const foundUser = await User.findOne({ where: { email } });
+
+    if (foundUser) return foundUser.toJSON();
+  }
+
+  async login({ email, password }) {
     try {
-      const foundUser = await findByEmail(emailBody);
+      const foundUser = await this.findByEmail(email);
 
       if (!foundUser) {
         return createResponse(401, 'Incorrect email or password!');
       }
 
-      const {
-        password: passwordDB,
-        id,
-        email,
-        login,
-        phone,
-        user_type: userType,
-        city,
-        street,
-        home,
-        apartment,
-      } = foundUser;
+      const { password: userPassword } = foundUser;
 
-      const isPasswordEqual = bcrypt.compareSync(passwordBody, passwordDB);
+      const isPasswordEqual = bcrypt.compareSync(password, userPassword);
 
       if (isPasswordEqual) {
-        const token = jwt.sign({ id }, process.env.ACCESS_TOKEN_SECRET);
+        const responseUserData = this.createResponseUserData(foundUser);
 
-        return createResponse(200, 'Successfully!', {
-          id,
-          email,
-          login,
-          phone,
-          userType,
-          city,
-          street,
-          home,
-          apartment,
-          token: `Bearer ${token}`,
-        });
+        return createResponse(200, 'Successfully!', responseUserData);
       }
 
       return createResponse(401, 'Incorrect email or password!');
@@ -61,51 +69,21 @@ class AuthService {
 
   async create(body) {
     try {
-      const { email: emailBody, password: passwordBody } = body;
+      const { email } = body;
 
-      const foundUser = await findByEmail(emailBody);
+      const foundUser = await this.findByEmail(email);
 
       if (foundUser) {
         return createResponse(409, 'email already exists!');
       }
 
-      const salt = bcrypt.genSaltSync();
+      const userData = this.createUserData(body);
 
-      const hashPassword = bcrypt.hashSync(passwordBody, salt);
+      const user = await User.create(userData);
 
-      const user = await User.create({
-        ...body,
-        password: hashPassword,
-        user_type: process.env.USER_ROLE,
-      });
+      const responseUserData = this.createResponseUserData(user);
 
-      const {
-        id,
-        password,
-        email,
-        login,
-        phone,
-        user_type: userType,
-        city,
-        street,
-        home,
-        apartment,
-      } = extractData(user);
-
-      const token = jwt.sign({ id }, process.env.ACCESS_TOKEN_SECRET);
-
-      return createResponse(201, 'Successfully!', {
-        id,
-        email,
-        login,
-        phone,
-        userType,
-        city,
-        street,
-        home,
-        apartment,
-        token: `Bearer ${token}`,
-      });
+      return createResponse(201, 'Successfully!', responseUserData);
     } catch (error) {
       return createResponse(500, 'Server Error', error);
     }
