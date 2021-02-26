@@ -3,7 +3,7 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import { omit } from 'lodash';
 
-import extractData from './extractData';
+import extractDataFromResponseDB from './extractData';
 
 /**
  * Returns the user id if authorized else return null
@@ -17,7 +17,7 @@ export const getUserId = req => getOr(null, ['user', 'id'], req);
  * @param {Object} data - ready user data
  * @returns {Object}
  */
-export const setWithToken = data => {
+export const setUserDataWithToken = data => {
   const token = jwt.sign({ id: data.id }, process.env.ACCESS_TOKEN_SECRET);
 
   const dataWithToken = {
@@ -34,7 +34,7 @@ export const setWithToken = data => {
  * @param {string} password - new password entered by the user
  * @returns {Object}
  */
-export const setWithPassword = (userData, password) => {
+export const setUserDataWithPassword = (userData, password) => {
   const salt = bcrypt.genSaltSync();
 
   const hashPassword = bcrypt.hashSync(password, salt);
@@ -64,7 +64,7 @@ export const createUserData = body => {
  * @returns {Object}
  */
 export const createResponseUserData = userData => {
-  const extractedData = extractData(userData);
+  const extractedData = extractDataFromResponseDB(userData);
 
   const responseUserData = omit(extractedData, 'password');
 

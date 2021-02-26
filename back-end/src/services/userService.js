@@ -1,7 +1,7 @@
 import {
   getUserId,
-  setWithToken,
-  setWithPassword,
+  setUserDataWithToken,
+  setUserDataWithPassword,
   createUserData,
   createResponseUserData,
 } from '../utils/user';
@@ -25,7 +25,7 @@ class UserService {
       });
 
       const responseUserData = createResponseUserData(user);
-      const responseUserDataWithToken = setWithToken(responseUserData);
+      const responseUserDataWithToken = setUserDataWithToken(responseUserData);
 
       return createResponse(200, 'Successfully!', responseUserDataWithToken);
     } catch (error) {
@@ -54,7 +54,7 @@ class UserService {
       const { password } = body;
 
       if (password) {
-        userData = setWithPassword(userData, password);
+        userData = setUserDataWithPassword(userData, password);
       }
 
       const user = await User.update(userData, {
@@ -64,7 +64,7 @@ class UserService {
       });
 
       const responseUserData = createResponseUserData(user);
-      const responseUserDataWithToken = setWithToken(responseUserData);
+      const responseUserDataWithToken = setUserDataWithToken(responseUserData);
 
       return createResponse(200, 'Successfully!', responseUserDataWithToken);
     } catch (error) {

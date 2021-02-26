@@ -1,22 +1,22 @@
-import { isArray } from 'lodash';
+import { isArray, get } from 'lodash';
 
 /**
  * Returns the extracted object
  * @param {Object} data - received data from the table using Sequelize
  * @returns {Object}
  */
-const extractData = data => {
+const extractDataFromResponseDB = data => {
   if (isArray(data)) {
-    const [, dataValues] = data;
+    const dataValues = get(data, [1, 'dataValues']);
 
-    return dataValues.toJSON();
+    return dataValues;
   }
 
-  if (data.dataValues) {
-    return data.toJSON();
-  }
+  const { dataValues } = data;
+
+  if (dataValues) return dataValues;
 
   return data;
 };
 
-export default extractData;
+export default extractDataFromResponseDB;

@@ -2,8 +2,8 @@ import bcrypt from 'bcryptjs';
 
 import createResponse from '../utils/createResponse';
 import {
-  setWithToken,
-  setWithPassword,
+  setUserDataWithToken,
+  setUserDataWithPassword,
   createUserData,
   createResponseUserData,
 } from '../utils/user';
@@ -26,7 +26,7 @@ class AuthService {
 
       if (isPasswordEqual) {
         const responseUserData = createResponseUserData(foundUser);
-        const responseUserDataWithToken = setWithToken(responseUserData);
+        const responseUserDataWithToken = setUserDataWithToken(responseUserData);
 
         return createResponse(200, 'Successfully!', responseUserDataWithToken);
       }
@@ -48,12 +48,12 @@ class AuthService {
       }
 
       const userData = createUserData(body);
-      const userDataWithPassword = setWithPassword(userData, password);
+      const userDataWithPassword = setUserDataWithPassword(userData, password);
 
       const user = await User.create(userDataWithPassword);
 
       const responseUserData = createResponseUserData(user);
-      const responseUserDataWithToken = setWithToken(responseUserData);
+      const responseUserDataWithToken = setUserDataWithToken(responseUserData);
 
       return createResponse(201, 'Successfully!', responseUserDataWithToken);
     } catch (error) {
