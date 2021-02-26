@@ -3,7 +3,7 @@
   "info": {
     "version": "1.0.0",
     "title": "Online Store",
-    "description": "My Online Store API. \n login: newnewqwes@gmail.com \n pass: admin"
+    "description": "My Online Store API. \n There are 3 roles admin, user and guest. \n Token contains user id."
   },
   "schemes": ["http"],
   "host": "localhost:3005",
@@ -12,11 +12,13 @@
   "produces": ["application/json"],
   "securityDefinitions": {
     "Bearer": {
+      "description": "Key like, example: `Bearer eyJhbGciOiJIUzI1N...`",
       "type": "apiKey",
       "name": "Authorization",
       "in": "header"
     }
   },
+
   "paths": {
     "/auth/register": {
       "post": {
@@ -28,7 +30,7 @@
             "in": "body",
             "description": "User that we want to create",
             "schema": {
-              "$ref": "#/definitions/User"
+              "$ref": "#/definitions/userRegister"
             }
           }
         ],
@@ -44,32 +46,6 @@
       }
     },
 
-    "/order": {
-      "post": {
-        "tags": ["Order"],
-        "description": "Create new order in system",
-        "parameters": [
-          {
-            "name": "order",
-            "in": "body",
-            "description": "Order that we want to create",
-            "schema": {
-              "$ref": "#/definitions/Order"
-            }
-          }
-        ],
-        "produces": ["application/json"],
-        "responses": {
-          "201": {
-            "description": "Order was sended",
-            "schema": {
-              "$ref": "#/definitions/orderResponse"
-            }
-          }
-        }
-      }
-    },
-
     "/auth/login": {
       "post": {
         "tags": ["Auth"],
@@ -78,6 +54,8 @@
           {
             "name": "user",
             "in": "body",
+            "required": true,
+            "type": "object",
             "description": "login to system",
             "schema": {
               "$ref": "#/definitions/userLogin"
@@ -85,11 +63,79 @@
           }
         ],
         "produces": ["application/json"],
+
         "responses": {
           "200": {
             "description": "You are logged in successfully",
             "schema": {
               "$ref": "#/definitions/userResponse"
+            }
+          }
+        }
+      }
+    },
+
+    "/user": {
+      "get": {
+        "summary": "Get user data based on his ID",
+        "tags": ["User"],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/userInfoResponse"
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update user with give ID",
+        "tags": ["User"],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "description": "User with new values of properties",
+            "schema": {
+              "$ref": "#/definitions/UserEdit"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User is updated",
+            "schema": {
+              "$ref": "#/definitions/userInfoResponse"
+            }
+          }
+        }
+      }
+    },
+
+    "/user/delete": {
+      "delete": {
+        "summary": "Delete user",
+        "tags": ["User"],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User is deleted",
+            "schema": {
+              "$ref": "#/definitions/emptySchema"
             }
           }
         }
@@ -108,12 +154,12 @@
           }
         ],
         "summary": "Get ALL products by TYPE",
-        "tags": ["All products by type"],
+        "tags": ["Products"],
         "responses": {
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/Product"
+              "$ref": "#/definitions/Products"
             }
           }
         }
@@ -182,7 +228,7 @@
           "200": {
             "description": "Product was deleted",
             "schema": {
-              "$ref": "#/definitions/Product"
+              "$ref": "#/definitions/emptySchema"
             }
           }
         }
@@ -214,17 +260,119 @@
           }
         }
       }
+    },
+
+    "/order": {
+      "post": {
+        "summary": "Send order",
+        "tags": ["Order"],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "order",
+            "in": "body",
+            "description": "New order",
+            "schema": {
+              "$ref": "#/definitions/Order"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Order is sended",
+            "schema": {
+              "$ref": "#/definitions/orderResponse"
+            }
+          }
+        }
+      },
+      "get": {
+        "summary": "Get ID of user that we want to find his all Order",
+        "tags": ["Order"],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/orderHistoryResponse"
+            }
+          }
+        }
+      }
+    },
+
+    "/order/delete/{orderId}": {
+      "delete": {
+        "summary": "Delete one order of user",
+        "tags": ["Order"],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "required": true,
+            "description": "Order ID which we want to delete",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Order is deleted",
+            "schema": {
+              "$ref": "#/definitions/emptySchema"
+            }
+          }
+        }
+      }
     }
   },
+
   "definitions": {
     "userLogin": {
       "required": ["password", "email"],
       "properties": {
         "password": {
-          "type": "string"
+          "type": "string",
+          "default": "admin"
         },
         "email": {
-          "type": "string"
+          "type": "string",
+          "default": "newnewqwes@gmail.com"
+        }
+      }
+    },
+
+    "userRegister": {
+      "required": ["password", "email", "login", "phone"],
+      "properties": {
+        "password": {
+          "type": "string",
+          "default": "admin"
+        },
+        "email": {
+          "type": "string",
+
+          "default": "newqwes@mail.ru"
+        },
+        "login": {
+          "type": "string",
+          "default": "Иванов Иван Иванович"
+        },
+        "phone": {
+          "type": "string",
+          "default": "+375123456789"
         }
       }
     },
@@ -254,6 +402,9 @@
         "data": {
           "type": "object",
           "properties": {
+            "id": {
+              "type": "string"
+            },
             "email": {
               "type": "string"
             },
@@ -263,12 +414,66 @@
             "phone": {
               "type": "string"
             },
+            "userType": {
+              "type": "string"
+            },
+            "city": {
+              "type": "string"
+            },
+            "street": {
+              "type": "string"
+            },
+            "home": {
+              "type": "string"
+            },
+            "apartment": {
+              "type": "string"
+            },
             "token": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+
+    "userInfoResponse": {
+      "properties": {
+        "status": {
+          "type": "integer"
+        },
+        "message": {
+          "type": "string"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "email": {
+              "type": "string"
+            },
+            "login": {
+              "type": "string"
+            },
+            "phone": {
               "type": "string"
             },
             "userType": {
-              "type": "number",
-              "format": "float"
+              "type": "string"
+            },
+            "city": {
+              "type": "string"
+            },
+            "street": {
+              "type": "string"
+            },
+            "home": {
+              "type": "string"
+            },
+            "apartment": {
+              "type": "string"
             }
           }
         }
@@ -279,19 +484,73 @@
       "required": ["login", "password", "email", "phone", "user_type"],
       "properties": {
         "login": {
-          "type": "string"
+          "type": "string",
+          "default": "Сидоров Сидор"
         },
         "password": {
-          "type": "string"
+          "type": "string",
+          "default": "admin"
         },
         "email": {
-          "type": "string"
+          "type": "string",
+          "default": "newqwes@mail.ru"
         },
         "phone": {
-          "type": "string"
+          "type": "string",
+          "default": "+37533333323"
         },
         "user_type": {
-          "type": "integer"
+          "type": "string",
+          "default": "user"
+        },
+        "city": {
+          "type": "string",
+          "default": "Гродно"
+        },
+        "street": {
+          "type": "string",
+          "default": "Лермонтова"
+        },
+        "home": {
+          "type": "string",
+          "default": "29"
+        },
+        "apartment": {
+          "type": "string",
+          "default": "313"
+        }
+      }
+    },
+
+    "UserEdit": {
+      "properties": {
+        "login": {
+          "type": "string",
+          "default": "Сидоров Сидор"
+        },
+        "email": {
+          "type": "string",
+          "default": "newqwes@mail.ru"
+        },
+        "phone": {
+          "type": "string",
+          "default": "+37533333323"
+        },
+        "city": {
+          "type": "string",
+          "default": "Гродно"
+        },
+        "street": {
+          "type": "string",
+          "default": "Лермонтова"
+        },
+        "home": {
+          "type": "string",
+          "default": "29"
+        },
+        "apartment": {
+          "type": "string",
+          "default": "313"
         }
       }
     },
@@ -306,28 +565,35 @@
             "properties": {
               "count": {
                 "type": "number",
-                "format": "float"
+                "format": "float",
+                "default": "1"
               },
               "currencySign": {
-                "type": "string"
+                "type": "string",
+                "default": "р."
               },
               "description": {
-                "type": "string"
+                "type": "string",
+                "default": "Небольшое описание продукта"
               },
               "id": {
                 "type": "integer"
               },
               "name": {
-                "type": "string"
+                "type": "string",
+                "default": "Паперони"
               },
               "photoUrl": {
-                "type": "string"
+                "type": "string",
+                "default": "https://www.test.ru/test2.jpg"
               },
               "type": {
-                "type": "string"
+                "type": "string",
+                "default": "pizza"
               },
               "unitSign": {
-                "type": "string"
+                "type": "string",
+                "default": "гр"
               },
               "options": {
                 "type": "object",
@@ -337,11 +603,13 @@
                   },
                   "price": {
                     "type": "number",
-                    "format": "float"
+                    "format": "float",
+                    "default": 12.35
                   },
                   "weight": {
                     "type": "number",
-                    "format": "float"
+                    "format": "float",
+                    "default": 220.55
                   },
                   "product_id": {
                     "type": "integer"
@@ -351,27 +619,46 @@
             }
           }
         },
-
         "customer": {
           "type": "object",
           "properties": {
+            "id": {
+              "type": "string"
+            },
+            "userType": {
+              "type": "string",
+              "default": "user"
+            },
+            "login": {
+              "type": "string",
+              "default": "Иван Иваныч"
+            },
             "phone": {
+              "type": "string",
+              "default": "+375238453948"
+            },
+            "token": {
               "type": "string"
             },
             "email": {
-              "type": "string"
+              "type": "string",
+              "default": "newqwes@mail.ru"
             },
             "city": {
-              "type": "string"
+              "type": "string",
+              "default": "Гродно"
             },
             "home": {
-              "type": "string"
+              "type": "string",
+              "default": "17"
             },
             "street": {
-              "type": "string"
+              "type": "string",
+              "default": "Кремко"
             },
             "apartment": {
-              "type": "string"
+              "type": "string",
+              "default": "23"
             }
           }
         }
@@ -382,22 +669,28 @@
       "required": ["name", "description", "photoUrl", "unitSign", "currencySign"],
       "properties": {
         "name": {
-          "type": "string"
+          "type": "string",
+          "default": "Пеперони острая NEW"
         },
         "description": {
-          "type": "string"
+          "type": "string",
+          "default": "Описание для Пеперони острая NEW"
         },
         "type": {
-          "type": "string"
+          "type": "string",
+          "default": "pizza"
         },
         "photoUrl": {
-          "type": "string"
+          "type": "string",
+          "default": "https://www.test.ru/test2.jpg"
         },
         "unitSign": {
-          "type": "string"
+          "type": "string",
+          "default": "гр"
         },
         "currencySign": {
-          "type": "string"
+          "type": "string",
+          "default": "р."
         },
         "options": {
           "type": "array",
@@ -406,11 +699,13 @@
             "properties": {
               "price": {
                 "type": "number",
-                "format": "float"
+                "format": "float",
+                "default": 12.33
               },
               "weight": {
                 "type": "number",
-                "format": "float"
+                "format": "float",
+                "default": 123.33
               }
             }
           }
@@ -421,22 +716,28 @@
     "updateProduct": {
       "properties": {
         "name": {
-          "type": "string"
+          "type": "string",
+          "default": "Мексиканская"
         },
         "type": {
-          "type": "string"
+          "type": "string",
+          "default": "pizza"
         },
         "description": {
-          "type": "string"
+          "type": "string",
+          "default": "Описание для Мексиканской"
         },
         "photoUrl": {
-          "type": "string"
+          "type": "string",
+          "default": "https://www.test.ru/test.jpg"
         },
         "unitSign": {
-          "type": "string"
+          "type": "string",
+          "default": "гр"
         },
         "currencySign": {
-          "type": "string"
+          "type": "string",
+          "default": "р."
         },
         "options": {
           "type": "array",
@@ -445,11 +746,13 @@
             "properties": {
               "price": {
                 "type": "number",
-                "format": "float"
+                "format": "float",
+                "default": 12.33
               },
               "weight": {
                 "type": "number",
-                "format": "float"
+                "format": "float",
+                "default": 123.33
               }
             }
           }
@@ -578,6 +881,93 @@
                   }
                 }
               }
+            }
+          }
+        }
+      }
+    },
+
+    "orderHistoryResponse": {
+      "required": ["status", "message", "data"],
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "status": {
+          "type": "integer"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "user_id": {
+              "type": "string"
+            },
+            "date": {
+              "type": "string"
+            },
+            "cart": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "uniqueItems": true
+                  },
+                  "order_id": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "photoUrl": {
+                    "type": "string"
+                  },
+                  "unitSign": {
+                    "type": "string"
+                  },
+                  "currencySign": {
+                    "type": "string"
+                  },
+                  "price": {
+                    "type": "number",
+                    "format": "float"
+                  },
+                  "weight": {
+                    "type": "number",
+                    "format": "float"
+                  },
+                  "count": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "emptySchema": {
+      "required": ["status", "message", "data"],
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "status": {
+          "type": "integer"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
             }
           }
         }

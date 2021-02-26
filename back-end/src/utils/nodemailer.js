@@ -11,10 +11,10 @@ const transporter = nodemailer.createTransport(
   {
     from: `Pizza Store ${process.env.MAIL_ADMIN}`,
     subject: 'New order!',
-  }
+  },
 );
 
-const mailer = (message) => {
+const mailer = message => {
   transporter.sendMail(message, (err, info) => {
     if (err) {
       console.log(err);
