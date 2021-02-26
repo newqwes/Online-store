@@ -66,13 +66,7 @@ export const createUserData = body => {
 export const createResponseUserData = userData => {
   const extractedData = extractData(userData);
 
-  const type = get(extractedData, 'type');
-  const other = omit(extractedData, ['password', 'type']);
-
-  const responseUserData = {
-    ...other,
-    type,
-  };
+  const responseUserData = omit(extractedData, 'password');
 
   return responseUserData;
 };
