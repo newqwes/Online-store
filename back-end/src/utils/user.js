@@ -53,7 +53,7 @@ export const setWithPassword = (userData, password) => {
  * @returns {Object}
  */
 export const createUserData = body => {
-  const userData = omit(body, ['password', 'id', 'user_type']);
+  const userData = omit(body, ['password', 'id', 'type']);
 
   return userData;
 };
@@ -66,12 +66,12 @@ export const createUserData = body => {
 export const createResponseUserData = userData => {
   const extractedData = extractData(userData);
 
-  const userType = get(extractedData, 'user_type');
-  const other = omit(extractedData, ['password', 'user_type']);
+  const type = get(extractedData, 'type');
+  const other = omit(extractedData, ['password', 'type']);
 
   const responseUserData = {
     ...other,
-    userType,
+    type,
   };
 
   return responseUserData;

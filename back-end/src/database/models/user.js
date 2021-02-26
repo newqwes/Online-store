@@ -44,7 +44,7 @@ User.init(
     apartment: {
       type: DataTypes.STRING(50),
     },
-    user_type: {
+    type: {
       type: DataTypes.STRING(50),
       defaultValue: process.env.USER_ROLE,
       allowNull: false,

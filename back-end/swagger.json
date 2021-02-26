@@ -400,7 +400,7 @@
             "phone": {
               "type": "string"
             },
-            "userType": {
+            "type": {
               "type": "string"
             },
             "city": {
@@ -424,7 +424,7 @@
     },
 
     "User": {
-      "required": ["login", "password", "email", "phone", "user_type"],
+      "required": ["login", "password", "email", "phone"],
       "properties": {
         "login": {
           "type": "string",
@@ -442,7 +442,7 @@
           "type": "string",
           "default": "+37533333323"
         },
-        "user_type": {
+        "type": {
           "type": "string",
           "default": "user"
         },
@@ -649,7 +649,7 @@
             "id": {
               "type": "string"
             },
-            "userType": {
+            "type": {
               "type": "string",
               "default": "user"
             },
