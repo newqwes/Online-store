@@ -1,17 +1,17 @@
-import createResponse from '../utils/createResponse';
 import mailer from '../utils/nodemailer';
 import orderMessage from '../utils/orderMessage';
+import createResponse from '../utils/createResponse';
 
-class MailService {
-  async sendMail(body) {
+class OrderService {
+  async createOrder({ body }) {
     try {
       mailer(orderMessage(body));
 
-      return createResponse(200, 'Done!', body);
+      return createResponse(201, 'Successfully!', body);
     } catch (error) {
       return createResponse(500, 'Server Error', error);
     }
   }
 }
 
-export default new MailService();
+export default new OrderService();

@@ -10,17 +10,17 @@ const options = {
   secretOrKey: process.env.ACCESS_TOKEN_SECRET,
 };
 
-const mwPassport = (passport) => {
+const mwPassport = passport => {
   passport.use(
-    new JwtStrategy(options, async (payload, done) => {
+    new JwtStrategy(options, async ({ id }, done) => {
       try {
-        const user = await User.findOne({ where: { id: payload.id } });
+        const user = await User.findOne({ where: { id } });
 
         user ? done(null, user) : done(null, false);
       } catch (error) {
         return createResponse(500, 'Server Error', error);
       }
-    })
+    }),
   );
 };
 

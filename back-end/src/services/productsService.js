@@ -35,9 +35,9 @@ class ProductsService {
     try {
       const { options, ...param } = body;
 
-      const optionsWithId = options.map((n) => {
-        const option = n;
-        option.product_id = +id;
+      const optionsWithId = options.map(prevOption => {
+        const option = prevOption;
+        option.product_id = Number(id);
 
         return option;
       });
@@ -67,7 +67,7 @@ class ProductsService {
     try {
       const isFound = await Product.destroy({ where: { id } });
 
-      if (isFound) return createResponse(200, 'Successfully!');
+      if (isFound) return createResponse(200, 'Successfully!', id);
 
       return createResponse(404, 'Not found', id);
     } catch (error) {
