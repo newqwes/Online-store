@@ -1,51 +1,14 @@
 import bcrypt from 'bcryptjs';
-import jwt from 'jsonwebtoken';
 
-import extractData from '../utils/extractData';
 import createResponse from '../utils/createResponse';
 
+import userService from './userService';
 import User from '../database/models/user';
 
 class AuthService {
-  createUserData = body => {
-    const { password } = body;
-
-    const salt = bcrypt.genSaltSync();
-
-    const hashPassword = bcrypt.hashSync(password, salt);
-
-    const userData = {
-      ...body,
-      password: hashPassword,
-      user_type: process.env.USER_ROLE,
-    };
-
-    return userData;
-  };
-
-  createResponseUserData = userData => {
-    const { id, user_type: userType, password, ...other } = extractData(userData);
-
-    const token = jwt.sign({ id }, process.env.ACCESS_TOKEN_SECRET);
-
-    const responseUserData = {
-      ...other,
-      userType,
-      token: `Bearer ${token}`,
-    };
-
-    return responseUserData;
-  };
-
-  async findByEmail(email) {
-    const foundUser = await User.findOne({ where: { email } });
-
-    if (foundUser) return foundUser.toJSON();
-  }
-
   async login({ email, password }) {
     try {
-      const foundUser = await this.findByEmail(email);
+      const foundUser = await userService.findByEmail(email);
 
       if (!foundUser) {
         return createResponse(401, 'Incorrect email or password!');
@@ -56,7 +19,7 @@ class AuthService {
       const isPasswordEqual = bcrypt.compareSync(password, userPassword);
 
       if (isPasswordEqual) {
-        const responseUserData = this.createResponseUserData(foundUser);
+        const responseUserData = userService.createResponseUserData(foundUser);
 
         return createResponse(200, 'Successfully!', responseUserData);
       }
@@ -71,17 +34,17 @@ class AuthService {
     try {
       const { email } = body;
 
-      const foundUser = await this.findByEmail(email);
+      const foundUser = await userService.findByEmail(email);
 
       if (foundUser) {
         return createResponse(409, 'email already exists!');
       }
 
-      const userData = this.createUserData(body);
+      const userData = userService.createUserData(body);
 
       const user = await User.create(userData);
 
-      const responseUserData = this.createResponseUserData(user);
+      const responseUserData = userService.createResponseUserData(user);
 
       return createResponse(201, 'Successfully!', responseUserData);
     } catch (error) {

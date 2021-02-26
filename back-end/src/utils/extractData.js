@@ -12,7 +12,11 @@ const extractData = data => {
     return dataValues.toJSON();
   }
 
-  return data.toJSON();
+  if (data.dataValues) {
+    return data.toJSON();
+  }
+
+  return data;
 };
 
 export default extractData;
