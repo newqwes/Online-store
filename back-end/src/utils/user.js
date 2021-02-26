@@ -60,7 +60,7 @@ export const createUserData = body => {
 
 /**
  * Returns parses the object in such a way that there is no password in the response
- * @param {Object} userData - new entered user data
+ * @param {Object} userData - data came from database
  * @returns {Object}
  */
 export const createResponseUserData = userData => {
