@@ -1,7 +1,7 @@
 import { getOr } from 'lodash/fp';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import { omit, get } from 'lodash';
+import { omit } from 'lodash';
 
 import extractData from './extractData';
 
