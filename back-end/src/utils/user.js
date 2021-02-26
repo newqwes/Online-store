@@ -1,10 +1,78 @@
 import { getOr } from 'lodash/fp';
+import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
+import { omit, get } from 'lodash';
+
+import extractData from './extractData';
 
 /**
  * Returns the user id if authorized else return null
  * @param {Object} req - receive a request from the user
  * @returns {(string|null)}
  */
-const getUserId = req => getOr(null, ['user', 'id'], req);
+export const getUserId = req => getOr(null, ['user', 'id'], req);
 
-export default getUserId;
+/**
+ * Returns the user data including token
+ * @param {Object} data - ready user data
+ * @returns {Object}
+ */
+export const setWithToken = data => {
+  const token = jwt.sign({ id: data.id }, process.env.ACCESS_TOKEN_SECRET);
+
+  const dataWithToken = {
+    ...data,
+    token: `Bearer ${token}`,
+  };
+
+  return dataWithToken;
+};
+
+/**
+ * Returns the user data including password
+ * @param {Object} userData - ready user data
+ * @param {string} password - new password entered by the user
+ * @returns {Object}
+ */
+export const setWithPassword = (userData, password) => {
+  const salt = bcrypt.genSaltSync();
+
+  const hashPassword = bcrypt.hashSync(password, salt);
+
+  const userDataWithPassword = {
+    ...userData,
+    password: hashPassword,
+  };
+
+  return userDataWithPassword;
+};
+
+/**
+ * Returns creates secure user data to write to the database
+ * @param {Object} body - new entered user data
+ * @returns {Object}
+ */
+export const createUserData = body => {
+  const userData = omit(body, ['password', 'id', 'user_type']);
+
+  return userData;
+};
+
+/**
+ * Returns parses the object in such a way that there is no password in the response
+ * @param {Object} userData - new entered user data
+ * @returns {Object}
+ */
+export const createResponseUserData = userData => {
+  const extractedData = extractData(userData);
+
+  const userType = get(extractedData, 'user_type');
+  const other = omit(extractedData, ['password', 'user_type']);
+
+  const responseUserData = {
+    ...other,
+    userType,
+  };
+
+  return responseUserData;
+};

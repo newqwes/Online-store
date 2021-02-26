@@ -1,47 +1,15 @@
-import bcrypt from 'bcryptjs';
-import jwt from 'jsonwebtoken';
-
-import getUserId from '../utils/user';
-import extractData from '../utils/extractData';
+import {
+  getUserId,
+  setWithToken,
+  setWithPassword,
+  createUserData,
+  createResponseUserData,
+} from '../utils/user';
 import createResponse from '../utils/createResponse';
 
 import User from '../database/models/user';
 
 class UserService {
-  createUserData = body => {
-    // eslint-disable-next-line camelcase
-    const { password, id, user_type, ...userData } = body;
-
-    if (password) {
-      const salt = bcrypt.genSaltSync();
-
-      const hashPassword = bcrypt.hashSync(password, salt);
-
-      const userDataWithPassword = {
-        ...userData,
-        password: hashPassword,
-      };
-
-      return userDataWithPassword;
-    }
-
-    return userData;
-  };
-
-  createResponseUserData = userData => {
-    const { id, user_type: userType, password, ...other } = extractData(userData);
-
-    const token = jwt.sign({ id }, process.env.ACCESS_TOKEN_SECRET);
-
-    const responseUserData = {
-      ...other,
-      userType,
-      token: `Bearer ${token}`,
-    };
-
-    return responseUserData;
-  };
-
   async findByEmail(email) {
     const foundUser = await User.findOne({ where: { email } });
 
@@ -56,9 +24,10 @@ class UserService {
         where: { id },
       });
 
-      const responseUserData = this.createResponseUserData(user);
+      const responseUserData = createResponseUserData(user);
+      const responseUserDataWithToken = setWithToken(responseUserData);
 
-      return createResponse(200, 'Successfully!', responseUserData);
+      return createResponse(200, 'Successfully!', responseUserDataWithToken);
     } catch (error) {
       return createResponse(500, 'Server Error', error);
     }
@@ -70,7 +39,7 @@ class UserService {
 
       const id = getUserId(req);
 
-      const userData = this.createUserData(body);
+      let userData = createUserData(body);
 
       const { email } = userData;
 
@@ -82,15 +51,22 @@ class UserService {
         }
       }
 
+      const { password } = body;
+
+      if (password) {
+        userData = setWithPassword(userData, password);
+      }
+
       const user = await User.update(userData, {
         where: { id },
         returning: true,
         plain: true,
       });
 
-      const responseUserData = this.createResponseUserData(user);
+      const responseUserData = createResponseUserData(user);
+      const responseUserDataWithToken = setWithToken(responseUserData);
 
-      return createResponse(200, 'Successfully!', responseUserData);
+      return createResponse(200, 'Successfully!', responseUserDataWithToken);
     } catch (error) {
       return createResponse(500, 'Server Error', error);
     }

@@ -1,6 +1,12 @@
 import bcrypt from 'bcryptjs';
 
 import createResponse from '../utils/createResponse';
+import {
+  setWithToken,
+  setWithPassword,
+  createUserData,
+  createResponseUserData,
+} from '../utils/user';
 
 import userService from './userService';
 import User from '../database/models/user';
@@ -19,9 +25,10 @@ class AuthService {
       const isPasswordEqual = bcrypt.compareSync(password, userPassword);
 
       if (isPasswordEqual) {
-        const responseUserData = userService.createResponseUserData(foundUser);
+        const responseUserData = createResponseUserData(foundUser);
+        const responseUserDataWithToken = setWithToken(responseUserData);
 
-        return createResponse(200, 'Successfully!', responseUserData);
+        return createResponse(200, 'Successfully!', responseUserDataWithToken);
       }
 
       return createResponse(401, 'Incorrect email or password!');
@@ -32,7 +39,7 @@ class AuthService {
 
   async create(body) {
     try {
-      const { email } = body;
+      const { email, password } = body;
 
       const foundUser = await userService.findByEmail(email);
 
@@ -40,13 +47,15 @@ class AuthService {
         return createResponse(409, 'email already exists!');
       }
 
-      const userData = userService.createUserData(body);
+      const userData = createUserData(body);
+      const userDataWithPassword = setWithPassword(userData, password);
 
-      const user = await User.create(userData);
+      const user = await User.create(userDataWithPassword);
 
-      const responseUserData = userService.createResponseUserData(user);
+      const responseUserData = createResponseUserData(user);
+      const responseUserDataWithToken = setWithToken(responseUserData);
 
-      return createResponse(201, 'Successfully!', responseUserData);
+      return createResponse(201, 'Successfully!', responseUserDataWithToken);
     } catch (error) {
       return createResponse(500, 'Server Error', error);
     }
