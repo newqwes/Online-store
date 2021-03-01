@@ -1,7 +1,10 @@
 import { Model, DataTypes } from 'sequelize';
 import { v4 as uuidv4 } from 'uuid';
+import dotenv from 'dotenv';
 
 import sequelize from '..';
+
+dotenv.config();
 
 class User extends Model {}
 
@@ -41,8 +44,9 @@ User.init(
     apartment: {
       type: DataTypes.STRING(50),
     },
-    user_type: {
+    type: {
       type: DataTypes.STRING(50),
+      defaultValue: process.env.USER_ROLE,
       allowNull: false,
     },
   },

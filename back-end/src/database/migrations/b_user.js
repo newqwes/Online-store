@@ -37,7 +37,7 @@ module.exports = {
       apartment: {
         type: DataTypes.STRING(50),
       },
-      user_type: {
+      type: {
         type: DataTypes.STRING(50),
         allowNull: false,
       },
