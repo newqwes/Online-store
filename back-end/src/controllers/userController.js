@@ -6,7 +6,7 @@ export const getUserInfo = async (req, res) => {
   res.status(result.status).json(result);
 };
 
-export const updateUserInfo = async (req, res) => {
+export const updateUser = async (req, res) => {
   const result = await userService.update(req);
 
   res.status(result.status).json(result);

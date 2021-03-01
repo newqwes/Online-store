@@ -46,7 +46,7 @@ class UserService {
       if (email) {
         const foundUser = await this.findByEmail(email);
 
-        if (foundUser) {
+        if (foundUser && foundUser.id !== id) {
           return createResponse(409, 'email already exists!');
         }
       }

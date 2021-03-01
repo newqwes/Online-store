@@ -3,7 +3,7 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import { omit } from 'lodash';
 
-import extractDataFromResponseDB from './extractData';
+import { extractDataFromResponseDB } from './extractData';
 
 /**
  * Returns the user id if authorized else return null

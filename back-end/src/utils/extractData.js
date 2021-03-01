@@ -5,7 +5,7 @@ import { isArray, get } from 'lodash';
  * @param {Object} data - received data from the table using Sequelize
  * @returns {Object}
  */
-const extractDataFromResponseDB = data => {
+export const extractDataFromResponseDB = data => {
   if (isArray(data)) {
     const dataValues = get(data, [1, 'dataValues']);
 
@@ -19,4 +19,37 @@ const extractDataFromResponseDB = data => {
   return data;
 };
 
-export default extractDataFromResponseDB;
+/**
+ * Returns the object prepared for writing to the database
+ * @param {Array} prevCart - Array of all orders
+ * @param {string} userId - user ID
+ * @returns {Object}
+ */
+export const getOrderData = (prevCart, userId) => {
+  const date = Date.now();
+
+  const extractCartData = ({
+    name,
+    description,
+    photoUrl,
+    unitSign,
+    currencySign,
+    options: { price, weight },
+    count,
+  }) => ({
+    name,
+    description,
+    photoUrl,
+    unitSign,
+    currencySign,
+    price,
+    weight,
+    count,
+  });
+
+  const cart = prevCart.map(extractCartData);
+
+  const orderData = { date, user_id: userId, cart };
+
+  return orderData;
+};
