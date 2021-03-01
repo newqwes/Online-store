@@ -16,7 +16,7 @@ const checkRole = roles => (req, res, next) => {
       return;
     }
 
-    if (roles.includes(user.user_type)) {
+    if (roles.includes(user.type)) {
       req.user = user;
       next();
 
