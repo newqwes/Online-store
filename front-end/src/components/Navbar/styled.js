@@ -54,4 +54,5 @@ export const NavbarWrapper = styled.nav`
   top: 60px;
   justify-content: center;
   box-shadow: 0 4px 10px ${({ theme, themeVariant }) => theme.navbar.boxShadow[themeVariant]};
+  z-index: 3;
 `;

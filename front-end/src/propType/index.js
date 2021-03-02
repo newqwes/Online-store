@@ -4,7 +4,7 @@ export const childrenType = PropTypes.oneOfType([
   PropTypes.string,
   PropTypes.element,
   PropTypes.elementType,
-  PropTypes.arrayOf(PropTypes.element),
+  PropTypes.arrayOf([PropTypes.element, PropTypes.elementType]),
 ]);
 
 export const optionsType = PropTypes.shape({

@@ -11,6 +11,7 @@ const routers = {
   cart: '/cart',
   order: '/order',
   login: '/login',
+  profile: '/profile',
   contacts: '/contacts',
   cartSubmit: '/cart_submit',
   registration: '/registration',

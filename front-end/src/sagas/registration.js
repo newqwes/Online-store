@@ -10,7 +10,6 @@ export function* registration({ payload: { login, password, email, phone } }) {
     const userData = yield authAPI.registration({ login, password, email, phone });
 
     yield put(loginSuccess(userData));
-    yield localStorage.setItem('token', userData.token);
   } catch ({ response }) {
     yield put(loginFailure(response.data.message));
   }

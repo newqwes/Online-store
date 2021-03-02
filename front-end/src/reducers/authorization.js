@@ -1,4 +1,10 @@
-import { GET_AUTHORIZATION_SUCCESS, GET_AUTHORIZATION_FAILURE, USER_LOGOUT } from '../actions';
+import {
+  GET_AUTHORIZATION_SUCCESS,
+  GET_AUTHORIZATION_FAILURE,
+  USER_LOGOUT,
+  UPDATE_USER_SUCCESS,
+  UPDATE_USER_FAILURE,
+} from '../actions';
 
 const initialState = {
   userData: {
@@ -6,7 +12,11 @@ const initialState = {
     login: '',
     phone: '',
     token: '',
-    userType: 0,
+    type: '',
+    apartment: '',
+    home: '',
+    street: '',
+    city: '',
   },
   isSuccess: false,
   error: '',
@@ -20,18 +30,26 @@ const authorization = (state = initialState, action) => {
         isSuccess: true,
         error: initialState.error,
       };
+    case UPDATE_USER_SUCCESS:
+      return {
+        userData: action.payload,
+        isSuccess: true,
+        error: initialState.error,
+      };
     case GET_AUTHORIZATION_FAILURE:
       return {
         userData: initialState.userData,
         isSuccess: false,
         error: action.payload,
       };
-    case USER_LOGOUT:
+    case UPDATE_USER_FAILURE:
       return {
         userData: initialState.userData,
         isSuccess: false,
-        error: initialState.error,
+        error: action.payload,
       };
+    case USER_LOGOUT:
+      return initialState;
     default:
       return state;
   }

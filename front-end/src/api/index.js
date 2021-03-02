@@ -1,13 +1,21 @@
 import Axios from 'axios';
+import { getOr } from 'lodash/fp';
+
+const getToken = () => {
+  const state = localStorage.getItem('state');
+  const token = getOr(null, ['authorization', 'userData', 'token'], JSON.parse(state));
+
+  return token;
+};
 
 const instance = Axios.create({
   baseURL: 'http://localhost:3005/api/',
 });
 
-const extractData = (respons) => respons.data.data;
+const extractData = respons => respons.data.data;
 
 export const productAPI = {
-  getProductsList: async (payload) => {
+  getProductsList: async payload => {
     const respons = await instance.get(`products?type=${payload}`);
 
     return extractData(respons);
@@ -15,12 +23,13 @@ export const productAPI = {
 };
 
 export const authAPI = {
-  login: async (body) => {
+  login: async body => {
     const respons = await instance.post('auth/login', body);
 
     return extractData(respons);
   },
-  registration: async (body) => {
+
+  registration: async body => {
     const respons = await instance.post('auth/register', body);
 
     return extractData(respons);
@@ -28,8 +37,20 @@ export const authAPI = {
 };
 
 export const orderAPI = {
-  sendOrder: async (body) => {
-    const respons = await instance.post('order', body);
+  sendOrder: async body => {
+    const respons = await instance.post('order', body, {
+      headers: { Authorization: getToken() },
+    });
+
+    return extractData(respons);
+  },
+};
+
+export const userAPI = {
+  update: async body => {
+    const respons = await instance.put('user', body, {
+      headers: { Authorization: getToken() },
+    });
 
     return extractData(respons);
   },

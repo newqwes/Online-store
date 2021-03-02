@@ -10,6 +10,7 @@ const light = {
       warning: COLORS.darkPink,
     },
   },
+
   login: {
     background: {
       default: COLORS.mostlyWhiteYellow,
@@ -114,7 +115,7 @@ const light = {
     },
     input: {
       color: {
-        default: COLORS.mostlyWhiteYellow,
+        default: COLORS.darkDesaturatedOrange,
         inverted: COLORS.softYellow,
       },
       border: {
@@ -220,6 +221,77 @@ const light = {
     cart: {
       color: {
         default: COLORS.darkPink,
+        inverted: COLORS.softYellow,
+      },
+    },
+  },
+
+  profile: {
+    background: {
+      color: {
+        default: COLORS.white,
+        inverted: COLORS.softYellow,
+      },
+    },
+    aside: {
+      border: {
+        default: COLORS.lightGrayishBlue,
+        inverted: COLORS.softYellow,
+      },
+      hamburger: {
+        active: {
+          default: COLORS.darkDesaturatedOrange,
+          inverted: COLORS.softYellow,
+        },
+        hover: {
+          default: COLORS.brownTone,
+          inverted: COLORS.softYellow,
+        },
+      },
+      color: {
+        active: {
+          default: COLORS.brownToneLight,
+          inverted: COLORS.softYellow,
+        },
+        hover: {
+          default: COLORS.brownTone,
+          inverted: COLORS.softYellow,
+        },
+      },
+    },
+    input: {
+      disabled: {
+        background: {
+          default: COLORS.lightGrayishCyan,
+          inverted: COLORS.softYellow,
+        },
+      },
+      border: {
+        default: COLORS.lightGrayishBlue,
+        inverted: COLORS.softYellow,
+      },
+    },
+    saveButton: {
+      active: {
+        default: COLORS.brownToneLight,
+        inverted: COLORS.softYellow,
+      },
+      disabled: {
+        default: COLORS.gray,
+        inverted: COLORS.softYellow,
+      },
+      hover: {
+        default: COLORS.brownTone,
+        inverted: COLORS.softYellow,
+      },
+    },
+    editButton: {
+      active: {
+        default: COLORS.brownToneLight,
+        inverted: COLORS.softYellow,
+      },
+      hover: {
+        default: COLORS.brownTone,
         inverted: COLORS.softYellow,
       },
     },
