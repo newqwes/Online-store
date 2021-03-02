@@ -4,7 +4,7 @@ import orderMessage from '../utils/orderMessage';
 import createResponse from '../utils/createResponse';
 import { getOrderData } from '../utils/extractData';
 
-import Cart from '../database/models/cart';
+import OrderStore from '../database/models/orderStore';
 import Order from '../database/models/order';
 
 class OrderService {
@@ -19,7 +19,7 @@ class OrderService {
         const orderData = getOrderData(cart, userId);
 
         await Order.create(orderData, {
-          include: { model: Cart, as: 'cart' },
+          include: { model: OrderStore, as: 'orderStore' },
         });
       }
 
@@ -31,13 +31,13 @@ class OrderService {
     }
   }
 
-  async getUserOrder(req) {
+  async getUserOrders(req) {
     try {
       const userId = getUserId(req);
 
       const orders = await Order.findAll({
-        where: { user_id: userId },
-        include: { model: Cart, as: 'cart' },
+        where: { userId },
+        include: { model: OrderStore, as: 'orderStore' },
       });
 
       return createResponse(200, 'Successfully!', orders);
@@ -48,7 +48,7 @@ class OrderService {
 
   async deleteUserOrder(orderId) {
     try {
-      const isFound = await Order.destroy({ where: { order_id: orderId } });
+      const isFound = await Order.destroy({ where: { orderId } });
 
       if (isFound) return createResponse(200, 'Successfully!', orderId);
 

@@ -6,8 +6,8 @@ export const createOrder = async (req, res) => {
   res.status(result.status).json(result);
 };
 
-export const getUserOrder = async (req, res) => {
-  const result = await orderService.getUserOrder(req);
+export const getUserOrders = async (req, res) => {
+  const result = await orderService.getUserOrders(req);
 
   res.status(result.status).json(result);
 };

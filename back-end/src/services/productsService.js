@@ -37,7 +37,7 @@ class ProductsService {
 
       const optionsWithId = options.map(prevOption => {
         const option = prevOption;
-        option.product_id = Number(id);
+        option.productId = Number(id);
 
         return option;
       });
@@ -48,7 +48,7 @@ class ProductsService {
 
       if (!isFound) return createResponse(404, 'Not found', id);
 
-      await Option.destroy({ where: { product_id: id } });
+      await Option.destroy({ where: { productId: id } });
 
       await Option.bulkCreate(optionsWithId);
 

@@ -19,7 +19,7 @@ Option.init(
       type: DataTypes.DOUBLE,
       allowNull: false,
     },
-    product_id: {
+    productId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
@@ -34,7 +34,7 @@ Option.init(
     sequelize,
     tableName: 'product_option',
     timestamps: false,
-  }
+  },
 );
 
 export default Option;

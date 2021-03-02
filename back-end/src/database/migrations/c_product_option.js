@@ -15,7 +15,7 @@ module.exports = {
         type: DataTypes.DOUBLE,
         allowNull: false,
       },
-      product_id: {
+      productId: {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
@@ -28,7 +28,7 @@ module.exports = {
     });
   },
 
-  down: async (queryInterface) => {
+  down: async queryInterface => {
     await queryInterface.dropTable('product_option');
   },
 };

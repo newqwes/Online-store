@@ -1,4 +1,4 @@
-import { isArray, get } from 'lodash';
+import { isArray, get, omit } from 'lodash';
 
 /**
  * Returns the extracted object
@@ -21,35 +21,18 @@ export const extractDataFromResponseDB = data => {
 
 /**
  * Returns the object prepared for writing to the database
- * @param {Array} prevCart - Array of all orders
+ * @param {Array} cart - Array of all orders
  * @param {string} userId - user ID
  * @returns {Object}
  */
-export const getOrderData = (prevCart, userId) => {
+export const getOrderData = (cart, userId) => {
   const date = Date.now();
 
-  const extractCartData = ({
-    name,
-    description,
-    photoUrl,
-    unitSign,
-    currencySign,
-    options: { price, weight },
-    count,
-  }) => ({
-    name,
-    description,
-    photoUrl,
-    unitSign,
-    currencySign,
-    price,
-    weight,
-    count,
-  });
+  const extractCartData = ({ options, ...other }) => omit({ ...options, ...other }, 'id');
 
-  const cart = prevCart.map(extractCartData);
+  const orderStore = cart.map(extractCartData);
 
-  const orderData = { date, user_id: userId, cart };
+  const orderData = { date, userId, orderStore };
 
   return orderData;
 };

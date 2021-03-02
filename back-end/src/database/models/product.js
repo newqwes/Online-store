@@ -41,11 +41,11 @@ Product.init(
     sequelize,
     tableName: 'product',
     timestamps: false,
-  }
+  },
 );
 
 Option.belongsTo(Product, { foreignKey: 'id' });
 
-Product.hasMany(Option, { foreignKey: 'product_id', as: 'options' });
+Product.hasMany(Option, { foreignKey: 'productId', as: 'options' });
 
 export default Product;

@@ -1,13 +1,13 @@
 module.exports = {
   up: async (queryInterface, DataTypes) => {
-    await queryInterface.createTable('order_cart', {
+    await queryInterface.createTable('order_store', {
       id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         primaryKey: true,
         autoIncrement: true,
       },
-      order_id: {
+      orderId: {
         type: DataTypes.UUID,
         allowNull: false,
         references: {
@@ -53,6 +53,6 @@ module.exports = {
   },
 
   down: async queryInterface => {
-    await queryInterface.dropTable('order_cart');
+    await queryInterface.dropTable('order_store');
   },
 };

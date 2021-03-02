@@ -2,7 +2,7 @@ import { Model, DataTypes } from 'sequelize';
 import { v4 as uuidv4 } from 'uuid';
 
 import sequelize from '..';
-import Cart from './cart';
+import OrderStore from './orderStore';
 
 class Order extends Model {}
 
@@ -14,7 +14,7 @@ Order.init(
       allowNull: false,
       defaultValue: () => uuidv4(),
     },
-    user_id: {
+    userId: {
       type: DataTypes.UUID,
       allowNull: false,
       references: {
@@ -36,8 +36,8 @@ Order.init(
   },
 );
 
-Cart.belongsTo(Order, { foreignKey: 'id' });
+OrderStore.belongsTo(Order, { foreignKey: 'id' });
 
-Order.hasMany(Cart, { foreignKey: 'order_id', as: 'cart' });
+Order.hasMany(OrderStore, { foreignKey: 'orderId', as: 'orderStore' });
 
 export default Order;

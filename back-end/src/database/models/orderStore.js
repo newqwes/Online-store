@@ -1,9 +1,9 @@
 import { DataTypes, Model } from 'sequelize';
 import sequelize from '..';
 
-class Cart extends Model {}
+class OrderStore extends Model {}
 
-Cart.init(
+OrderStore.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -11,7 +11,7 @@ Cart.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    order_id: {
+    orderId: {
       type: DataTypes.UUID,
       allowNull: false,
       references: {
@@ -56,9 +56,9 @@ Cart.init(
   },
   {
     sequelize,
-    tableName: 'order_cart',
+    tableName: 'order_store',
     timestamps: false,
   },
 );
 
-export default Cart;
+export default OrderStore;
