@@ -16,7 +16,7 @@ const initialState = {
             id: null,
             price: null,
             weight: null,
-            product_id: null,
+            productId: null,
           },
         ],
         count: null,

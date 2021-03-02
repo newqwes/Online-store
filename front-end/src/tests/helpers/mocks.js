@@ -11,7 +11,7 @@ const mockProductItem = {
       id: 3,
       price: 24,
       weight: 250,
-      product_id: 1,
+      productId: 1,
     },
   ],
 };

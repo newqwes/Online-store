@@ -1,10 +1,9 @@
 import { DataTypes, Model } from 'sequelize';
 import sequelize from '..';
-import Option from './option';
 
-class Product extends Model {}
+class OrderStore extends Model {}
 
-Product.init(
+OrderStore.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -12,9 +11,15 @@ Product.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    type: {
-      type: DataTypes.STRING(100),
+    orderId: {
+      type: DataTypes.UUID,
       allowNull: false,
+      references: {
+        model: 'order',
+        key: 'id',
+      },
+      onUpdate: 'CASCADE',
+      onDelete: 'CASCADE',
     },
     name: {
       type: DataTypes.STRING(100),
@@ -36,17 +41,25 @@ Product.init(
       type: DataTypes.STRING(10),
       allowNull: false,
     },
+    price: {
+      type: DataTypes.DOUBLE,
+      allowNull: false,
+    },
+    weight: {
+      type: DataTypes.DOUBLE,
+      allowNull: false,
+    },
+    count: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
   },
   {
     sequelize,
-    tableName: 'product',
+    tableName: 'order_store',
     timestamps: false,
     underscored: true,
   },
 );
 
-Option.belongsTo(Product, { foreignKey: 'id' });
-
-Product.hasMany(Option, { foreignKey: 'productId', as: 'options' });
-
-export default Product;
+export default OrderStore;

@@ -11,7 +11,7 @@ export const optionsType = PropTypes.shape({
   id: PropTypes.number,
   price: PropTypes.number,
   weight: PropTypes.number,
-  product_id: PropTypes.number,
+  productId: PropTypes.number,
 });
 
 export const productType = PropTypes.shape({
