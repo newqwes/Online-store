@@ -513,13 +513,13 @@
             "id": {
               "type": "string"
             },
-            "user_id": {
+            "userId": {
               "type": "string"
             },
             "date": {
               "type": "string"
             },
-            "cart": {
+            "orderStore": {
               "type": "array",
               "items": {
                 "type": "object",
@@ -528,7 +528,7 @@
                     "type": "integer",
                     "uniqueItems": true
                   },
-                  "order_id": {
+                  "orderId": {
                     "type": "string"
                   },
                   "name": {
@@ -635,7 +635,7 @@
                     "format": "float",
                     "default": 220.55
                   },
-                  "product_id": {
+                  "productId": {
                     "type": "integer"
                   }
                 }
@@ -837,7 +837,7 @@
                       "type": "number",
                       "format": "float"
                     },
-                    "product_id": {
+                    "productId": {
                       "type": "integer"
                     }
                   }
@@ -900,7 +900,7 @@
                     "type": "number",
                     "format": "float"
                   },
-                  "product_id": {
+                  "productId": {
                     "type": "integer"
                   }
                 }

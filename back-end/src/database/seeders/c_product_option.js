@@ -1,5 +1,5 @@
 module.exports = {
-  up: (queryInterface) =>
+  up: queryInterface =>
     queryInterface.bulkInsert('product_option', [
       {
         price: 10.49,
@@ -218,5 +218,5 @@ module.exports = {
       },
     ]),
 
-  down: (queryInterface) => queryInterface.bulkDelete('product_option', null, {}),
+  down: queryInterface => queryInterface.bulkDelete('product_option', null, {}),
 };

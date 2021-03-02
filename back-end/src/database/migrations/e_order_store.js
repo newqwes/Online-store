@@ -1,15 +1,21 @@
 module.exports = {
   up: async (queryInterface, DataTypes) => {
-    await queryInterface.createTable('product', {
+    await queryInterface.createTable('order_store', {
       id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         primaryKey: true,
         autoIncrement: true,
       },
-      type: {
-        type: DataTypes.STRING(100),
+      order_id: {
+        type: DataTypes.UUID,
         allowNull: false,
+        references: {
+          model: 'order',
+          key: 'id',
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
       },
       name: {
         type: DataTypes.STRING(100),
@@ -31,10 +37,22 @@ module.exports = {
         type: DataTypes.STRING(10),
         allowNull: false,
       },
+      price: {
+        type: DataTypes.DOUBLE,
+        allowNull: false,
+      },
+      weight: {
+        type: DataTypes.DOUBLE,
+        allowNull: false,
+      },
+      count: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
     });
   },
 
   down: async queryInterface => {
-    await queryInterface.dropTable('product');
+    await queryInterface.dropTable('order_store');
   },
 };
