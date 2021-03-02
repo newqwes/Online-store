@@ -15,7 +15,7 @@ module.exports = {
         type: DataTypes.DOUBLE,
         allowNull: false,
       },
-      productId: {
+      product_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {

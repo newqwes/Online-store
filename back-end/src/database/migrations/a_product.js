@@ -19,22 +19,22 @@ module.exports = {
         type: DataTypes.STRING(500),
         allowNull: false,
       },
-      photoUrl: {
+      photo_url: {
         type: DataTypes.STRING(500),
         allowNull: false,
       },
-      unitSign: {
+      unit_sign: {
         type: DataTypes.STRING(10),
         allowNull: false,
       },
-      currencySign: {
+      currency_sign: {
         type: DataTypes.STRING(10),
         allowNull: false,
       },
     });
   },
 
-  down: async (queryInterface) => {
+  down: async queryInterface => {
     await queryInterface.dropTable('product');
   },
 };

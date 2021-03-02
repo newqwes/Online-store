@@ -58,6 +58,7 @@ OrderStore.init(
     sequelize,
     tableName: 'order_store',
     timestamps: false,
+    underscored: true,
   },
 );
 

@@ -41,6 +41,7 @@ Product.init(
     sequelize,
     tableName: 'product',
     timestamps: false,
+    underscored: true,
   },
 );
 

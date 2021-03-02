@@ -33,6 +33,7 @@ Order.init(
     sequelize,
     tableName: 'order',
     timestamps: false,
+    underscored: true,
   },
 );
 

@@ -9,7 +9,7 @@ module.exports = {
         allowNull: false,
         defaultValue: uuidv4(),
       },
-      userId: {
+      user_id: {
         type: DataTypes.UUID,
         allowNull: false,
         references: {

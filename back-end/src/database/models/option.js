@@ -34,6 +34,7 @@ Option.init(
     sequelize,
     tableName: 'product_option',
     timestamps: false,
+    underscored: true,
   },
 );
 
