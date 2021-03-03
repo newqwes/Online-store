@@ -27,6 +27,12 @@ const navbar = [
   { id: 6, title: 'Контакты', link: routers.contacts },
 ];
 
-const ROUTER_PATH = { ...routers, navbar };
+const profileMenu = {
+  history: '/profile/history',
+  address: '/profile/address',
+  user: '/profile/user',
+};
+
+const ROUTER_PATH = { ...routers, navbar, profileMenu };
 
 export default ROUTER_PATH;

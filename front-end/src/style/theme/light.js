@@ -238,6 +238,10 @@ const light = {
         default: COLORS.lightGrayishBlue,
         inverted: COLORS.softYellow,
       },
+      background: {
+        default: COLORS.lightGrayishCyan,
+        inverted: COLORS.softYellow,
+      },
       hamburger: {
         active: {
           default: COLORS.darkDesaturatedOrange,

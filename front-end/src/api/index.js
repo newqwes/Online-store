@@ -10,6 +10,7 @@ const getToken = () => {
 
 const instance = Axios.create({
   baseURL: 'http://localhost:3005/api/',
+  headers: { Authorization: getToken() },
 });
 
 const extractData = respons => respons.data.data;
@@ -38,9 +39,7 @@ export const authAPI = {
 
 export const orderAPI = {
   sendOrder: async body => {
-    const respons = await instance.post('order', body, {
-      headers: { Authorization: getToken() },
-    });
+    const respons = await instance.post('order', body);
 
     return extractData(respons);
   },
@@ -48,9 +47,7 @@ export const orderAPI = {
 
 export const userAPI = {
   update: async body => {
-    const respons = await instance.put('user', body, {
-      headers: { Authorization: getToken() },
-    });
+    const respons = await instance.put('user', body);
 
     return extractData(respons);
   },

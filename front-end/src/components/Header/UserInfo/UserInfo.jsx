@@ -14,7 +14,7 @@ const UserInfo = ({ logout, userName, isSuccess }) => {
   if (isSuccess) {
     return (
       <UserInfoContent>
-        <Link themeVariant={THEME_VARIANT.inverted} to={ROUTER_PATH.profile}>
+        <Link themeVariant={THEME_VARIANT.inverted} to={ROUTER_PATH.profileMenu.user}>
           {userName}
         </Link>
         <Button text='Выйти' onClick={logout} />

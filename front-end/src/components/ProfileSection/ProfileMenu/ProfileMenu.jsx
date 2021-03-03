@@ -3,38 +3,22 @@ import PropTypes from 'prop-types';
 
 import Сross from '../../Icons/Сross';
 import Hamburger from '../../Icons/Hamburger';
+import NavbarItem from '../../Navbar/NavbarItem';
 
+import ROUTER_PATH from '../../../constants/routerPath';
 import THEME_VARIANT from '../../../constants/themeVariant';
 
 import { ProfileMenuWrapper, HamburgerWrapper } from './styled';
 
-const ProfileMenu = ({
-  themeVariant,
-  className,
-  toProfile,
-  toAddress,
-  toHistory,
-  active,
-  clickButtonMenu,
-  profile,
-  address,
-  history,
-}) => (
+const ProfileMenu = ({ themeVariant, className, active, clickButtonMenu }) => (
   <ProfileMenuWrapper themeVariant={themeVariant} className={className} active={active}>
     <HamburgerWrapper onClick={clickButtonMenu} themeVariant={themeVariant}>
       {active ? <Сross /> : <Hamburger />}
     </HamburgerWrapper>
-
     <ul>
-      <li onClick={toProfile} className={profile ? 'active' : 'disable'}>
-        Профиль
-      </li>
-      <li onClick={toAddress} className={address ? 'active' : 'disable'}>
-        Адрес
-      </li>
-      <li onClick={toHistory} className={history ? 'active' : 'disable'}>
-        История
-      </li>
+      <NavbarItem title='Профиль' link={ROUTER_PATH.profileMenu.user} />
+      <NavbarItem title='Адрес' link={ROUTER_PATH.profileMenu.address} />
+      <NavbarItem title='История' link={ROUTER_PATH.profileMenu.history} />
     </ul>
   </ProfileMenuWrapper>
 );
@@ -42,14 +26,8 @@ const ProfileMenu = ({
 ProfileMenu.propTypes = {
   themeVariant: PropTypes.string,
   className: PropTypes.string,
-  toProfile: PropTypes.func.isRequired,
-  toAddress: PropTypes.func.isRequired,
-  toHistory: PropTypes.func.isRequired,
   clickButtonMenu: PropTypes.func.isRequired,
   active: PropTypes.bool.isRequired,
-  profile: PropTypes.bool.isRequired,
-  address: PropTypes.bool.isRequired,
-  history: PropTypes.bool.isRequired,
 };
 
 ProfileMenu.defaultProps = {
