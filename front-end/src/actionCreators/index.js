@@ -75,9 +75,9 @@ export const sendOrderFailure = error => ({
   payload: error,
 });
 
-export const updateUser = payload => ({
+export const updateUser = userData => ({
   type: UPDATE_USER_PENDING,
-  payload,
+  payload: userData,
 });
 
 export const updateUserSuccess = userData => ({

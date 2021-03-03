@@ -16,8 +16,8 @@ const instance = Axios.create({
 const extractData = respons => respons.data.data;
 
 export const productAPI = {
-  getProductsList: async payload => {
-    const respons = await instance.get(`products?type=${payload}`);
+  getProductsList: async productType => {
+    const respons = await instance.get(`products?type=${productType}`);
 
     return extractData(respons);
   },
