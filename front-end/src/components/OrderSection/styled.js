@@ -15,12 +15,12 @@ export const OrderSectionContent = styled.div`
   margin: 0 auto;
   max-width: ${SECTION_WIDTH.midle}px;
 
-  .order-section__label {
+  .order-section-label {
     align-self: flex-start;
     margin-bottom: 20px;
   }
 
-  .order-section__cart {
+  .order-section-cart {
     width: 100%;
   }
 

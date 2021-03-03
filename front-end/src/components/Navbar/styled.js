@@ -50,9 +50,9 @@ export const NavbarItems = styled.ul`
 
 export const NavbarWrapper = styled.nav`
   position: sticky;
+  z-index: 1;
   display: flex;
   top: 60px;
   justify-content: center;
   box-shadow: 0 4px 10px ${({ theme, themeVariant }) => theme.navbar.boxShadow[themeVariant]};
-  z-index: 3;
 `;

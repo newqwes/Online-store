@@ -44,7 +44,7 @@ const OrderSection = ({
     <OrderSectionWrapper themeVariant={themeVariant}>
       <OrderSectionContent themeVariant={themeVariant}>
         <Flex direction={DIRECTION.column} flexBasis='60%'>
-          <Label text='Оформление заказа' className='order-section__label' />
+          <Label text='Оформление заказа' className='order-section-label' />
           <form>
             <Flex direction={DIRECTION.column}>
               <FieldList
@@ -57,8 +57,8 @@ const OrderSection = ({
           </form>
         </Flex>
         <Flex direction={DIRECTION.column} flexBasis='40%'>
-          <Label text='Ваш заказ' className='order-section__label' />
-          <Flex direction={DIRECTION.column} className='order-section__cart'>
+          <Label text='Ваш заказ' className='order-section-label' />
+          <Flex direction={DIRECTION.column} className='order-section-cart'>
             <CartItems cart={cart} removeFromCart={removeFromCart} addToCart={addToCart} />
             <TotalPrice value={totalCartPrice} currencySign={currencySign} label='Сумма заказа: ' />
           </Flex>

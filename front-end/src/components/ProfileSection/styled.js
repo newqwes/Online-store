@@ -7,12 +7,12 @@ export const ProfileWrapper = styled.section.attrs(({ theme, themeVariant }) => 
 }))`
   background-color: ${backgroundColor => backgroundColor};
 
-  .profile__label {
+  .profile-label {
     display: block;
     margin: 20px 0;
   }
 
-  .profile__form-content {
+  .profile-form-content {
     margin: 0 auto;
   }
 `;

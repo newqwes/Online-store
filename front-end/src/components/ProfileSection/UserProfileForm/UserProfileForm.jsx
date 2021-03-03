@@ -25,7 +25,7 @@ class UserProfileForm extends React.Component {
       <Flex direction={DIRECTION.column}>
         <Label
           text='Личные данные'
-          className='profile__label'
+          className='profile-label'
           fontSize={FONT_SIZE.large}
           fontWeight={FONT_WEIGHT.bold}
         />

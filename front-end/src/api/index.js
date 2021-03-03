@@ -1,14 +1,6 @@
 import Axios from 'axios';
-import { getOr } from 'lodash/fp';
 
-const getToken = () => {
-  const state = localStorage.getItem('state');
-  const token = getOr(null, ['user', 'userData', 'token'], JSON.parse(state));
-
-  return token;
-};
-
-const extractData = respons => respons.data.data;
+import { extractResponsData, getToken } from '../utils/apiUtils';
 
 const instance = Axios.create({
   baseURL: 'http://localhost:3005/api/',
@@ -18,7 +10,7 @@ export const productAPI = {
   getProductsList: async productType => {
     const respons = await instance.get(`products?type=${productType}`);
 
-    return extractData(respons);
+    return extractResponsData(respons);
   },
 };
 
@@ -26,13 +18,13 @@ export const authAPI = {
   login: async body => {
     const respons = await instance.post('auth/login', body);
 
-    return extractData(respons);
+    return extractResponsData(respons);
   },
 
   registration: async body => {
     const respons = await instance.post('auth/register', body);
 
-    return extractData(respons);
+    return extractResponsData(respons);
   },
 };
 
@@ -42,7 +34,7 @@ export const orderAPI = {
       headers: { Authorization: getToken() },
     });
 
-    return extractData(respons);
+    return extractResponsData(respons);
   },
 };
 
@@ -52,6 +44,6 @@ export const userAPI = {
       headers: { Authorization: getToken() },
     });
 
-    return extractData(respons);
+    return extractResponsData(respons);
   },
 };

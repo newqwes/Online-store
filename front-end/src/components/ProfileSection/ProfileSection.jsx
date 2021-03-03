@@ -15,12 +15,6 @@ import ProfileUserContainer from '../../containers/ProfileUserContainer';
 import { ProfileWrapper, ProfileContent } from './styled';
 
 class ProfileSection extends React.Component {
-  state = {
-    menuActive: true,
-  };
-
-  clickButtonMenu = () => this.setState({ menuActive: !this.state.menuActive });
-
   static propTypes = {
     themeVariant: PropTypes.string,
   };
@@ -28,6 +22,12 @@ class ProfileSection extends React.Component {
   static defaultProps = {
     themeVariant: THEME_VARIANT.default,
   };
+
+  state = {
+    menuActive: true,
+  };
+
+  clickButtonMenu = () => this.setState({ menuActive: !this.state.menuActive });
 
   render() {
     const { themeVariant } = this.props;
@@ -40,7 +40,7 @@ class ProfileSection extends React.Component {
           <Flex
             direction={DIRECTION.column}
             alignItems={ALIGN_ITEMS.flexStart}
-            className='profile__form-content'>
+            className='profile-form-content'>
             <Route path={ROUTER_PATH.profileMenu.user} component={ProfileUserContainer} />
             {/* TODO ProfileAddressContainer and ProfileHistoryContainer in next PR
             <Route path={ROUTER_PATH.profileMenu.address} component={ProfileAddressContainer} />
