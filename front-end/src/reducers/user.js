@@ -22,7 +22,7 @@ const initialState = {
   error: '',
 };
 
-const authorization = (state = initialState, action) => {
+const user = (state = initialState, action) => {
   switch (action.type) {
     case GET_AUTHORIZATION_SUCCESS:
       return {
@@ -55,4 +55,4 @@ const authorization = (state = initialState, action) => {
   }
 };
 
-export default authorization;
+export default user;

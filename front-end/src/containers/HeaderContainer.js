@@ -5,10 +5,10 @@ import { logout } from '../actionCreators';
 
 import Header from '../components/Header';
 
-const mapStateToProps = ({ cart, authorization }) => ({
+const mapStateToProps = ({ cart, user }) => ({
   cartItemsCount: cart.reduce((sum, { count }) => sum + count, 0),
-  isSuccess: getOr(false, 'isSuccess', authorization),
-  userName: getOr('', ['userData', 'login'], authorization),
+  isSuccess: getOr(false, 'isSuccess', user),
+  userName: getOr('', ['userData', 'login'], user),
 });
 
 const mapDispatchToProps = {

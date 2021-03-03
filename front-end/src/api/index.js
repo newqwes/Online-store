@@ -3,17 +3,16 @@ import { getOr } from 'lodash/fp';
 
 const getToken = () => {
   const state = localStorage.getItem('state');
-  const token = getOr(null, ['authorization', 'userData', 'token'], JSON.parse(state));
+  const token = getOr(null, ['user', 'userData', 'token'], JSON.parse(state));
 
   return token;
 };
 
+const extractData = respons => respons.data.data;
+
 const instance = Axios.create({
   baseURL: 'http://localhost:3005/api/',
-  headers: { Authorization: getToken() },
 });
-
-const extractData = respons => respons.data.data;
 
 export const productAPI = {
   getProductsList: async productType => {
@@ -39,7 +38,9 @@ export const authAPI = {
 
 export const orderAPI = {
   sendOrder: async body => {
-    const respons = await instance.post('order', body);
+    const respons = await instance.post('order', body, {
+      headers: { Authorization: getToken() },
+    });
 
     return extractData(respons);
   },
@@ -47,7 +48,9 @@ export const orderAPI = {
 
 export const userAPI = {
   update: async body => {
-    const respons = await instance.put('user', body);
+    const respons = await instance.put('user', body, {
+      headers: { Authorization: getToken() },
+    });
 
     return extractData(respons);
   },
