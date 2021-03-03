@@ -28,7 +28,7 @@ class FormSection extends React.Component {
   static propTypes = {
     themeVariant: PropTypes.string,
     submit: PropTypes.func.isRequired,
-    isSuccess: PropTypes.bool.isRequired,
+    isUserAuth: PropTypes.bool.isRequired,
     handleSubmit: PropTypes.func.isRequired,
     content: PropTypes.shape(contentType),
   };
@@ -42,12 +42,12 @@ class FormSection extends React.Component {
       themeVariant,
       submit,
       handleSubmit,
-      isSuccess,
+      isUserAuth,
       content: { title, buttonText, link, fields },
     } = this.props;
     const { isErrorAnimation } = this.state;
 
-    if (isSuccess) return <Redirect to={ROUTER_PATH.products.pizza} />;
+    if (isUserAuth) return <Redirect to={ROUTER_PATH.products.pizza} />;
 
     return (
       <FormWrapper themeVariant={themeVariant}>

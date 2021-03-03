@@ -18,7 +18,7 @@ const initialState = {
     street: '',
     city: '',
   },
-  isSuccess: false,
+  isUserAuth: false,
   error: '',
 };
 
@@ -27,25 +27,25 @@ const user = (state = initialState, action) => {
     case GET_AUTHORIZATION_SUCCESS:
       return {
         userData: action.payload,
-        isSuccess: true,
+        isUserAuth: true,
         error: initialState.error,
       };
     case UPDATE_USER_SUCCESS:
       return {
         userData: action.payload,
-        isSuccess: true,
+        isUserAuth: true,
         error: initialState.error,
       };
     case GET_AUTHORIZATION_FAILURE:
       return {
         userData: initialState.userData,
-        isSuccess: false,
+        isUserAuth: false,
         error: action.payload,
       };
     case UPDATE_USER_FAILURE:
       return {
         userData: initialState.userData,
-        isSuccess: false,
+        isUserAuth: false,
         error: action.payload,
       };
     case USER_LOGOUT:

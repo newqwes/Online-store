@@ -19,7 +19,7 @@ const withReduxForm = reduxForm({
 });
 
 const mapStateToProps = state => ({
-  isSuccess: getOr(false, ['user', 'isSuccess'], state),
+  isUserAuth: getOr(false, ['user', 'isUserAuth'], state),
 });
 
 const mapDispatchToProps = {

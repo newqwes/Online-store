@@ -7,7 +7,7 @@ import Header from '../components/Header';
 
 const mapStateToProps = ({ cart, user }) => ({
   cartItemsCount: cart.reduce((sum, { count }) => sum + count, 0),
-  isSuccess: getOr(false, 'isSuccess', user),
+  isUserAuth: getOr(false, 'isUserAuth', user),
   userName: getOr('', ['userData', 'login'], user),
 });
 

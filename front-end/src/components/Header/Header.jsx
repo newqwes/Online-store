@@ -18,7 +18,7 @@ import Phone from '../Icons/Phone';
 
 import HeaderWrapper from './styled';
 
-const Header = ({ cartItemsCount, themeVariant, isSuccess, userName, logout }) => (
+const Header = ({ cartItemsCount, themeVariant, isUserAuth, userName, logout }) => (
   <HeaderWrapper themeVariant={themeVariant}>
     <Flex>
       <Link to={ROUTER_PATH.main}>
@@ -43,7 +43,7 @@ const Header = ({ cartItemsCount, themeVariant, isSuccess, userName, logout }) =
       <Link to={ROUTER_PATH.cart}>
         <Cart size={ICON_SIZE.large} cartItemsCount={cartItemsCount} />
       </Link>
-      <UserInfo userName={userName} logout={logout} isSuccess={isSuccess} />
+      <UserInfo userName={userName} logout={logout} isUserAuth={isUserAuth} />
     </Flex>
   </HeaderWrapper>
 );
@@ -51,7 +51,7 @@ const Header = ({ cartItemsCount, themeVariant, isSuccess, userName, logout }) =
 Header.propTypes = {
   themeVariant: PropTypes.string,
   logout: PropTypes.func.isRequired,
-  isSuccess: PropTypes.bool.isRequired,
+  isUserAuth: PropTypes.bool.isRequired,
   userName: PropTypes.string.isRequired,
   cartItemsCount: PropTypes.number.isRequired,
 };

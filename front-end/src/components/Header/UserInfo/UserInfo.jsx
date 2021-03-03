@@ -10,8 +10,8 @@ import THEME_VARIANT from '../../../constants/themeVariant';
 
 import UserInfoContent from './styled';
 
-const UserInfo = ({ logout, userName, isSuccess }) => {
-  if (isSuccess) {
+const UserInfo = ({ logout, userName, isUserAuth }) => {
+  if (isUserAuth) {
     return (
       <UserInfoContent>
         <Link themeVariant={THEME_VARIANT.inverted} to={ROUTER_PATH.profileMenu.user}>
@@ -34,7 +34,7 @@ const UserInfo = ({ logout, userName, isSuccess }) => {
 UserInfo.propTypes = {
   themeVariant: PropTypes.string,
   logout: PropTypes.func.isRequired,
-  isSuccess: PropTypes.bool.isRequired,
+  isUserAuth: PropTypes.bool.isRequired,
   userName: PropTypes.string.isRequired,
 };
 
