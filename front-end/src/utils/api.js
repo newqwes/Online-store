@@ -2,7 +2,7 @@ import { getOr } from 'lodash/fp';
 
 export const getToken = () => {
   const state = localStorage.getItem('state');
-  const token = getOr(null, ['user', 'userData', 'token'], JSON.parse(state));
+  const token = getOr(null, ['user', 'data', 'token'], JSON.parse(state));
 
   return token;
 };

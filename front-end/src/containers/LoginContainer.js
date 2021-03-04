@@ -1,12 +1,13 @@
 import { compose } from 'redux';
-import { getOr } from 'lodash/fp';
 import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
+
+import { emailValidation, passwordValidation } from '../utils/fieldValidation';
+import { getUserAuthStatus } from '../selectors/authorization';
 
 import { login } from '../actionCreators';
 
 import FormSection from '../components/Authentication';
-import { emailValidation, passwordValidation } from '../utils/fieldValidation';
 
 const validate = ({ email, password }) => ({
   email: emailValidation(email),
@@ -19,7 +20,7 @@ const withReduxForm = reduxForm({
 });
 
 const mapStateToProps = state => ({
-  isUserAuth: getOr(false, ['user', 'isUserAuth'], state),
+  isUserAuth: getUserAuthStatus(state),
 });
 
 const mapDispatchToProps = {

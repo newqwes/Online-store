@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Route } from 'react-router-dom';
+import { Redirect, Route } from 'react-router-dom';
 
 import DIRECTION from '../../constants/direction';
 import ROUTER_PATH from '../../constants/routerPath';
@@ -17,6 +17,7 @@ import { ProfileWrapper, ProfileContent } from './styled';
 class ProfileSection extends React.Component {
   static propTypes = {
     themeVariant: PropTypes.string,
+    isUserAuth: PropTypes.bool.isRequired,
   };
 
   static defaultProps = {
@@ -30,8 +31,10 @@ class ProfileSection extends React.Component {
   clickButtonMenu = () => this.setState({ menuActive: !this.state.menuActive });
 
   render() {
-    const { themeVariant } = this.props;
+    const { themeVariant, isUserAuth } = this.props;
     const { menuActive } = this.state;
+
+    if (!isUserAuth) return <Redirect to={ROUTER_PATH.products.pizza} />;
 
     return (
       <ProfileWrapper themeVariant={themeVariant}>

@@ -1,12 +1,5 @@
 import PropTypes from 'prop-types';
 
-export const childrenType = PropTypes.oneOfType([
-  PropTypes.string,
-  PropTypes.element,
-  PropTypes.elementType,
-  PropTypes.arrayOf([PropTypes.element, PropTypes.elementType]),
-]);
-
 export const optionsType = PropTypes.shape({
   id: PropTypes.number,
   price: PropTypes.number,

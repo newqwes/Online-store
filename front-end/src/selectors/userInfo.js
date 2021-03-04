@@ -3,4 +3,6 @@ import { createSelector } from 'reselect';
 
 const localState = get('user');
 
-export const getUserData = createSelector(localState, get('userData'));
+export const getUserData = createSelector(localState, get('data'));
+
+export const getUserName = createSelector(getUserData, get('login'));

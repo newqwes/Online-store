@@ -1,14 +1,16 @@
-import { getOr } from 'lodash/fp';
 import { connect } from 'react-redux';
 
 import { logout } from '../actionCreators';
+import { getUserAuthStatus } from '../selectors/authorization';
+import { getCartItemsCount } from '../selectors/cart';
+import { getUserName } from '../selectors/userInfo';
 
 import Header from '../components/Header';
 
-const mapStateToProps = ({ cart, user }) => ({
-  cartItemsCount: cart.reduce((sum, { count }) => sum + count, 0),
-  isUserAuth: getOr(false, 'isUserAuth', user),
-  userName: getOr('', ['userData', 'login'], user),
+const mapStateToProps = state => ({
+  cartItemsCount: getCartItemsCount(state),
+  isUserAuth: getUserAuthStatus(state),
+  userName: getUserName(state),
 });
 
 const mapDispatchToProps = {

@@ -1,13 +1,12 @@
 import {
-  GET_AUTHORIZATION_SUCCESS,
-  GET_AUTHORIZATION_FAILURE,
-  USER_LOGOUT,
   UPDATE_USER_SUCCESS,
   UPDATE_USER_FAILURE,
+  GET_USER_DATA_SUCCESS,
+  GET_USER_DATA_FAILURE,
 } from '../actions';
 
 const initialState = {
-  userData: {
+  data: {
     email: '',
     login: '',
     phone: '',
@@ -18,38 +17,19 @@ const initialState = {
     street: '',
     city: '',
   },
-  isUserAuth: false,
   error: '',
 };
 
 const user = (state = initialState, action) => {
   switch (action.type) {
-    case GET_AUTHORIZATION_SUCCESS:
-      return {
-        userData: action.payload,
-        isUserAuth: true,
-        error: initialState.error,
-      };
     case UPDATE_USER_SUCCESS:
-      return {
-        userData: action.payload,
-        isUserAuth: true,
-        error: initialState.error,
-      };
-    case GET_AUTHORIZATION_FAILURE:
-      return {
-        userData: initialState.userData,
-        isUserAuth: false,
-        error: action.payload,
-      };
+    case GET_USER_DATA_SUCCESS:
+      return { data: action.payload, error: initialState.error };
+
     case UPDATE_USER_FAILURE:
-      return {
-        userData: initialState.userData,
-        isUserAuth: false,
-        error: action.payload,
-      };
-    case USER_LOGOUT:
-      return initialState;
+    case GET_USER_DATA_FAILURE:
+      return { ...state, error: action.payload };
+
     default:
       return state;
   }

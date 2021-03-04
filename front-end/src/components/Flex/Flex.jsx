@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { childrenType } from '../../propType';
-
 import DIRECTION from '../../constants/direction';
 import { JUSTIFY_CONTENT, ALIGN_ITEMS, FLEX_BASIS } from '../../constants/position';
 
@@ -20,7 +18,7 @@ const Flex = ({ children, direction, justifyContent, alignItems, flexBasis, clas
 );
 
 Flex.propTypes = {
-  children: childrenType.isRequired,
+  children: PropTypes.any.isRequired,
   justifyContent: PropTypes.string,
   alignItems: PropTypes.string,
   className: PropTypes.string,

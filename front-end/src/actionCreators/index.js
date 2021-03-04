@@ -14,6 +14,8 @@ import {
   UPDATE_USER_PENDING,
   UPDATE_USER_SUCCESS,
   UPDATE_USER_FAILURE,
+  GET_USER_DATA_SUCCESS,
+  GET_USER_DATA_FAILURE,
 } from '../actions';
 
 export const getProductsList = type => ({
@@ -31,9 +33,8 @@ export const addToCart = item => ({
   payload: item,
 });
 
-export const loginSuccess = userData => ({
+export const loginSuccess = () => ({
   type: GET_AUTHORIZATION_SUCCESS,
-  payload: userData,
 });
 
 export const loginFailure = error => ({
@@ -87,5 +88,15 @@ export const updateUserSuccess = userData => ({
 
 export const updateUserFailure = error => ({
   type: UPDATE_USER_FAILURE,
+  payload: error,
+});
+
+export const getUserDataSuccess = userData => ({
+  type: GET_USER_DATA_SUCCESS,
+  payload: userData,
+});
+
+export const getUserDataFailure = error => ({
+  type: GET_USER_DATA_FAILURE,
   payload: error,
 });

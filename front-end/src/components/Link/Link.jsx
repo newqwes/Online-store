@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { CustomNavLink, CustomLink } from './styled';
 import THEME_VARIANT from '../../constants/themeVariant';
-import { childrenType } from '../../propType';
 
 const Link = ({ href, to, children, themeVariant }) => {
   const Component = to ? CustomNavLink : CustomLink;
@@ -17,7 +16,7 @@ const Link = ({ href, to, children, themeVariant }) => {
 Link.propTypes = {
   href: PropTypes.string,
   to: PropTypes.string,
-  children: childrenType.isRequired,
+  children: PropTypes.any.isRequired,
   themeVariant: PropTypes.string,
 };
 

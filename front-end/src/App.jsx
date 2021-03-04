@@ -12,7 +12,7 @@ import HeaderContainer from './containers/HeaderContainer';
 import OrderContainer from './containers/OrderContainer';
 import ProductsContainer from './containers/ProductsContainer';
 import RegistrationContainer from './containers/RegistrationContainer';
-import ProfileSection from './components/ProfileSection';
+import ProfileContainer from './containers/ProfileContainer';
 
 const App = () => (
   <Fragment>
@@ -31,7 +31,7 @@ const App = () => (
       <RegistrationContainer content={AUTHENTICATION.registration} />
     </Route>
     <Route path={ROUTER_PATH.orderSuccessMessage} component={OrderMessageSection} />
-    <Route path={ROUTER_PATH.profile} component={ProfileSection} />
+    <Route path={ROUTER_PATH.profile} component={ProfileContainer} />
   </Fragment>
 );
 

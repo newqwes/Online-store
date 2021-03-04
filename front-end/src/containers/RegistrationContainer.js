@@ -1,5 +1,4 @@
 import { compose } from 'redux';
-import { getOr } from 'lodash/fp';
 import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
 
@@ -13,6 +12,7 @@ import {
   equalValidation,
   passwordValidation,
 } from '../utils/fieldValidation';
+import { getUserAuthStatus } from '../selectors/authorization';
 
 const validate = ({ phone, email, login, password, confirmPassword }) => ({
   phone: telValidation(phone),
@@ -28,7 +28,7 @@ const withReduxForm = reduxForm({
 });
 
 const mapStateToProps = state => ({
-  isUserAuth: getOr(false, ['user', 'isUserAuth'], state),
+  isUserAuth: getUserAuthStatus(state),
 });
 
 const mapDispatchToProps = {
