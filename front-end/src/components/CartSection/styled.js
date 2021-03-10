@@ -1,13 +1,15 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import SECTION_WIDTH from '../../constants/sectionWidth';
 
-export const CartSectionWrapper = styled.section`
-  width: 100%;
-  min-height: 80vh;
-  padding: 20px 0;
-  background: ${(props) => props.theme.cart.background[props.themeVariant]};
-`;
+export const CartSectionWrapper = styled.section(
+  ({ theme: { cart }, themeVariant, backgroundColor = cart.background[themeVariant] }) => css`
+    width: 100%;
+    min-height: 80vh;
+    padding: 20px 0;
+    background: ${backgroundColor};
+  `,
+);
 
 export const CartSectionContent = styled.div`
   margin: 0 25%;

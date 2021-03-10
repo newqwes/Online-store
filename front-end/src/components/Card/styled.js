@@ -1,21 +1,30 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-export const CardWrapper = styled.div`
-  display: flex;
-  flex-basis: 19%;
-  flex-direction: column;
-  align-content: space-between;
-  margin: 28px 15px;
-  padding: 10px 25px;
-  transition: 0.3s ease;
-  border-radius: 20px;
-  background: ${({ theme, themeVariant }) => theme.card.background[themeVariant]};
-  box-shadow: 0 0 15px -5px ${({ theme, themeVariant }) => theme.card.shadow[themeVariant]};
+export const CardWrapper = styled.div(
+  ({
+    theme: { card },
+    themeVariant,
+    backgroundColor = card.background[themeVariant],
+    boxShadowColor = card.shadow[themeVariant],
+    boxShadowColorHover = card.hoverShadow[themeVariant],
+  }) => css`
+    display: flex;
+    flex-basis: 19%;
+    flex-direction: column;
+    align-content: space-between;
 
-  &:hover {
-    box-shadow: 0 0 20px -5px ${({ theme, themeVariant }) => theme.card.hoverShadow[themeVariant]};
-  }
-`;
+    margin: 28px 15px;
+    padding: 10px 25px;
+    transition: 0.3s ease;
+    border-radius: 20px;
+    background: ${backgroundColor};
+    box-shadow: 0 0 15px -5px ${boxShadowColor};
+
+    &:hover {
+      box-shadow: 0 0 20px -5px ${boxShadowColorHover};
+    }
+  `,
+);
 
 export const CardContent = styled.div`
   display: flex;

@@ -3,13 +3,13 @@ import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
 
 import { getUserData } from '../selectors/userInfo';
-import { telValidation, emailValidation, loginValidation } from '../utils/fieldValidation';
+import { phoneValidation, emailValidation, loginValidation } from '../utils/fieldValidation';
 
 import { updateUser } from '../actionCreators';
 import UserProfileForm from '../components/ProfileSection/UserProfileForm';
 
 const validate = ({ phone, email, login }) => ({
-  phone: telValidation(phone),
+  phone: phoneValidation(phone),
   email: emailValidation(email),
   login: loginValidation(login),
 });

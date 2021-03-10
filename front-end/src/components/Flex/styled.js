@@ -1,11 +1,13 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-const FlexWrapper = styled.div`
-  display: flex;
-  justify-content: ${(props) => props.justifyContent};
-  align-items: ${(props) => props.alignItems};
-  flex-direction: ${(props) => props.direction};
-  flex-basis: ${(props) => props.flexBasis};
-`;
+const FlexWrapper = styled.div(
+  ({ justifyContent, alignItems, direction, flexBasis }) => css`
+    display: flex;
+    justify-content: ${justifyContent};
+    align-items: ${alignItems};
+    flex-direction: ${direction};
+    flex-basis: ${flexBasis};
+  `,
+);
 
 export default FlexWrapper;

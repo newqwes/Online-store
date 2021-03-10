@@ -20,7 +20,7 @@ const withReduxForm = reduxForm({
 });
 
 const mapStateToProps = state => ({
-  isUserAuth: getUserAuthStatus(state),
+  userAuthorized: getUserAuthStatus(state),
 });
 
 const mapDispatchToProps = {

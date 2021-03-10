@@ -48,6 +48,6 @@ export const homeValidation = validation(requiredRule);
 export const streetValidation = validation(requiredRule);
 export const apartmentValidation = validation(requiredRule);
 
-export const telValidation = validation(commonRules);
+export const phoneValidation = validation(commonRules);
 export const loginValidation = validation(commonRules);
 export const passwordValidation = validation(commonRules);

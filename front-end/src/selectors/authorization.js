@@ -5,4 +5,4 @@ const localState = get('authorization');
 
 export const getCart = createSelector(localState)();
 
-export const getUserAuthStatus = createSelector(localState, get('isUserAuth'));
+export const getUserAuthStatus = createSelector(localState, get('userAuthorized'));

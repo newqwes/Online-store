@@ -9,7 +9,7 @@ import Header from '../components/Header';
 
 const mapStateToProps = state => ({
   cartItemsCount: getCartItemsCount(state),
-  isUserAuth: getUserAuthStatus(state),
+  userAuthorized: getUserAuthStatus(state),
   userName: getUserName(state),
 });
 

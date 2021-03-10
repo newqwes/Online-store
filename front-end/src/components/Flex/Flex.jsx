@@ -18,7 +18,7 @@ const Flex = ({ children, direction, justifyContent, alignItems, flexBasis, clas
 );
 
 Flex.propTypes = {
-  children: PropTypes.any.isRequired,
+  children: PropTypes.node.isRequired,
   justifyContent: PropTypes.string,
   alignItems: PropTypes.string,
   className: PropTypes.string,

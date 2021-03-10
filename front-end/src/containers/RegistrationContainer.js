@@ -6,7 +6,7 @@ import { registration } from '../actionCreators';
 
 import FormSection from '../components/Authentication';
 import {
-  telValidation,
+  phoneValidation,
   emailValidation,
   loginValidation,
   equalValidation,
@@ -15,7 +15,7 @@ import {
 import { getUserAuthStatus } from '../selectors/authorization';
 
 const validate = ({ phone, email, login, password, confirmPassword }) => ({
-  phone: telValidation(phone),
+  phone: phoneValidation(phone),
   email: emailValidation(email),
   login: loginValidation(login),
   password: passwordValidation(password),
@@ -28,7 +28,7 @@ const withReduxForm = reduxForm({
 });
 
 const mapStateToProps = state => ({
-  isUserAuth: getUserAuthStatus(state),
+  userAuthorized: getUserAuthStatus(state),
 });
 
 const mapDispatchToProps = {

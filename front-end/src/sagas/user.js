@@ -1,4 +1,4 @@
-import { takeEvery, put, all } from 'redux-saga/effects';
+import { takeEvery, put, all, call } from 'redux-saga/effects';
 
 import { UPDATE_USER_PENDING } from '../actions';
 
@@ -7,7 +7,7 @@ import { updateUserSuccess, updateUserFailure } from '../actionCreators';
 
 export function* updateUser({ payload }) {
   try {
-    const userData = yield userAPI.update(payload);
+    const userData = yield call(userAPI.update, payload);
 
     yield put(updateUserSuccess(userData));
   } catch ({ response }) {

@@ -1,4 +1,4 @@
-import { takeEvery, put, all } from 'redux-saga/effects';
+import { takeEvery, put, all, call } from 'redux-saga/effects';
 
 import { SEND_ORDER_PENDING } from '../actions';
 
@@ -7,7 +7,7 @@ import { sendOrderFailure, sendOrderSuccess } from '../actionCreators';
 
 function* sendOrder({ payload }) {
   try {
-    const orderData = yield orderAPI.sendOrder(payload);
+    const orderData = yield call(orderAPI.sendOrder, payload);
 
     yield put(sendOrderSuccess(orderData));
   } catch ({ response }) {

@@ -1,4 +1,4 @@
-import { takeEvery, put, all } from 'redux-saga/effects';
+import { takeEvery, put, all, call } from 'redux-saga/effects';
 
 import { GET_REGISTRATION_PENDING } from '../actions';
 
@@ -7,7 +7,7 @@ import { loginSuccess, loginFailure } from '../actionCreators';
 
 export function* registration({ payload: { login, password, email, phone } }) {
   try {
-    const userData = yield authAPI.registration({ login, password, email, phone });
+    const userData = yield call(authAPI.registration, { login, password, email, phone });
 
     yield put(loginSuccess(userData));
   } catch ({ response }) {

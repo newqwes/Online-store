@@ -1,11 +1,20 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-const ValueFormatterWrapper = styled.span`
-  letter-spacing: 0.1em;
-  font-size: ${props => props.fontSize}px;
-  text-align: ${props => props.textAlign};
-  font-weight: ${props => props.fontWeight};
-  color: ${props => props.theme.label.color[props.themeVariant]};
-`;
+const ValueFormatterWrapper = styled.span(
+  ({
+    theme: { label },
+    themeVariant,
+    fontSize,
+    textAlign,
+    fontWeight,
+    textColor = label.color[themeVariant],
+  }) => css`
+    letter-spacing: 0.1em;
+    font-size: ${fontSize}px;
+    text-align: ${textAlign};
+    font-weight: ${fontWeight};
+    color: ${textColor};
+  `,
+);
 
 export default ValueFormatterWrapper;

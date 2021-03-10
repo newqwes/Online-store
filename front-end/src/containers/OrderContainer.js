@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
 
 import {
-  telValidation,
+  phoneValidation,
   cityValidation,
   homeValidation,
   emailValidation,
@@ -21,7 +21,7 @@ import OrderSection from '../components/OrderSection';
 const validate = ({ phone, email, city, home, street, apartment }) => ({
   city: cityValidation(city),
   home: homeValidation(home),
-  phone: telValidation(phone),
+  phone: phoneValidation(phone),
   email: emailValidation(email),
   street: streetValidation(street),
   apartment: apartmentValidation(apartment),

@@ -1,4 +1,4 @@
-import { get, reduce } from 'lodash/fp';
+import { get, reduce, sumBy } from 'lodash/fp';
 import { floor } from 'lodash';
 import { createSelector } from 'reselect';
 
@@ -11,7 +11,4 @@ export const getTotalCartPrice = createSelector(
   reduce((sum, { count, options: { price } }) => floor(sum + count * price, 2), 0),
 );
 
-export const getCartItemsCount = createSelector(
-  localState,
-  reduce((sum, { count }) => sum + count, 0),
-);
+export const getCartItemsCount = createSelector(localState, sumBy('count'));

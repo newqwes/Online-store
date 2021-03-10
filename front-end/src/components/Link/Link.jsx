@@ -7,7 +7,7 @@ const Link = ({ href, to, children, themeVariant }) => {
   const Component = to ? CustomNavLink : CustomLink;
 
   return (
-    <Component to={to} href={href} variant={themeVariant}>
+    <Component to={to} href={href} themeVariant={themeVariant}>
       {children}
     </Component>
   );
@@ -16,7 +16,7 @@ const Link = ({ href, to, children, themeVariant }) => {
 Link.propTypes = {
   href: PropTypes.string,
   to: PropTypes.string,
-  children: PropTypes.any.isRequired,
+  children: PropTypes.node.isRequired,
   themeVariant: PropTypes.string,
 };
 
