@@ -23,12 +23,7 @@ class UserProfileForm extends React.Component {
     const { updateUser, handleSubmit, reset } = this.props;
     return (
       <Flex direction={DIRECTION.column}>
-        <Label
-          text='Личные данные'
-          className='profile-label'
-          fontSize={FONT_SIZE.large}
-          fontWeight={FONT_WEIGHT.bold}
-        />
+        <Label text='Личные данные' fontSize={FONT_SIZE.large} fontWeight={FONT_WEIGHT.bold} />
         <form>
           <Field
             type='text'

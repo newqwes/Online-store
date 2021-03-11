@@ -10,8 +10,8 @@ import THEME_VARIANT from '../../../constants/themeVariant';
 
 import { ProfileMenuWrapper, HamburgerWrapper } from './styled';
 
-const ProfileMenu = ({ themeVariant, className, active, clickButtonMenu }) => (
-  <ProfileMenuWrapper themeVariant={themeVariant} className={className} active={active}>
+const ProfileMenu = ({ themeVariant, active, clickButtonMenu }) => (
+  <ProfileMenuWrapper themeVariant={themeVariant} active={active}>
     <HamburgerWrapper onClick={clickButtonMenu} themeVariant={themeVariant}>
       {active ? <Сross /> : <Hamburger />}
     </HamburgerWrapper>
@@ -25,14 +25,12 @@ const ProfileMenu = ({ themeVariant, className, active, clickButtonMenu }) => (
 
 ProfileMenu.propTypes = {
   themeVariant: PropTypes.string,
-  className: PropTypes.string,
   clickButtonMenu: PropTypes.func.isRequired,
   active: PropTypes.bool.isRequired,
 };
 
 ProfileMenu.defaultProps = {
   themeVariant: THEME_VARIANT.default,
-  className: '',
 };
 
 export default ProfileMenu;

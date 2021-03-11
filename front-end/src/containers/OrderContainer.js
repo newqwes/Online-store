@@ -12,7 +12,7 @@ import {
 } from '../utils/fieldValidation';
 
 import { getUserData } from '../selectors/userInfo';
-import { getCart, getTotalCartPrice } from '../selectors/cart';
+import { getCart, getTotalCartPrice, getCurrencySign } from '../selectors/cart';
 
 import { removeFromCart, addToCart, submitOrder } from '../actionCreators';
 
@@ -36,6 +36,7 @@ const mapStateToProps = state => ({
   cart: getCart(state),
   initialValues: getUserData(state),
   totalCartPrice: getTotalCartPrice(state),
+  currencySign: getCurrencySign(state),
 });
 
 const mapDispatchToProps = { removeFromCart, addToCart, submitOrder };

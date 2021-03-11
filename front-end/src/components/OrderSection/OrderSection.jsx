@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
-import { get, compose, head, isEmpty } from 'lodash/fp';
+import { isEmpty } from 'lodash/fp';
 
 import { productsType } from '../../propType';
 
 import DIRECTION from '../../constants/direction';
 import ROUTER_PATH from '../../constants/routerPath';
+import { ALIGN_ITEMS } from '../../constants/position';
 import ORDER_FIELDS from '../../constants/orderFields';
 import THEME_VARIANT from '../../constants/themeVariant';
 
@@ -18,7 +19,12 @@ import InputField from '../InputField';
 import TotalPrice from '../TotalPrice';
 import CartItems from '../CartSection/CartItems';
 
-import { OrderSectionWrapper, OrderSectionContent, InputFieldContent } from './styled';
+import {
+  OrderSectionWrapper,
+  OrderSectionContent,
+  InputFieldContent,
+  OrderInfoWrapper,
+} from './styled';
 
 const OrderSection = ({
   totalCartPrice,
@@ -28,6 +34,7 @@ const OrderSection = ({
   handleSubmit,
   themeVariant,
   removeFromCart,
+  currencySign,
 }) => {
   const history = useHistory();
 
@@ -38,13 +45,11 @@ const OrderSection = ({
     history.push(ROUTER_PATH.orderSuccessMessage);
   };
 
-  const currencySign = compose(get('currencySign'), head)(cart);
-
   return (
     <OrderSectionWrapper themeVariant={themeVariant}>
       <OrderSectionContent themeVariant={themeVariant}>
-        <Flex direction={DIRECTION.column} flexBasis='60%'>
-          <Label text='Оформление заказа' className='order-section-label' />
+        <Flex direction={DIRECTION.column} flexBasis='60%' alignItems={ALIGN_ITEMS.flexStart}>
+          <Label text='Оформление заказа' />
           <form>
             <Flex direction={DIRECTION.column}>
               <FieldList
@@ -56,12 +61,12 @@ const OrderSection = ({
             </Flex>
           </form>
         </Flex>
-        <Flex direction={DIRECTION.column} flexBasis='40%'>
-          <Label text='Ваш заказ' className='order-section-label' />
-          <Flex direction={DIRECTION.column} className='order-section-cart'>
+        <Flex direction={DIRECTION.column} flexBasis='40%' alignItems={ALIGN_ITEMS.flexStart}>
+          <Label text='Ваш заказ' />
+          <OrderInfoWrapper>
             <CartItems cart={cart} removeFromCart={removeFromCart} addToCart={addToCart} />
             <TotalPrice value={totalCartPrice} currencySign={currencySign} label='Сумма заказа: ' />
-          </Flex>
+          </OrderInfoWrapper>
         </Flex>
       </OrderSectionContent>
     </OrderSectionWrapper>
@@ -76,6 +81,7 @@ OrderSection.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   totalCartPrice: PropTypes.number.isRequired,
   removeFromCart: PropTypes.func.isRequired,
+  currencySign: PropTypes.string.isRequired,
 };
 
 OrderSection.defaultProps = {

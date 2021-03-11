@@ -60,27 +60,27 @@ class InputField extends React.Component {
         disabled={disabled}
         pristine={pristine}>
         <label>{label}</label>
-        <div className='input-wrapper'>
-          <input
-            name={name}
-            type={type}
-            value={value}
-            onDrop={onDrop}
-            onBlur={onBlur}
-            onChange={onChange}
-            placeholder={placeholder}
-            onDragStart={onDragStart}
-            disabled={control && disabled}
+        <input
+          name={name}
+          type={type}
+          value={value}
+          onDrop={onDrop}
+          onBlur={onBlur}
+          onChange={onChange}
+          placeholder={placeholder}
+          onDragStart={onDragStart}
+          disabled={control && disabled}
+        />
+        {control && (
+          <InputControl
+            disabled={disabled}
+            onEdit={this.handleEdit}
+            onSave={this.handleSave}
+            onCancel={this.handleCancel}
+            pristine={pristine}
+            themeVariant={themeVariant}
           />
-          {control && (
-            <InputControl
-              disabled={disabled}
-              onEdit={this.handleEdit}
-              onSave={this.handleSave}
-              onCancel={this.handleCancel}
-            />
-          )}
-        </div>
+        )}
         {touched && error && <ErrorLabel text={error} />}
       </FieldStyle>
     );

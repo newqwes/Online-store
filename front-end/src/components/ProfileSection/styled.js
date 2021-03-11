@@ -2,26 +2,7 @@ import styled, { css } from 'styled-components';
 
 import SECTION_WIDTH from '../../constants/sectionWidth';
 
-export const ProfileWrapper = styled.section(
-  ({
-    theme: { profile },
-    themeVariant,
-    backgroundColor = profile.background.color[themeVariant],
-  }) => css`
-    background-color: ${backgroundColor};
-
-    .profile-label {
-      display: block;
-      margin: 20px 0;
-    }
-
-    .profile-form-content {
-      margin: 0 auto;
-    }
-  `,
-);
-
-export const ProfileContent = styled.div`
+export const ProfileWrapper = styled.section`
   position: relative;
   margin: 0 auto;
   width: 100%;
@@ -31,23 +12,18 @@ export const ProfileContent = styled.div`
   justify-content: space-between;
 `;
 
+export const ProfileContent = styled.div`
+  display: flex;
+  margin: 0 auto;
+  flex-direction: column;
+  align-items: flex-start;
+`;
+
 export const InputFieldContent = styled.div(
   ({
     theme: { profile },
     themeVariant,
     disabled,
-    pristine,
-
-    editButtonColor = profile.editButton.active[themeVariant],
-    editButtonColorHover = profile.editButton.hover[themeVariant],
-
-    saveButtonColor = pristine
-      ? profile.saveButton.disabled[themeVariant]
-      : profile.saveButton.active[themeVariant],
-
-    saveButtonColorHover = pristine
-      ? profile.saveButton.disabled[themeVariant]
-      : profile.saveButton.hover[themeVariant],
 
     inputBorderColor = profile.input.border[themeVariant],
 
@@ -56,47 +32,7 @@ export const InputFieldContent = styled.div(
     display: flex;
     flex-direction: column;
     margin: 20px 0;
-
-    .field-button-cancel,
-    .field-button-edit,
-    .field-button-save {
-      position: absolute;
-      font-size: 14px;
-      cursor: pointer;
-      transition: 0.3s ease;
-      bottom: 25px;
-    }
-
-    .field-button-cancel,
-    .field-button-edit {
-      color: ${editButtonColor};
-
-      &:hover {
-        color: ${editButtonColorHover};
-      }
-    }
-
-    .field-button-save {
-      right: 12px;
-      color: ${saveButtonColor};
-      cursor: ${pristine ? 'default' : 'pointer'};
-
-      &:hover {
-        color: ${saveButtonColorHover};
-      }
-    }
-
-    .field-button-edit {
-      right: 12px;
-    }
-
-    .field-button-cancel {
-      right: -60px;
-    }
-
-    .input-wrapper {
-      position: relative;
-    }
+    position: relative;
 
     input {
       margin: 10px 0;

@@ -25,18 +25,10 @@ export const OrderSectionContent = styled.div(
     margin: 0 auto;
     max-width: ${SECTION_WIDTH.midle}px;
 
-    .order-section-label {
-      align-self: flex-start;
-      margin-bottom: 20px;
-    }
-
-    .order-section-cart {
-      width: 100%;
-    }
-
     form {
       background-color: white;
       width: 85%;
+      margin-top: 20px;
       padding: 30px;
       border-radius: 10px;
       align-self: flex-start;
@@ -89,3 +81,9 @@ export const InputFieldContent = styled.div(
     }
   `,
 );
+
+export const OrderInfoWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+`;

@@ -9,13 +9,12 @@ import THEME_VARIANT from '../../constants/themeVariant';
 
 import LabelWrapper from './styled';
 
-const Label = ({ text, fontSize, textAlign, fontWeight, themeVariant, className }) => (
+const Label = ({ text, fontSize, textAlign, fontWeight, themeVariant }) => (
   <LabelWrapper
     fontSize={fontSize}
     textAlign={textAlign}
     fontWeight={fontWeight}
-    themeVariant={themeVariant}
-    className={className}>
+    themeVariant={themeVariant}>
     {text}
   </LabelWrapper>
 );
@@ -24,14 +23,12 @@ Label.propTypes = {
   text: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   fontSize: PropTypes.number,
   textAlign: PropTypes.string,
-  className: PropTypes.string,
   fontWeight: PropTypes.number,
   themeVariant: PropTypes.string,
 };
 
 Label.defaultProps = {
   text: '',
-  className: '',
   fontSize: FONT_SIZE.medium,
   fontWeight: FONT_WEIGHT.bold,
   textAlign: TEXT_ALIGN.left,

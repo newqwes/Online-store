@@ -275,6 +275,9 @@ const light = {
         inverted: COLORS.softYellow,
       },
     },
+  },
+
+  control: {
     saveButton: {
       active: {
         default: COLORS.brownToneLight,

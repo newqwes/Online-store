@@ -1,32 +1,42 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
-const InputControl = ({ disabled, onEdit, onCancel, onSave }) => {
+import THEME_VARIANT from '../../constants/themeVariant';
+
+import { Edit, Save, Cancel } from './styled';
+
+const InputControl = ({ disabled, onEdit, onCancel, onSave, pristine, themeVariant }) => {
   if (disabled) {
     return (
-      <span onClick={onEdit} className='field-button-edit'>
+      <Edit pristine={pristine} themeVariant={themeVariant} onClick={onEdit}>
         Изменить
-      </span>
+      </Edit>
     );
   }
 
   return (
     <Fragment>
-      <span onClick={onSave} className='field-button-save'>
+      <Save onClick={onSave} themeVariant={themeVariant} pristine={pristine}>
         Сохранить
-      </span>
-      <span onClick={onCancel} className='field-button-cancel'>
+      </Save>
+      <Cancel onClick={onCancel} themeVariant={themeVariant} pristine={pristine}>
         Отмена
-      </span>
+      </Cancel>
     </Fragment>
   );
 };
 
 InputControl.propTypes = {
+  themeVariant: PropTypes.string,
   onEdit: PropTypes.func.isRequired,
   onSave: PropTypes.func.isRequired,
   onCancel: PropTypes.func.isRequired,
   disabled: PropTypes.bool.isRequired,
+  pristine: PropTypes.bool.isRequired,
+};
+
+InputControl.defaultProps = {
+  themeVariant: THEME_VARIANT.default,
 };
 
 export default InputControl;

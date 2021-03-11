@@ -1,4 +1,4 @@
-import { get, reduce, sumBy } from 'lodash/fp';
+import { get, reduce, sumBy, head, compose, getOr } from 'lodash/fp';
 import { floor } from 'lodash';
 import { createSelector } from 'reselect';
 
@@ -12,3 +12,5 @@ export const getTotalCartPrice = createSelector(
 );
 
 export const getCartItemsCount = createSelector(localState, sumBy('count'));
+
+export const getCurrencySign = createSelector(localState, compose(getOr('', 'currencySign'), head));
